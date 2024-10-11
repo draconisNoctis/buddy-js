@@ -1,15 +1,19 @@
 {
     "name": "@buddy-js/scraper",
     "private": true,
-    "type": "module",
     "scripts": {
         "build": "tsc",
-        "go": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' src/main.ts"
+        "scrape": "ts-node src/main.ts"
     },
-    "dependencies": {},
+    "dependencies": {
+        "cheerio": "1.0.0"
+    },
     "devDependencies": {
+        "@types/json-schema": "7.0.15",
         "@types/node": "22.7.5",
+        "domhandler": "5.0.3",
+        "json-schema-to-typescript": "15.0.2",
         "ts-node": "10.9.2",
-        "typescript": "5.6.2"
+        "typescript": "5.6.3"
     }
 }
