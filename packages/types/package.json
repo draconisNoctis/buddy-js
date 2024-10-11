@@ -1,0 +1,14 @@
+{
+    "name": "@buddy-js/types",
+    "version": "0.0.0",
+    "exports": {
+        ".": {
+            "default": "./schema.d.ts",
+            "types": "./schema.d.ts"
+        },
+        "./package.json": "./package.json",
+        "./schema.json": "./schema.json"
+    },
+    "main": "./src/schema.d.ts",
+    "types": "./src/schema.d.ts"
+}
