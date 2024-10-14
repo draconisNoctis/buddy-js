@@ -36,7 +36,7 @@ importers:
   packages/buddy-js:
     dependencies:
       '@buddy-js/types':
-        specifier: workspace:*
+        specifier: workspace:0.0.0
         version: link:../types
     devDependencies:
       typescript:
@@ -46,7 +46,7 @@ importers:
   packages/cli:
     dependencies:
       '@buddy-js/types':
-        specifier: workspace:*
+        specifier: workspace:0.0.0
         version: link:../types
       '@oclif/core':
         specifier: 4.0.28
@@ -64,7 +64,7 @@ importers:
         specifier: 3.0.1
         version: 3.0.1(ajv@8.17.1)
       buddy-js:
-        specifier: workspace:*
+        specifier: workspace:0.0.0
         version: link:../buddy-js
       chalk:
         specifier: 4.1.2

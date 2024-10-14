@@ -16,7 +16,7 @@
         "postbuild": "echo '{ \"type\": \"module\" }' > lib/esm/package.json"
     },
     "dependencies": {
-        "@buddy-js/types": "workspace:*"
+        "@buddy-js/types": "workspace:0.0.0"
     },
     "devDependencies": {
         "typescript": "5.6.3"
