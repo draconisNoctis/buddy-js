@@ -3,12 +3,13 @@
     "version": "0.0.0",
     "exports": {
         ".": {
-            "default": "./schema.d.ts",
+            "require": "./schema.js",
+            "import": "./schema.mjs",
             "types": "./schema.d.ts"
         },
         "./package.json": "./package.json",
         "./schema.json": "./schema.json"
     },
-    "main": "./src/schema.d.ts",
-    "types": "./src/schema.d.ts"
+    "main": "./schema.js",
+    "typings": "./schema.d.ts"
 }

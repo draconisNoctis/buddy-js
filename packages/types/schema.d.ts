@@ -6,150 +6,320 @@
  */
 
 export type Action =
-  | AmazonS3
-  | AWSAppRunnerDeploy
   | AWSCDKCLI
-  | AWSCLI
-  | AWSCLI2
-  | AWSCodeDeploy
   | AWSCodePipeline
-  | AmazonElasticContainerService
+  | AWSCodeDeploy
+  | AWSAppRunnerDeploy
+  | AWSCLI
+  | AmazonS3
+  | AWSCLI2
   | AWSElasticBeanstalk
+  | AmazonElasticContainerService
   | AWSElasticBeanstalkMonitoring
   | AWSLambda
-  | AWSLambdaDeploy
   | AzureCLI
-  | AzureStorage
+  | AWSLambdaDeploy
   | BackblazeB2
   | Blackfire
   | Bugsnag
-  | BuildACordovaApp
-  | BuildAFastlaneAppiOS
   | BuildAReactNativeApp
-  | BuildAndroidApp
-  | BuildApplication
+  | AzureStorage
+  | BuildACordovaApp
   | BuildDockerImage
+  | BuildAFastlaneAppiOS
   | BuildFlutterApp
   | BuildFlutterAppiOS
-  | BuildMultiArchImage
   | ClearCache
+  | BuildAndroidApp
+  | BuildApplication
+  | BuildMultiArchImage
   | Cloudflare
   | Cloudfront
   | CodeSignAndExportAnIOSApp
-  | CompressImages
   | CopyFilesAction
+  | CompressImages
   | CreateNewSandbox
   | Datadog
-  | DatadogServiceCheck
   | DeployToAppStoreConnect
   | DigitalOcean
   | DigitalOceanCDN
-  | DigitalOceanCLI
-  | DigitalOceanSpaces
-  | Discord
   | Docker
+  | Discord
+  | DigitalOceanSpaces
+  | DatadogServiceCheck
+  | DigitalOceanCLI
   | DockerCLI
-  | DockerfileLinter
   | DownloadBackblazeB2
+  | DockerfileLinter
   | DownloadFromSandbox
   | DownloadFTP
   | DownloadFTPS
-  | DownloadGCS
+  | EmailNotification
   | DownloadS3
   | DownloadSFTP
-  | EmailNotification
-  | ESLint
-  | Firebase
-  | FTP
+  | DownloadGCS
   | FTPS
+  | Firebase
+  | ESLint
+  | FTP
   | GenerateVariables
   | GhostInspector
-  | GhostInspectorCLI
   | GitPush
-  | GitcryptLock
   | GitcryptUnlock
+  | GitcryptLock
+  | GhostInspectorCLI
   | GitHubCLI
-  | GitHubRelease
   | GitLabCLI
   | GKEApplyDeployment
-  | KubernetesRunHelmCMDs
+  | GitHubRelease
   | GKERunJob
   | GKERunPod
+  | GoogleCDN
   | GKESetImage
   | GoogleAppEngine
-  | GoogleCDN
   | GoogleChat
-  | GoogleCloudCLI
   | GoogleCloudRun
   | GoogleCloudStorage
+  | KubernetesRunHelmCMDs
+  | GoogleCloudCLI
   | GoogleComputeEngine
   | GoogleFunctions
   | GoogleFunctionsDeploy
-  | Heroku
-  | HerokuCLI
   | Honeybadger
   | HTTPRequest
+  | HerokuCLI
+  | Heroku
   | JMeterCLI
   | KubernetesApplyDeployment
-  | KubernetesKubectl
   | KubernetesRunJob
-  | KubernetesRunPod
   | KubernetesSetImage
+  | KubernetesRunPod
+  | KubernetesKubectl
   | Lighthouse
-  | LinkChecker
   | Linux
-  | Loggly
+  | LinkChecker
   | MacOS
-  | MicrosoftAzure
   | MicrosoftTeams
+  | MicrosoftAzure
+  | Loggly
   | Netlify
   | NewRelicCLI
-  | OperateSandbox
   | PassArguments
   | PingMonitoring
+  | OperateSandbox
   | PublishAndroidApp
+  | Pushbullet
   | PublishBundleToGooglePlay
   | PushDockerImage
-  | Pushbullet
   | Pushover
   | Rackspace
   | Raygun
   | Replace
   | Rollbar
   | Rsync
-  | RunDockerContainer
   | Sentry
+  | RunDockerContainer
   | SetVariables
-  | SFTP
-  | Shopify
-  | ShopifyCLI
   | ShopifyThemeKitCLI
+  | ShopifyCLI
   | SignAndroidApp
+  | SFTP
+  | Sleep
+  | Shopify
   | SignBundle
   | SlackNotification
-  | Sleep
   | SMSNotification
   | Snyk
+  | SSHToSandbox
   | SplitTests
   | SSHCommand
-  | SSHToSandbox
-  | SSLVerify
-  | StackHawkCLI
   | TCPMonitoring
   | TelegramNotification
-  | TerraformCLI
+  | SSLVerify
   | TransferToSandbox
   | TriggerPipeline
-  | UpCloud
+  | TerraformCLI
   | VisualTests
+  | StackHawkCLI
+  | UpCloud
   | Vultr
   | WaitForApproval
+  | Windows
   | WebMonitoring
   | WebDAV
-  | Windows
   | WPCLI
   | Xcode
   | ZIP;
+export type AWSCDKCLI = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_CDK_CLI`.
+   */
+  type: "AWS_CDK_CLI";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string;
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string;
+};
+export type AWSCodePipeline = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `CODE_PIPELINE`.
+   */
+  type: "CODE_PIPELINE";
+  /**
+   * The name of the AWS CodePipeline pipeline triggered by the action.
+   */
+  code_pipeline_name: string;
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * If set to `true`, the action will wait for the CodePipeline to finish.
+   */
+  wait_for_complete?: boolean;
+};
+export type AWSCodeDeploy = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `CODE_DEPLOY`.
+   */
+  type: "CODE_DEPLOY";
+  /**
+   * The name of the application.
+   */
+  application_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region: string;
+  /**
+   * The Amazon group name.
+   */
+  group_name: string;
+  /**
+   * The name of the CodeDeploy configuration.
+   */
+  config_name: string;
+  /**
+   * The comment about the deployment.
+   */
+  description?: string;
+  /**
+   * See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html).
+   */
+  ignore_application_stop_failures?: boolean;
+  /**
+   * See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html).
+   */
+  update_outdated_instances_only?: boolean;
+  /**
+   * Defines whether to wait for the finish of the deployment in Amazon Code Deploy.
+   */
+  wait_for_finish_deployment?: boolean;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+};
+export type AWSAppRunnerDeploy = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`.
+   */
+  type: "AWS_APP_RUNNER_MONITOR";
+  /**
+   * The ID of the App Runner service ARN.
+   */
+  service: string;
+  /**
+   * The name of the Amazon region. The full list of regions is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`.
+   */
+  timeout: number;
+};
+export type AWSCLI = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_CLI`.
+   */
+  type: "AWS_CLI";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+};
 export type AmazonS3 = ActionCommon & {
   /**
    * The ID of the action.
@@ -210,7 +380,7 @@ export type AmazonS3 = ActionCommon & {
   /**
    * Defines tags for files categorization as a key value pairs list.
    */
-  deploy_tags?: Tag;
+  deploy_tags?: Tag[];
   /**
    * If set to `true`, files are not deleted if changeset indcates that.
    */
@@ -219,92 +389,6 @@ export type AmazonS3 = ActionCommon & {
    * ContentEncoding that will be set for the deployed files e.g. "gzip".
    */
   content_encoding?: string;
-};
-export type AWSAppRunnerDeploy = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`.
-   */
-  type: "AWS_APP_RUNNER_MONITOR";
-  /**
-   * The ID of the App Runner service ARN.
-   */
-  service: string;
-  /**
-   * The name of the Amazon region. The full list of regions is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`.
-   */
-  timeout: number;
-};
-export type AWSCDKCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_CDK_CLI`.
-   */
-  type: "AWS_CDK_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string;
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string;
-};
-export type AWSCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_CLI`.
-   */
-  type: "AWS_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
 };
 export type AWSCLI2 = ActionCommon & {
   /**
@@ -335,120 +419,6 @@ export type AWSCLI2 = ActionCommon & {
    * The command that will be executed only on the first run.
    */
   setup_commands?: string[];
-};
-export type AWSCodeDeploy = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `CODE_DEPLOY`.
-   */
-  type: "CODE_DEPLOY";
-  /**
-   * The name of the application.
-   */
-  application_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region: string;
-  /**
-   * The Amazon group name.
-   */
-  group_name: string;
-  /**
-   * The name of the CodeDeploy configuration.
-   */
-  config_name: string;
-  /**
-   * The comment about the deployment.
-   */
-  description?: string;
-  /**
-   * See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html).
-   */
-  ignore_application_stop_failures?: boolean;
-  /**
-   * See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html).
-   */
-  update_outdated_instances_only?: boolean;
-  /**
-   * Defines whether to wait for the finish of the deployment in Amazon Code Deploy.
-   */
-  wait_for_finish_deployment?: boolean;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-};
-export type AWSCodePipeline = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `CODE_PIPELINE`.
-   */
-  type: "CODE_PIPELINE";
-  /**
-   * The name of the AWS CodePipeline pipeline triggered by the action.
-   */
-  code_pipeline_name: string;
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * If set to `true`, the action will wait for the CodePipeline to finish.
-   */
-  wait_for_complete?: boolean;
-};
-export type AmazonElasticContainerService = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_ECS`.
-   */
-  type: "AWS_ECS";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The path to the JSON file with task definition.
-   */
-  local_path: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  cluster: string;
-  /**
-   * The ID of the ECS service.
-   */
-  service: string;
 };
 export type AWSElasticBeanstalk = ActionCommon & {
   /**
@@ -491,6 +461,36 @@ export type AWSElasticBeanstalk = ActionCommon & {
    * The path in the repository.
    */
   local_path?: string;
+};
+export type AmazonElasticContainerService = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_ECS`.
+   */
+  type: "AWS_ECS";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The path to the JSON file with task definition.
+   */
+  local_path: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  cluster: string;
+  /**
+   * The ID of the ECS service.
+   */
+  service: string;
 };
 export type AWSElasticBeanstalkMonitoring = ActionCommon & {
   /**
@@ -568,36 +568,6 @@ export type AWSLambda = ActionCommon & {
    */
   payload?: string;
 };
-export type AWSLambdaDeploy = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_LAMBDA_DEPLOY`.
-   */
-  type: "AWS_LAMBDA_DEPLOY";
-  /**
-   * The name of the Lambda function.
-   */
-  function_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region: string;
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-};
 export type AzureCLI = ActionCommon & {
   /**
    * The ID of the action.
@@ -628,59 +598,35 @@ export type AzureCLI = ActionCommon & {
    */
   setup_commands?: string[];
 };
-export type AzureStorage = ActionCommon & {
+export type AWSLambdaDeploy = ActionCommon & {
   /**
-   * The ID of the action.
+   * The name of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `AZURE_STORAGE`.
+   * The type of the action. Should be set to `AWS_LAMBDA_DEPLOY`.
    */
-  type: "AZURE_STORAGE";
+  type: "AWS_LAMBDA_DEPLOY";
   /**
-   * The name of the bucket.
+   * The name of the Lambda function.
    */
-  bucket_name: string;
+  function_name: string;
   /**
-   * The integration.
+   * The ID of the integration.
    */
   integration: string;
   /**
-   * Defines whether the files are deployed from the repository or from the  build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
    */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  region: string;
   /**
    * The path in the repository.
    */
   local_path?: string;
   /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
    * The paths and/or files that will be left out during the deployment.
    */
   deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The name of the application.
-   */
-  application_name?: string;
-  /**
-   * If set to `true`, files are not deleted if changeset indcates that.
-   */
-  deletion_disabled?: boolean;
-  /**
-   * When set to `true`, all files will have their mime-types set to `application/octet-stream`.
-   */
-  skip_content_type_setting?: boolean;
-  /**
-   * ContentEncoding that will be set for the deployed files e.g. "gzip".
-   */
-  content_encoding?: string;
 };
 export type BackblazeB2 = ActionCommon & {
   /**
@@ -800,90 +746,6 @@ export type Bugsnag = ActionCommon & {
    */
   auto_assign_release?: boolean;
 };
-export type BuildACordovaApp = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FASTLANE`.
-   */
-  type: "NATIVE_BUILD_MAC_FASTLANE";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath;
-  /**
-   * The list of simulators initiated before the action runs.
-   */
-  pre_start_simulators?: string[];
-  /**
-   * The version of Node.js used in the action.
-   */
-  node_version?: string;
-  /**
-   * The list of variables added to the iOS keychain.
-   */
-  certificates?: string[];
-  /**
-   * The list of variables added as iOS Provisioning Profiles.
-   */
-  provision_profiles?: string[];
-  /**
-   * Defines the Xcode version.
-   */
-  xcode_version?: string;
-};
-export type BuildAFastlaneAppiOS = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FASTLANE`.
-   */
-  type: "NATIVE_BUILD_MAC_FASTLANE";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath;
-  /**
-   * The list of simulators initiated before the action runs.
-   */
-  pre_start_simulators?: string[];
-  /**
-   * The version of Node.js used in the action.
-   */
-  node_version?: string;
-  /**
-   * The list of variables added to the iOS keychain.
-   */
-  certificates?: string[];
-  /**
-   * The list of variables added as iOS Provisioning Profiles.
-   */
-  provision_profiles?: string[];
-  /**
-   * Defines the Xcode version.
-   */
-  xcode_version?: string;
-};
 export type BuildAReactNativeApp = ActionCommon & {
   /**
    * The ID of the action.
@@ -904,7 +766,7 @@ export type BuildAReactNativeApp = ActionCommon & {
   /**
    * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
    */
-  sync_paths?: SyncPath;
+  sync_paths?: SyncPath[];
   /**
    * The list of simulators initiated before the action runs.
    */
@@ -926,165 +788,101 @@ export type BuildAReactNativeApp = ActionCommon & {
    */
   xcode_version?: string;
 };
-export type BuildAndroidApp = ActionCommon & {
+export type AzureStorage = ActionCommon & {
   /**
    * The ID of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `BUILD`.
+   * The type of the action. Should be set to `AZURE_STORAGE`.
    */
-  type: "BUILD";
+  type: "AZURE_STORAGE";
   /**
-   * The name of the Docker image.
+   * The name of the bucket.
    */
-  docker_image_name: string;
+  bucket_name: string;
   /**
-   * The tag of the Docker image.
+   * The integration.
    */
-  docker_image_tag: string;
+  integration: string;
   /**
-   * The commands that will be executed.
+   * Defines whether the files are deployed from the repository or from the  build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
    */
-  execute_commands: string[];
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
   /**
-   * The dependencies & directories to be cached and available to every execution in this pipeline.
+   * The path in the repository.
    */
-  cached_dirs?: string[];
+  local_path?: string;
   /**
-   * The directory in which the pipeline filesystem will be mounted.
+   * The absolute or relative path on the remote server.
    */
-  working_directory?: string;
+  remote_path?: string;
   /**
-   * The command that will be executed only on the first run.
+   * The paths and/or files that will be left out during the deployment.
    */
-  setup_commands?: string[];
+  deployment_excludes?: string[];
   /**
-   * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`.
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
    */
-  services?: Service;
+  deployment_includes?: string[];
   /**
-   * The username required to connect to the Docker hub, private registry or GCR.
+   * The name of the application.
    */
-  login?: string;
+  application_name?: string;
   /**
-   * The password required to connect to the Docker hub, private registry or GCR.
+   * If set to `true`, files are not deleted if changeset indcates that.
    */
-  password?: string;
+  deletion_disabled?: boolean;
   /**
-   * The url to the Docker registry or GCR.
+   * When set to `true`, all files will have their mime-types set to `application/octet-stream`.
    */
-  registry?: string;
+  skip_content_type_setting?: boolean;
   /**
-   * The ID of the integration. Required for using the image from the Amazon ECR.
+   * ContentEncoding that will be set for the deployed files e.g. "gzip".
    */
-  integration?: string;
-  /**
-   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
+  content_encoding?: string;
 };
-export type BuildApplication = ActionCommon & {
+export type BuildACordovaApp = ActionCommon & {
   /**
    * The ID of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `BUILD`.
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FASTLANE`.
    */
-  type: "BUILD";
-  /**
-   * The name of the Docker image.
-   */
-  docker_image_name: string;
-  /**
-   * The tag of the Docker image.
-   */
-  docker_image_tag: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The dependencies & directories to be cached and available to every execution in this pipeline.
-   */
-  cached_dirs?: string[];
+  type: "NATIVE_BUILD_MAC_FASTLANE";
   /**
    * The directory in which the pipeline filesystem will be mounted.
    */
-  working_directory?: string;
+  working_directory: string;
   /**
-   * The command that will be executed only on the first run.
+   * The commands that will be executed.
    */
-  setup_commands?: string[];
+  commands: string[];
   /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
    */
-  shell?: string;
+  sync_paths?: SyncPath[];
   /**
-   * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`.
+   * The list of simulators initiated before the action runs.
    */
-  services?: Service;
+  pre_start_simulators?: string[];
   /**
-   * The hostname of the container in which the action is run. The container will be available under this name in the docker network for services defined in the `services` field.
+   * The version of Node.js used in the action.
    */
-  main_service_name?: string;
+  node_version?: string;
   /**
-   * The username required to connect to a private registry.
+   * The list of variables added to the iOS keychain.
    */
-  login?: string;
+  certificates?: string[];
   /**
-   * The password required to connect to a private registry.
+   * The list of variables added as iOS Provisioning Profiles.
    */
-  password?: string;
+  provision_profiles?: string[];
   /**
-   * The url to the Docker registry or GCR. Required for Google GCR.
+   * Defines the Xcode version.
    */
-  registry?: string;
-  /**
-   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
-   */
-  integration?: string;
-  /**
-   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-  /**
-   * If set to `true` the Docker image will be taken from action defined by `docker_build_action_id` or `docker_build_action_name`.
-   */
-  use_image_from_action?: boolean;
-  /**
-   * The ID of the action which built the desired Docker image. If set to 0, the image will be taken from previous pipeline action. Can be used instead of `docker_build_action_name`.
-   */
-  docker_build_action_id?: number;
-  /**
-   * The name of the action which built the desired Docker image. Can be used instead of `docker_build_action_id`.
-   */
-  docker_build_action_name?: string;
-  /**
-   * If set to `true`, all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-  /**
-   * If set to `true`, the cached version of the image is used, instead of being pulled each time.
-   */
-  cache_base_image?: boolean;
-  /**
-   * If set to `true`, use cached image on timeouts (only for official images).
-   */
-  ignore_image_pull_failures?: boolean;
-  /**
-   * All build commands are run as the default user defined in the selected Docker image. Can be set to another username (on the condition that this user exists in the selected image).
-   */
-  run_as_user?: string;
-  /**
-   * The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action.
-   */
-  image_location?: string;
-  /**
-   * The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with `image_location`. If not specified, the system will automatically set it based on other data from the action.
-   */
-  docker_registry?: string;
+  xcode_version?: string;
 };
 export type BuildDockerImage = ActionCommon & {
   /**
@@ -1150,7 +948,7 @@ export type BuildDockerImage = ActionCommon & {
   /**
    * The list of [secrets](https://buddy.works/docs/yaml/yaml-actions/build-docker-image#dockerbuildsecret-schema) to be sent using the `--secret` parameter.
    */
-  secrets?: DockerBuildSecret;
+  secrets?: DockerBuildSecret[];
   /**
    * Refers to the `--provenance` switch of the Docker build. Available values: `NONE`, `MIN`, `MAX`. The default value is `NONE`.
    */
@@ -1163,6 +961,48 @@ export type BuildDockerImage = ActionCommon & {
    * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
    */
   docker_registry?: string;
+};
+export type BuildAFastlaneAppiOS = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FASTLANE`.
+   */
+  type: "NATIVE_BUILD_MAC_FASTLANE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * The list of simulators initiated before the action runs.
+   */
+  pre_start_simulators?: string[];
+  /**
+   * The version of Node.js used in the action.
+   */
+  node_version?: string;
+  /**
+   * The list of variables added to the iOS keychain.
+   */
+  certificates?: string[];
+  /**
+   * The list of variables added as iOS Provisioning Profiles.
+   */
+  provision_profiles?: string[];
+  /**
+   * Defines the Xcode version.
+   */
+  xcode_version?: string;
 };
 export type BuildFlutterApp = ActionCommon & {
   /**
@@ -1204,7 +1044,7 @@ export type BuildFlutterApp = ActionCommon & {
   /**
    * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`, `CUSTOM`.
    */
-  services?: Service;
+  services?: Service[];
 };
 export type BuildFlutterAppiOS = ActionCommon & {
   /**
@@ -1226,7 +1066,7 @@ export type BuildFlutterAppiOS = ActionCommon & {
   /**
    * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
    */
-  sync_paths?: SyncPath;
+  sync_paths?: SyncPath[];
   /**
    * The list of simulators initiated before the action runs.
    */
@@ -1247,6 +1087,180 @@ export type BuildFlutterAppiOS = ActionCommon & {
    * Defines the Xcode version.
    */
   xcode_version?: string;
+};
+export type ClearCache = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `CLEAR_CACHE`.
+   */
+  type: "CLEAR_CACHE";
+  /**
+   * Defines the cache layer cleared by the action. Available values: `DOCKER`, `FILE_SYSTEM`,  `SERVICES`, `ADDITIONAL`.
+   */
+  cache_types: string[];
+};
+export type BuildAndroidApp = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `BUILD`.
+   */
+  type: "BUILD";
+  /**
+   * The name of the Docker image.
+   */
+  docker_image_name: string;
+  /**
+   * The tag of the Docker image.
+   */
+  docker_image_tag: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The dependencies & directories to be cached and available to every execution in this pipeline.
+   */
+  cached_dirs?: string[];
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+  /**
+   * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`.
+   */
+  services?: Service[];
+  /**
+   * The username required to connect to the Docker hub, private registry or GCR.
+   */
+  login?: string;
+  /**
+   * The password required to connect to the Docker hub, private registry or GCR.
+   */
+  password?: string;
+  /**
+   * The url to the Docker registry or GCR.
+   */
+  registry?: string;
+  /**
+   * The ID of the integration. Required for using the image from the Amazon ECR.
+   */
+  integration?: string;
+  /**
+   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+};
+export type BuildApplication = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `BUILD`.
+   */
+  type: "BUILD";
+  /**
+   * The name of the Docker image.
+   */
+  docker_image_name: string;
+  /**
+   * The tag of the Docker image.
+   */
+  docker_image_tag: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The dependencies & directories to be cached and available to every execution in this pipeline.
+   */
+  cached_dirs?: string[];
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`.
+   */
+  services?: Service[];
+  /**
+   * The hostname of the container in which the action is run. The container will be available under this name in the docker network for services defined in the `services` field.
+   */
+  main_service_name?: string;
+  /**
+   * The username required to connect to a private registry.
+   */
+  login?: string;
+  /**
+   * The password required to connect to a private registry.
+   */
+  password?: string;
+  /**
+   * The url to the Docker registry or GCR. Required for Google GCR.
+   */
+  registry?: string;
+  /**
+   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
+   */
+  integration?: string;
+  /**
+   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+  /**
+   * If set to `true` the Docker image will be taken from action defined by `docker_build_action_id` or `docker_build_action_name`.
+   */
+  use_image_from_action?: boolean;
+  /**
+   * The ID of the action which built the desired Docker image. If set to 0, the image will be taken from previous pipeline action. Can be used instead of `docker_build_action_name`.
+   */
+  docker_build_action_id?: number;
+  /**
+   * The name of the action which built the desired Docker image. Can be used instead of `docker_build_action_id`.
+   */
+  docker_build_action_name?: string;
+  /**
+   * If set to `true`, all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+  /**
+   * If set to `true`, the cached version of the image is used, instead of being pulled each time.
+   */
+  cache_base_image?: boolean;
+  /**
+   * If set to `true`, use cached image on timeouts (only for official images).
+   */
+  ignore_image_pull_failures?: boolean;
+  /**
+   * All build commands are run as the default user defined in the selected Docker image. Can be set to another username (on the condition that this user exists in the selected image).
+   */
+  run_as_user?: string;
+  /**
+   * The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action.
+   */
+  image_location?: string;
+  /**
+   * The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with `image_location`. If not specified, the system will automatically set it based on other data from the action.
+   */
+  docker_registry?: string;
 };
 export type BuildMultiArchImage = ActionCommon & {
   /**
@@ -1321,20 +1335,6 @@ export type BuildMultiArchImage = ActionCommon & {
    * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
    */
   docker_registry?: string;
-};
-export type ClearCache = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `CLEAR_CACHE`.
-   */
-  type: "CLEAR_CACHE";
-  /**
-   * Defines the cache layer cleared by the action. Available values: `DOCKER`, `FILE_SYSTEM`,  `SERVICES`, `ADDITIONAL`.
-   */
-  cache_types: string[];
 };
 export type Cloudflare = ActionCommon & {
   /**
@@ -1462,32 +1462,6 @@ export type CodeSignAndExportAnIOSApp = ActionCommon & {
    */
   provision_profiles?: string[];
 };
-export type CompressImages = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `IMAGE_COMPRESSION`.
-   */
-  type: "IMAGE_COMPRESSION";
-  /**
-   * The path in the repository.
-   */
-  local_path: string;
-  /**
-   * Output directory for compressed images.
-   */
-  destination: string;
-  /**
-   * The level of image compression. Can be set to `1` (low), `2` (medium) or `3` (high).
-   */
-  level: string;
-  /**
-   * Supported image formats. Available types: `jpg`, `png`, `gif`, `svg`.
-   */
-  types: string;
-};
 export type CopyFilesAction = ActionCommon & {
   /**
    * The ID of the action.
@@ -1538,6 +1512,32 @@ export type CopyFilesAction = ActionCommon & {
    */
   copy_hidden_files?: boolean;
 };
+export type CompressImages = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `IMAGE_COMPRESSION`.
+   */
+  type: "IMAGE_COMPRESSION";
+  /**
+   * The path in the repository.
+   */
+  local_path: string;
+  /**
+   * Output directory for compressed images.
+   */
+  destination: string;
+  /**
+   * The level of image compression. Can be set to `1` (low), `2` (medium) or `3` (high).
+   */
+  level: string;
+  /**
+   * Supported image formats. Available types: `jpg`, `png`, `gif`, `svg`.
+   */
+  types: string;
+};
 export type CreateNewSandbox = ActionCommon & {
   /**
    * The ID of the action.
@@ -1554,11 +1554,11 @@ export type CreateNewSandbox = ActionCommon & {
   /**
    * Defines the OS distro of the sandbox. Can be one of `ubuntu/focal` or `debian/buster`.
    */
-  sandbox_distribution: string;
+  sandbox_distribution: "ubuntu/focal" | "debian/buster";
   /**
    * Defines the list of playbooks to install during the sandbox creation.
    */
-  sandbox_playbooks?: SandboxPlaybook;
+  sandbox_playbooks?: SandboxPlaybook[];
   /**
    * The list of tags applied to the sandbox.
    */
@@ -1578,7 +1578,7 @@ export type CreateNewSandbox = ActionCommon & {
   /**
    * Defines the port-subdomain mappings that allow to access exposed resources on the sandbox.
    */
-  mappings: Mapping;
+  mappings: Mapping[];
   /**
    * Defines the port used in the mapping.
    */
@@ -1640,41 +1640,7 @@ export type Datadog = ActionCommon & {
   /**
    * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
    */
-  region?: string;
-};
-export type DatadogServiceCheck = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DATADOG_STATUS_CHECK`.
-   */
-  type: "DATADOG_STATUS_CHECK";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The Host name to associate with the event. Any tags associated with the host will also be applied to this event.
-   */
-  host_name?: string;
-  /**
-   * An integer for the status of the check.
-   */
-  status?: number;
-  /**
-   * The text for the message.
-   */
-  check?: string;
-  /**
-   * A description of why this status occurred.
-   */
-  message?: string;
-  /**
-   * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
-   */
-  region?: string;
+  region?: "US1" | "US3" | "US5" | "EU1" | "AP1" | "US1_FED";
 };
 export type DeployToAppStoreConnect = ActionCommon & {
   /**
@@ -1810,31 +1776,77 @@ export type DigitalOceanCDN = ActionCommon & {
    */
   deployment_includes?: string[];
 };
-export type DigitalOceanCLI = ActionCommon & {
+export type Docker = ActionCommon & {
   /**
-   * The name of the action.
+   * The ID of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `DOCTL`.
+   * The type of the action. Should be set to `DOCKER`.
    */
-  type: "DOCTL";
+  type: "DOCKER";
   /**
    * The commands that will be executed.
    */
   execute_commands: string[];
   /**
-   * The ID of the integration.
+   * The command that will be executed only on the first run.
    */
-  integration: string;
+  setup_commands?: string[];
+  /**
+   * The integration. Required to authorize in Amazon ECR, Google GCR and Docker Hub.
+   */
+  integration?: string;
+  /**
+   * The name of the Amazon region. If the Amazon ECR integration has been selected, provide the region to authorize in. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+  /**
+   * Provide if you want to authorize in a private registry or Google GCR. For GCR, it can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io.
+   */
+  registry?: string;
+  /**
+   * The username required to authorize in a private registry.
+   */
+  login?: string;
+  /**
+   * The password required to authorize in a private registry.
+   */
+  password?: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
    */
   shell?: string;
   /**
-   * The command that will be executed only on the first run.
+   * If set to `true`, all commands will be executed regardless of the result of the previous command.
    */
-  setup_commands?: string[];
+  execute_every_command?: boolean;
+};
+export type Discord = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DISCORD`.
+   */
+  type: "DISCORD";
+  /**
+   * The URL do the desired Discord [webhook](https://discordapp.com/developers/docs/resources/webhook#execute-webhook).
+   */
+  notification_url: string;
+  /**
+   * The content of the notification.
+   */
+  content?: string;
+  /**
+   * The embedded rich content. More info [here](https://discordapp.com/developers/docs/resources/channel#attachment-object-attachment-structure).
+   */
+  attachments?: string;
+  /**
+   * The attached files.
+   */
+  file_attachments?: string[];
 };
 export type DigitalOceanSpaces = ActionCommon & {
   /**
@@ -1890,77 +1902,65 @@ export type DigitalOceanSpaces = ActionCommon & {
    */
   content_encoding?: string;
 };
-export type Discord = ActionCommon & {
+export type DatadogServiceCheck = ActionCommon & {
   /**
    * The name of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `DISCORD`.
+   * The type of the action. Should be set to `DATADOG_STATUS_CHECK`.
    */
-  type: "DISCORD";
+  type: "DATADOG_STATUS_CHECK";
   /**
-   * The URL do the desired Discord [webhook](https://discordapp.com/developers/docs/resources/webhook#execute-webhook).
+   * The ID of the integration.
    */
-  notification_url: string;
+  integration: string;
   /**
-   * The content of the notification.
+   * The Host name to associate with the event. Any tags associated with the host will also be applied to this event.
    */
-  content?: string;
+  host_name?: string;
   /**
-   * The embedded rich content. More info [here](https://discordapp.com/developers/docs/resources/channel#attachment-object-attachment-structure).
+   * An integer for the status of the check.
    */
-  attachments?: string;
+  status?: number;
   /**
-   * The attached files.
+   * The text for the message.
    */
-  file_attachments?: string[];
+  check?: string;
+  /**
+   * A description of why this status occurred.
+   */
+  message?: string;
+  /**
+   * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
+   */
+  region?: "US1" | "US3" | "US5" | "EU1" | "AP1" | "US1_FED";
 };
-export type Docker = ActionCommon & {
+export type DigitalOceanCLI = ActionCommon & {
   /**
-   * The ID of the action.
+   * The name of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `DOCKER`.
+   * The type of the action. Should be set to `DOCTL`.
    */
-  type: "DOCKER";
+  type: "DOCTL";
   /**
    * The commands that will be executed.
    */
   execute_commands: string[];
   /**
-   * The command that will be executed only on the first run.
+   * The ID of the integration.
    */
-  setup_commands?: string[];
-  /**
-   * The integration. Required to authorize in Amazon ECR, Google GCR and Docker Hub.
-   */
-  integration?: string;
-  /**
-   * The name of the Amazon region. If the Amazon ECR integration has been selected, provide the region to authorize in. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-  /**
-   * Provide if you want to authorize in a private registry or Google GCR. For GCR, it can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io.
-   */
-  registry?: string;
-  /**
-   * The username required to authorize in a private registry.
-   */
-  login?: string;
-  /**
-   * The password required to authorize in a private registry.
-   */
-  password?: string;
+  integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
    */
   shell?: string;
   /**
-   * If set to `true`, all commands will be executed regardless of the result of the previous command.
+   * The command that will be executed only on the first run.
    */
-  execute_every_command?: boolean;
+  setup_commands?: string[];
 };
 export type DockerCLI = ActionCommon & {
   /**
@@ -1986,7 +1986,7 @@ export type DockerCLI = ActionCommon & {
   /**
    * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
    */
-  sync_paths?: SyncPath;
+  sync_paths?: SyncPath[];
   /**
    * Enables or disables Docker layer caching.
    */
@@ -2015,32 +2015,6 @@ export type DockerCLI = ActionCommon & {
    * Set if `distribution` is set to `AMI`.
    */
   ami?: Ami;
-};
-export type DockerfileLinter = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOCKERFILE_LINTER`.
-   */
-  type: "DOCKERFILE_LINTER";
-  /**
-   * The path from which a Dockerfile is chosen.
-   */
-  local_path?: string;
-  /**
-   * Type of shell in which the errors will be detected. Available values: `sh`, `bash`, `dash`, `ksh`
-   */
-  shell_type?: string;
-  /**
-   * The errors that will be ignored by linter. You can find the error codes below or use [ShellCheck](https://github.com/koalaman/shellcheck/wiki/Checks).
-   */
-  ignore_codes?: string;
-  /**
-   * The path to the yaml file with [ignores](https://github.com/buddy-works/dockerfile-linter#yaml-file-with-ignores).
-   */
-  ignores_path?: string;
 };
 export type DownloadBackblazeB2 = ActionCommon & {
   /**
@@ -2087,6 +2061,32 @@ export type DownloadBackblazeB2 = ActionCommon & {
    * The exceptions from the ignore patterns set in `deployment_excludes`.
    */
   deployment_includes?: string[];
+};
+export type DockerfileLinter = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOCKERFILE_LINTER`.
+   */
+  type: "DOCKERFILE_LINTER";
+  /**
+   * The path from which a Dockerfile is chosen.
+   */
+  local_path?: string;
+  /**
+   * Type of shell in which the errors will be detected. Available values: `sh`, `bash`, `dash`, `ksh`
+   */
+  shell_type?: string;
+  /**
+   * The errors that will be ignored by linter. You can find the error codes below or use [ShellCheck](https://github.com/koalaman/shellcheck/wiki/Checks).
+   */
+  ignore_codes?: string;
+  /**
+   * The path to the yaml file with [ignores](https://github.com/buddy-works/dockerfile-linter#yaml-file-with-ignores).
+   */
+  ignores_path?: string;
 };
 export type DownloadFromSandbox = ActionCommon & {
   /**
@@ -2250,51 +2250,43 @@ export type DownloadFTPS = ActionCommon & {
    */
   download_includes?: string[];
 };
-export type DownloadGCS = ActionCommon & {
+export type EmailNotification = ActionCommon & {
   /**
    * The ID of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `DOWNLOAD_GCS`.
+   * The type of the action. Should be set to `EMAIL`.
    */
-  type: "DOWNLOAD_GCS";
+  type: "EMAIL";
   /**
-   * The name of the GCS Bucket.
+   * The recipients of the notification: email addresses (one per line). One of `send_to_groups` or `recipients` must be specified.
    */
-  bucket_name: string;
+  recipients: string;
   /**
-   * The path from which the file will be downloaded.
+   * The list of groups' names to which emails will be sent. One of `send_to_groups` or `recipients` must be specified.
    */
-  source_path: string;
+  send_to_groups: string;
   /**
-   * The path in which the file will be saved.
+   * The content of the notification.
    */
-  destination_path: string;
+  content: string;
   /**
-   * The ID of the integration.
+   * The title of the notification.
    */
-  integration: string;
+  title: string;
   /**
-   * The name of the GCS application.
+   * Defines whether to send the content as HTML.
    */
-  application_name?: string;
+  send_as_html?: boolean;
   /**
-   * Replace files if they already exist.
+   * The attached files.
    */
-  overwrite?: boolean;
+  file_attachments?: string;
   /**
-   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
+   * The e-mail sender name.
    */
-  recursive?: boolean;
-  /**
-   * The paths and/or files that will be left out during the download.
-   */
-  download_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `download_excludes`.
-   */
-  download_includes?: string[];
+  from_name?: string;
 };
 export type DownloadS3 = ActionCommon & {
   /**
@@ -2392,73 +2384,97 @@ export type DownloadSFTP = ActionCommon & {
    */
   download_includes?: string[];
 };
-export type EmailNotification = ActionCommon & {
+export type DownloadGCS = ActionCommon & {
   /**
    * The ID of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `EMAIL`.
+   * The type of the action. Should be set to `DOWNLOAD_GCS`.
    */
-  type: "EMAIL";
+  type: "DOWNLOAD_GCS";
   /**
-   * The recipients of the notification: email addresses (one per line). One of `send_to_groups` or `recipients` must be specified.
+   * The name of the GCS Bucket.
    */
-  recipients: string;
+  bucket_name: string;
   /**
-   * The list of groups' names to which emails will be sent. One of `send_to_groups` or `recipients` must be specified.
+   * The path from which the file will be downloaded.
    */
-  send_to_groups: string;
+  source_path: string;
   /**
-   * The content of the notification.
+   * The path in which the file will be saved.
    */
-  content: string;
+  destination_path: string;
   /**
-   * The title of the notification.
+   * The ID of the integration.
    */
-  title: string;
+  integration: string;
   /**
-   * Defines whether to send the content as HTML.
+   * The name of the GCS application.
    */
-  send_as_html?: boolean;
+  application_name?: string;
   /**
-   * The attached files.
+   * Replace files if they already exist.
    */
-  file_attachments?: string;
+  overwrite?: boolean;
   /**
-   * The e-mail sender name.
+   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
    */
-  from_name?: string;
+  recursive?: boolean;
+  /**
+   * The paths and/or files that will be left out during the download.
+   */
+  download_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `download_excludes`.
+   */
+  download_includes?: string[];
 };
-export type ESLint = ActionCommon & {
+export type FTPS = ActionCommon & {
   /**
-   * The name of the action.
+   * The ID of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `ESLINT`.
+   * The type of the action. Should be set to `FTPS`.
    */
-  type: "ESLINT";
+  type: "FTPS";
   /**
-   * The version of the NodeJS.
+   * The host for the connection.
    */
-  version: string;
+  host: string;
   /**
-   * The name of the code style. Can be one of `airbnb`, `canonical`, `canonical/ava`, `canonical/flowtype`, `canonical/jest`, `canonical/lodash`, `canonical/mocha`, `canonical/react`, `eslint`, `es/2015/server`, `es/2015/client`, `facebook`, `google`, `standard`, `xo`, `xo/esnext`, `xo/browser` or `custom`.
+   * The username required to connect to the server.
    */
-  style: string;
+  login: string;
   /**
-   * Required if `style` is set to `custom`. Path to the style config file.
+   * The password required to connect to the server.
    */
-  config_path?: string;
+  password: string;
   /**
-   * Defines whether to automatically fix code issues or just perform the code analyse.
+   * The port for the connection.
    */
-  fix?: boolean;
+  port: string;
   /**
-   * When set to `true`, reports only errors, without warnings.
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
    */
-  quiet?: boolean;
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
 };
 export type Firebase = ActionCommon & {
   /**
@@ -2497,6 +2513,54 @@ export type Firebase = ActionCommon & {
    * The command that will be executed only on the first run.
    */
   setup_commands?: string[];
+};
+export type ESLint = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ESLINT`.
+   */
+  type: "ESLINT";
+  /**
+   * The version of the NodeJS.
+   */
+  version: string;
+  /**
+   * The name of the code style. Can be one of `airbnb`, `canonical`, `canonical/ava`, `canonical/flowtype`, `canonical/jest`, `canonical/lodash`, `canonical/mocha`, `canonical/react`, `eslint`, `es/2015/server`, `es/2015/client`, `facebook`, `google`, `standard`, `xo`, `xo/esnext`, `xo/browser` or `custom`.
+   */
+  style:
+    | "airbnb"
+    | "canonical"
+    | "canonical/ava"
+    | "canonical/flowtype"
+    | "canonical/jest"
+    | "canonical/lodash"
+    | "canonical/mocha"
+    | "canonical/react"
+    | "eslint"
+    | "es/2015/server"
+    | "es/2015/client"
+    | "facebook"
+    | "google"
+    | "standard"
+    | "xo"
+    | "xo/esnext"
+    | "xo/browser"
+    | "custom";
+  /**
+   * Required if `style` is set to `custom`. Path to the style config file.
+   */
+  config_path?: string;
+  /**
+   * Defines whether to automatically fix code issues or just perform the code analyse.
+   */
+  fix?: boolean;
+  /**
+   * When set to `true`, reports only errors, without warnings.
+   */
+  quiet?: boolean;
 };
 export type FTP = ActionCommon & {
   /**
@@ -2551,52 +2615,6 @@ export type FTP = ActionCommon & {
    * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
    */
   use_temporary_files?: boolean;
-};
-export type FTPS = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `FTPS`.
-   */
-  type: "FTPS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
 };
 export type GenerateVariables = ActionCommon & {
   /**
@@ -2678,32 +2696,6 @@ export type GhostInspector = ActionCommon & {
    */
   user_agent?: string;
 };
-export type GhostInspectorCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GHOST_INSPECTOR_CLI`.
-   */
-  type: "GHOST_INSPECTOR_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string;
-};
 export type GitPush = ActionCommon & {
   /**
    * The ID of the action.
@@ -2766,6 +2758,20 @@ export type GitPush = ActionCommon & {
    */
   custom_options?: string;
 };
+export type GitcryptUnlock = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GIT_CRYPT_UNLOCK`.
+   */
+  type: "GIT_CRYPT_UNLOCK";
+  /**
+   * Key names you want to use to unlock your repository.
+   */
+  keys: string;
+};
 export type GitcryptLock = ActionCommon & {
   /**
    * The ID of the action.
@@ -2784,19 +2790,31 @@ export type GitcryptLock = ActionCommon & {
    */
   force_arg?: string;
 };
-export type GitcryptUnlock = ActionCommon & {
+export type GhostInspectorCLI = ActionCommon & {
   /**
-   * The ID of the action.
+   * The name of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `GIT_CRYPT_UNLOCK`.
+   * The type of the action. Should be set to `GHOST_INSPECTOR_CLI`.
    */
-  type: "GIT_CRYPT_UNLOCK";
+  type: "GHOST_INSPECTOR_CLI";
   /**
-   * Key names you want to use to unlock your repository.
+   * The commands that will be executed.
    */
-  keys: string;
+  execute_commands: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string;
 };
 export type GitHubCLI = ActionCommon & {
   /**
@@ -2823,56 +2841,6 @@ export type GitHubCLI = ActionCommon & {
    * The ID of the integration.
    */
   integration: string;
-};
-export type GitHubRelease = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GIT_HUB_RELEASE`.
-   */
-  type: "GIT_HUB_RELEASE";
-  /**
-   * The name of the tag.
-   */
-  tag_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The account owner of the repository. The name is not case-sensitive.
-   */
-  organization: string;
-  /**
-   * The name of the repository. The name is not case-sensitive. Created from the field 'organization/repository name.'
-   */
-  external_project_id: string;
-  /**
-   * Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.
-   */
-  target_commitish?: string;
-  /**
-   * Set to `true` to create a draft (unpublished) release or to `false` to create a published one. By default, it's set to `false`.
-   */
-  draft?: boolean;
-  /**
-   * Set to `true` to identify the release as a prerelease. Set to `false` to identify the release as a full release. By default, it's set to `false`.
-   */
-  prerelease?: boolean;
-  /**
-   * The name of the release.
-   */
-  release_name?: string;
-  /**
-   * Text describing the contents of the tag.
-   */
-  body?: string;
-  /**
-   * The package of assets for this release. The path has to be provided in the `source_path` field and the label name in the `label` field.
-   */
-  assets?: Asset;
 };
 export type GitLabCLI = ActionCommon & {
   /**
@@ -2974,75 +2942,55 @@ export type GKEApplyDeployment = ActionCommon & {
    */
   kubectl_version?: string;
 };
-export type KubernetesRunHelmCMDs = ActionCommon & {
+export type GitHubRelease = ActionCommon & {
   /**
-   * The name of the action.
+   * The ID of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `HELM`.
+   * The type of the action. Should be set to `GIT_HUB_RELEASE`.
    */
-  type: "HELM";
+  type: "GIT_HUB_RELEASE";
   /**
-   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   * The name of the tag.
    */
-  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  tag_name: string;
   /**
-   * The host for the connection.
+   * The ID of the integration.
    */
-  server: string;
+  integration: string;
   /**
-   * The commands that will be executed.
+   * The account owner of the repository. The name is not case-sensitive.
    */
-  execute_commands: string[];
+  organization: string;
   /**
-   * The Helm version.
+   * The name of the repository. The name is not case-sensitive. Created from the field 'organization/repository name.'
    */
-  helm_version: string;
+  external_project_id: string;
   /**
-   * Helm repository region. Set it if Helm repository is on AWS S3.
+   * Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.
    */
-  helm_repository_region?: string;
+  target_commitish?: string;
   /**
-   * Amazon or Google integration ID. Set it if Helm repository is on AWS S3 or Google Cloud Storage.
+   * Set to `true` to create a draft (unpublished) release or to `false` to create a published one. By default, it's set to `false`.
    */
-  helm_integration?: string;
+  draft?: boolean;
   /**
-   * Allow you to install Helm plugins.
+   * Set to `true` to identify the release as a prerelease. Set to `false` to identify the release as a full release. By default, it's set to `false`.
    */
-  setup_commands?: string[];
+  prerelease?: boolean;
   /**
-   * The username required when `auth_type` is set to `BASIC`.
+   * The name of the release.
    */
-  login?: string;
+  release_name?: string;
   /**
-   * The password required when `auth_type` is set to `BASIC`.
+   * Text describing the contents of the tag.
    */
-  password?: string;
+  body?: string;
   /**
-   * The token required when `auth_type` is set to `TOKEN`.
+   * The package of assets for this release. The path has to be provided in the `source_path` field and the label name in the `label` field.
    */
-  token?: string;
-  /**
-   * The certificate authority required when `auth_type` is set to `CERTS`.
-   */
-  client_ca?: string;
-  /**
-   * The client certificate required when `auth_type` is set to `CERTS`.
-   */
-  client_cert?: string;
-  /**
-   * The client key required when `auth_type` is set to `CERTS`.
-   */
-  client_key?: string;
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
+  assets?: Asset;
 };
 export type GKERunJob = ActionCommon & {
   /**
@@ -3151,6 +3099,52 @@ export type GKERunPod = ActionCommon & {
    * Version of the kubectl used in the action. Default is <latest<.
    */
   kubectl_version?: string;
+};
+export type GoogleCDN = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_CDN_INVALIDATE`.
+   */
+  type: "GOOGLE_CDN_INVALIDATE";
+  /**
+   * The ID of the Google web distribution.
+   */
+  distribution_id: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The name of the mapping rules.
+   */
+  url_map?: string;
+  /**
+   * Specifies whether or not the whole cache should be removed.
+   */
+  purge_all?: boolean;
+  /**
+   * The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
 };
 export type GKESetImage = ActionCommon & {
   /**
@@ -3268,52 +3262,6 @@ export type GoogleAppEngine = ActionCommon & {
    */
   config_path?: string;
 };
-export type GoogleCDN = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_CDN_INVALIDATE`.
-   */
-  type: "GOOGLE_CDN_INVALIDATE";
-  /**
-   * The ID of the Google web distribution.
-   */
-  distribution_id: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The name of the mapping rules.
-   */
-  url_map?: string;
-  /**
-   * Specifies whether or not the whole cache should be removed.
-   */
-  purge_all?: boolean;
-  /**
-   * The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
 export type GoogleChat = ActionCommon & {
   /**
    * The name of the action.
@@ -3335,36 +3283,6 @@ export type GoogleChat = ActionCommon & {
    * The ID of the integration.
    */
   integration: string;
-};
-export type GoogleCloudCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_CLOUD_CLI`.
-   */
-  type: "GOOGLE_CLOUD_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the Google integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The name of the Google application.
-   */
-  application_name?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
 };
 export type GoogleCloudRun = ActionCommon & {
   /**
@@ -3469,6 +3387,106 @@ export type GoogleCloudStorage = ActionCommon & {
    * ContentEncoding that will be set for the deployed files e.g. "gzip".
    */
   content_encoding?: string;
+};
+export type KubernetesRunHelmCMDs = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HELM`.
+   */
+  type: "HELM";
+  /**
+   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   */
+  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  /**
+   * The host for the connection.
+   */
+  server: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The Helm version.
+   */
+  helm_version: string;
+  /**
+   * Helm repository region. Set it if Helm repository is on AWS S3.
+   */
+  helm_repository_region?: string;
+  /**
+   * Amazon or Google integration ID. Set it if Helm repository is on AWS S3 or Google Cloud Storage.
+   */
+  helm_integration?: string;
+  /**
+   * Allow you to install Helm plugins.
+   */
+  setup_commands?: string[];
+  /**
+   * The username required when `auth_type` is set to `BASIC`.
+   */
+  login?: string;
+  /**
+   * The password required when `auth_type` is set to `BASIC`.
+   */
+  password?: string;
+  /**
+   * The token required when `auth_type` is set to `TOKEN`.
+   */
+  token?: string;
+  /**
+   * The certificate authority required when `auth_type` is set to `CERTS`.
+   */
+  client_ca?: string;
+  /**
+   * The client certificate required when `auth_type` is set to `CERTS`.
+   */
+  client_cert?: string;
+  /**
+   * The client key required when `auth_type` is set to `CERTS`.
+   */
+  client_key?: string;
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+};
+export type GoogleCloudCLI = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_CLOUD_CLI`.
+   */
+  type: "GOOGLE_CLOUD_CLI";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the Google integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The name of the Google application.
+   */
+  application_name?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
 };
 export type GoogleComputeEngine = ActionCommon & {
   /**
@@ -3588,70 +3606,6 @@ export type GoogleFunctionsDeploy = ActionCommon & {
    */
   local_path?: string;
 };
-export type Heroku = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `HEROKU`.
-   */
-  type: "HEROKU";
-  /**
-   * The ID of the application.
-   */
-  application_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * When set to `false` the push will ignore paths listed in .gitignore file.
-   */
-  use_custom_gitignore?: boolean;
-  /**
-   * When set to `true`, action will push only repository files (without artifacts).
-   */
-  isolated?: boolean;
-  /**
-   * The paths and/or files that will be left out during the push. Only works when `use_custom_gitignore`is set to `true`.
-   */
-  deployment_excludes?: string[];
-  /**
-   * Defines whether the `--force` flag should be used when invoking the git push command or not.
-   */
-  without_force?: boolean;
-};
-export type HerokuCLI = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `HEROKU_CLI`.
-   */
-  type: "HEROKU_CLI";
-  /**
-   * The ID of the application.
-   */
-  application_name: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
 export type Honeybadger = ActionCommon & {
   /**
    * The ID of the action.
@@ -3710,7 +3664,71 @@ export type HTTPRequest = ActionCommon & {
   /**
    * The headers that will be sent with the request.
    */
-  headers?: Header;
+  headers?: Header[];
+};
+export type HerokuCLI = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HEROKU_CLI`.
+   */
+  type: "HEROKU_CLI";
+  /**
+   * The ID of the application.
+   */
+  application_name: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+};
+export type Heroku = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HEROKU`.
+   */
+  type: "HEROKU";
+  /**
+   * The ID of the application.
+   */
+  application_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * When set to `false` the push will ignore paths listed in .gitignore file.
+   */
+  use_custom_gitignore?: boolean;
+  /**
+   * When set to `true`, action will push only repository files (without artifacts).
+   */
+  isolated?: boolean;
+  /**
+   * The paths and/or files that will be left out during the push. Only works when `use_custom_gitignore`is set to `true`.
+   */
+  deployment_excludes?: string[];
+  /**
+   * Defines whether the `--force` flag should be used when invoking the git push command or not.
+   */
+  without_force?: boolean;
 };
 export type JMeterCLI = ActionCommon & {
   /**
@@ -3816,60 +3834,6 @@ export type KubernetesApplyDeployment = ActionCommon & {
    */
   kubectl_version?: string;
 };
-export type KubernetesKubectl = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_CLI`.
-   */
-  type: "KUBERNETES_CLI";
-  /**
-   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
-   */
-  auth_type: "BASIC" | "TOKEN" | "CERTS";
-  /**
-   * The host for the connection.
-   */
-  server: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The username required when `auth_type` is set to `BASIC`.
-   */
-  login?: string;
-  /**
-   * The password required when `auth_type` is set to `BASIC`.
-   */
-  password?: string;
-  /**
-   * The token required when `auth_type` is set to `TOKEN`.
-   */
-  token?: string;
-  /**
-   * The certificate authority required when `auth_type` is set to `CERTS`.
-   */
-  client_ca?: string;
-  /**
-   * The client certificate required when `auth_type` is set to `CERTS`.
-   */
-  client_cert?: string;
-  /**
-   * The client key required when `auth_type` is set to `CERTS`.
-   */
-  client_key?: string;
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-};
 export type KubernetesRunJob = ActionCommon & {
   /**
    * The name of the action.
@@ -3879,76 +3843,6 @@ export type KubernetesRunJob = ActionCommon & {
    * The type of the action. Should be set to `KUBERNETES_RUN_JOB`.
    */
   type: "KUBERNETES_RUN_JOB";
-  /**
-   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
-   */
-  auth_type: "BASIC" | "TOKEN" | "CERTS";
-  /**
-   * The host for the connection.
-   */
-  server: string;
-  /**
-   * If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
-   */
-  save_config_arg?: boolean;
-  /**
-   * The username required when `auth_type` is set to `BASIC`.
-   */
-  login?: string;
-  /**
-   * The password required when `auth_type` is set to `BASIC`.
-   */
-  password?: string;
-  /**
-   * The token required when `auth_type` is set to `TOKEN`.
-   */
-  token?: string;
-  /**
-   * The certificate authority required when `auth_type` is set to `CERTS`.
-   */
-  client_ca?: string;
-  /**
-   * The client certificate required when `auth_type` is set to `CERTS`.
-   */
-  client_cert?: string;
-  /**
-   * The client key required when `auth_type` is set to `CERTS`.
-   */
-  client_key?: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to `FALSE`, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * Defines whether to leave the Pod or delete it after the action finishes.
-   */
-  leave_after?: boolean;
-  /**
-   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
-   */
-  config_path?: string;
-  /**
-   * The configuration content. One of `config_path` or `content` must be specified.
-   */
-  content?: string;
-  /**
-   * Defines whether the execution should or should not wait for job to end.
-   */
-  not_wait?: boolean;
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-};
-export type KubernetesRunPod = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_RUN_POD`.
-   */
-  type: "KUBERNETES_RUN_POD";
   /**
    * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
    */
@@ -4048,6 +3942,130 @@ export type KubernetesSetImage = ActionCommon & {
    */
   kubectl_version?: string;
 };
+export type KubernetesRunPod = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_RUN_POD`.
+   */
+  type: "KUBERNETES_RUN_POD";
+  /**
+   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   */
+  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  /**
+   * The host for the connection.
+   */
+  server: string;
+  /**
+   * If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
+   */
+  save_config_arg?: boolean;
+  /**
+   * The username required when `auth_type` is set to `BASIC`.
+   */
+  login?: string;
+  /**
+   * The password required when `auth_type` is set to `BASIC`.
+   */
+  password?: string;
+  /**
+   * The token required when `auth_type` is set to `TOKEN`.
+   */
+  token?: string;
+  /**
+   * The certificate authority required when `auth_type` is set to `CERTS`.
+   */
+  client_ca?: string;
+  /**
+   * The client certificate required when `auth_type` is set to `CERTS`.
+   */
+  client_cert?: string;
+  /**
+   * The client key required when `auth_type` is set to `CERTS`.
+   */
+  client_key?: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to `FALSE`, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * Defines whether to leave the Pod or delete it after the action finishes.
+   */
+  leave_after?: boolean;
+  /**
+   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
+   */
+  config_path?: string;
+  /**
+   * The configuration content. One of `config_path` or `content` must be specified.
+   */
+  content?: string;
+  /**
+   * Defines whether the execution should or should not wait for job to end.
+   */
+  not_wait?: boolean;
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+};
+export type KubernetesKubectl = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_CLI`.
+   */
+  type: "KUBERNETES_CLI";
+  /**
+   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   */
+  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  /**
+   * The host for the connection.
+   */
+  server: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The username required when `auth_type` is set to `BASIC`.
+   */
+  login?: string;
+  /**
+   * The password required when `auth_type` is set to `BASIC`.
+   */
+  password?: string;
+  /**
+   * The token required when `auth_type` is set to `TOKEN`.
+   */
+  token?: string;
+  /**
+   * The certificate authority required when `auth_type` is set to `CERTS`.
+   */
+  client_ca?: string;
+  /**
+   * The client certificate required when `auth_type` is set to `CERTS`.
+   */
+  client_cert?: string;
+  /**
+   * The client key required when `auth_type` is set to `CERTS`.
+   */
+  client_key?: string;
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+};
 export type Lighthouse = ActionCommon & {
   /**
    * The ID of the action.
@@ -4064,7 +4082,7 @@ export type Lighthouse = ActionCommon & {
   /**
    * The device on which the audit will be run. Can be one of `mobile`, `desktop` and `mobileDesktop`.
    */
-  device: string;
+  device: "mobile" | "desktop";
   /**
    * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
    */
@@ -4081,6 +4099,48 @@ export type Lighthouse = ActionCommon & {
    * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
    */
   seo: number;
+};
+export type Linux = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_LINUX`.
+   */
+  type: "NATIVE_BUILD_LINUX";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * Defines the image used to create the VM. Use `UBUNTU_20_04` for the default image, `AMI` for a custom AMI.
+   */
+  distribution: string;
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * Set to `true` if you want the action to use the VM from the previous Linux action.
+   */
+  vm_from_prev_action?: boolean;
+  /**
+   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
+   */
+  vm_action_name?: string;
+  /**
+   * Set if `distribution` is set to `AMI`.
+   */
+  ami?: Ami;
 };
 export type LinkChecker = ActionCommon & {
   /**
@@ -4130,7 +4190,7 @@ export type LinkChecker = ActionCommon & {
   /**
    * Set the cookie name/value. Can be given more than once.
    */
-  cookies?: Cookie;
+  cookies?: Cookie[];
   /**
    * Set the timeout for connection attempts in seconds. The default timeout is 60 seconds.
    */
@@ -4176,70 +4236,6 @@ export type LinkChecker = ActionCommon & {
    */
   requests_per_host?: number;
 };
-export type Linux = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_LINUX`.
-   */
-  type: "NATIVE_BUILD_LINUX";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Defines the image used to create the VM. Use `UBUNTU_20_04` for the default image, `AMI` for a custom AMI.
-   */
-  distribution: string;
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath;
-  /**
-   * Set to `true` if you want the action to use the VM from the previous Linux action.
-   */
-  vm_from_prev_action?: boolean;
-  /**
-   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
-   */
-  vm_action_name?: string;
-  /**
-   * Set if `distribution` is set to `AMI`.
-   */
-  ami?: Ami;
-};
-export type Loggly = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `LOGGLY`.
-   */
-  type: "LOGGLY";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The list of Loggly tags used for segmentation and filtering.
-   */
-  tags: string[];
-  /**
-   * The content of the notification.
-   */
-  content?: string;
-};
 export type MacOS = ActionCommon & {
   /**
    * The ID of the action.
@@ -4260,7 +4256,7 @@ export type MacOS = ActionCommon & {
   /**
    * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
    */
-  sync_paths?: SyncPath;
+  sync_paths?: SyncPath[];
   /**
    * The list of simulators initiated before the action runs.
    */
@@ -4277,6 +4273,36 @@ export type MacOS = ActionCommon & {
    * Defines the Xcode version.
    */
   xcode_version?: string;
+};
+export type MicrosoftTeams = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `MICROSOFT_TEAMS`.
+   */
+  type: "MICROSOFT_TEAMS";
+  /**
+   * The title of the notification.
+   */
+  title: string;
+  /**
+   * The content of the notification.
+   */
+  content: string;
+  /**
+   * The recipient of the notification: email address.
+   */
+  recipients: string;
+  /**
+   * The attached files.
+   */
+  file_attachments?: string[];
+  /**
+   * Defines whether to send the content as HTML.
+   */
+  send_as_html?: boolean;
 };
 export type MicrosoftAzure = ActionCommon & {
   /**
@@ -4324,35 +4350,27 @@ export type MicrosoftAzure = ActionCommon & {
    */
   without_force?: boolean;
 };
-export type MicrosoftTeams = ActionCommon & {
+export type Loggly = ActionCommon & {
   /**
-   * The ID of the action.
+   * The name of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `MICROSOFT_TEAMS`.
+   * The type of the action. Should be set to `LOGGLY`.
    */
-  type: "MICROSOFT_TEAMS";
+  type: "LOGGLY";
   /**
-   * The title of the notification.
+   * The ID of the integration.
    */
-  title: string;
+  integration: string;
+  /**
+   * The list of Loggly tags used for segmentation and filtering.
+   */
+  tags: string[];
   /**
    * The content of the notification.
    */
-  content: string;
-  /**
-   * The recipient of the notification: email address.
-   */
-  recipients: string;
-  /**
-   * The attached files.
-   */
-  file_attachments?: string[];
-  /**
-   * Defines whether to send the content as HTML.
-   */
-  send_as_html?: boolean;
+  content?: string;
 };
 export type Netlify = ActionCommon & {
   /**
@@ -4410,44 +4428,6 @@ export type NewRelicCLI = ActionCommon & {
    */
   setup_commands?: string[];
 };
-export type OperateSandbox = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `SANDBOX_START`.
-   */
-  type: "SANDBOX_START";
-  /**
-   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
-   */
-  sandbox_references: string;
-  /**
-   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
-   */
-  sandbox_id?: string;
-  /**
-   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
-   */
-  referenced_action_id?: number;
-  /**
-   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
-   */
-  referenced_sanbox_name?: string;
-  /**
-   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
-   */
-  tags?: string[];
-  /**
-   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
-   */
-  sandbox_project_name?: string;
-  /**
-   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
-   */
-  days?: number;
-};
 export type PassArguments = ActionCommon & {
   /**
    * The name of the action.
@@ -4460,7 +4440,7 @@ export type PassArguments = ActionCommon & {
   /**
    * The list of variables to set as parameters for the pipeline. At least one parameter is required.
    */
-  variables: Variable;
+  variables: Variable[];
   /**
    * The name of the parameter.
    */
@@ -4500,6 +4480,44 @@ export type PingMonitoring = ActionCommon & {
    */
   destination: string;
 };
+export type OperateSandbox = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `SANDBOX_START`.
+   */
+  type: "SANDBOX_START";
+  /**
+   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
+   */
+  sandbox_references: string;
+  /**
+   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
+   */
+  sandbox_id?: string;
+  /**
+   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
+   */
+  referenced_action_id?: number;
+  /**
+   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
+   */
+  referenced_sanbox_name?: string;
+  /**
+   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
+   */
+  tags?: string[];
+  /**
+   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
+   */
+  sandbox_project_name?: string;
+  /**
+   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
+   */
+  days?: number;
+};
 export type PublishAndroidApp = ActionCommon & {
   /**
    * The name of the action.
@@ -4520,7 +4538,7 @@ export type PublishAndroidApp = ActionCommon & {
   /**
    * The list of sets of paths to the APKs.
    */
-  apk_files: APKs;
+  apk_files: APKs[];
   /**
    * The ID of the integration.
    */
@@ -4546,6 +4564,36 @@ export type PublishAndroidApp = ActionCommon & {
    */
   supersede_versions?: boolean;
 };
+export type Pushbullet = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `PUSHBULLET`.
+   */
+  type: "PUSHBULLET";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The content of the notification.
+   */
+  content?: string;
+  /**
+   * The name of the device to which the notification will be sent.
+   */
+  device?: string;
+  /**
+   * The link of the notification.
+   */
+  link?: string;
+  /**
+   * The title of the notification.
+   */
+  title?: string;
+};
 export type PublishBundleToGooglePlay = ActionCommon & {
   /**
    * The name of the action.
@@ -4566,7 +4614,7 @@ export type PublishBundleToGooglePlay = ActionCommon & {
   /**
    * The list of sets of paths to the APKs.
    */
-  apk_files: APKs;
+  apk_files: APKs[];
   /**
    * The ID of the integration.
    */
@@ -4637,36 +4685,6 @@ export type PushDockerImage = ActionCommon & {
    * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
    */
   docker_registry?: string;
-};
-export type Pushbullet = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `PUSHBULLET`.
-   */
-  type: "PUSHBULLET";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The content of the notification.
-   */
-  content?: string;
-  /**
-   * The name of the device to which the notification will be sent.
-   */
-  device?: string;
-  /**
-   * The link of the notification.
-   */
-  link?: string;
-  /**
-   * The title of the notification.
-   */
-  title?: string;
 };
 export type Pushover = ActionCommon & {
   /**
@@ -4798,7 +4816,7 @@ export type Replace = ActionCommon & {
   /**
    * The list of pairs of strings for replacement.
    */
-  replacements: Replacement;
+  replacements: Replacement[];
   /**
    * The path in the filesystem.
    */
@@ -4916,6 +4934,48 @@ export type Rsync = ActionCommon & {
    */
   deployment_includes?: string[];
 };
+export type Sentry = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SENTRY`.
+   */
+  type: "SENTRY";
+  /**
+   * The slug of the organization the release belongs to.
+   */
+  organization_slug: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The version identifier of the release.
+   */
+  version: string;
+  /**
+   * The environment you’re deploying to.
+   */
+  environment: string;
+  /**
+   * The optional url that points to the deploy.
+   */
+  deploy_url?: string;
+  /**
+   * An optional commit reference.
+   */
+  release_url?: string;
+  /**
+   * The list of project slugs that are involved in this release.
+   */
+  projects: string[];
+  /**
+   * If Sentry is integrated with repository provider, you can enter the project slug here. You can use the `$BUDDY_REPO_SLUG` variable as well.
+   */
+  repository?: string;
+};
 export type RunDockerContainer = ActionCommon & {
   /**
    * The ID of the action.
@@ -4998,48 +5058,6 @@ export type RunDockerContainer = ActionCommon & {
    */
   docker_registry?: string;
 };
-export type Sentry = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SENTRY`.
-   */
-  type: "SENTRY";
-  /**
-   * The short name of your organization.
-   */
-  organization_slug: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The version identifier of the release.
-   */
-  version: string;
-  /**
-   * The environment you’re deploying to.
-   */
-  environment: string;
-  /**
-   * The optional url that points to the deploy.
-   */
-  deploy_url?: string;
-  /**
-   * An optional commit reference.
-   */
-  release_url?: string;
-  /**
-   * The list of project slugs that are involved in this release.
-   */
-  projects: string[];
-  /**
-   * If Sentry is integrated with repository provider, you can enter the project slug here. You can use the `$BUDDY_REPO_SLUG` variable as well.
-   */
-  repository?: string;
-};
 export type SetVariables = ActionCommon & {
   /**
    * The name of the action.
@@ -5052,7 +5070,7 @@ export type SetVariables = ActionCommon & {
   /**
    * The list of existing settable variables.
    */
-  variables: Variable;
+  variables: Variable[];
   /**
    * The name of the variable.
    */
@@ -5078,95 +5096,15 @@ export type SetVariables = ActionCommon & {
    */
   permissions?: Permission;
 };
-export type SFTP = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SFTP`.
-   */
-  type: "SFTP";
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
-   */
-  use_temporary_files?: boolean;
-};
-export type Shopify = ActionCommon & {
+export type ShopifyThemeKitCLI = ActionCommon & {
   /**
    * The name of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `SHOPIFY`.
+   * The type of the action. Should be set to `SHOPIFY_THEMEKIT_CLI`.
    */
-  type: "SHOPIFY";
-  /**
-   * The name of the Shopify theme.
-   */
-  theme_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-};
-export type ShopifyCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SHOPIFY_CLI`.
-   */
-  type: "SHOPIFY_CLI";
+  type: "SHOPIFY_THEMEKIT_CLI";
   /**
    * The commands that will be executed.
    */
@@ -5184,15 +5122,15 @@ export type ShopifyCLI = ActionCommon & {
    */
   setup_commands?: string[];
 };
-export type ShopifyThemeKitCLI = ActionCommon & {
+export type ShopifyCLI = ActionCommon & {
   /**
    * The name of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `SHOPIFY_THEMEKIT_CLI`.
+   * The type of the action. Should be set to `SHOPIFY_CLI`.
    */
-  type: "SHOPIFY_THEMEKIT_CLI";
+  type: "SHOPIFY_CLI";
   /**
    * The commands that will be executed.
    */
@@ -5251,6 +5189,100 @@ export type SignAndroidApp = ActionCommon & {
    * The key password.
    */
   key_password?: string;
+};
+export type SFTP = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SFTP`.
+   */
+  type: "SFTP";
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
+   */
+  use_temporary_files?: boolean;
+};
+export type Sleep = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SLEEP`.
+   */
+  type: "SLEEP";
+  /**
+   * The time (in seconds) to sleep. The value should be between 0 and 1200.
+   */
+  sleep_in_sec: number;
+};
+export type Shopify = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SHOPIFY`.
+   */
+  type: "SHOPIFY";
+  /**
+   * The name of the Shopify theme.
+   */
+  theme_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
 };
 export type SignBundle = ActionCommon & {
   /**
@@ -5320,20 +5352,6 @@ export type SlackNotification = ActionCommon & {
    */
   file_attachments?: string[];
 };
-export type Sleep = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SLEEP`.
-   */
-  type: "SLEEP";
-  /**
-   * The time (in seconds) to sleep. The value should be between 0 and 1200.
-   */
-  sleep_in_sec: number;
-};
 export type SMSNotification = ActionCommon & {
   /**
    * The ID of the action.
@@ -5381,6 +5399,64 @@ export type Snyk = ActionCommon & {
    * Snyk version.
    */
   version?: string;
+};
+export type SSHToSandbox = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `SANDBOX_EXEC`.
+   */
+  type: "SANDBOX_EXEC";
+  /**
+   * The absolute or relative path on the sandbox.
+   */
+  working_directory?: string;
+  /**
+   * The name of the local (to the sandbox server) user who uploads the files.
+   */
+  user?: string;
+  /**
+   * The array of commands invoked on the sandbox.
+   */
+  commands: string[];
+  /**
+   * The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`.
+   */
+  shell?: string;
+  /**
+   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
+   */
+  sandbox_references: string;
+  /**
+   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
+   */
+  sandbox_id?: string;
+  /**
+   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
+   */
+  referenced_action_id?: number;
+  /**
+   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
+   */
+  referenced_sanbox_name?: string;
+  /**
+   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
+   */
+  tags?: string[];
+  /**
+   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
+   */
+  sandbox_project_name?: string;
+  /**
+   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
+   */
+  days?: number;
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
 };
 export type SplitTests = ActionCommon & {
   /**
@@ -5454,112 +5530,6 @@ export type SSHCommand = ActionCommon & {
    */
   execute_every_command?: boolean;
 };
-export type SSHToSandbox = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `SANDBOX_EXEC`.
-   */
-  type: "SANDBOX_EXEC";
-  /**
-   * The absolute or relative path on the sandbox.
-   */
-  working_directory?: string;
-  /**
-   * The name of the local (to the sandbox server) user who uploads the files.
-   */
-  user?: string;
-  /**
-   * The array of commands invoked on the sandbox.
-   */
-  commands: string[];
-  /**
-   * The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`.
-   */
-  shell?: string;
-  /**
-   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
-   */
-  sandbox_references: string;
-  /**
-   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
-   */
-  sandbox_id?: string;
-  /**
-   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
-   */
-  referenced_action_id?: number;
-  /**
-   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
-   */
-  referenced_sanbox_name?: string;
-  /**
-   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
-   */
-  tags?: string[];
-  /**
-   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
-   */
-  sandbox_project_name?: string;
-  /**
-   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
-   */
-  days?: number;
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-};
-export type SSLVerify = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SSL_VERIFY`.
-   */
-  type: "SSL_VERIFY";
-  /**
-   * The URL of the website to be monitored.
-   */
-  website: string;
-  /**
-   * Validation period for SSL certificate.
-   */
-  valid_for_days: number;
-  /**
-   * The port for the connection. By default it is 443.
-   */
-  port?: string;
-};
-export type StackHawkCLI = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `STACK_HAWK_CLI`.
-   */
-  type: "STACK_HAWK_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
 export type TCPMonitoring = ActionCommon & {
   /**
    * The ID of the action.
@@ -5608,35 +5578,27 @@ export type TelegramNotification = ActionCommon & {
    */
   file_attachments?: string[];
 };
-export type TerraformCLI = ActionCommon & {
+export type SSLVerify = ActionCommon & {
   /**
    * The name of the action.
    */
   action: string;
   /**
-   * The type of the action. Should be set to `TERRAFORM`.
+   * The type of the action. Should be set to `SSL_VERIFY`.
    */
-  type: "TERRAFORM";
+  type: "SSL_VERIFY";
   /**
-   * The commands that will be executed.
+   * The URL of the website to be monitored.
    */
-  execute_commands: string;
+  website: string;
   /**
-   * The ID of the Google or Amazon integration.
+   * Validation period for SSL certificate.
    */
-  integration?: string;
+  valid_for_days: number;
   /**
-   * The name of the shell that will be used to execute commands. Can be `SH`.
+   * The port for the connection. By default it is 443.
    */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string;
-  /**
-   * The version of the Terraform CLI.
-   */
-  version: string;
+  port?: string;
 };
 export type TransferToSandbox = ActionCommon & {
   /**
@@ -5754,6 +5716,104 @@ export type TriggerPipeline = ActionCommon & {
    */
   priority?: "LOW" | "NORMAL" | "HIGH";
 };
+export type TerraformCLI = ActionCommon & {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `TERRAFORM`.
+   */
+  type: "TERRAFORM";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string;
+  /**
+   * The ID of the Google or Amazon integration.
+   */
+  integration?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be `SH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string;
+  /**
+   * The version of the Terraform CLI.
+   */
+  version: string;
+};
+export type VisualTests = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `VISUAL_TESTS`.
+   */
+  type: "VISUAL_TESTS";
+  /**
+   * Defines which browser will be used in tests. Can be one of `CHROME` or `FIREFOX`.
+   */
+  browser_type: "CHROME" | "FIREFOX";
+  /**
+   * Resolution width.
+   */
+  resolution_width: number;
+  /**
+   * Resolution height.
+   */
+  resolution_height: number;
+  /**
+   * The acceptable level of pixel tolerance. Allowed number of decimal places is two.
+   */
+  pixel_tolerance_level: number;
+  /**
+   * The number of items that should be kept in history.
+   */
+  images_history_limit: number;
+  /**
+   * Defines the URLs of the sites that will be tested. Contains information about baseline, headers and excluded areas.
+   */
+  screenshots: Screenshot[];
+  /**
+   * The headers that will be sent with the request.
+   */
+  headers?: Header[];
+  /**
+   * Define to set permissions for the action.
+   */
+  permissions?: Permission;
+};
+export type StackHawkCLI = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `STACK_HAWK_CLI`.
+   */
+  type: "STACK_HAWK_CLI";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+};
 export type UpCloud = ActionCommon & {
   /**
    * The ID of the action.
@@ -5811,48 +5871,6 @@ export type UpCloud = ActionCommon & {
    * The exceptions from the ignore patterns set in `deployment_excludes`.
    */
   deployment_includes?: string[];
-};
-export type VisualTests = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `VISUAL_TESTS`.
-   */
-  type: "VISUAL_TESTS";
-  /**
-   * Defines which browser will be used in tests. Can be one of `CHROME` or `FIREFOX`.
-   */
-  browser_type: "CHROME" | "FIREFOX";
-  /**
-   * Resolution width.
-   */
-  resolution_width: number;
-  /**
-   * Resolution height.
-   */
-  resolution_height: number;
-  /**
-   * The acceptable level of pixel tolerance. Allowed number of decimal places is two.
-   */
-  pixel_tolerance_level: number;
-  /**
-   * The number of items that should be kept in history.
-   */
-  images_history_limit: number;
-  /**
-   * Defines the URLs of the sites that will be tested. Contains information about baseline, headers and excluded areas.
-   */
-  screenshots: Screenshot;
-  /**
-   * The headers that will be sent with the request.
-   */
-  headers?: Header;
-  /**
-   * Define to set permissions for the action.
-   */
-  permissions?: Permission;
 };
 export type Vultr = ActionCommon & {
   /**
@@ -5926,6 +5944,48 @@ export type WaitForApproval = ActionCommon & {
    */
   permissions?: Permission;
 };
+export type Windows = ActionCommon & {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `NATIVE_BUILD_WINDOWS`.
+   */
+  type: "NATIVE_BUILD_WINDOWS";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+  /**
+   * Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`.
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * Set to `true` if you want the action to use the VM from the previous Windows action.
+   */
+  vm_from_prev_action?: boolean;
+  /**
+   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
+   */
+  vm_action_name?: string;
+  /**
+   * Defines the image used to create the VM. Use `WINDOWS_SERVER_2019` for the default image, `AMI` for a custom `AMI`.
+   */
+  distribution?: string;
+  /**
+   * Set if `distribution` is set to `AMI`.
+   */
+  ami?: Ami;
+};
 export type WebMonitoring = ActionCommon & {
   /**
    * The ID of the action.
@@ -5942,7 +6002,7 @@ export type WebMonitoring = ActionCommon & {
   /**
    * The headers that will be sent with the request.
    */
-  headers?: Header;
+  headers?: Header[];
   /**
    * The username required to connect to the server.
    */
@@ -6010,48 +6070,6 @@ export type WebDAV = ActionCommon & {
    */
   deployment_includes?: string[];
 };
-export type Windows = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `NATIVE_BUILD_WINDOWS`.
-   */
-  type: "NATIVE_BUILD_WINDOWS";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-  /**
-   * Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`.
-   */
-  sync_paths?: SyncPath;
-  /**
-   * Set to `true` if you want the action to use the VM from the previous Windows action.
-   */
-  vm_from_prev_action?: boolean;
-  /**
-   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
-   */
-  vm_action_name?: string;
-  /**
-   * Defines the image used to create the VM. Use `WINDOWS_SERVER_2019` for the default image, `AMI` for a custom `AMI`.
-   */
-  distribution?: string;
-  /**
-   * Set if `distribution` is set to `AMI`.
-   */
-  ami?: Ami;
-};
 export type WPCLI = ActionCommon & {
   /**
    * The name of the action.
@@ -6118,7 +6136,7 @@ export type Xcode = ActionCommon & {
   /**
    * Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`.
    */
-  sync_paths?: SyncPath;
+  sync_paths?: SyncPath[];
   /**
    * A series of simulators to be launched before the action starts. Available values: `iPad (7th generation)`,`iPad (9th generation)`, `iPad Air (3rd generation)`, `iPad Air (4th generation)`, `iPad Air (5th generation)`, `iPad Pro (11-inch) (2nd generation)`,`iPad Pro (11-inch) (3rd generation)`,`iPad Pro (12.9-inch) (4th generation)`,`iPad Pro (12.9-inch) (5th generation)`, `iPad Pro (9.7-inch)`, `iPad mini (6th generation)`, `iPhone 11`, `iPhone 11 Pro`, `iPhone 11 Pro Max`, `iPhone 12`, `iPhone 12 Pro`, `iPhone 12 Pro Max`, `iPhone 12 mini`, `iPhone 13`, `Phone 13 Pro`, `iPhone 13 Pro Max`, `iPhone 13 mini`, `iPhone 14`, `iPhone 14 Plus`, `iPhone 14 Pro`, `iPhone 14 Pro Max`, `iPhone 8`, `iPhone 8 Plus`, `iPhone SE (2nd generation)`, `iPhone SE (3rd generation)`
    */
@@ -6159,8 +6177,10 @@ export interface Pipeline {
   pipeline: string;
   /**
    * The trigger mode of the pipeline. Can be one of 'CLICK', 'EVENT', 'SCHEDULE'. If not set, the default value is 'EVENT'
+   *
+   * @default "EVENT"
    */
-  on?: string;
+  on?: "CLICK" | "EVENT" | "SCHEDULE";
   /**
    * Set it if `on` is set to 'CLICK' or 'SCHEDULE'. The list of refs for which the pipeline will be triggered. Automatically set to 'NONE' if not provided.
    */
@@ -6168,11 +6188,11 @@ export interface Pipeline {
   /**
    * [The list of events](https://buddy.works/docs/yaml/yaml-schema#event-schema) for which the pipeline will be triggered. Set it if 'on' is set to 'EVENT'. Required if 'ON' is set or not set to 'EVENT'.
    */
-  events?: Event;
+  events?: Event[];
   /**
    * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the pipeline can be triggered.
    */
-  trigger_conditions?: TriggerCondition;
+  trigger_conditions?: TriggerCondition[];
   /**
    * Defines whether or not to upload everything from scratch on every execution.
    */
@@ -6204,11 +6224,11 @@ export interface Pipeline {
   /**
    * The list of actions executed in the pipeline.
    */
-  actions?: Action;
+  actions?: Action[];
   /**
    * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use in the pipeline.
    */
-  variables?: Variable;
+  variables?: Variable[];
   /**
    * If set to 'true' the status of a given pipeline will not impact the project status on the dashboard.
    */
@@ -6351,11 +6371,11 @@ export interface ActionCommon {
   /**
    * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
    */
-  variables?: Variable;
+  variables?: Variable[];
   /**
    * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
    */
-  trigger_conditions?: TriggerCondition;
+  trigger_conditions?: TriggerCondition[];
   /**
    * The timeout in seconds.
    */
@@ -6386,6 +6406,7 @@ export interface ActionCommon {
   retry_count?: number;
   /**
    * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
    * @default "ON_EVERY_EXECUTION"
    */
   trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
@@ -6438,12 +6459,6 @@ export interface SyncPath {
   direction: "PIPELINE_TO_VM" | "VM_TO_PIPELINE";
   excludes: string;
 }
-export interface Service {
-  type: "MYSQL" | "MONGO_DB" | "MARIADB" | "POSTGRE_SQL" | "REDIS" | "MEMCACHED" | "ELASTICSEARCH" | "CUSTOM";
-  version?: string;
-  connection?: unknown;
-  [k: string]: unknown;
-}
 export interface DockerBuildSecret {
   /**
    * The identifier to pass into the `docker buildx --secret`. This identifier is associated with the `RUN --mount` identifier to use in the Dockerfile.
@@ -6457,6 +6472,12 @@ export interface DockerBuildSecret {
    * The type of the secret. Set `FILE` if you want to use a file from the filesystem. If you want it to be a variable value, choose `ENV`.
    */
   type?: string;
+}
+export interface Service {
+  type: "MYSQL" | "MONGO_DB" | "MARIADB" | "POSTGRE_SQL" | "REDIS" | "MEMCACHED" | "ELASTICSEARCH" | "CUSTOM";
+  version?: string;
+  connection?: unknown;
+  [k: string]: unknown;
 }
 export interface SandboxPlaybook {
   type: string;
@@ -6493,6 +6514,7 @@ export interface Cookie {
 export interface Permission {
   /**
    * AccessLevel for the group Others. Can be one of 'DENIED', 'DEFAULT', 'READ_ONLY', 'RUN_ONLY', or 'READ_WRITE'. Default setting is 'DEFAULT' (Project role).
+   *
    * @default "DEFAULT"
    */
   others?: "DENIED" | "DEFAULT" | "READ_ONLY" | "RUN_ONLY" | "READ_WRITE";
@@ -6530,3 +6552,7 @@ export interface Screenshot {
     max_y: number;
   }[];
 }
+
+
+declare const Schema: typeof import('./schema.json');
+export default Schema;
