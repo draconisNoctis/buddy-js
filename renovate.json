@@ -7,6 +7,11 @@
     "automerge": false,
     "automergeStrategy": "squash",
     "packageRules": [
+        {
+            "matchPackageNames": ["chalk"],
+            "enabled": false
+        },
+        { "matchManagers": ["github-actions"], "automerge": true },
         { "matchUpdateTypes": ["major"] },
         {
             "matchUpdateTypes": ["minor", "patch"],
