@@ -29,14 +29,6 @@ export class Scraper<T extends EventMap<T>> extends EventEmitter<
         if (this.#done >= this.#queue.length && !this.#running) return this.emit('done');
         if (this.#running >= this.CONCURRENCY_LIMIT || this.#index > this.#queue.length - 1) return;
 
-        if (!this.#queue[this.#index]) {
-            console.debug(this, {
-                index: this.#index,
-                done: this.#done,
-                running: this.#running
-            });
-        }
-
         const [type, url] = this.#queue[this.#index++]!;
 
         try {

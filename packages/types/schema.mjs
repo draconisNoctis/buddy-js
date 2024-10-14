@@ -5,412 +5,447 @@ const Schema = {
     "$ref": "#/definitions/Pipeline"
   },
   "definitions": {
-    "Tag": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string"
+    "Action": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AmazonS3"
         },
-        "value": {
-          "type": "string"
+        {
+          "$ref": "#/definitions/AWSAppRunnerDeploy"
+        },
+        {
+          "$ref": "#/definitions/AWSCodePipeline"
+        },
+        {
+          "$ref": "#/definitions/AWSElasticBeanstalk"
+        },
+        {
+          "$ref": "#/definitions/AWSAppRunnerDeploy"
+        },
+        {
+          "$ref": "#/definitions/AWSCodeDeploy"
+        },
+        {
+          "$ref": "#/definitions/AWSCDKCLI"
+        },
+        {
+          "$ref": "#/definitions/AWSElasticBeanstalkMonitoring"
+        },
+        {
+          "$ref": "#/definitions/AWSLambdaDeploy"
+        },
+        {
+          "$ref": "#/definitions/AzureCLI"
+        },
+        {
+          "$ref": "#/definitions/BackblazeB2"
+        },
+        {
+          "$ref": "#/definitions/AmazonElasticContainerService"
+        },
+        {
+          "$ref": "#/definitions/AWSLambda"
+        },
+        {
+          "$ref": "#/definitions/AWSCLI2"
+        },
+        {
+          "$ref": "#/definitions/AzureStorage"
+        },
+        {
+          "$ref": "#/definitions/AWSCLI"
+        },
+        {
+          "$ref": "#/definitions/Bugsnag"
+        },
+        {
+          "$ref": "#/definitions/BuildACordovaApp"
+        },
+        {
+          "$ref": "#/definitions/BuildAFastlaneAppiOS"
+        },
+        {
+          "$ref": "#/definitions/BuildAReactNativeApp"
+        },
+        {
+          "$ref": "#/definitions/Blackfire"
+        },
+        {
+          "$ref": "#/definitions/BuildAndroidApp"
+        },
+        {
+          "$ref": "#/definitions/BuildFlutterAppiOS"
+        },
+        {
+          "$ref": "#/definitions/BuildMultiArchImage"
+        },
+        {
+          "$ref": "#/definitions/BuildApplication"
+        },
+        {
+          "$ref": "#/definitions/BuildFlutterApp"
+        },
+        {
+          "$ref": "#/definitions/Cloudfront"
+        },
+        {
+          "$ref": "#/definitions/Cloudflare"
+        },
+        {
+          "$ref": "#/definitions/ClearCache"
+        },
+        {
+          "$ref": "#/definitions/BuildDockerImage"
+        },
+        {
+          "$ref": "#/definitions/CompressImages"
+        },
+        {
+          "$ref": "#/definitions/CopyFilesAction"
+        },
+        {
+          "$ref": "#/definitions/CodeSignAndExportAnIOSApp"
+        },
+        {
+          "$ref": "#/definitions/CreateNewSandbox"
+        },
+        {
+          "$ref": "#/definitions/Datadog"
+        },
+        {
+          "$ref": "#/definitions/DeployToAppStoreConnect"
+        },
+        {
+          "$ref": "#/definitions/DatadogServiceCheck"
+        },
+        {
+          "$ref": "#/definitions/DigitalOcean"
+        },
+        {
+          "$ref": "#/definitions/DigitalOceanCDN"
+        },
+        {
+          "$ref": "#/definitions/DigitalOceanCLI"
+        },
+        {
+          "$ref": "#/definitions/Discord"
+        },
+        {
+          "$ref": "#/definitions/Docker"
+        },
+        {
+          "$ref": "#/definitions/DigitalOceanSpaces"
+        },
+        {
+          "$ref": "#/definitions/DockerCLI"
+        },
+        {
+          "$ref": "#/definitions/DownloadBackblazeB2"
+        },
+        {
+          "$ref": "#/definitions/DockerfileLinter"
+        },
+        {
+          "$ref": "#/definitions/DownloadFromSandbox"
+        },
+        {
+          "$ref": "#/definitions/DownloadFTP"
+        },
+        {
+          "$ref": "#/definitions/DownloadFTPS"
+        },
+        {
+          "$ref": "#/definitions/DownloadGCS"
+        },
+        {
+          "$ref": "#/definitions/DownloadS3"
+        },
+        {
+          "$ref": "#/definitions/EmailNotification"
+        },
+        {
+          "$ref": "#/definitions/ESLint"
+        },
+        {
+          "$ref": "#/definitions/FTP"
+        },
+        {
+          "$ref": "#/definitions/DownloadSFTP"
+        },
+        {
+          "$ref": "#/definitions/FTPS"
+        },
+        {
+          "$ref": "#/definitions/Firebase"
+        },
+        {
+          "$ref": "#/definitions/GenerateVariables"
+        },
+        {
+          "$ref": "#/definitions/GhostInspector"
+        },
+        {
+          "$ref": "#/definitions/GhostInspectorCLI"
+        },
+        {
+          "$ref": "#/definitions/GitPush"
+        },
+        {
+          "$ref": "#/definitions/GitcryptLock"
+        },
+        {
+          "$ref": "#/definitions/GitcryptUnlock"
+        },
+        {
+          "$ref": "#/definitions/GitHubCLI"
+        },
+        {
+          "$ref": "#/definitions/GitHubRelease"
+        },
+        {
+          "$ref": "#/definitions/GitLabCLI"
+        },
+        {
+          "$ref": "#/definitions/GKERunJob"
+        },
+        {
+          "$ref": "#/definitions/GKEApplyDeployment"
+        },
+        {
+          "$ref": "#/definitions/GoogleAppEngine"
+        },
+        {
+          "$ref": "#/definitions/KubernetesRunHelmCMDs"
+        },
+        {
+          "$ref": "#/definitions/GKESetImage"
+        },
+        {
+          "$ref": "#/definitions/GoogleChat"
+        },
+        {
+          "$ref": "#/definitions/GKERunPod"
+        },
+        {
+          "$ref": "#/definitions/GoogleCDN"
+        },
+        {
+          "$ref": "#/definitions/GoogleCloudCLI"
+        },
+        {
+          "$ref": "#/definitions/GoogleCloudRun"
+        },
+        {
+          "$ref": "#/definitions/HerokuCLI"
+        },
+        {
+          "$ref": "#/definitions/GoogleFunctions"
+        },
+        {
+          "$ref": "#/definitions/GoogleFunctionsDeploy"
+        },
+        {
+          "$ref": "#/definitions/GoogleCloudStorage"
+        },
+        {
+          "$ref": "#/definitions/Heroku"
+        },
+        {
+          "$ref": "#/definitions/HTTPRequest"
+        },
+        {
+          "$ref": "#/definitions/Honeybadger"
+        },
+        {
+          "$ref": "#/definitions/KubernetesRunHelmCMDs"
+        },
+        {
+          "$ref": "#/definitions/JMeterCLI"
+        },
+        {
+          "$ref": "#/definitions/KubernetesRunJob"
+        },
+        {
+          "$ref": "#/definitions/KubernetesKubectl"
+        },
+        {
+          "$ref": "#/definitions/KubernetesRunPod"
+        },
+        {
+          "$ref": "#/definitions/KubernetesSetImage"
+        },
+        {
+          "$ref": "#/definitions/KubernetesApplyDeployment"
+        },
+        {
+          "$ref": "#/definitions/LinkChecker"
+        },
+        {
+          "$ref": "#/definitions/Loggly"
+        },
+        {
+          "$ref": "#/definitions/Linux"
+        },
+        {
+          "$ref": "#/definitions/MacOS"
+        },
+        {
+          "$ref": "#/definitions/MicrosoftTeams"
+        },
+        {
+          "$ref": "#/definitions/MicrosoftAzure"
+        },
+        {
+          "$ref": "#/definitions/NewRelicCLI"
+        },
+        {
+          "$ref": "#/definitions/Netlify"
+        },
+        {
+          "$ref": "#/definitions/OperateSandbox"
+        },
+        {
+          "$ref": "#/definitions/Lighthouse"
+        },
+        {
+          "$ref": "#/definitions/PingMonitoring"
+        },
+        {
+          "$ref": "#/definitions/PassArguments"
+        },
+        {
+          "$ref": "#/definitions/GoogleComputeEngine"
+        },
+        {
+          "$ref": "#/definitions/PublishAndroidApp"
+        },
+        {
+          "$ref": "#/definitions/PublishBundleToGooglePlay"
+        },
+        {
+          "$ref": "#/definitions/PushDockerImage"
+        },
+        {
+          "$ref": "#/definitions/Pushbullet"
+        },
+        {
+          "$ref": "#/definitions/Raygun"
+        },
+        {
+          "$ref": "#/definitions/Rollbar"
+        },
+        {
+          "$ref": "#/definitions/Rsync"
+        },
+        {
+          "$ref": "#/definitions/Rackspace"
+        },
+        {
+          "$ref": "#/definitions/Replace"
+        },
+        {
+          "$ref": "#/definitions/Sentry"
+        },
+        {
+          "$ref": "#/definitions/RunDockerContainer"
+        },
+        {
+          "$ref": "#/definitions/Pushover"
+        },
+        {
+          "$ref": "#/definitions/SetVariables"
+        },
+        {
+          "$ref": "#/definitions/Shopify"
+        },
+        {
+          "$ref": "#/definitions/ShopifyCLI"
+        },
+        {
+          "$ref": "#/definitions/ShopifyThemeKitCLI"
+        },
+        {
+          "$ref": "#/definitions/SFTP"
+        },
+        {
+          "$ref": "#/definitions/SignAndroidApp"
+        },
+        {
+          "$ref": "#/definitions/Sleep"
+        },
+        {
+          "$ref": "#/definitions/SlackNotification"
+        },
+        {
+          "$ref": "#/definitions/SMSNotification"
+        },
+        {
+          "$ref": "#/definitions/SignBundle"
+        },
+        {
+          "$ref": "#/definitions/Snyk"
+        },
+        {
+          "$ref": "#/definitions/SplitTests"
+        },
+        {
+          "$ref": "#/definitions/SSHToSandbox"
+        },
+        {
+          "$ref": "#/definitions/SSHCommand"
+        },
+        {
+          "$ref": "#/definitions/SSLVerify"
+        },
+        {
+          "$ref": "#/definitions/TCPMonitoring"
+        },
+        {
+          "$ref": "#/definitions/StackHawkCLI"
+        },
+        {
+          "$ref": "#/definitions/TelegramNotification"
+        },
+        {
+          "$ref": "#/definitions/TerraformCLI"
+        },
+        {
+          "$ref": "#/definitions/TriggerPipeline"
+        },
+        {
+          "$ref": "#/definitions/TransferToSandbox"
+        },
+        {
+          "$ref": "#/definitions/Vultr"
+        },
+        {
+          "$ref": "#/definitions/VisualTests"
+        },
+        {
+          "$ref": "#/definitions/WaitForApproval"
+        },
+        {
+          "$ref": "#/definitions/WPCLI"
+        },
+        {
+          "$ref": "#/definitions/UpCloud"
+        },
+        {
+          "$ref": "#/definitions/Windows"
+        },
+        {
+          "$ref": "#/definitions/WebMonitoring"
+        },
+        {
+          "$ref": "#/definitions/WebDAV"
+        },
+        {
+          "$ref": "#/definitions/Xcode"
+        },
+        {
+          "$ref": "#/definitions/ZIP"
         }
-      },
-      "required": [
-        "key",
-        "value"
-      ],
-      "additionalProperties": false
-    },
-    "SyncPath": {
-      "type": "object",
-      "properties": {
-        "pipeline_path": {
-          "type": "string"
-        },
-        "vm_path": {
-          "type": "string"
-        },
-        "direction": {
-          "type": "string",
-          "enum": [
-            "PIPELINE_TO_VM",
-            "VM_TO_PIPELINE"
-          ]
-        },
-        "excludes": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "pipeline_path",
-        "vm_path",
-        "direction",
-        "excludes"
-      ],
-      "additionalProperties": false
-    },
-    "Service": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "MYSQL",
-            "MONGO_DB",
-            "MARIADB",
-            "POSTGRE_SQL",
-            "REDIS",
-            "MEMCACHED",
-            "ELASTICSEARCH",
-            "CUSTOM"
-          ]
-        },
-        "version": {
-          "type": "string"
-        },
-        "connection": {}
-      },
-      "required": [
-        "type"
       ]
-    },
-    "SandboxPlaybook": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "type"
-      ],
-      "additionalProperties": true
-    },
-    "Mapping": {
-      "type": "object",
-      "properties": {
-        "application_port": {
-          "type": "integer"
-        },
-        "subdomain": {
-          "type": "string"
-        },
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "application_port",
-        "subdomain"
-      ],
-      "additionalProperties": false
-    },
-    "Asset": {
-      "type": "object",
-      "properties": {
-        "source_path": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "source_path",
-        "label"
-      ],
-      "additionalProperties": false
-    },
-    "Header": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "value"
-      ],
-      "additionalProperties": false
-    },
-    "Cookie": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "value"
-      ],
-      "additionalProperties": false
-    },
-    "APKs": {
-      "type": "object",
-      "properties": {
-        "apk_path": {
-          "type": "string"
-        },
-        "main_expansion_path": {
-          "type": "string"
-        },
-        "patch_expansion_path": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "apk_path"
-      ],
-      "additionalProperties": false
-    },
-    "Replacement": {
-      "type": "object",
-      "properties": {
-        "replace_from": {
-          "type": "string"
-        },
-        "replace_to": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "replace_from",
-        "replace_to"
-      ],
-      "additionalProperties": false
-    },
-    "Screenshot": {
-      "type": "object",
-      "properties": {
-        "url": {
-          "type": "string"
-        },
-        "baseline": {
-          "type": "string"
-        },
-        "headers": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Header"
-          }
-        },
-        "excluded_area": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "url": {
-                "type": "string"
-              },
-              "min_x": {
-                "type": "number"
-              },
-              "min_y": {
-                "type": "number"
-              },
-              "max_x": {
-                "type": "number"
-              },
-              "max_y": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "url",
-              "min_x",
-              "min_y",
-              "max_x",
-              "max_y"
-            ],
-            "additionalProperties": false
-          }
-        }
-      },
-      "required": [
-        "url",
-        "baseline",
-        "headers",
-        "excluded_area"
-      ],
-      "additionalProperties": false
-    },
-    "Pipeline": {
-      "type": "object",
-      "properties": {
-        "pipeline": {
-          "type": "string",
-          "description": "The ID of the pipeline."
-        },
-        "on": {
-          "type": "string",
-          "enum": [
-            "CLICK",
-            "EVENT",
-            "SCHEDULE"
-          ],
-          "default": "EVENT",
-          "description": "The trigger mode of the pipeline. Can be one of 'CLICK', 'EVENT', 'SCHEDULE'. If not set, the default value is 'EVENT'\n\n@default \"EVENT\""
-        },
-        "refs": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Set it if `on` is set to 'CLICK' or 'SCHEDULE'. The list of refs for which the pipeline will be triggered. Automatically set to 'NONE' if not provided."
-        },
-        "events": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Event"
-          },
-          "description": "[The list of events](https://buddy.works/docs/yaml/yaml-schema#event-schema) for which the pipeline will be triggered. Set it if 'on' is set to 'EVENT'. Required if 'ON' is set or not set to 'EVENT'."
-        },
-        "trigger_conditions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TriggerCondition"
-          },
-          "description": "[The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the pipeline can be triggered."
-        },
-        "always_from_scratch": {
-          "type": "boolean",
-          "description": "Defines whether or not to upload everything from scratch on every execution."
-        },
-        "auto_clear_cache": {
-          "type": "boolean",
-          "description": "Defines whether or not to automatically clear cache before running the pipeline ."
-        },
-        "no_skip_to_most_recent": {
-          "type": "boolean",
-          "description": "Defines whether or not to skip execution to the most recent execution."
-        },
-        "do_not_create_commit_status": {
-          "type": "boolean",
-          "description": "Defines whether or not to omit sending commit statuses to Github or Gitlab upon execution."
-        },
-        "start_date": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Required if the pipeline is set to 'on: SCHEDULE' and no 'cron' is specified. Defines when the pipeline execution should start. Format: 2016-11-18T12:38:16.000Z"
-        },
-        "delay": {
-          "type": "integer",
-          "description": "Required if the pipeline is set to 'on: SCHEDULE' and no 'cron' is specified. Defines the intervals in which the pipeline should be executed (in minutes)."
-        },
-        "cron": {
-          "type": "string",
-          "description": "Required if the pipeline is set to 'on: SCHEDULE' and neither 'start_date' nor 'delay' is specified. The standard CRON expression defining the execution schedule."
-        },
-        "actions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Action"
-          },
-          "description": "The list of actions executed in the pipeline."
-        },
-        "variables": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Variable"
-          },
-          "description": "[The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use in the pipeline."
-        },
-        "ignore_fail_on_project_status": {
-          "type": "boolean",
-          "description": "If set to 'true' the status of a given pipeline will not impact the project status on the dashboard."
-        },
-        "execution_message_template": {
-          "type": "string",
-          "description": "The title of every execution in this pipeline. By default it is set to '$BUDDY_EXECUTION_REVISION_SUBJECT'."
-        },
-        "target_site_url": {
-          "type": "string",
-          "description": "The URL of the target website."
-        },
-        "disabled": {
-          "type": "boolean",
-          "description": "Set it, if you want the pipeline to be disabled."
-        },
-        "disabled_reason": {
-          "type": "string",
-          "description": "Specify the reason for disabling the pipeline."
-        },
-        "fetch_all_refs": {
-          "type": "boolean",
-          "description": "When the pipeline is run, Buddy fetches only one Git reference to the pipeline filesystem (branch, tag, or pull request). If the option is set to `true`, Buddy will be forced to fetch all Git references."
-        },
-        "permissions": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/Permission"
-            }
-          ],
-          "description": "Define to set permissions for the pipeline."
-        },
-        "change_set_base": {
-          "type": "string",
-          "description": "Defines the way the changeset for deployments and trigger conditions between subsequent executions in the pipeline will be calculated. Available values: 'LATEST_RUN', 'LATEST_RUN_MATCHING_REF', 'PULL_REQUEST'. By default, it is set to 'LATEST_RUN'."
-        },
-        "cache_scope": {
-          "type": "string",
-          "description": "Docker cache scope. Available values: 'WORKSPACE', 'PROJECT', PIPELINE'. By default, it is set to 'PIPELINE'."
-        },
-        "description_required": {
-          "type": "boolean",
-          "description": "The default value is `false`. If set to `true` and the user does not provide a description when starting a pipeline, the pipeline won't run."
-        },
-        "pause_on_repeated_failures": {
-          "type": "integer",
-          "description": "Pauses the pipeline after `n` failed pipeline runs. Restricted to pipelines set to 'on: SCHEDULE'. Possible values: 1-100 (the default value is 100)."
-        }
-      },
-      "required": [
-        "pipeline"
-      ],
-      "additionalProperties": false
-    },
-    "Permission": {
-      "type": "object",
-      "properties": {
-        "others": {
-          "type": "string",
-          "enum": [
-            "DENIED",
-            "DEFAULT",
-            "READ_ONLY",
-            "RUN_ONLY",
-            "READ_WRITE"
-          ],
-          "default": "DEFAULT",
-          "description": "AccessLevel for the group Others. Can be one of 'DENIED', 'DEFAULT', 'READ_ONLY', 'RUN_ONLY', or 'READ_WRITE'. Default setting is 'DEFAULT' (Project role).\n\n@default \"DEFAULT\""
-        },
-        "users": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "The list of users who will be granted a permission other than the Others group."
-        },
-        "groups": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "The group who will be granted a permission other than the Others group."
-        }
-      },
-      "additionalProperties": false
     },
     "ActionCommon": {
       "type": "object",
@@ -484,172 +519,7 @@ const Schema = {
       ],
       "additionalProperties": false
     },
-    "Variable": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "type": "string",
-          "description": "The name of the variable."
-        },
-        "value": {
-          "type": "string",
-          "description": "The value of the variable. If the 'type' is 'FILE', the value must be Base64 encoded."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "VAR",
-            "SSH_KEY",
-            "FILE"
-          ],
-          "description": "The type of the added variable. Can be one of 'VAR', 'SSH_KEY' or 'FILE'."
-        },
-        "description": {
-          "type": "string",
-          "description": "The optional description of the variable."
-        },
-        "encrypted": {
-          "type": "boolean",
-          "description": "When set to 'true' the variable value will be encrypted and hidden."
-        },
-        "settable": {
-          "type": "boolean",
-          "description": "When set to 'true' the variable value can be shifted between subsequent actions or executions as well as pipelines."
-        },
-        "file_place": {
-          "type": "string",
-          "description": "Available values: 'CONTAINER', 'NONE'. Set if type is 'SSH_KEY' or 'FILE'. If it's 'NONE', the variable can be used as a parameter in an action. For 'CONTAINER', the given file/key is additionally copied to an action container on each run."
-        },
-        "file_path": {
-          "type": "string",
-          "description": "Specifies where to copy the file on each run. Set if 'type' is 'SSH_KEY' or 'FILE'."
-        },
-        "file_chmod": {
-          "type": "string",
-          "description": "File permission set on copy to a container on each run. Set if 'type' is 'SSH_KEY' or 'FILE'."
-        }
-      },
-      "required": [
-        "key",
-        "value"
-      ],
-      "additionalProperties": false
-    },
-    "Event": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "description": "The type of the event. Available values: 'PUSH', 'CREATE_REF', 'DELETE_REF'."
-        },
-        "refs": {
-          "type": "string",
-          "description": "The list of refs for which the pipeline will be triggered in the given event."
-        },
-        "tags": {
-          "type": "string",
-          "description": "Runs the pipeline on the runner with tag that matches at least one of those specified in the array."
-        }
-      },
-      "required": [
-        "type",
-        "refs"
-      ],
-      "additionalProperties": false
-    },
-    "TriggerCondition": {
-      "type": "object",
-      "properties": {
-        "trigger_condition": {
-          "type": "string",
-          "enum": [
-            "ON_CHANGE",
-            "ON_CHANGE_AT_PATH",
-            "VAR_IS",
-            "VAR_IS_NOT",
-            "VAR_CONTAINS",
-            "VAR_NOT_CONTAINS",
-            "VAR_LESS_THAN",
-            "VAR_LESS_THAN_OR_EQUAL",
-            "VAR_GREATER_THAN",
-            "VAR_GREATER_THAN_OR_EQUAL",
-            "DAY",
-            "HOUR",
-            "TRIGGERING_USER_IS",
-            "TRIGGERING_USER_IS_NOT",
-            "TRIGGERING_USER_IS_IN_GROUP",
-            "TRIGGERING_USER_IS_NOT_IN_GROUP",
-            "SUCCESS_PIPELINE"
-          ],
-          "description": "Defines when the action should be run. Can be one of 'ON_CHANGE', 'ON_CHANGE_AT_PATH', 'VAR_IS', 'VAR_IS_NOT', 'VAR_CONTAINS', 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL', 'DAY', 'HOUR', 'TRIGGERING_USER_IS', 'TRIGGERING_USER_IS_NOT', 'TRIGGERING_USER_IS_IN_GROUP', 'TRIGGERING_USER_IS_NOT_IN_GROUP', or 'SUCCESS_PIPELINE', 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT' (last two can only be set in the action)."
-        },
-        "trigger_condition_paths": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Required when 'trigger_condition' is set to 'ON_CHANGE_AT_PATH'."
-        },
-        "trigger_variable_key": {
-          "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'VAR_IS', 'VAR_IS_NOT' or 'VAR_CONTAINS' or 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL'. Defines the name of the desired variable."
-        },
-        "trigger_variable_value": {
-          "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'VAR_IS', 'VAR_IS_NOT' or 'VAR_CONTAINS' or 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL'. Defines the value of the desired variable which will be compared with its current value."
-        },
-        "trigger_hours": {
-          "type": "array",
-          "items": {
-            "type": "integer"
-          },
-          "description": "Available when 'trigger_condition' is set to 'HOUR'. Defines the time – by default running from 1 to 24."
-        },
-        "trigger_days": {
-          "type": "array",
-          "items": {
-            "type": "integer"
-          },
-          "description": "Available when 'trigger_condition' is set to 'DAY'. Defines the days running from 1 to 7 where 1 is for Monday."
-        },
-        "zone_id": {
-          "type": "string",
-          "description": "Available when 'trigger_condition' is set to 'DAY' or 'HOUR'. Defines the timezone (by default it is UTC) and takes values from [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)."
-        },
-        "trigger_project_name": {
-          "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'SUCCESS_PIPELINE'. Defines the name of the project in which the 'trigger_pipeline_name' is."
-        },
-        "trigger_pipeline_name": {
-          "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'SUCCESS_PIPELINE'. Defines the name of the pipeline."
-        },
-        "trigger_action_name": {
-          "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT'. Defines the name of the action."
-        },
-        "trigger_status": {
-          "type": "string",
-          "enum": [
-            "SUCCESSFUL",
-            "SKIPPED",
-            "SUPRESSED",
-            "FAILED"
-          ],
-          "description": "Required when 'trigger_condition' is set to 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT'. Defines the status that the action should or shouldn't have. Can be one of 'SUCCESSFUL', 'SKIPPED', 'SUPRESSED' or 'FAILED'."
-        },
-        "trigger_user": {
-          "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'TRIGGERING_USER_IS' or 'TRIGGERING_USER_IS_NOT'. Defines the email address of the user."
-        },
-        "trigger_group": {
-          "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'TRIGGERING_USER_IS_IN_GROUP' or 'TRIGGERING_USER_IS_NOT_IN_GROUP'. Defines the name of the group."
-        }
-      },
-      "additionalProperties": false
-    },
-    "AWSCDKCLI": {
+    "AmazonElasticContainerService": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -664,276 +534,39 @@ const Schema = {
             "type": {
               "type": "string",
               "enum": [
-                "AWS_CDK_CLI"
+                "AWS_ECS"
               ],
-              "description": "The type of the action. Should be set to `AWS_CDK_CLI`."
+              "description": "The type of the action. Should be set to `AWS_ECS`."
             },
-            "execute_commands": {
+            "integration": {
               "type": "string",
-              "description": "The commands that will be executed."
+              "description": "The ID of the integration."
             },
             "region": {
               "type": "string",
               "description": "The Amazon region."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "setup_commands": {
-              "type": "string",
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
-            "region",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "AWSCodePipeline": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "CODE_PIPELINE"
-              ],
-              "description": "The type of the action. Must be set to `CODE_PIPELINE`."
-            },
-            "code_pipeline_name": {
-              "type": "string",
-              "description": "The name of the AWS CodePipeline pipeline triggered by the action."
-            },
-            "region": {
-              "type": "string",
-              "description": "The Amazon region."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "wait_for_complete": {
-              "type": "boolean",
-              "description": "If set to `true`, the action will wait for the CodePipeline to finish."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "code_pipeline_name",
-            "region",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "AWSCodeDeploy": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "CODE_DEPLOY"
-              ],
-              "description": "The type of the action. Should be set to `CODE_DEPLOY`."
-            },
-            "application_name": {
-              "type": "string",
-              "description": "The name of the application."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "region": {
-              "type": "string",
-              "description": "The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
-            },
-            "group_name": {
-              "type": "string",
-              "description": "The Amazon group name."
-            },
-            "config_name": {
-              "type": "string",
-              "description": "The name of the CodeDeploy configuration."
-            },
-            "description": {
-              "type": "string",
-              "description": "The comment about the deployment."
-            },
-            "ignore_application_stop_failures": {
-              "type": "boolean",
-              "description": "See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html)."
-            },
-            "update_outdated_instances_only": {
-              "type": "boolean",
-              "description": "See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html)."
-            },
-            "wait_for_finish_deployment": {
-              "type": "boolean",
-              "description": "Defines whether to wait for the finish of the deployment in Amazon Code Deploy."
-            },
-            "deployment_excludes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The paths and/or files that will be left out during the deployment."
-            },
-            "deployment_includes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
             },
             "local_path": {
               "type": "string",
-              "description": "The path in the repository."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "application_name",
-            "integration",
-            "region",
-            "group_name",
-            "config_name"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "AWSAppRunnerDeploy": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
+              "description": "The path to the JSON file with task definition."
             },
-            "type": {
+            "cluster": {
               "type": "string",
-              "enum": [
-                "AWS_APP_RUNNER_MONITOR"
-              ],
-              "description": "The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`."
+              "description": "The paths and/or files that will be left out during the deployment."
             },
             "service": {
               "type": "string",
-              "description": "The ID of the App Runner service ARN."
-            },
-            "region": {
-              "type": "string",
-              "description": "The name of the Amazon region. The full list of regions is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "timeout": {
-              "type": "integer",
-              "description": "Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`."
+              "description": "The ID of the ECS service."
             }
           },
           "required": [
             "action",
             "type",
-            "service",
-            "region",
             "integration",
-            "timeout"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "AWSCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "AWS_CLI"
-              ],
-              "description": "The type of the action. Should be set to `AWS_CLI`."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "region": {
-              "type": "string",
-              "description": "The Amazon region."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
             "region",
-            "integration"
+            "local_path",
+            "cluster",
+            "service"
           ],
           "additionalProperties": false
         }
@@ -1043,6 +676,228 @@ const Schema = {
         }
       ]
     },
+    "Ami": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Defines the [AMI ID of the image](https://buddy.works/docs/actions/vm/windows#creating-custom-ami). Ohio- and Stockholm-region images only."
+        },
+        "password": {
+          "type": "string",
+          "description": "Administrator password from the given Ami."
+        }
+      },
+      "additionalProperties": false
+    },
+    "AMI": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Defines the AMI ID of the image. Ohio-region images only. The image must have Rsync installed."
+        },
+        "user": {
+          "type": "string",
+          "description": "The name of the user in the custom image."
+        },
+        "port": {
+          "type": "string",
+          "description": "The port used for SSH in the custom image."
+        }
+      },
+      "additionalProperties": false
+    },
+    "APKs": {
+      "type": "object",
+      "properties": {
+        "apk_path": {
+          "type": "string"
+        },
+        "main_expansion_path": {
+          "type": "string"
+        },
+        "patch_expansion_path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "apk_path"
+      ],
+      "additionalProperties": false
+    },
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "source_path": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_path",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "AWSAppRunnerDeploy": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "AWS_APP_RUNNER_MONITOR"
+              ],
+              "description": "The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`."
+            },
+            "service": {
+              "type": "string",
+              "description": "The ID of the App Runner service ARN."
+            },
+            "region": {
+              "type": "string",
+              "description": "The name of the Amazon region. The full list of regions is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "service",
+            "region",
+            "integration",
+            "timeout"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "AWSCDKCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "AWS_CDK_CLI"
+              ],
+              "description": "The type of the action. Should be set to `AWS_CDK_CLI`."
+            },
+            "execute_commands": {
+              "type": "string",
+              "description": "The commands that will be executed."
+            },
+            "region": {
+              "type": "string",
+              "description": "The Amazon region."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "string",
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "region",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "AWSCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "AWS_CLI"
+              ],
+              "description": "The type of the action. Should be set to `AWS_CLI`."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "region": {
+              "type": "string",
+              "description": "The Amazon region."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "region",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "AWSCLI2": {
       "allOf": [
         {
@@ -1093,6 +948,140 @@ const Schema = {
             "action",
             "type",
             "execute_commands",
+            "region",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "AWSCodeDeploy": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "CODE_DEPLOY"
+              ],
+              "description": "The type of the action. Should be set to `CODE_DEPLOY`."
+            },
+            "application_name": {
+              "type": "string",
+              "description": "The name of the application."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "region": {
+              "type": "string",
+              "description": "The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
+            },
+            "group_name": {
+              "type": "string",
+              "description": "The Amazon group name."
+            },
+            "config_name": {
+              "type": "string",
+              "description": "The name of the CodeDeploy configuration."
+            },
+            "description": {
+              "type": "string",
+              "description": "The comment about the deployment."
+            },
+            "ignore_application_stop_failures": {
+              "type": "boolean",
+              "description": "See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html)."
+            },
+            "update_outdated_instances_only": {
+              "type": "boolean",
+              "description": "See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html)."
+            },
+            "wait_for_finish_deployment": {
+              "type": "boolean",
+              "description": "Defines whether to wait for the finish of the deployment in Amazon Code Deploy."
+            },
+            "deployment_excludes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The paths and/or files that will be left out during the deployment."
+            },
+            "deployment_includes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
+            },
+            "local_path": {
+              "type": "string",
+              "description": "The path in the repository."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "application_name",
+            "integration",
+            "region",
+            "group_name",
+            "config_name"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "AWSCodePipeline": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "CODE_PIPELINE"
+              ],
+              "description": "The type of the action. Must be set to `CODE_PIPELINE`."
+            },
+            "code_pipeline_name": {
+              "type": "string",
+              "description": "The name of the AWS CodePipeline pipeline triggered by the action."
+            },
+            "region": {
+              "type": "string",
+              "description": "The Amazon region."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "wait_for_complete": {
+              "type": "boolean",
+              "description": "If set to `true`, the action will wait for the CodePipeline to finish."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "code_pipeline_name",
             "region",
             "integration"
           ],
@@ -1165,59 +1154,6 @@ const Schema = {
             "environment",
             "integration",
             "region"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "AmazonElasticContainerService": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "AWS_ECS"
-              ],
-              "description": "The type of the action. Should be set to `AWS_ECS`."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "region": {
-              "type": "string",
-              "description": "The Amazon region."
-            },
-            "local_path": {
-              "type": "string",
-              "description": "The path to the JSON file with task definition."
-            },
-            "cluster": {
-              "type": "string",
-              "description": "The paths and/or files that will be left out during the deployment."
-            },
-            "service": {
-              "type": "string",
-              "description": "The ID of the ECS service."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "integration",
-            "region",
-            "local_path",
-            "cluster",
-            "service"
           ],
           "additionalProperties": false
         }
@@ -1346,6 +1282,60 @@ const Schema = {
         }
       ]
     },
+    "AWSLambdaDeploy": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "AWS_LAMBDA_DEPLOY"
+              ],
+              "description": "The type of the action. Should be set to `AWS_LAMBDA_DEPLOY`."
+            },
+            "function_name": {
+              "type": "string",
+              "description": "The name of the Lambda function."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "region": {
+              "type": "string",
+              "description": "The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
+            },
+            "local_path": {
+              "type": "string",
+              "description": "The path in the repository."
+            },
+            "deployment_excludes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The paths and/or files that will be left out during the deployment."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "function_name",
+            "integration",
+            "region"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "AzureCLI": {
       "allOf": [
         {
@@ -1403,7 +1393,7 @@ const Schema = {
         }
       ]
     },
-    "AWSLambdaDeploy": {
+    "AzureStorage": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -1413,30 +1403,38 @@ const Schema = {
           "properties": {
             "action": {
               "type": "string",
-              "description": "The name of the action."
+              "description": "The ID of the action."
             },
             "type": {
               "type": "string",
               "enum": [
-                "AWS_LAMBDA_DEPLOY"
+                "AZURE_STORAGE"
               ],
-              "description": "The type of the action. Should be set to `AWS_LAMBDA_DEPLOY`."
+              "description": "The type of the action. Should be set to `AZURE_STORAGE`."
             },
-            "function_name": {
+            "bucket_name": {
               "type": "string",
-              "description": "The name of the Lambda function."
+              "description": "The name of the bucket."
             },
             "integration": {
               "type": "string",
-              "description": "The ID of the integration."
+              "description": "The integration."
             },
-            "region": {
+            "input_type": {
               "type": "string",
-              "description": "The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
+              "enum": [
+                "SCM_REPOSITORY",
+                "BUILD_ARTIFACTS"
+              ],
+              "description": "Defines whether the files are deployed from the repository or from the  build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`."
             },
             "local_path": {
               "type": "string",
               "description": "The path in the repository."
+            },
+            "remote_path": {
+              "type": "string",
+              "description": "The absolute or relative path on the remote server."
             },
             "deployment_excludes": {
               "type": "array",
@@ -1444,14 +1442,36 @@ const Schema = {
                 "type": "string"
               },
               "description": "The paths and/or files that will be left out during the deployment."
+            },
+            "deployment_includes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
+            },
+            "application_name": {
+              "type": "string",
+              "description": "The name of the application."
+            },
+            "deletion_disabled": {
+              "type": "boolean",
+              "description": "If set to `true`, files are not deleted if changeset indcates that."
+            },
+            "skip_content_type_setting": {
+              "type": "boolean",
+              "description": "When set to `true`, all files will have their mime-types set to `application/octet-stream`."
+            },
+            "content_encoding": {
+              "type": "string",
+              "description": "ContentEncoding that will be set for the deployed files e.g. \"gzip\"."
             }
           },
           "required": [
             "action",
             "type",
-            "function_name",
-            "integration",
-            "region"
+            "bucket_name",
+            "integration"
           ],
           "additionalProperties": false
         }
@@ -1651,167 +1671,6 @@ const Schema = {
         }
       ]
     },
-    "BuildAReactNativeApp": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "NATIVE_BUILD_MAC_REACT"
-              ],
-              "description": "The type of the action. Must be set to `NATIVE_BUILD_MAC_REACT`."
-            },
-            "working_directory": {
-              "type": "string",
-              "description": "The directory in which the pipeline filesystem will be mounted."
-            },
-            "commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "sync_paths": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/SyncPath"
-              },
-              "description": "Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`)."
-            },
-            "pre_start_simulators": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The list of simulators initiated before the action runs."
-            },
-            "node_version": {
-              "type": "string",
-              "description": "The version of Node.js used in the action."
-            },
-            "certificates": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The list of variables added to the iOS keychain."
-            },
-            "provision_profiles": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The list of variables added as iOS Provisioning Profiles."
-            },
-            "xcode_version": {
-              "type": "string",
-              "description": "Defines the Xcode version."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "working_directory",
-            "commands"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "AzureStorage": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "AZURE_STORAGE"
-              ],
-              "description": "The type of the action. Should be set to `AZURE_STORAGE`."
-            },
-            "bucket_name": {
-              "type": "string",
-              "description": "The name of the bucket."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The integration."
-            },
-            "input_type": {
-              "type": "string",
-              "enum": [
-                "SCM_REPOSITORY",
-                "BUILD_ARTIFACTS"
-              ],
-              "description": "Defines whether the files are deployed from the repository or from the  build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`."
-            },
-            "local_path": {
-              "type": "string",
-              "description": "The path in the repository."
-            },
-            "remote_path": {
-              "type": "string",
-              "description": "The absolute or relative path on the remote server."
-            },
-            "deployment_excludes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The paths and/or files that will be left out during the deployment."
-            },
-            "deployment_includes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
-            },
-            "application_name": {
-              "type": "string",
-              "description": "The name of the application."
-            },
-            "deletion_disabled": {
-              "type": "boolean",
-              "description": "If set to `true`, files are not deleted if changeset indcates that."
-            },
-            "skip_content_type_setting": {
-              "type": "boolean",
-              "description": "When set to `true`, all files will have their mime-types set to `application/octet-stream`."
-            },
-            "content_encoding": {
-              "type": "string",
-              "description": "ContentEncoding that will be set for the deployed files e.g. \"gzip\"."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "bucket_name",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
     "BuildACordovaApp": {
       "allOf": [
         {
@@ -1889,127 +1748,6 @@ const Schema = {
         }
       ]
     },
-    "BuildDockerImage": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "DOCKERFILE"
-              ],
-              "description": "The type of the action. Should be set to `DOCKERFILE`."
-            },
-            "dockerfile_path": {
-              "type": "string",
-              "description": "The path of the desired dockerfile in the repository. Default is `DOCKERFILE`."
-            },
-            "context_path": {
-              "type": "string",
-              "description": "The docker build image context path."
-            },
-            "docker_image_tag": {
-              "type": "string",
-              "description": "The tag of the Docker image."
-            },
-            "login": {
-              "type": "string",
-              "description": "The username required to connect to the server. Required for delivering the Dockerfile to a private registry."
-            },
-            "password": {
-              "type": "string",
-              "description": "The password required to connect to the server. Required for delivering the Dockerfile to a private registry."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`."
-            },
-            "region": {
-              "type": "string",
-              "description": "The name of the Amazon S3 region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
-            },
-            "registry": {
-              "type": "string",
-              "description": "The url to GCR. Can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io. Required for Google GCR."
-            },
-            "repository": {
-              "type": "string",
-              "description": "The location of the Docker repository."
-            },
-            "build_args": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The arguments used when building the image from the Dockerfile."
-            },
-            "insecure_registry": {
-              "type": "boolean",
-              "description": "If set to `true`, ignore SSL errors upon connecting to the Docker registry."
-            },
-            "do_not_prune_images": {
-              "type": "boolean",
-              "description": "If set to `true`, dangling images will not be pruned after the build."
-            },
-            "buildkit": {
-              "type": "boolean",
-              "description": "The Docker BuildKit will be activated while invoking the `docker build` command. By default, it is set to `true`."
-            },
-            "secrets": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/DockerBuildSecret"
-              },
-              "description": "The list of [secrets](https://buddy.works/docs/yaml/yaml-actions/build-docker-image#dockerbuildsecret-schema) to be sent using the `--secret` parameter."
-            },
-            "provenance": {
-              "type": "string",
-              "description": "Refers to the `--provenance` switch of the Docker build. Available values: `NONE`, `MIN`, `MAX`. The default value is `NONE`."
-            },
-            "cache_mode": {
-              "type": "string",
-              "description": "Available if the cache_scope in the pipeline where this action is located, is set to `WORKSPACE` or `PROJECT`. Defines the Docker cache mode. Available values are `MIN` or `MAX`. By default, it is set to `MIN`."
-            },
-            "docker_registry": {
-              "type": "string",
-              "description": "The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "dockerfile_path"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "DockerBuildSecret": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "The identifier to pass into the `docker buildx --secret`. This identifier is associated with the `RUN --mount` identifier to use in the Dockerfile."
-        },
-        "value": {
-          "type": "string",
-          "description": "If type=FILE, it is a path to the file in the filesystem. If type=ENV, it is the name of the variable whose value will be passed to the secret."
-        },
-        "type": {
-          "type": "string",
-          "description": "The type of the secret. Set `FILE` if you want to use a file from the filesystem. If you want it to be a variable value, choose `ENV`."
-        }
-      },
-      "additionalProperties": false
-    },
     "BuildAFastlaneAppiOS": {
       "allOf": [
         {
@@ -2082,197 +1820,6 @@ const Schema = {
             "type",
             "working_directory",
             "commands"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "BuildFlutterApp": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "BUILD"
-              ],
-              "description": "The type of the action. Should be set to `BUILD`."
-            },
-            "docker_image_name": {
-              "type": "string",
-              "description": "The name of the Docker image."
-            },
-            "docker_image_tag": {
-              "type": "string",
-              "description": "The tag of the Docker image."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "cached_dirs": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The dependencies & directories to be cached and available to every execution in this pipeline."
-            },
-            "volume_mappings": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located)."
-            },
-            "working_directory": {
-              "type": "string",
-              "description": "The directory in which the pipeline filesystem will be mounted."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            },
-            "services": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Service"
-              },
-              "description": "The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`, `CUSTOM`."
-            }
-          },
-          "required": [
-            "name",
-            "type",
-            "docker_image_name",
-            "docker_image_tag",
-            "execute_commands"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "BuildFlutterAppiOS": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "NATIVE_BUILD_MAC_FLUTTER"
-              ],
-              "description": "The type of the action. Must be set to `NATIVE_BUILD_MAC_FLUTTER`."
-            },
-            "working_directory": {
-              "type": "string",
-              "description": "The directory in which the pipeline filesystem will be mounted."
-            },
-            "commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "sync_paths": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/SyncPath"
-              },
-              "description": "Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`)."
-            },
-            "pre_start_simulators": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The list of simulators initiated before the action runs."
-            },
-            "node_version": {
-              "type": "string",
-              "description": "The version of Node.js used in the action."
-            },
-            "certificates": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The list of variables added to the iOS keychain."
-            },
-            "provision_profiles": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The list of variables added as iOS Provisioning Profiles."
-            },
-            "xcode_version": {
-              "type": "string",
-              "description": "Defines the Xcode version."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "working_directory",
-            "commands"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "ClearCache": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "CLEAR_CACHE"
-              ],
-              "description": "The type of the action. Must be set to `CLEAR_CACHE`."
-            },
-            "cache_types": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "Defines the cache layer cleared by the action. Available values: `DOCKER`, `FILE_SYSTEM`,  `SERVICES`, `ADDITIONAL`."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "cache_types"
           ],
           "additionalProperties": false
         }
@@ -2504,6 +2051,341 @@ const Schema = {
         }
       ]
     },
+    "BuildAReactNativeApp": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "NATIVE_BUILD_MAC_REACT"
+              ],
+              "description": "The type of the action. Must be set to `NATIVE_BUILD_MAC_REACT`."
+            },
+            "working_directory": {
+              "type": "string",
+              "description": "The directory in which the pipeline filesystem will be mounted."
+            },
+            "commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "sync_paths": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SyncPath"
+              },
+              "description": "Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`)."
+            },
+            "pre_start_simulators": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The list of simulators initiated before the action runs."
+            },
+            "node_version": {
+              "type": "string",
+              "description": "The version of Node.js used in the action."
+            },
+            "certificates": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The list of variables added to the iOS keychain."
+            },
+            "provision_profiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The list of variables added as iOS Provisioning Profiles."
+            },
+            "xcode_version": {
+              "type": "string",
+              "description": "Defines the Xcode version."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "working_directory",
+            "commands"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "BuildDockerImage": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "DOCKERFILE"
+              ],
+              "description": "The type of the action. Should be set to `DOCKERFILE`."
+            },
+            "dockerfile_path": {
+              "type": "string",
+              "description": "The path of the desired dockerfile in the repository. Default is `DOCKERFILE`."
+            },
+            "context_path": {
+              "type": "string",
+              "description": "The docker build image context path."
+            },
+            "docker_image_tag": {
+              "type": "string",
+              "description": "The tag of the Docker image."
+            },
+            "login": {
+              "type": "string",
+              "description": "The username required to connect to the server. Required for delivering the Dockerfile to a private registry."
+            },
+            "password": {
+              "type": "string",
+              "description": "The password required to connect to the server. Required for delivering the Dockerfile to a private registry."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`."
+            },
+            "region": {
+              "type": "string",
+              "description": "The name of the Amazon S3 region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
+            },
+            "registry": {
+              "type": "string",
+              "description": "The url to GCR. Can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io. Required for Google GCR."
+            },
+            "repository": {
+              "type": "string",
+              "description": "The location of the Docker repository."
+            },
+            "build_args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The arguments used when building the image from the Dockerfile."
+            },
+            "insecure_registry": {
+              "type": "boolean",
+              "description": "If set to `true`, ignore SSL errors upon connecting to the Docker registry."
+            },
+            "do_not_prune_images": {
+              "type": "boolean",
+              "description": "If set to `true`, dangling images will not be pruned after the build."
+            },
+            "buildkit": {
+              "type": "boolean",
+              "description": "The Docker BuildKit will be activated while invoking the `docker build` command. By default, it is set to `true`."
+            },
+            "secrets": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DockerBuildSecret"
+              },
+              "description": "The list of [secrets](https://buddy.works/docs/yaml/yaml-actions/build-docker-image#dockerbuildsecret-schema) to be sent using the `--secret` parameter."
+            },
+            "provenance": {
+              "type": "string",
+              "description": "Refers to the `--provenance` switch of the Docker build. Available values: `NONE`, `MIN`, `MAX`. The default value is `NONE`."
+            },
+            "cache_mode": {
+              "type": "string",
+              "description": "Available if the cache_scope in the pipeline where this action is located, is set to `WORKSPACE` or `PROJECT`. Defines the Docker cache mode. Available values are `MIN` or `MAX`. By default, it is set to `MIN`."
+            },
+            "docker_registry": {
+              "type": "string",
+              "description": "The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "dockerfile_path"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "BuildFlutterApp": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "BUILD"
+              ],
+              "description": "The type of the action. Should be set to `BUILD`."
+            },
+            "docker_image_name": {
+              "type": "string",
+              "description": "The name of the Docker image."
+            },
+            "docker_image_tag": {
+              "type": "string",
+              "description": "The tag of the Docker image."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "cached_dirs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The dependencies & directories to be cached and available to every execution in this pipeline."
+            },
+            "volume_mappings": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located)."
+            },
+            "working_directory": {
+              "type": "string",
+              "description": "The directory in which the pipeline filesystem will be mounted."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            },
+            "services": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Service"
+              },
+              "description": "The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`, `CUSTOM`."
+            }
+          },
+          "required": [
+            "name",
+            "type",
+            "docker_image_name",
+            "docker_image_tag",
+            "execute_commands"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "BuildFlutterAppiOS": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "NATIVE_BUILD_MAC_FLUTTER"
+              ],
+              "description": "The type of the action. Must be set to `NATIVE_BUILD_MAC_FLUTTER`."
+            },
+            "working_directory": {
+              "type": "string",
+              "description": "The directory in which the pipeline filesystem will be mounted."
+            },
+            "commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "sync_paths": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SyncPath"
+              },
+              "description": "Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`)."
+            },
+            "pre_start_simulators": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The list of simulators initiated before the action runs."
+            },
+            "node_version": {
+              "type": "string",
+              "description": "The version of Node.js used in the action."
+            },
+            "certificates": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The list of variables added to the iOS keychain."
+            },
+            "provision_profiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The list of variables added as iOS Provisioning Profiles."
+            },
+            "xcode_version": {
+              "type": "string",
+              "description": "Defines the Xcode version."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "working_directory",
+            "commands"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "BuildMultiArchImage": {
       "allOf": [
         {
@@ -2598,6 +2480,42 @@ const Schema = {
             "action",
             "type",
             "dockerfile_path"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ClearCache": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "CLEAR_CACHE"
+              ],
+              "description": "The type of the action. Must be set to `CLEAR_CACHE`."
+            },
+            "cache_types": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Defines the cache layer cleared by the action. Available values: `DOCKER`, `FILE_SYSTEM`,  `SERVICES`, `ADDITIONAL`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "cache_types"
           ],
           "additionalProperties": false
         }
@@ -2815,6 +2733,70 @@ const Schema = {
         }
       ]
     },
+    "CompressImages": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "IMAGE_COMPRESSION"
+              ],
+              "description": "The type of the action. Should be set to `IMAGE_COMPRESSION`."
+            },
+            "local_path": {
+              "type": "string",
+              "description": "The path in the repository."
+            },
+            "destination": {
+              "type": "string",
+              "description": "Output directory for compressed images."
+            },
+            "level": {
+              "type": "string",
+              "description": "The level of image compression. Can be set to `1` (low), `2` (medium) or `3` (high)."
+            },
+            "types": {
+              "type": "string",
+              "description": "Supported image formats. Available types: `jpg`, `png`, `gif`, `svg`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "local_path",
+            "destination",
+            "level",
+            "types"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Cookie": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false
+    },
     "CopyFilesAction": {
       "allOf": [
         {
@@ -2884,54 +2866,6 @@ const Schema = {
           "required": [
             "action",
             "type"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "CompressImages": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "IMAGE_COMPRESSION"
-              ],
-              "description": "The type of the action. Should be set to `IMAGE_COMPRESSION`."
-            },
-            "local_path": {
-              "type": "string",
-              "description": "The path in the repository."
-            },
-            "destination": {
-              "type": "string",
-              "description": "Output directory for compressed images."
-            },
-            "level": {
-              "type": "string",
-              "description": "The level of image compression. Can be set to `1` (low), `2` (medium) or `3` (high)."
-            },
-            "types": {
-              "type": "string",
-              "description": "Supported image formats. Available types: `jpg`, `png`, `gif`, `svg`."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "local_path",
-            "destination",
-            "level",
-            "types"
           ],
           "additionalProperties": false
         }
@@ -3109,6 +3043,67 @@ const Schema = {
             "type",
             "integration",
             "alert_type"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DatadogServiceCheck": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "DATADOG_STATUS_CHECK"
+              ],
+              "description": "The type of the action. Should be set to `DATADOG_STATUS_CHECK`."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "host_name": {
+              "type": "string",
+              "description": "The Host name to associate with the event. Any tags associated with the host will also be applied to this event."
+            },
+            "status": {
+              "type": "integer",
+              "description": "An integer for the status of the check."
+            },
+            "check": {
+              "type": "string",
+              "description": "The text for the message."
+            },
+            "message": {
+              "type": "string",
+              "description": "A description of why this status occurred."
+            },
+            "region": {
+              "type": "string",
+              "enum": [
+                "US1",
+                "US3",
+                "US5",
+                "EU1",
+                "AP1",
+                "US1_FED"
+              ],
+              "description": "The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "integration"
           ],
           "additionalProperties": false
         }
@@ -3333,78 +3328,7 @@ const Schema = {
         }
       ]
     },
-    "Docker": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "DOCKER"
-              ],
-              "description": "The type of the action. Should be set to `DOCKER`."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The integration. Required to authorize in Amazon ECR, Google GCR and Docker Hub."
-            },
-            "region": {
-              "type": "string",
-              "description": "The name of the Amazon region. If the Amazon ECR integration has been selected, provide the region to authorize in. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
-            },
-            "registry": {
-              "type": "string",
-              "description": "Provide if you want to authorize in a private registry or Google GCR. For GCR, it can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io."
-            },
-            "login": {
-              "type": "string",
-              "description": "The username required to authorize in a private registry."
-            },
-            "password": {
-              "type": "string",
-              "description": "The password required to authorize in a private registry."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "execute_every_command": {
-              "type": "boolean",
-              "description": "If set to `true`, all commands will be executed regardless of the result of the previous command."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "Discord": {
+    "DigitalOceanCLI": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -3419,34 +3343,38 @@ const Schema = {
             "type": {
               "type": "string",
               "enum": [
-                "DISCORD"
+                "DOCTL"
               ],
-              "description": "The type of the action. Should be set to `DISCORD`."
+              "description": "The type of the action. Should be set to `DOCTL`."
             },
-            "notification_url": {
-              "type": "string",
-              "description": "The URL do the desired Discord [webhook](https://discordapp.com/developers/docs/resources/webhook#execute-webhook)."
-            },
-            "content": {
-              "type": "string",
-              "description": "The content of the notification."
-            },
-            "attachments": {
-              "type": "string",
-              "description": "The embedded rich content. More info [here](https://discordapp.com/developers/docs/resources/channel#attachment-object-attachment-structure)."
-            },
-            "file_attachments": {
+            "execute_commands": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "description": "The attached files."
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
             }
           },
           "required": [
             "action",
             "type",
-            "notification_url"
+            "execute_commands",
+            "integration"
           ],
           "additionalProperties": false
         }
@@ -3537,7 +3465,7 @@ const Schema = {
         }
       ]
     },
-    "DatadogServiceCheck": {
+    "Discord": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -3552,53 +3480,40 @@ const Schema = {
             "type": {
               "type": "string",
               "enum": [
-                "DATADOG_STATUS_CHECK"
+                "DISCORD"
               ],
-              "description": "The type of the action. Should be set to `DATADOG_STATUS_CHECK`."
+              "description": "The type of the action. Should be set to `DISCORD`."
             },
-            "integration": {
+            "notification_url": {
               "type": "string",
-              "description": "The ID of the integration."
+              "description": "The URL do the desired Discord [webhook](https://discordapp.com/developers/docs/resources/webhook#execute-webhook)."
             },
-            "host_name": {
+            "content": {
               "type": "string",
-              "description": "The Host name to associate with the event. Any tags associated with the host will also be applied to this event."
+              "description": "The content of the notification."
             },
-            "status": {
-              "type": "integer",
-              "description": "An integer for the status of the check."
-            },
-            "check": {
+            "attachments": {
               "type": "string",
-              "description": "The text for the message."
+              "description": "The embedded rich content. More info [here](https://discordapp.com/developers/docs/resources/channel#attachment-object-attachment-structure)."
             },
-            "message": {
-              "type": "string",
-              "description": "A description of why this status occurred."
-            },
-            "region": {
-              "type": "string",
-              "enum": [
-                "US1",
-                "US3",
-                "US5",
-                "EU1",
-                "AP1",
-                "US1_FED"
-              ],
-              "description": "The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`."
+            "file_attachments": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The attached files."
             }
           },
           "required": [
             "action",
             "type",
-            "integration"
+            "notification_url"
           ],
           "additionalProperties": false
         }
       ]
     },
-    "DigitalOceanCLI": {
+    "Docker": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -3608,14 +3523,14 @@ const Schema = {
           "properties": {
             "action": {
               "type": "string",
-              "description": "The name of the action."
+              "description": "The ID of the action."
             },
             "type": {
               "type": "string",
               "enum": [
-                "DOCTL"
+                "DOCKER"
               ],
-              "description": "The type of the action. Should be set to `DOCTL`."
+              "description": "The type of the action. Should be set to `DOCKER`."
             },
             "execute_commands": {
               "type": "array",
@@ -3624,31 +3539,68 @@ const Schema = {
               },
               "description": "The commands that will be executed."
             },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
             "setup_commands": {
               "type": "array",
               "items": {
                 "type": "string"
               },
               "description": "The command that will be executed only on the first run."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The integration. Required to authorize in Amazon ECR, Google GCR and Docker Hub."
+            },
+            "region": {
+              "type": "string",
+              "description": "The name of the Amazon region. If the Amazon ECR integration has been selected, provide the region to authorize in. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)."
+            },
+            "registry": {
+              "type": "string",
+              "description": "Provide if you want to authorize in a private registry or Google GCR. For GCR, it can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io."
+            },
+            "login": {
+              "type": "string",
+              "description": "The username required to authorize in a private registry."
+            },
+            "password": {
+              "type": "string",
+              "description": "The password required to authorize in a private registry."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "execute_every_command": {
+              "type": "boolean",
+              "description": "If set to `true`, all commands will be executed regardless of the result of the previous command."
             }
           },
           "required": [
             "action",
             "type",
-            "execute_commands",
-            "integration"
+            "execute_commands"
           ],
           "additionalProperties": false
         }
       ]
+    },
+    "DockerBuildSecret": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The identifier to pass into the `docker buildx --secret`. This identifier is associated with the `RUN --mount` identifier to use in the Dockerfile."
+        },
+        "value": {
+          "type": "string",
+          "description": "If type=FILE, it is a path to the file in the filesystem. If type=ENV, it is the name of the variable whose value will be passed to the secret."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the secret. Set `FILE` if you want to use a file from the filesystem. If you want it to be a variable value, choose `ENV`."
+        }
+      },
+      "additionalProperties": false
     },
     "DockerCLI": {
       "allOf": [
@@ -3734,23 +3686,49 @@ const Schema = {
         }
       ]
     },
-    "AMI": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Defines the AMI ID of the image. Ohio-region images only. The image must have Rsync installed."
+    "DockerfileLinter": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
         },
-        "user": {
-          "type": "string",
-          "description": "The name of the user in the custom image."
-        },
-        "port": {
-          "type": "string",
-          "description": "The port used for SSH in the custom image."
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "DOCKERFILE_LINTER"
+              ],
+              "description": "The type of the action. Should be set to `DOCKERFILE_LINTER`."
+            },
+            "local_path": {
+              "type": "string",
+              "description": "The path from which a Dockerfile is chosen."
+            },
+            "shell_type": {
+              "type": "string",
+              "description": "Type of shell in which the errors will be detected. Available values: `sh`, `bash`, `dash`, `ksh`"
+            },
+            "ignore_codes": {
+              "type": "string",
+              "description": "The errors that will be ignored by linter. You can find the error codes below or use [ShellCheck](https://github.com/koalaman/shellcheck/wiki/Checks)."
+            },
+            "ignores_path": {
+              "type": "string",
+              "description": "The path to the yaml file with [ignores](https://github.com/buddy-works/dockerfile-linter#yaml-file-with-ignores)."
+            }
+          },
+          "required": [
+            "action",
+            "type"
+          ],
+          "additionalProperties": false
         }
-      },
-      "additionalProperties": false
+      ]
     },
     "DownloadBackblazeB2": {
       "allOf": [
@@ -3822,50 +3800,6 @@ const Schema = {
             "destination_path",
             "integration",
             "region"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "DockerfileLinter": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "DOCKERFILE_LINTER"
-              ],
-              "description": "The type of the action. Should be set to `DOCKERFILE_LINTER`."
-            },
-            "local_path": {
-              "type": "string",
-              "description": "The path from which a Dockerfile is chosen."
-            },
-            "shell_type": {
-              "type": "string",
-              "description": "Type of shell in which the errors will be detected. Available values: `sh`, `bash`, `dash`, `ksh`"
-            },
-            "ignore_codes": {
-              "type": "string",
-              "description": "The errors that will be ignored by linter. You can find the error codes below or use [ShellCheck](https://github.com/koalaman/shellcheck/wiki/Checks)."
-            },
-            "ignores_path": {
-              "type": "string",
-              "description": "The path to the yaml file with [ignores](https://github.com/buddy-works/dockerfile-linter#yaml-file-with-ignores)."
-            }
-          },
-          "required": [
-            "action",
-            "type"
           ],
           "additionalProperties": false
         }
@@ -4121,7 +4055,7 @@ const Schema = {
         }
       ]
     },
-    "EmailNotification": {
+    "DownloadGCS": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -4136,46 +4070,60 @@ const Schema = {
             "type": {
               "type": "string",
               "enum": [
-                "EMAIL"
+                "DOWNLOAD_GCS"
               ],
-              "description": "The type of the action. Should be set to `EMAIL`."
+              "description": "The type of the action. Should be set to `DOWNLOAD_GCS`."
             },
-            "recipients": {
+            "bucket_name": {
               "type": "string",
-              "description": "The recipients of the notification: email addresses (one per line). One of `send_to_groups` or `recipients` must be specified."
+              "description": "The name of the GCS Bucket."
             },
-            "send_to_groups": {
+            "source_path": {
               "type": "string",
-              "description": "The list of groups' names to which emails will be sent. One of `send_to_groups` or `recipients` must be specified."
+              "description": "The path from which the file will be downloaded."
             },
-            "content": {
+            "destination_path": {
               "type": "string",
-              "description": "The content of the notification."
+              "description": "The path in which the file will be saved."
             },
-            "title": {
+            "integration": {
               "type": "string",
-              "description": "The title of the notification."
+              "description": "The ID of the integration."
             },
-            "send_as_html": {
+            "application_name": {
+              "type": "string",
+              "description": "The name of the GCS application."
+            },
+            "overwrite": {
               "type": "boolean",
-              "description": "Defines whether to send the content as HTML."
+              "description": "Replace files if they already exist."
             },
-            "file_attachments": {
-              "type": "string",
-              "description": "The attached files."
+            "recursive": {
+              "type": "boolean",
+              "description": "If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded."
             },
-            "from_name": {
-              "type": "string",
-              "description": "The e-mail sender name."
+            "download_excludes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The paths and/or files that will be left out during the download."
+            },
+            "download_includes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The exceptions from the ignore patterns set in `download_excludes`."
             }
           },
           "required": [
             "action",
             "type",
-            "recipients",
-            "send_to_groups",
-            "content",
-            "title"
+            "bucket_name",
+            "source_path",
+            "destination_path",
+            "integration"
           ],
           "additionalProperties": false
         }
@@ -4339,7 +4287,7 @@ const Schema = {
         }
       ]
     },
-    "DownloadGCS": {
+    "EmailNotification": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -4354,206 +4302,46 @@ const Schema = {
             "type": {
               "type": "string",
               "enum": [
-                "DOWNLOAD_GCS"
+                "EMAIL"
               ],
-              "description": "The type of the action. Should be set to `DOWNLOAD_GCS`."
+              "description": "The type of the action. Should be set to `EMAIL`."
             },
-            "bucket_name": {
+            "recipients": {
               "type": "string",
-              "description": "The name of the GCS Bucket."
+              "description": "The recipients of the notification: email addresses (one per line). One of `send_to_groups` or `recipients` must be specified."
             },
-            "source_path": {
+            "send_to_groups": {
               "type": "string",
-              "description": "The path from which the file will be downloaded."
+              "description": "The list of groups' names to which emails will be sent. One of `send_to_groups` or `recipients` must be specified."
             },
-            "destination_path": {
+            "content": {
               "type": "string",
-              "description": "The path in which the file will be saved."
+              "description": "The content of the notification."
             },
-            "integration": {
+            "title": {
               "type": "string",
-              "description": "The ID of the integration."
+              "description": "The title of the notification."
             },
-            "application_name": {
-              "type": "string",
-              "description": "The name of the GCS application."
-            },
-            "overwrite": {
+            "send_as_html": {
               "type": "boolean",
-              "description": "Replace files if they already exist."
+              "description": "Defines whether to send the content as HTML."
             },
-            "recursive": {
-              "type": "boolean",
-              "description": "If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded."
+            "file_attachments": {
+              "type": "string",
+              "description": "The attached files."
             },
-            "download_excludes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The paths and/or files that will be left out during the download."
-            },
-            "download_includes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The exceptions from the ignore patterns set in `download_excludes`."
+            "from_name": {
+              "type": "string",
+              "description": "The e-mail sender name."
             }
           },
           "required": [
             "action",
             "type",
-            "bucket_name",
-            "source_path",
-            "destination_path",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "FTPS": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "FTPS"
-              ],
-              "description": "The type of the action. Should be set to `FTPS`."
-            },
-            "host": {
-              "type": "string",
-              "description": "The host for the connection."
-            },
-            "login": {
-              "type": "string",
-              "description": "The username required to connect to the server."
-            },
-            "password": {
-              "type": "string",
-              "description": "The password required to connect to the server."
-            },
-            "port": {
-              "type": "string",
-              "description": "The port for the connection."
-            },
-            "input_type": {
-              "type": "string",
-              "enum": [
-                "SCM_REPOSITORY",
-                "BUILD_ARTIFACTS"
-              ],
-              "description": "Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`."
-            },
-            "local_path": {
-              "type": "string",
-              "description": "The path in the repository."
-            },
-            "remote_path": {
-              "type": "string",
-              "description": "The absolute or relative path on the remote server."
-            },
-            "deployment_excludes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The paths and/or files that will be left out during the deployment."
-            },
-            "deployment_includes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "host",
-            "login",
-            "password",
-            "port"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "Firebase": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "FIREBASE"
-              ],
-              "description": "The type of the action. Should be set to `FIREBASE`."
-            },
-            "application_id": {
-              "type": "string",
-              "description": "The ID of the Firebase application."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "Commands that will be executed."
-            },
-            "volume_mappings": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located)."
-            },
-            "working_directory": {
-              "type": "string",
-              "description": "The absolute or relative path on the remote server."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "application_id",
-            "integration",
-            "execute_commands"
+            "recipients",
+            "send_to_groups",
+            "content",
+            "title"
           ],
           "additionalProperties": false
         }
@@ -4624,6 +4412,96 @@ const Schema = {
             "type",
             "version",
             "style"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of the event. Available values: 'PUSH', 'CREATE_REF', 'DELETE_REF'."
+        },
+        "refs": {
+          "type": "string",
+          "description": "The list of refs for which the pipeline will be triggered in the given event."
+        },
+        "tags": {
+          "type": "string",
+          "description": "Runs the pipeline on the runner with tag that matches at least one of those specified in the array."
+        }
+      },
+      "required": [
+        "type",
+        "refs"
+      ],
+      "additionalProperties": false
+    },
+    "Firebase": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "FIREBASE"
+              ],
+              "description": "The type of the action. Should be set to `FIREBASE`."
+            },
+            "application_id": {
+              "type": "string",
+              "description": "The ID of the Firebase application."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Commands that will be executed."
+            },
+            "volume_mappings": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located)."
+            },
+            "working_directory": {
+              "type": "string",
+              "description": "The absolute or relative path on the remote server."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "application_id",
+            "integration",
+            "execute_commands"
           ],
           "additionalProperties": false
         }
@@ -4701,6 +4579,84 @@ const Schema = {
             "use_temporary_files": {
               "type": "boolean",
               "description": "The files will be uploaded with a \"tmp\" suffix that will be removed once the upload has finished."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "host",
+            "login",
+            "password",
+            "port"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "FTPS": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "FTPS"
+              ],
+              "description": "The type of the action. Should be set to `FTPS`."
+            },
+            "host": {
+              "type": "string",
+              "description": "The host for the connection."
+            },
+            "login": {
+              "type": "string",
+              "description": "The username required to connect to the server."
+            },
+            "password": {
+              "type": "string",
+              "description": "The password required to connect to the server."
+            },
+            "port": {
+              "type": "string",
+              "description": "The port for the connection."
+            },
+            "input_type": {
+              "type": "string",
+              "enum": [
+                "SCM_REPOSITORY",
+                "BUILD_ARTIFACTS"
+              ],
+              "description": "Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`."
+            },
+            "local_path": {
+              "type": "string",
+              "description": "The path in the repository."
+            },
+            "remote_path": {
+              "type": "string",
+              "description": "The absolute or relative path on the remote server."
+            },
+            "deployment_excludes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The paths and/or files that will be left out during the deployment."
+            },
+            "deployment_includes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
             }
           },
           "required": [
@@ -4833,6 +4789,296 @@ const Schema = {
         }
       ]
     },
+    "GhostInspectorCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GHOST_INSPECTOR_CLI"
+              ],
+              "description": "The type of the action. Should be set to `GHOST_INSPECTOR_CLI`."
+            },
+            "execute_commands": {
+              "type": "string",
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "string",
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GitcryptLock": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GIT_CRYPT_LOCK"
+              ],
+              "description": "The type of the action. Should be set to `GIT_CRYPT_LOCK`."
+            },
+            "keys": {
+              "type": "string",
+              "description": "Key names you want to use to lock your repository."
+            },
+            "force_arg": {
+              "type": "string",
+              "description": "Set to `true` if you want to lock even if there is uncommitted work in pipeline filesystem."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "keys"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GitcryptUnlock": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GIT_CRYPT_UNLOCK"
+              ],
+              "description": "The type of the action. Should be set to `GIT_CRYPT_UNLOCK`."
+            },
+            "keys": {
+              "type": "string",
+              "description": "Key names you want to use to unlock your repository."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "keys"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GitHubCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GIT_HUB_CLI"
+              ],
+              "description": "The type of the action. Must be set to `GIT_HUB_CLI`."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GitHubRelease": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GIT_HUB_RELEASE"
+              ],
+              "description": "The type of the action. Should be set to `GIT_HUB_RELEASE`."
+            },
+            "tag_name": {
+              "type": "string",
+              "description": "The name of the tag."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "organization": {
+              "type": "string",
+              "description": "The account owner of the repository. The name is not case-sensitive."
+            },
+            "external_project_id": {
+              "type": "string",
+              "description": "The name of the repository. The name is not case-sensitive. Created from the field 'organization/repository name.'"
+            },
+            "target_commitish": {
+              "type": "string",
+              "description": "Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch."
+            },
+            "draft": {
+              "type": "boolean",
+              "description": "Set to `true` to create a draft (unpublished) release or to `false` to create a published one. By default, it's set to `false`."
+            },
+            "prerelease": {
+              "type": "boolean",
+              "description": "Set to `true` to identify the release as a prerelease. Set to `false` to identify the release as a full release. By default, it's set to `false`."
+            },
+            "release_name": {
+              "type": "string",
+              "description": "The name of the release."
+            },
+            "body": {
+              "type": "string",
+              "description": "Text describing the contents of the tag."
+            },
+            "assets": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/Asset"
+                }
+              ],
+              "description": "The package of assets for this release. The path has to be provided in the `source_path` field and the label name in the `label` field."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "tag_name",
+            "integration",
+            "organization",
+            "external_project_id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GitLabCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GIT_LAB_CLI"
+              ],
+              "description": "The type of the action. Must be set to `GIT_LAB_CLI`."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`."
+            },
+            "setup_commands": {
+              "type": "string",
+              "description": "The command that will be executed only on the first run."
+            },
+            "execute_commands": {
+              "type": "string",
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "GitPush": {
       "allOf": [
         {
@@ -4916,220 +5162,6 @@ const Schema = {
             "type",
             "push_url",
             "git_auth_mode"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GitcryptUnlock": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "GIT_CRYPT_UNLOCK"
-              ],
-              "description": "The type of the action. Should be set to `GIT_CRYPT_UNLOCK`."
-            },
-            "keys": {
-              "type": "string",
-              "description": "Key names you want to use to unlock your repository."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "keys"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GitcryptLock": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "GIT_CRYPT_LOCK"
-              ],
-              "description": "The type of the action. Should be set to `GIT_CRYPT_LOCK`."
-            },
-            "keys": {
-              "type": "string",
-              "description": "Key names you want to use to lock your repository."
-            },
-            "force_arg": {
-              "type": "string",
-              "description": "Set to `true` if you want to lock even if there is uncommitted work in pipeline filesystem."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "keys"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GhostInspectorCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "GHOST_INSPECTOR_CLI"
-              ],
-              "description": "The type of the action. Should be set to `GHOST_INSPECTOR_CLI`."
-            },
-            "execute_commands": {
-              "type": "string",
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "setup_commands": {
-              "type": "string",
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GitHubCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "GIT_HUB_CLI"
-              ],
-              "description": "The type of the action. Must be set to `GIT_HUB_CLI`."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GitLabCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "GIT_LAB_CLI"
-              ],
-              "description": "The type of the action. Must be set to `GIT_LAB_CLI`."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`."
-            },
-            "setup_commands": {
-              "type": "string",
-              "description": "The command that will be executed only on the first run."
-            },
-            "execute_commands": {
-              "type": "string",
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
-            "integration"
           ],
           "additionalProperties": false
         }
@@ -5233,82 +5265,6 @@ const Schema = {
             "zone_id",
             "cluster",
             "application_id"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GitHubRelease": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "GIT_HUB_RELEASE"
-              ],
-              "description": "The type of the action. Should be set to `GIT_HUB_RELEASE`."
-            },
-            "tag_name": {
-              "type": "string",
-              "description": "The name of the tag."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "organization": {
-              "type": "string",
-              "description": "The account owner of the repository. The name is not case-sensitive."
-            },
-            "external_project_id": {
-              "type": "string",
-              "description": "The name of the repository. The name is not case-sensitive. Created from the field 'organization/repository name.'"
-            },
-            "target_commitish": {
-              "type": "string",
-              "description": "Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch."
-            },
-            "draft": {
-              "type": "boolean",
-              "description": "Set to `true` to create a draft (unpublished) release or to `false` to create a published one. By default, it's set to `false`."
-            },
-            "prerelease": {
-              "type": "boolean",
-              "description": "Set to `true` to identify the release as a prerelease. Set to `false` to identify the release as a full release. By default, it's set to `false`."
-            },
-            "release_name": {
-              "type": "string",
-              "description": "The name of the release."
-            },
-            "body": {
-              "type": "string",
-              "description": "Text describing the contents of the tag."
-            },
-            "assets": {
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/Asset"
-                }
-              ],
-              "description": "The package of assets for this release. The path has to be provided in the `source_path` field and the label name in the `label` field."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "tag_name",
-            "integration",
-            "organization",
-            "external_project_id"
           ],
           "additionalProperties": false
         }
@@ -5473,82 +5429,6 @@ const Schema = {
             "zone_id",
             "cluster",
             "application_id"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GoogleCDN": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "GOOGLE_CDN_INVALIDATE"
-              ],
-              "description": "The type of the action. Should be set to `GOOGLE_CDN_INVALIDATE`."
-            },
-            "distribution_id": {
-              "type": "string",
-              "description": "The ID of the Google web distribution."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "input_type": {
-              "type": "string",
-              "enum": [
-                "SCM_REPOSITORY",
-                "BUILD_ARTIFACTS"
-              ],
-              "description": "Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`."
-            },
-            "local_path": {
-              "type": "string",
-              "description": "The path in the repository."
-            },
-            "remote_path": {
-              "type": "string",
-              "description": "The absolute or relative path on the remote server."
-            },
-            "url_map": {
-              "type": "string",
-              "description": "The name of the mapping rules."
-            },
-            "purge_all": {
-              "type": "boolean",
-              "description": "Specifies whether or not the whole cache should be removed."
-            },
-            "deployment_excludes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`."
-            },
-            "deployment_includes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "distribution_id",
-            "integration"
           ],
           "additionalProperties": false
         }
@@ -5736,6 +5616,82 @@ const Schema = {
         }
       ]
     },
+    "GoogleCDN": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GOOGLE_CDN_INVALIDATE"
+              ],
+              "description": "The type of the action. Should be set to `GOOGLE_CDN_INVALIDATE`."
+            },
+            "distribution_id": {
+              "type": "string",
+              "description": "The ID of the Google web distribution."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "input_type": {
+              "type": "string",
+              "enum": [
+                "SCM_REPOSITORY",
+                "BUILD_ARTIFACTS"
+              ],
+              "description": "Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`."
+            },
+            "local_path": {
+              "type": "string",
+              "description": "The path in the repository."
+            },
+            "remote_path": {
+              "type": "string",
+              "description": "The absolute or relative path on the remote server."
+            },
+            "url_map": {
+              "type": "string",
+              "description": "The name of the mapping rules."
+            },
+            "purge_all": {
+              "type": "boolean",
+              "description": "Specifies whether or not the whole cache should be removed."
+            },
+            "deployment_excludes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`."
+            },
+            "deployment_includes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "distribution_id",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "GoogleChat": {
       "allOf": [
         {
@@ -5773,6 +5729,62 @@ const Schema = {
             "type",
             "content",
             "channel",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GoogleCloudCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "GOOGLE_CLOUD_CLI"
+              ],
+              "description": "The type of the action. Should be set to `GOOGLE_CLOUD_CLI`."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the Google integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "application_name": {
+              "type": "string",
+              "description": "The name of the Google application."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
             "integration"
           ],
           "additionalProperties": false
@@ -5930,165 +5942,6 @@ const Schema = {
             "action",
             "type",
             "bucket_name",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "KubernetesRunHelmCMDs": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "HELM"
-              ],
-              "description": "The type of the action. Should be set to `HELM`."
-            },
-            "auth_type": {
-              "type": "string",
-              "enum": [
-                "BASIC",
-                "TOKEN",
-                "CERTS"
-              ],
-              "description": "Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`."
-            },
-            "server": {
-              "type": "string",
-              "description": "The host for the connection."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "helm_version": {
-              "type": "string",
-              "description": "The Helm version."
-            },
-            "helm_repository_region": {
-              "type": "string",
-              "description": "Helm repository region. Set it if Helm repository is on AWS S3."
-            },
-            "helm_integration": {
-              "type": "string",
-              "description": "Amazon or Google integration ID. Set it if Helm repository is on AWS S3 or Google Cloud Storage."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "Allow you to install Helm plugins."
-            },
-            "login": {
-              "type": "string",
-              "description": "The username required when `auth_type` is set to `BASIC`."
-            },
-            "password": {
-              "type": "string",
-              "description": "The password required when `auth_type` is set to `BASIC`."
-            },
-            "token": {
-              "type": "string",
-              "description": "The token required when `auth_type` is set to `TOKEN`."
-            },
-            "client_ca": {
-              "type": "string",
-              "description": "The certificate authority required when `auth_type` is set to `CERTS`."
-            },
-            "client_cert": {
-              "type": "string",
-              "description": "The client certificate required when `auth_type` is set to `CERTS`."
-            },
-            "client_key": {
-              "type": "string",
-              "description": "The client key required when `auth_type` is set to `CERTS`."
-            },
-            "kubectl_version": {
-              "type": "string",
-              "description": "Version of the kubectl used in the action. Default is “latest”."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "auth_type",
-            "server",
-            "execute_commands",
-            "helm_version"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GoogleCloudCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "GOOGLE_CLOUD_CLI"
-              ],
-              "description": "The type of the action. Should be set to `GOOGLE_CLOUD_CLI`."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the Google integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "application_name": {
-              "type": "string",
-              "description": "The name of the Google application."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
             "integration"
           ],
           "additionalProperties": false
@@ -6290,6 +6143,136 @@ const Schema = {
         }
       ]
     },
+    "Header": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "Heroku": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "HEROKU"
+              ],
+              "description": "The type of the action. Should be set to `HEROKU`."
+            },
+            "application_name": {
+              "type": "string",
+              "description": "The ID of the application."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "use_custom_gitignore": {
+              "type": "boolean",
+              "description": "When set to `false` the push will ignore paths listed in .gitignore file."
+            },
+            "isolated": {
+              "type": "boolean",
+              "description": "When set to `true`, action will push only repository files (without artifacts)."
+            },
+            "deployment_excludes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The paths and/or files that will be left out during the push. Only works when `use_custom_gitignore`is set to `true`."
+            },
+            "without_force": {
+              "type": "boolean",
+              "description": "Defines whether the `--force` flag should be used when invoking the git push command or not."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "application_name",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "HerokuCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "HEROKU_CLI"
+              ],
+              "description": "The type of the action. Should be set to `HEROKU_CLI`."
+            },
+            "application_name": {
+              "type": "string",
+              "description": "The ID of the application."
+            },
+            "commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "application_name",
+            "commands",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "Honeybadger": {
       "allOf": [
         {
@@ -6389,120 +6372,6 @@ const Schema = {
             "type",
             "notification_url",
             "method_url"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "HerokuCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "HEROKU_CLI"
-              ],
-              "description": "The type of the action. Should be set to `HEROKU_CLI`."
-            },
-            "application_name": {
-              "type": "string",
-              "description": "The ID of the application."
-            },
-            "commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "application_name",
-            "commands",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "Heroku": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "HEROKU"
-              ],
-              "description": "The type of the action. Should be set to `HEROKU`."
-            },
-            "application_name": {
-              "type": "string",
-              "description": "The ID of the application."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "use_custom_gitignore": {
-              "type": "boolean",
-              "description": "When set to `false` the push will ignore paths listed in .gitignore file."
-            },
-            "isolated": {
-              "type": "boolean",
-              "description": "When set to `true`, action will push only repository files (without artifacts)."
-            },
-            "deployment_excludes": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The paths and/or files that will be left out during the push. Only works when `use_custom_gitignore`is set to `true`."
-            },
-            "without_force": {
-              "type": "boolean",
-              "description": "Defines whether the `--force` flag should be used when invoking the git push command or not."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "application_name",
-            "integration"
           ],
           "additionalProperties": false
         }
@@ -6669,6 +6538,192 @@ const Schema = {
         }
       ]
     },
+    "KubernetesKubectl": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "KUBERNETES_CLI"
+              ],
+              "description": "The type of the action. Should be set to `KUBERNETES_CLI`."
+            },
+            "auth_type": {
+              "type": "string",
+              "enum": [
+                "BASIC",
+                "TOKEN",
+                "CERTS"
+              ],
+              "description": "Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`."
+            },
+            "server": {
+              "type": "string",
+              "description": "The host for the connection."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "login": {
+              "type": "string",
+              "description": "The username required when `auth_type` is set to `BASIC`."
+            },
+            "password": {
+              "type": "string",
+              "description": "The password required when `auth_type` is set to `BASIC`."
+            },
+            "token": {
+              "type": "string",
+              "description": "The token required when `auth_type` is set to `TOKEN`."
+            },
+            "client_ca": {
+              "type": "string",
+              "description": "The certificate authority required when `auth_type` is set to `CERTS`."
+            },
+            "client_cert": {
+              "type": "string",
+              "description": "The client certificate required when `auth_type` is set to `CERTS`."
+            },
+            "client_key": {
+              "type": "string",
+              "description": "The client key required when `auth_type` is set to `CERTS`."
+            },
+            "kubectl_version": {
+              "type": "string",
+              "description": "Version of the kubectl used in the action. Default is “latest”."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "auth_type",
+            "server",
+            "execute_commands"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "KubernetesRunHelmCMDs": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "HELM"
+              ],
+              "description": "The type of the action. Should be set to `HELM`."
+            },
+            "auth_type": {
+              "type": "string",
+              "enum": [
+                "BASIC",
+                "TOKEN",
+                "CERTS"
+              ],
+              "description": "Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`."
+            },
+            "server": {
+              "type": "string",
+              "description": "The host for the connection."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "helm_version": {
+              "type": "string",
+              "description": "The Helm version."
+            },
+            "helm_repository_region": {
+              "type": "string",
+              "description": "Helm repository region. Set it if Helm repository is on AWS S3."
+            },
+            "helm_integration": {
+              "type": "string",
+              "description": "Amazon or Google integration ID. Set it if Helm repository is on AWS S3 or Google Cloud Storage."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Allow you to install Helm plugins."
+            },
+            "login": {
+              "type": "string",
+              "description": "The username required when `auth_type` is set to `BASIC`."
+            },
+            "password": {
+              "type": "string",
+              "description": "The password required when `auth_type` is set to `BASIC`."
+            },
+            "token": {
+              "type": "string",
+              "description": "The token required when `auth_type` is set to `TOKEN`."
+            },
+            "client_ca": {
+              "type": "string",
+              "description": "The certificate authority required when `auth_type` is set to `CERTS`."
+            },
+            "client_cert": {
+              "type": "string",
+              "description": "The client certificate required when `auth_type` is set to `CERTS`."
+            },
+            "client_key": {
+              "type": "string",
+              "description": "The client key required when `auth_type` is set to `CERTS`."
+            },
+            "kubectl_version": {
+              "type": "string",
+              "description": "Version of the kubectl used in the action. Default is “latest”."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "auth_type",
+            "server",
+            "execute_commands",
+            "helm_version"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "KubernetesRunJob": {
       "allOf": [
         {
@@ -6687,6 +6742,106 @@ const Schema = {
                 "KUBERNETES_RUN_JOB"
               ],
               "description": "The type of the action. Should be set to `KUBERNETES_RUN_JOB`."
+            },
+            "auth_type": {
+              "type": "string",
+              "enum": [
+                "BASIC",
+                "TOKEN",
+                "CERTS"
+              ],
+              "description": "Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`."
+            },
+            "server": {
+              "type": "string",
+              "description": "The host for the connection."
+            },
+            "save_config_arg": {
+              "type": "boolean",
+              "description": "If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future."
+            },
+            "login": {
+              "type": "string",
+              "description": "The username required when `auth_type` is set to `BASIC`."
+            },
+            "password": {
+              "type": "string",
+              "description": "The password required when `auth_type` is set to `BASIC`."
+            },
+            "token": {
+              "type": "string",
+              "description": "The token required when `auth_type` is set to `TOKEN`."
+            },
+            "client_ca": {
+              "type": "string",
+              "description": "The certificate authority required when `auth_type` is set to `CERTS`."
+            },
+            "client_cert": {
+              "type": "string",
+              "description": "The client certificate required when `auth_type` is set to `CERTS`."
+            },
+            "client_key": {
+              "type": "string",
+              "description": "The client key required when `auth_type` is set to `CERTS`."
+            },
+            "record_arg": {
+              "type": "string",
+              "enum": [
+                "TRUE",
+                "FALSE",
+                "NOT_SET"
+              ],
+              "description": "Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to `FALSE`, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists."
+            },
+            "leave_after": {
+              "type": "boolean",
+              "description": "Defines whether to leave the Pod or delete it after the action finishes."
+            },
+            "config_path": {
+              "type": "string",
+              "description": "The repository path to the configuration file. One of `config_path` or `content` must be specified."
+            },
+            "content": {
+              "type": "string",
+              "description": "The configuration content. One of `config_path` or `content` must be specified."
+            },
+            "not_wait": {
+              "type": "boolean",
+              "description": "Defines whether the execution should or should not wait for job to end."
+            },
+            "kubectl_version": {
+              "type": "string",
+              "description": "Version of the kubectl used in the action. Default is “latest”."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "auth_type",
+            "server"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "KubernetesRunPod": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "KUBERNETES_RUN_POD"
+              ],
+              "description": "The type of the action. Should be set to `KUBERNETES_RUN_POD`."
             },
             "auth_type": {
               "type": "string",
@@ -6835,189 +6990,6 @@ const Schema = {
         }
       ]
     },
-    "KubernetesRunPod": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "KUBERNETES_RUN_POD"
-              ],
-              "description": "The type of the action. Should be set to `KUBERNETES_RUN_POD`."
-            },
-            "auth_type": {
-              "type": "string",
-              "enum": [
-                "BASIC",
-                "TOKEN",
-                "CERTS"
-              ],
-              "description": "Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`."
-            },
-            "server": {
-              "type": "string",
-              "description": "The host for the connection."
-            },
-            "save_config_arg": {
-              "type": "boolean",
-              "description": "If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future."
-            },
-            "login": {
-              "type": "string",
-              "description": "The username required when `auth_type` is set to `BASIC`."
-            },
-            "password": {
-              "type": "string",
-              "description": "The password required when `auth_type` is set to `BASIC`."
-            },
-            "token": {
-              "type": "string",
-              "description": "The token required when `auth_type` is set to `TOKEN`."
-            },
-            "client_ca": {
-              "type": "string",
-              "description": "The certificate authority required when `auth_type` is set to `CERTS`."
-            },
-            "client_cert": {
-              "type": "string",
-              "description": "The client certificate required when `auth_type` is set to `CERTS`."
-            },
-            "client_key": {
-              "type": "string",
-              "description": "The client key required when `auth_type` is set to `CERTS`."
-            },
-            "record_arg": {
-              "type": "string",
-              "enum": [
-                "TRUE",
-                "FALSE",
-                "NOT_SET"
-              ],
-              "description": "Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to `FALSE`, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists."
-            },
-            "leave_after": {
-              "type": "boolean",
-              "description": "Defines whether to leave the Pod or delete it after the action finishes."
-            },
-            "config_path": {
-              "type": "string",
-              "description": "The repository path to the configuration file. One of `config_path` or `content` must be specified."
-            },
-            "content": {
-              "type": "string",
-              "description": "The configuration content. One of `config_path` or `content` must be specified."
-            },
-            "not_wait": {
-              "type": "boolean",
-              "description": "Defines whether the execution should or should not wait for job to end."
-            },
-            "kubectl_version": {
-              "type": "string",
-              "description": "Version of the kubectl used in the action. Default is “latest”."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "auth_type",
-            "server"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "KubernetesKubectl": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "KUBERNETES_CLI"
-              ],
-              "description": "The type of the action. Should be set to `KUBERNETES_CLI`."
-            },
-            "auth_type": {
-              "type": "string",
-              "enum": [
-                "BASIC",
-                "TOKEN",
-                "CERTS"
-              ],
-              "description": "Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`."
-            },
-            "server": {
-              "type": "string",
-              "description": "The host for the connection."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "login": {
-              "type": "string",
-              "description": "The username required when `auth_type` is set to `BASIC`."
-            },
-            "password": {
-              "type": "string",
-              "description": "The password required when `auth_type` is set to `BASIC`."
-            },
-            "token": {
-              "type": "string",
-              "description": "The token required when `auth_type` is set to `TOKEN`."
-            },
-            "client_ca": {
-              "type": "string",
-              "description": "The certificate authority required when `auth_type` is set to `CERTS`."
-            },
-            "client_cert": {
-              "type": "string",
-              "description": "The client certificate required when `auth_type` is set to `CERTS`."
-            },
-            "client_key": {
-              "type": "string",
-              "description": "The client key required when `auth_type` is set to `CERTS`."
-            },
-            "kubectl_version": {
-              "type": "string",
-              "description": "Version of the kubectl used in the action. Default is “latest”."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "auth_type",
-            "server",
-            "execute_commands"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
     "Lighthouse": {
       "allOf": [
         {
@@ -7079,93 +7051,6 @@ const Schema = {
           "additionalProperties": false
         }
       ]
-    },
-    "Linux": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "NATIVE_BUILD_LINUX"
-              ],
-              "description": "The type of the action. Must be set to `NATIVE_BUILD_LINUX`."
-            },
-            "working_directory": {
-              "type": "string",
-              "description": "The directory in which the pipeline filesystem will be mounted."
-            },
-            "commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "distribution": {
-              "type": "string",
-              "description": "Defines the image used to create the VM. Use `UBUNTU_20_04` for the default image, `AMI` for a custom AMI."
-            },
-            "execute_every_command": {
-              "type": "boolean",
-              "description": "If set to `true` all commands will be executed regardless of the result of the previous command."
-            },
-            "sync_paths": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/SyncPath"
-              },
-              "description": "Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`)."
-            },
-            "vm_from_prev_action": {
-              "type": "boolean",
-              "description": "Set to `true` if you want the action to use the VM from the previous Linux action."
-            },
-            "vm_action_name": {
-              "type": "string",
-              "description": "The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used."
-            },
-            "ami": {
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/Ami"
-                }
-              ],
-              "description": "Set if `distribution` is set to `AMI`."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "working_directory",
-            "commands",
-            "distribution"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "Ami": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Defines the [AMI ID of the image](https://buddy.works/docs/actions/vm/windows#creating-custom-ami). Ohio- and Stockholm-region images only."
-        },
-        "password": {
-          "type": "string",
-          "description": "Administrator password from the given Ami."
-        }
-      },
-      "additionalProperties": false
     },
     "LinkChecker": {
       "allOf": [
@@ -7289,6 +7174,124 @@ const Schema = {
         }
       ]
     },
+    "Linux": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "NATIVE_BUILD_LINUX"
+              ],
+              "description": "The type of the action. Must be set to `NATIVE_BUILD_LINUX`."
+            },
+            "working_directory": {
+              "type": "string",
+              "description": "The directory in which the pipeline filesystem will be mounted."
+            },
+            "commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "distribution": {
+              "type": "string",
+              "description": "Defines the image used to create the VM. Use `UBUNTU_20_04` for the default image, `AMI` for a custom AMI."
+            },
+            "execute_every_command": {
+              "type": "boolean",
+              "description": "If set to `true` all commands will be executed regardless of the result of the previous command."
+            },
+            "sync_paths": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SyncPath"
+              },
+              "description": "Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`)."
+            },
+            "vm_from_prev_action": {
+              "type": "boolean",
+              "description": "Set to `true` if you want the action to use the VM from the previous Linux action."
+            },
+            "vm_action_name": {
+              "type": "string",
+              "description": "The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used."
+            },
+            "ami": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/Ami"
+                }
+              ],
+              "description": "Set if `distribution` is set to `AMI`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "working_directory",
+            "commands",
+            "distribution"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Loggly": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "LOGGLY"
+              ],
+              "description": "The type of the action. Should be set to `LOGGLY`."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The list of Loggly tags used for segmentation and filtering."
+            },
+            "content": {
+              "type": "string",
+              "description": "The content of the notification."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "integration",
+            "tags"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "MacOS": {
       "allOf": [
         {
@@ -7362,59 +7365,27 @@ const Schema = {
         }
       ]
     },
-    "MicrosoftTeams": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
+    "Mapping": {
+      "type": "object",
+      "properties": {
+        "application_port": {
+          "type": "integer"
         },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "MICROSOFT_TEAMS"
-              ],
-              "description": "The type of the action. Should be set to `MICROSOFT_TEAMS`."
-            },
-            "title": {
-              "type": "string",
-              "description": "The title of the notification."
-            },
-            "content": {
-              "type": "string",
-              "description": "The content of the notification."
-            },
-            "recipients": {
-              "type": "string",
-              "description": "The recipient of the notification: email address."
-            },
-            "file_attachments": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The attached files."
-            },
-            "send_as_html": {
-              "type": "boolean",
-              "description": "Defines whether to send the content as HTML."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "title",
-            "content",
-            "recipients"
-          ],
-          "additionalProperties": false
+        "subdomain": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
         }
-      ]
+      },
+      "required": [
+        "application_port",
+        "subdomain"
+      ],
+      "additionalProperties": false
     },
     "MicrosoftAzure": {
       "allOf": [
@@ -7485,7 +7456,7 @@ const Schema = {
         }
       ]
     },
-    "Loggly": {
+    "MicrosoftTeams": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -7495,36 +7466,45 @@ const Schema = {
           "properties": {
             "action": {
               "type": "string",
-              "description": "The name of the action."
+              "description": "The ID of the action."
             },
             "type": {
               "type": "string",
               "enum": [
-                "LOGGLY"
+                "MICROSOFT_TEAMS"
               ],
-              "description": "The type of the action. Should be set to `LOGGLY`."
+              "description": "The type of the action. Should be set to `MICROSOFT_TEAMS`."
             },
-            "integration": {
+            "title": {
               "type": "string",
-              "description": "The ID of the integration."
-            },
-            "tags": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The list of Loggly tags used for segmentation and filtering."
+              "description": "The title of the notification."
             },
             "content": {
               "type": "string",
               "description": "The content of the notification."
+            },
+            "recipients": {
+              "type": "string",
+              "description": "The recipient of the notification: email address."
+            },
+            "file_attachments": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The attached files."
+            },
+            "send_as_html": {
+              "type": "boolean",
+              "description": "Defines whether to send the content as HTML."
             }
           },
           "required": [
             "action",
             "type",
-            "integration",
-            "tags"
+            "title",
+            "content",
+            "recipients"
           ],
           "additionalProperties": false
         }
@@ -7638,6 +7618,66 @@ const Schema = {
         }
       ]
     },
+    "OperateSandbox": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "SANDBOX_START"
+              ],
+              "description": "The type of the action. Must be set to `SANDBOX_START`."
+            },
+            "sandbox_references": {
+              "type": "string",
+              "description": "Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`."
+            },
+            "sandbox_id": {
+              "type": "string",
+              "description": "ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`."
+            },
+            "referenced_action_id": {
+              "type": "integer",
+              "description": "ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`."
+            },
+            "referenced_sanbox_name": {
+              "type": "string",
+              "description": "Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`."
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`."
+            },
+            "sandbox_project_name": {
+              "type": "string",
+              "description": "Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`."
+            },
+            "days": {
+              "type": "integer",
+              "description": "Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "sandbox_references"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "PassArguments": {
       "allOf": [
         {
@@ -7703,17 +7743,20 @@ const Schema = {
         }
       ]
     },
-    "PipelinePermission": {
+    "Permission": {
       "type": "object",
       "properties": {
         "others": {
           "type": "string",
           "enum": [
             "DENIED",
-            "ALLOWED"
+            "DEFAULT",
+            "READ_ONLY",
+            "RUN_ONLY",
+            "READ_WRITE"
           ],
-          "default": "ALLOWED",
-          "description": "AccessLevel for the group Others. Can be one of `DENIED`, `ALLOWED`. Default setting is `ALLOWED`.\n\n@default \"ALLOWED\""
+          "default": "DEFAULT",
+          "description": "AccessLevel for the group Others. Can be one of 'DENIED', 'DEFAULT', 'READ_ONLY', 'RUN_ONLY', or 'READ_WRITE'. Default setting is 'DEFAULT' (Project role).\n\n@default \"DEFAULT\""
         },
         "users": {
           "type": "object",
@@ -7765,65 +7808,169 @@ const Schema = {
         }
       ]
     },
-    "OperateSandbox": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
+    "Pipeline": {
+      "type": "object",
+      "properties": {
+        "pipeline": {
+          "type": "string",
+          "description": "The ID of the pipeline."
         },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "SANDBOX_START"
-              ],
-              "description": "The type of the action. Must be set to `SANDBOX_START`."
-            },
-            "sandbox_references": {
-              "type": "string",
-              "description": "Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`."
-            },
-            "sandbox_id": {
-              "type": "string",
-              "description": "ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`."
-            },
-            "referenced_action_id": {
-              "type": "integer",
-              "description": "ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`."
-            },
-            "referenced_sanbox_name": {
-              "type": "string",
-              "description": "Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`."
-            },
-            "tags": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`."
-            },
-            "sandbox_project_name": {
-              "type": "string",
-              "description": "Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`."
-            },
-            "days": {
-              "type": "integer",
-              "description": "Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "sandbox_references"
+        "on": {
+          "type": "string",
+          "enum": [
+            "CLICK",
+            "EVENT",
+            "SCHEDULE"
           ],
-          "additionalProperties": false
+          "default": "EVENT",
+          "description": "The trigger mode of the pipeline. Can be one of 'CLICK', 'EVENT', 'SCHEDULE'. If not set, the default value is 'EVENT'\n\n@default \"EVENT\""
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Set it if `on` is set to 'CLICK' or 'SCHEDULE'. The list of refs for which the pipeline will be triggered. Automatically set to 'NONE' if not provided."
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Event"
+          },
+          "description": "[The list of events](https://buddy.works/docs/yaml/yaml-schema#event-schema) for which the pipeline will be triggered. Set it if 'on' is set to 'EVENT'. Required if 'ON' is set or not set to 'EVENT'."
+        },
+        "trigger_conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TriggerCondition"
+          },
+          "description": "[The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the pipeline can be triggered."
+        },
+        "always_from_scratch": {
+          "type": "boolean",
+          "description": "Defines whether or not to upload everything from scratch on every execution."
+        },
+        "auto_clear_cache": {
+          "type": "boolean",
+          "description": "Defines whether or not to automatically clear cache before running the pipeline ."
+        },
+        "no_skip_to_most_recent": {
+          "type": "boolean",
+          "description": "Defines whether or not to skip execution to the most recent execution."
+        },
+        "do_not_create_commit_status": {
+          "type": "boolean",
+          "description": "Defines whether or not to omit sending commit statuses to Github or Gitlab upon execution."
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Required if the pipeline is set to 'on: SCHEDULE' and no 'cron' is specified. Defines when the pipeline execution should start. Format: 2016-11-18T12:38:16.000Z"
+        },
+        "delay": {
+          "type": "integer",
+          "description": "Required if the pipeline is set to 'on: SCHEDULE' and no 'cron' is specified. Defines the intervals in which the pipeline should be executed (in minutes)."
+        },
+        "cron": {
+          "type": "string",
+          "description": "Required if the pipeline is set to 'on: SCHEDULE' and neither 'start_date' nor 'delay' is specified. The standard CRON expression defining the execution schedule."
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Action"
+          },
+          "description": "The list of actions executed in the pipeline."
+        },
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Variable"
+          },
+          "description": "[The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use in the pipeline."
+        },
+        "ignore_fail_on_project_status": {
+          "type": "boolean",
+          "description": "If set to 'true' the status of a given pipeline will not impact the project status on the dashboard."
+        },
+        "execution_message_template": {
+          "type": "string",
+          "description": "The title of every execution in this pipeline. By default it is set to '$BUDDY_EXECUTION_REVISION_SUBJECT'."
+        },
+        "target_site_url": {
+          "type": "string",
+          "description": "The URL of the target website."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Set it, if you want the pipeline to be disabled."
+        },
+        "disabled_reason": {
+          "type": "string",
+          "description": "Specify the reason for disabling the pipeline."
+        },
+        "fetch_all_refs": {
+          "type": "boolean",
+          "description": "When the pipeline is run, Buddy fetches only one Git reference to the pipeline filesystem (branch, tag, or pull request). If the option is set to `true`, Buddy will be forced to fetch all Git references."
+        },
+        "permissions": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Permission"
+            }
+          ],
+          "description": "Define to set permissions for the pipeline."
+        },
+        "change_set_base": {
+          "type": "string",
+          "description": "Defines the way the changeset for deployments and trigger conditions between subsequent executions in the pipeline will be calculated. Available values: 'LATEST_RUN', 'LATEST_RUN_MATCHING_REF', 'PULL_REQUEST'. By default, it is set to 'LATEST_RUN'."
+        },
+        "cache_scope": {
+          "type": "string",
+          "description": "Docker cache scope. Available values: 'WORKSPACE', 'PROJECT', PIPELINE'. By default, it is set to 'PIPELINE'."
+        },
+        "description_required": {
+          "type": "boolean",
+          "description": "The default value is `false`. If set to `true` and the user does not provide a description when starting a pipeline, the pipeline won't run."
+        },
+        "pause_on_repeated_failures": {
+          "type": "integer",
+          "description": "Pauses the pipeline after `n` failed pipeline runs. Restricted to pipelines set to 'on: SCHEDULE'. Possible values: 1-100 (the default value is 100)."
         }
-      ]
+      },
+      "required": [
+        "pipeline"
+      ],
+      "additionalProperties": false
+    },
+    "PipelinePermission": {
+      "type": "object",
+      "properties": {
+        "others": {
+          "type": "string",
+          "enum": [
+            "DENIED",
+            "ALLOWED"
+          ],
+          "default": "ALLOWED",
+          "description": "AccessLevel for the group Others. Can be one of `DENIED`, `ALLOWED`. Default setting is `ALLOWED`.\n\n@default \"ALLOWED\""
+        },
+        "users": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "The list of users who will be granted a permission other than the Others group."
+        },
+        "groups": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "The group who will be granted a permission other than the Others group."
+        }
+      },
+      "additionalProperties": false
     },
     "PublishAndroidApp": {
       "allOf": [
@@ -7904,55 +8051,6 @@ const Schema = {
         }
       ]
     },
-    "Pushbullet": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "PUSHBULLET"
-              ],
-              "description": "The type of the action. Should be set to `PUSHBULLET`."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "content": {
-              "type": "string",
-              "description": "The content of the notification."
-            },
-            "device": {
-              "type": "string",
-              "description": "The name of the device to which the notification will be sent."
-            },
-            "link": {
-              "type": "string",
-              "description": "The link of the notification."
-            },
-            "title": {
-              "type": "string",
-              "description": "The title of the notification."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
     "PublishBundleToGooglePlay": {
       "allOf": [
         {
@@ -8022,6 +8120,55 @@ const Schema = {
             "application_id",
             "track",
             "apk_files",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Pushbullet": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "PUSHBULLET"
+              ],
+              "description": "The type of the action. Should be set to `PUSHBULLET`."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "content": {
+              "type": "string",
+              "description": "The content of the notification."
+            },
+            "device": {
+              "type": "string",
+              "description": "The name of the device to which the notification will be sent."
+            },
+            "link": {
+              "type": "string",
+              "description": "The link of the notification."
+            },
+            "title": {
+              "type": "string",
+              "description": "The title of the notification."
+            }
+          },
+          "required": [
+            "action",
+            "type",
             "integration"
           ],
           "additionalProperties": false
@@ -8331,6 +8478,22 @@ const Schema = {
         }
       ]
     },
+    "Replacement": {
+      "type": "object",
+      "properties": {
+        "replace_from": {
+          "type": "string"
+        },
+        "replace_to": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "replace_from",
+        "replace_to"
+      ],
+      "additionalProperties": false
+    },
     "Rollbar": {
       "allOf": [
         {
@@ -8501,74 +8664,6 @@ const Schema = {
         }
       ]
     },
-    "Sentry": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "SENTRY"
-              ],
-              "description": "The type of the action. Should be set to `SENTRY`."
-            },
-            "organization_slug": {
-              "type": "string",
-              "description": "The slug of the organization the release belongs to."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "version": {
-              "type": "string",
-              "description": "The version identifier of the release."
-            },
-            "environment": {
-              "type": "string",
-              "description": "The environment you’re deploying to."
-            },
-            "deploy_url": {
-              "type": "string",
-              "description": "The optional url that points to the deploy."
-            },
-            "release_url": {
-              "type": "string",
-              "description": "An optional commit reference."
-            },
-            "projects": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The list of project slugs that are involved in this release."
-            },
-            "repository": {
-              "type": "string",
-              "description": "If Sentry is integrated with repository provider, you can enter the project slug here. You can use the `$BUDDY_REPO_SLUG` variable as well."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "organization_slug",
-            "integration",
-            "version",
-            "environment",
-            "projects"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
     "RunDockerContainer": {
       "allOf": [
         {
@@ -8675,6 +8770,166 @@ const Schema = {
         }
       ]
     },
+    "SandboxPlaybook": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": true
+    },
+    "Screenshot": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "baseline": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Header"
+          }
+        },
+        "excluded_area": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "min_x": {
+                "type": "number"
+              },
+              "min_y": {
+                "type": "number"
+              },
+              "max_x": {
+                "type": "number"
+              },
+              "max_y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "url",
+              "min_x",
+              "min_y",
+              "max_x",
+              "max_y"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "url",
+        "baseline",
+        "headers",
+        "excluded_area"
+      ],
+      "additionalProperties": false
+    },
+    "Sentry": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "SENTRY"
+              ],
+              "description": "The type of the action. Should be set to `SENTRY`."
+            },
+            "organization_slug": {
+              "type": "string",
+              "description": "The slug of the organization the release belongs to."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "version": {
+              "type": "string",
+              "description": "The version identifier of the release."
+            },
+            "environment": {
+              "type": "string",
+              "description": "The environment you’re deploying to."
+            },
+            "deploy_url": {
+              "type": "string",
+              "description": "The optional url that points to the deploy."
+            },
+            "release_url": {
+              "type": "string",
+              "description": "An optional commit reference."
+            },
+            "projects": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The list of project slugs that are involved in this release."
+            },
+            "repository": {
+              "type": "string",
+              "description": "If Sentry is integrated with repository provider, you can enter the project slug here. You can use the `$BUDDY_REPO_SLUG` variable as well."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "organization_slug",
+            "integration",
+            "version",
+            "environment",
+            "projects"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Service": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MYSQL",
+            "MONGO_DB",
+            "MARIADB",
+            "POSTGRE_SQL",
+            "REDIS",
+            "MEMCACHED",
+            "ELASTICSEARCH",
+            "CUSTOM"
+          ]
+        },
+        "version": {
+          "type": "string"
+        },
+        "connection": {}
+      },
+      "required": [
+        "type"
+      ]
+    },
     "SetVariables": {
       "allOf": [
         {
@@ -8735,175 +8990,6 @@ const Schema = {
             "type",
             "variables",
             "key"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "ShopifyThemeKitCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "SHOPIFY_THEMEKIT_CLI"
-              ],
-              "description": "The type of the action. Should be set to `SHOPIFY_THEMEKIT_CLI`."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "ShopifyCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "SHOPIFY_CLI"
-              ],
-              "description": "The type of the action. Should be set to `SHOPIFY_CLI`."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
-            "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "SignAndroidApp": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "ANDROID_SIGN"
-              ],
-              "description": "The type of the action. Should be set to `ANDROID_SIGN`."
-            },
-            "local_path": {
-              "type": "string",
-              "description": "The path to the generated .apk file."
-            },
-            "application_name": {
-              "type": "string",
-              "description": "The name of the signed APK file."
-            },
-            "key_path": {
-              "type": "string",
-              "description": "The path to the authorization key file."
-            },
-            "build_tool_version": {
-              "type": "string",
-              "description": "The version of the Android Build Tools."
-            },
-            "keystore_password": {
-              "type": "string",
-              "description": "The keystore password."
-            },
-            "output_dir": {
-              "type": "string",
-              "description": "The directory in which the signed APK will be stored."
-            },
-            "key_alias": {
-              "type": "string",
-              "description": "The key alias name."
-            },
-            "key_password": {
-              "type": "string",
-              "description": "The key password."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "local_path",
-            "application_name",
-            "key_path",
-            "build_tool_version",
-            "keystore_password"
           ],
           "additionalProperties": false
         }
@@ -8998,39 +9084,6 @@ const Schema = {
         }
       ]
     },
-    "Sleep": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "SLEEP"
-              ],
-              "description": "The type of the action. Should be set to `SLEEP`."
-            },
-            "sleep_in_sec": {
-              "type": "integer",
-              "description": "The time (in seconds) to sleep. The value should be between 0 and 1200."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "sleep_in_sec"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
     "Shopify": {
       "allOf": [
         {
@@ -9076,6 +9129,175 @@ const Schema = {
             "type",
             "theme_name",
             "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ShopifyCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "SHOPIFY_CLI"
+              ],
+              "description": "The type of the action. Should be set to `SHOPIFY_CLI`."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ShopifyThemeKitCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "SHOPIFY_THEMEKIT_CLI"
+              ],
+              "description": "The type of the action. Should be set to `SHOPIFY_THEMEKIT_CLI`."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SignAndroidApp": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "ANDROID_SIGN"
+              ],
+              "description": "The type of the action. Should be set to `ANDROID_SIGN`."
+            },
+            "local_path": {
+              "type": "string",
+              "description": "The path to the generated .apk file."
+            },
+            "application_name": {
+              "type": "string",
+              "description": "The name of the signed APK file."
+            },
+            "key_path": {
+              "type": "string",
+              "description": "The path to the authorization key file."
+            },
+            "build_tool_version": {
+              "type": "string",
+              "description": "The version of the Android Build Tools."
+            },
+            "keystore_password": {
+              "type": "string",
+              "description": "The keystore password."
+            },
+            "output_dir": {
+              "type": "string",
+              "description": "The directory in which the signed APK will be stored."
+            },
+            "key_alias": {
+              "type": "string",
+              "description": "The key alias name."
+            },
+            "key_password": {
+              "type": "string",
+              "description": "The key password."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "local_path",
+            "application_name",
+            "key_path",
+            "build_tool_version",
+            "keystore_password"
           ],
           "additionalProperties": false
         }
@@ -9198,6 +9420,39 @@ const Schema = {
         }
       ]
     },
+    "Sleep": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "SLEEP"
+              ],
+              "description": "The type of the action. Should be set to `SLEEP`."
+            },
+            "sleep_in_sec": {
+              "type": "integer",
+              "description": "The time (in seconds) to sleep. The value should be between 0 and 1200."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "sleep_in_sec"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "SMSNotification": {
       "allOf": [
         {
@@ -9287,90 +9542,6 @@ const Schema = {
             "type",
             "execute_commands",
             "integration"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "SSHToSandbox": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "SANDBOX_EXEC"
-              ],
-              "description": "The type of the action. Must be set to `SANDBOX_EXEC`."
-            },
-            "working_directory": {
-              "type": "string",
-              "description": "The absolute or relative path on the sandbox."
-            },
-            "user": {
-              "type": "string",
-              "description": "The name of the local (to the sandbox server) user who uploads the files."
-            },
-            "commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The array of commands invoked on the sandbox."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`."
-            },
-            "sandbox_references": {
-              "type": "string",
-              "description": "Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`."
-            },
-            "sandbox_id": {
-              "type": "string",
-              "description": "ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`."
-            },
-            "referenced_action_id": {
-              "type": "integer",
-              "description": "ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`."
-            },
-            "referenced_sanbox_name": {
-              "type": "string",
-              "description": "Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`."
-            },
-            "tags": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`."
-            },
-            "sandbox_project_name": {
-              "type": "string",
-              "description": "Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`."
-            },
-            "days": {
-              "type": "integer",
-              "description": "Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`."
-            },
-            "execute_every_command": {
-              "type": "boolean",
-              "description": "If set to `true` all commands will be executed regardless of the result of the previous command."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "commands",
-            "sandbox_references"
           ],
           "additionalProperties": false
         }
@@ -9502,6 +9673,228 @@ const Schema = {
         }
       ]
     },
+    "SSHToSandbox": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "SANDBOX_EXEC"
+              ],
+              "description": "The type of the action. Must be set to `SANDBOX_EXEC`."
+            },
+            "working_directory": {
+              "type": "string",
+              "description": "The absolute or relative path on the sandbox."
+            },
+            "user": {
+              "type": "string",
+              "description": "The name of the local (to the sandbox server) user who uploads the files."
+            },
+            "commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The array of commands invoked on the sandbox."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`."
+            },
+            "sandbox_references": {
+              "type": "string",
+              "description": "Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`."
+            },
+            "sandbox_id": {
+              "type": "string",
+              "description": "ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`."
+            },
+            "referenced_action_id": {
+              "type": "integer",
+              "description": "ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`."
+            },
+            "referenced_sanbox_name": {
+              "type": "string",
+              "description": "Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`."
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`."
+            },
+            "sandbox_project_name": {
+              "type": "string",
+              "description": "Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`."
+            },
+            "days": {
+              "type": "integer",
+              "description": "Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`."
+            },
+            "execute_every_command": {
+              "type": "boolean",
+              "description": "If set to `true` all commands will be executed regardless of the result of the previous command."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "commands",
+            "sandbox_references"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SSLVerify": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The name of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "SSL_VERIFY"
+              ],
+              "description": "The type of the action. Should be set to `SSL_VERIFY`."
+            },
+            "website": {
+              "type": "string",
+              "description": "The URL of the website to be monitored."
+            },
+            "valid_for_days": {
+              "type": "integer",
+              "description": "Validation period for SSL certificate."
+            },
+            "port": {
+              "type": "string",
+              "description": "The port for the connection. By default it is 443."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "website",
+            "valid_for_days"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "StackHawkCLI": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "STACK_HAWK_CLI"
+              ],
+              "description": "The type of the action. Should be set to `STACK_HAWK_CLI`."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "integration": {
+              "type": "string",
+              "description": "The ID of the integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The command that will be executed only on the first run."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "integration"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SyncPath": {
+      "type": "object",
+      "properties": {
+        "pipeline_path": {
+          "type": "string"
+        },
+        "vm_path": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "PIPELINE_TO_VM",
+            "VM_TO_PIPELINE"
+          ]
+        },
+        "excludes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pipeline_path",
+        "vm_path",
+        "direction",
+        "excludes"
+      ],
+      "additionalProperties": false
+    },
+    "Tag": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "value"
+      ],
+      "additionalProperties": false
+    },
     "TCPMonitoring": {
       "allOf": [
         {
@@ -9593,7 +9986,7 @@ const Schema = {
         }
       ]
     },
-    "SSLVerify": {
+    "TerraformCLI": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -9608,28 +10001,36 @@ const Schema = {
             "type": {
               "type": "string",
               "enum": [
-                "SSL_VERIFY"
+                "TERRAFORM"
               ],
-              "description": "The type of the action. Should be set to `SSL_VERIFY`."
+              "description": "The type of the action. Should be set to `TERRAFORM`."
             },
-            "website": {
+            "execute_commands": {
               "type": "string",
-              "description": "The URL of the website to be monitored."
+              "description": "The commands that will be executed."
             },
-            "valid_for_days": {
-              "type": "integer",
-              "description": "Validation period for SSL certificate."
-            },
-            "port": {
+            "integration": {
               "type": "string",
-              "description": "The port for the connection. By default it is 443."
+              "description": "The ID of the Google or Amazon integration."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be `SH`."
+            },
+            "setup_commands": {
+              "type": "string",
+              "description": "The command that will be executed only on the first run."
+            },
+            "version": {
+              "type": "string",
+              "description": "The version of the Terraform CLI."
             }
           },
           "required": [
             "action",
             "type",
-            "website",
-            "valid_for_days"
+            "execute_commands",
+            "version"
           ],
           "additionalProperties": false
         }
@@ -9737,6 +10138,98 @@ const Schema = {
         }
       ]
     },
+    "TriggerCondition": {
+      "type": "object",
+      "properties": {
+        "trigger_condition": {
+          "type": "string",
+          "enum": [
+            "ON_CHANGE",
+            "ON_CHANGE_AT_PATH",
+            "VAR_IS",
+            "VAR_IS_NOT",
+            "VAR_CONTAINS",
+            "VAR_NOT_CONTAINS",
+            "VAR_LESS_THAN",
+            "VAR_LESS_THAN_OR_EQUAL",
+            "VAR_GREATER_THAN",
+            "VAR_GREATER_THAN_OR_EQUAL",
+            "DAY",
+            "HOUR",
+            "TRIGGERING_USER_IS",
+            "TRIGGERING_USER_IS_NOT",
+            "TRIGGERING_USER_IS_IN_GROUP",
+            "TRIGGERING_USER_IS_NOT_IN_GROUP",
+            "SUCCESS_PIPELINE"
+          ],
+          "description": "Defines when the action should be run. Can be one of 'ON_CHANGE', 'ON_CHANGE_AT_PATH', 'VAR_IS', 'VAR_IS_NOT', 'VAR_CONTAINS', 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL', 'DAY', 'HOUR', 'TRIGGERING_USER_IS', 'TRIGGERING_USER_IS_NOT', 'TRIGGERING_USER_IS_IN_GROUP', 'TRIGGERING_USER_IS_NOT_IN_GROUP', or 'SUCCESS_PIPELINE', 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT' (last two can only be set in the action)."
+        },
+        "trigger_condition_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Required when 'trigger_condition' is set to 'ON_CHANGE_AT_PATH'."
+        },
+        "trigger_variable_key": {
+          "type": "string",
+          "description": "Required when 'trigger_condition' is set to 'VAR_IS', 'VAR_IS_NOT' or 'VAR_CONTAINS' or 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL'. Defines the name of the desired variable."
+        },
+        "trigger_variable_value": {
+          "type": "string",
+          "description": "Required when 'trigger_condition' is set to 'VAR_IS', 'VAR_IS_NOT' or 'VAR_CONTAINS' or 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL'. Defines the value of the desired variable which will be compared with its current value."
+        },
+        "trigger_hours": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Available when 'trigger_condition' is set to 'HOUR'. Defines the time – by default running from 1 to 24."
+        },
+        "trigger_days": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Available when 'trigger_condition' is set to 'DAY'. Defines the days running from 1 to 7 where 1 is for Monday."
+        },
+        "zone_id": {
+          "type": "string",
+          "description": "Available when 'trigger_condition' is set to 'DAY' or 'HOUR'. Defines the timezone (by default it is UTC) and takes values from [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)."
+        },
+        "trigger_project_name": {
+          "type": "string",
+          "description": "Required when 'trigger_condition' is set to 'SUCCESS_PIPELINE'. Defines the name of the project in which the 'trigger_pipeline_name' is."
+        },
+        "trigger_pipeline_name": {
+          "type": "string",
+          "description": "Required when 'trigger_condition' is set to 'SUCCESS_PIPELINE'. Defines the name of the pipeline."
+        },
+        "trigger_action_name": {
+          "type": "string",
+          "description": "Required when 'trigger_condition' is set to 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT'. Defines the name of the action."
+        },
+        "trigger_status": {
+          "type": "string",
+          "enum": [
+            "SUCCESSFUL",
+            "SKIPPED",
+            "SUPRESSED",
+            "FAILED"
+          ],
+          "description": "Required when 'trigger_condition' is set to 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT'. Defines the status that the action should or shouldn't have. Can be one of 'SUCCESSFUL', 'SKIPPED', 'SUPRESSED' or 'FAILED'."
+        },
+        "trigger_user": {
+          "type": "string",
+          "description": "Required when 'trigger_condition' is set to 'TRIGGERING_USER_IS' or 'TRIGGERING_USER_IS_NOT'. Defines the email address of the user."
+        },
+        "trigger_group": {
+          "type": "string",
+          "description": "Required when 'trigger_condition' is set to 'TRIGGERING_USER_IS_IN_GROUP' or 'TRIGGERING_USER_IS_NOT_IN_GROUP'. Defines the name of the group."
+        }
+      },
+      "additionalProperties": false
+    },
     "TriggerPipeline": {
       "allOf": [
         {
@@ -9809,188 +10302,6 @@ const Schema = {
             "next_pipeline_id",
             "next_project_name",
             "next_pipeline_name"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "TerraformCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The name of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "TERRAFORM"
-              ],
-              "description": "The type of the action. Should be set to `TERRAFORM`."
-            },
-            "execute_commands": {
-              "type": "string",
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the Google or Amazon integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be `SH`."
-            },
-            "setup_commands": {
-              "type": "string",
-              "description": "The command that will be executed only on the first run."
-            },
-            "version": {
-              "type": "string",
-              "description": "The version of the Terraform CLI."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
-            "version"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "VisualTests": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "VISUAL_TESTS"
-              ],
-              "description": "The type of the action. Should be set to `VISUAL_TESTS`."
-            },
-            "browser_type": {
-              "type": "string",
-              "enum": [
-                "CHROME",
-                "FIREFOX"
-              ],
-              "description": "Defines which browser will be used in tests. Can be one of `CHROME` or `FIREFOX`."
-            },
-            "resolution_width": {
-              "type": "integer",
-              "description": "Resolution width."
-            },
-            "resolution_height": {
-              "type": "integer",
-              "description": "Resolution height."
-            },
-            "pixel_tolerance_level": {
-              "type": "number",
-              "description": "The acceptable level of pixel tolerance. Allowed number of decimal places is two."
-            },
-            "images_history_limit": {
-              "type": "integer",
-              "description": "The number of items that should be kept in history."
-            },
-            "screenshots": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Screenshot"
-              },
-              "description": "Defines the URLs of the sites that will be tested. Contains information about baseline, headers and excluded areas."
-            },
-            "headers": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Header"
-              },
-              "description": "The headers that will be sent with the request."
-            },
-            "permissions": {
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/Permission"
-                }
-              ],
-              "description": "Define to set permissions for the action."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "browser_type",
-            "resolution_width",
-            "resolution_height",
-            "pixel_tolerance_level",
-            "images_history_limit",
-            "screenshots"
-          ],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "StackHawkCLI": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ActionCommon"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "description": "The ID of the action."
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "STACK_HAWK_CLI"
-              ],
-              "description": "The type of the action. Should be set to `STACK_HAWK_CLI`."
-            },
-            "execute_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The commands that will be executed."
-            },
-            "integration": {
-              "type": "string",
-              "description": "The ID of the integration."
-            },
-            "shell": {
-              "type": "string",
-              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
-            },
-            "setup_commands": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "The command that will be executed only on the first run."
-            }
-          },
-          "required": [
-            "action",
-            "type",
-            "execute_commands",
-            "integration"
           ],
           "additionalProperties": false
         }
@@ -10087,6 +10398,137 @@ const Schema = {
             "login",
             "password",
             "port"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Variable": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The name of the variable."
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the variable. If the 'type' is 'FILE', the value must be Base64 encoded."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "VAR",
+            "SSH_KEY",
+            "FILE"
+          ],
+          "description": "The type of the added variable. Can be one of 'VAR', 'SSH_KEY' or 'FILE'."
+        },
+        "description": {
+          "type": "string",
+          "description": "The optional description of the variable."
+        },
+        "encrypted": {
+          "type": "boolean",
+          "description": "When set to 'true' the variable value will be encrypted and hidden."
+        },
+        "settable": {
+          "type": "boolean",
+          "description": "When set to 'true' the variable value can be shifted between subsequent actions or executions as well as pipelines."
+        },
+        "file_place": {
+          "type": "string",
+          "description": "Available values: 'CONTAINER', 'NONE'. Set if type is 'SSH_KEY' or 'FILE'. If it's 'NONE', the variable can be used as a parameter in an action. For 'CONTAINER', the given file/key is additionally copied to an action container on each run."
+        },
+        "file_path": {
+          "type": "string",
+          "description": "Specifies where to copy the file on each run. Set if 'type' is 'SSH_KEY' or 'FILE'."
+        },
+        "file_chmod": {
+          "type": "string",
+          "description": "File permission set on copy to a container on each run. Set if 'type' is 'SSH_KEY' or 'FILE'."
+        }
+      },
+      "required": [
+        "key",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "VisualTests": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "VISUAL_TESTS"
+              ],
+              "description": "The type of the action. Should be set to `VISUAL_TESTS`."
+            },
+            "browser_type": {
+              "type": "string",
+              "enum": [
+                "CHROME",
+                "FIREFOX"
+              ],
+              "description": "Defines which browser will be used in tests. Can be one of `CHROME` or `FIREFOX`."
+            },
+            "resolution_width": {
+              "type": "integer",
+              "description": "Resolution width."
+            },
+            "resolution_height": {
+              "type": "integer",
+              "description": "Resolution height."
+            },
+            "pixel_tolerance_level": {
+              "type": "number",
+              "description": "The acceptable level of pixel tolerance. Allowed number of decimal places is two."
+            },
+            "images_history_limit": {
+              "type": "integer",
+              "description": "The number of items that should be kept in history."
+            },
+            "screenshots": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Screenshot"
+              },
+              "description": "Defines the URLs of the sites that will be tested. Contains information about baseline, headers and excluded areas."
+            },
+            "headers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Header"
+              },
+              "description": "The headers that will be sent with the request."
+            },
+            "permissions": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/Permission"
+                }
+              ],
+              "description": "Define to set permissions for the action."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "browser_type",
+            "resolution_width",
+            "resolution_height",
+            "pixel_tolerance_level",
+            "images_history_limit",
+            "screenshots"
           ],
           "additionalProperties": false
         }
@@ -10222,7 +10664,7 @@ const Schema = {
         }
       ]
     },
-    "Windows": {
+    "WebDAV": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -10237,58 +10679,59 @@ const Schema = {
             "type": {
               "type": "string",
               "enum": [
-                "NATIVE_BUILD_WINDOWS"
+                "WEB_DAV"
               ],
-              "description": "The type of the action. Should be set to `NATIVE_BUILD_WINDOWS`."
+              "description": "The type of the action. Should be set to `WEB_DAV`."
             },
-            "working_directory": {
+            "login": {
               "type": "string",
-              "description": "The directory in which the pipeline filesystem will be mounted."
+              "description": "The username required to connect to the server."
             },
-            "commands": {
+            "password": {
+              "type": "string",
+              "description": "The password required to connect to the server."
+            },
+            "web_dav_url": {
+              "type": "string",
+              "description": "The URL to your WebDAV server."
+            },
+            "input_type": {
+              "type": "string",
+              "enum": [
+                "SCM_REPOSITORY",
+                "BUILD_ARTIFACTS"
+              ],
+              "description": "Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`."
+            },
+            "local_path": {
+              "type": "string",
+              "description": "The path in the repository."
+            },
+            "remote_path": {
+              "type": "string",
+              "description": "The absolute or relative path on the remote server."
+            },
+            "deployment_excludes": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "description": "The commands that will be executed."
+              "description": "The paths and/or files that will be left out during the deployment."
             },
-            "execute_every_command": {
-              "type": "boolean",
-              "description": "If set to `true` all commands will be executed regardless of the result of the previous command."
-            },
-            "sync_paths": {
+            "deployment_includes": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/SyncPath"
+                "type": "string"
               },
-              "description": "Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`."
-            },
-            "vm_from_prev_action": {
-              "type": "boolean",
-              "description": "Set to `true` if you want the action to use the VM from the previous Windows action."
-            },
-            "vm_action_name": {
-              "type": "string",
-              "description": "The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used."
-            },
-            "distribution": {
-              "type": "string",
-              "description": "Defines the image used to create the VM. Use `WINDOWS_SERVER_2019` for the default image, `AMI` for a custom `AMI`."
-            },
-            "ami": {
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/Ami"
-                }
-              ],
-              "description": "Set if `distribution` is set to `AMI`."
+              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
             }
           },
           "required": [
             "action",
             "type",
-            "working_directory",
-            "commands"
+            "login",
+            "password",
+            "web_dav_url"
           ],
           "additionalProperties": false
         }
@@ -10358,7 +10801,7 @@ const Schema = {
         }
       ]
     },
-    "WebDAV": {
+    "Windows": {
       "allOf": [
         {
           "$ref": "#/definitions/ActionCommon"
@@ -10373,59 +10816,58 @@ const Schema = {
             "type": {
               "type": "string",
               "enum": [
-                "WEB_DAV"
+                "NATIVE_BUILD_WINDOWS"
               ],
-              "description": "The type of the action. Should be set to `WEB_DAV`."
+              "description": "The type of the action. Should be set to `NATIVE_BUILD_WINDOWS`."
             },
-            "login": {
+            "working_directory": {
               "type": "string",
-              "description": "The username required to connect to the server."
+              "description": "The directory in which the pipeline filesystem will be mounted."
             },
-            "password": {
-              "type": "string",
-              "description": "The password required to connect to the server."
-            },
-            "web_dav_url": {
-              "type": "string",
-              "description": "The URL to your WebDAV server."
-            },
-            "input_type": {
-              "type": "string",
-              "enum": [
-                "SCM_REPOSITORY",
-                "BUILD_ARTIFACTS"
-              ],
-              "description": "Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`."
-            },
-            "local_path": {
-              "type": "string",
-              "description": "The path in the repository."
-            },
-            "remote_path": {
-              "type": "string",
-              "description": "The absolute or relative path on the remote server."
-            },
-            "deployment_excludes": {
+            "commands": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "description": "The paths and/or files that will be left out during the deployment."
+              "description": "The commands that will be executed."
             },
-            "deployment_includes": {
+            "execute_every_command": {
+              "type": "boolean",
+              "description": "If set to `true` all commands will be executed regardless of the result of the previous command."
+            },
+            "sync_paths": {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "#/definitions/SyncPath"
               },
-              "description": "The exceptions from the ignore patterns set in `deployment_excludes`."
+              "description": "Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`."
+            },
+            "vm_from_prev_action": {
+              "type": "boolean",
+              "description": "Set to `true` if you want the action to use the VM from the previous Windows action."
+            },
+            "vm_action_name": {
+              "type": "string",
+              "description": "The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used."
+            },
+            "distribution": {
+              "type": "string",
+              "description": "Defines the image used to create the VM. Use `WINDOWS_SERVER_2019` for the default image, `AMI` for a custom `AMI`."
+            },
+            "ami": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/Ami"
+                }
+              ],
+              "description": "Set if `distribution` is set to `AMI`."
             }
           },
           "required": [
             "action",
             "type",
-            "login",
-            "password",
-            "web_dav_url"
+            "working_directory",
+            "commands"
           ],
           "additionalProperties": false
         }
@@ -10609,448 +11051,6 @@ const Schema = {
             "destination"
           ],
           "additionalProperties": false
-        }
-      ]
-    },
-    "Action": {
-      "oneOf": [
-        {
-          "$ref": "#/definitions/AWSCDKCLI"
-        },
-        {
-          "$ref": "#/definitions/AWSCodePipeline"
-        },
-        {
-          "$ref": "#/definitions/AWSCodeDeploy"
-        },
-        {
-          "$ref": "#/definitions/AWSAppRunnerDeploy"
-        },
-        {
-          "$ref": "#/definitions/AWSAppRunnerDeploy"
-        },
-        {
-          "$ref": "#/definitions/AWSCLI"
-        },
-        {
-          "$ref": "#/definitions/AmazonS3"
-        },
-        {
-          "$ref": "#/definitions/AWSCLI2"
-        },
-        {
-          "$ref": "#/definitions/AWSElasticBeanstalk"
-        },
-        {
-          "$ref": "#/definitions/AmazonElasticContainerService"
-        },
-        {
-          "$ref": "#/definitions/AWSElasticBeanstalkMonitoring"
-        },
-        {
-          "$ref": "#/definitions/AWSLambda"
-        },
-        {
-          "$ref": "#/definitions/AzureCLI"
-        },
-        {
-          "$ref": "#/definitions/AWSLambdaDeploy"
-        },
-        {
-          "$ref": "#/definitions/BackblazeB2"
-        },
-        {
-          "$ref": "#/definitions/Blackfire"
-        },
-        {
-          "$ref": "#/definitions/Bugsnag"
-        },
-        {
-          "$ref": "#/definitions/BuildAReactNativeApp"
-        },
-        {
-          "$ref": "#/definitions/AzureStorage"
-        },
-        {
-          "$ref": "#/definitions/BuildACordovaApp"
-        },
-        {
-          "$ref": "#/definitions/BuildDockerImage"
-        },
-        {
-          "$ref": "#/definitions/BuildAFastlaneAppiOS"
-        },
-        {
-          "$ref": "#/definitions/BuildFlutterApp"
-        },
-        {
-          "$ref": "#/definitions/BuildFlutterAppiOS"
-        },
-        {
-          "$ref": "#/definitions/ClearCache"
-        },
-        {
-          "$ref": "#/definitions/BuildAndroidApp"
-        },
-        {
-          "$ref": "#/definitions/BuildApplication"
-        },
-        {
-          "$ref": "#/definitions/BuildMultiArchImage"
-        },
-        {
-          "$ref": "#/definitions/Cloudflare"
-        },
-        {
-          "$ref": "#/definitions/Cloudfront"
-        },
-        {
-          "$ref": "#/definitions/CodeSignAndExportAnIOSApp"
-        },
-        {
-          "$ref": "#/definitions/CopyFilesAction"
-        },
-        {
-          "$ref": "#/definitions/CompressImages"
-        },
-        {
-          "$ref": "#/definitions/CreateNewSandbox"
-        },
-        {
-          "$ref": "#/definitions/Datadog"
-        },
-        {
-          "$ref": "#/definitions/DeployToAppStoreConnect"
-        },
-        {
-          "$ref": "#/definitions/DigitalOcean"
-        },
-        {
-          "$ref": "#/definitions/DigitalOceanCDN"
-        },
-        {
-          "$ref": "#/definitions/Docker"
-        },
-        {
-          "$ref": "#/definitions/Discord"
-        },
-        {
-          "$ref": "#/definitions/DigitalOceanSpaces"
-        },
-        {
-          "$ref": "#/definitions/DatadogServiceCheck"
-        },
-        {
-          "$ref": "#/definitions/DigitalOceanCLI"
-        },
-        {
-          "$ref": "#/definitions/DockerCLI"
-        },
-        {
-          "$ref": "#/definitions/DownloadBackblazeB2"
-        },
-        {
-          "$ref": "#/definitions/DockerfileLinter"
-        },
-        {
-          "$ref": "#/definitions/DownloadFromSandbox"
-        },
-        {
-          "$ref": "#/definitions/DownloadFTP"
-        },
-        {
-          "$ref": "#/definitions/DownloadFTPS"
-        },
-        {
-          "$ref": "#/definitions/EmailNotification"
-        },
-        {
-          "$ref": "#/definitions/DownloadS3"
-        },
-        {
-          "$ref": "#/definitions/DownloadSFTP"
-        },
-        {
-          "$ref": "#/definitions/DownloadGCS"
-        },
-        {
-          "$ref": "#/definitions/FTPS"
-        },
-        {
-          "$ref": "#/definitions/Firebase"
-        },
-        {
-          "$ref": "#/definitions/ESLint"
-        },
-        {
-          "$ref": "#/definitions/FTP"
-        },
-        {
-          "$ref": "#/definitions/GenerateVariables"
-        },
-        {
-          "$ref": "#/definitions/GhostInspector"
-        },
-        {
-          "$ref": "#/definitions/GitPush"
-        },
-        {
-          "$ref": "#/definitions/GitcryptUnlock"
-        },
-        {
-          "$ref": "#/definitions/GitcryptLock"
-        },
-        {
-          "$ref": "#/definitions/GhostInspectorCLI"
-        },
-        {
-          "$ref": "#/definitions/GitHubCLI"
-        },
-        {
-          "$ref": "#/definitions/GitLabCLI"
-        },
-        {
-          "$ref": "#/definitions/GKEApplyDeployment"
-        },
-        {
-          "$ref": "#/definitions/GitHubRelease"
-        },
-        {
-          "$ref": "#/definitions/GKERunJob"
-        },
-        {
-          "$ref": "#/definitions/GKERunPod"
-        },
-        {
-          "$ref": "#/definitions/GoogleCDN"
-        },
-        {
-          "$ref": "#/definitions/GKESetImage"
-        },
-        {
-          "$ref": "#/definitions/GoogleAppEngine"
-        },
-        {
-          "$ref": "#/definitions/GoogleChat"
-        },
-        {
-          "$ref": "#/definitions/GoogleCloudRun"
-        },
-        {
-          "$ref": "#/definitions/GoogleCloudStorage"
-        },
-        {
-          "$ref": "#/definitions/KubernetesRunHelmCMDs"
-        },
-        {
-          "$ref": "#/definitions/GoogleCloudCLI"
-        },
-        {
-          "$ref": "#/definitions/GoogleComputeEngine"
-        },
-        {
-          "$ref": "#/definitions/GoogleFunctions"
-        },
-        {
-          "$ref": "#/definitions/KubernetesRunHelmCMDs"
-        },
-        {
-          "$ref": "#/definitions/GoogleFunctionsDeploy"
-        },
-        {
-          "$ref": "#/definitions/Honeybadger"
-        },
-        {
-          "$ref": "#/definitions/HTTPRequest"
-        },
-        {
-          "$ref": "#/definitions/HerokuCLI"
-        },
-        {
-          "$ref": "#/definitions/Heroku"
-        },
-        {
-          "$ref": "#/definitions/JMeterCLI"
-        },
-        {
-          "$ref": "#/definitions/KubernetesApplyDeployment"
-        },
-        {
-          "$ref": "#/definitions/KubernetesRunJob"
-        },
-        {
-          "$ref": "#/definitions/KubernetesSetImage"
-        },
-        {
-          "$ref": "#/definitions/KubernetesRunPod"
-        },
-        {
-          "$ref": "#/definitions/KubernetesKubectl"
-        },
-        {
-          "$ref": "#/definitions/Lighthouse"
-        },
-        {
-          "$ref": "#/definitions/Linux"
-        },
-        {
-          "$ref": "#/definitions/LinkChecker"
-        },
-        {
-          "$ref": "#/definitions/MacOS"
-        },
-        {
-          "$ref": "#/definitions/MicrosoftTeams"
-        },
-        {
-          "$ref": "#/definitions/MicrosoftAzure"
-        },
-        {
-          "$ref": "#/definitions/Loggly"
-        },
-        {
-          "$ref": "#/definitions/Netlify"
-        },
-        {
-          "$ref": "#/definitions/NewRelicCLI"
-        },
-        {
-          "$ref": "#/definitions/PassArguments"
-        },
-        {
-          "$ref": "#/definitions/PingMonitoring"
-        },
-        {
-          "$ref": "#/definitions/OperateSandbox"
-        },
-        {
-          "$ref": "#/definitions/PublishAndroidApp"
-        },
-        {
-          "$ref": "#/definitions/Pushbullet"
-        },
-        {
-          "$ref": "#/definitions/PublishBundleToGooglePlay"
-        },
-        {
-          "$ref": "#/definitions/PushDockerImage"
-        },
-        {
-          "$ref": "#/definitions/Pushover"
-        },
-        {
-          "$ref": "#/definitions/Rackspace"
-        },
-        {
-          "$ref": "#/definitions/Raygun"
-        },
-        {
-          "$ref": "#/definitions/Replace"
-        },
-        {
-          "$ref": "#/definitions/Rollbar"
-        },
-        {
-          "$ref": "#/definitions/Rsync"
-        },
-        {
-          "$ref": "#/definitions/Sentry"
-        },
-        {
-          "$ref": "#/definitions/RunDockerContainer"
-        },
-        {
-          "$ref": "#/definitions/SetVariables"
-        },
-        {
-          "$ref": "#/definitions/ShopifyThemeKitCLI"
-        },
-        {
-          "$ref": "#/definitions/ShopifyCLI"
-        },
-        {
-          "$ref": "#/definitions/SignAndroidApp"
-        },
-        {
-          "$ref": "#/definitions/SFTP"
-        },
-        {
-          "$ref": "#/definitions/Sleep"
-        },
-        {
-          "$ref": "#/definitions/Shopify"
-        },
-        {
-          "$ref": "#/definitions/SignBundle"
-        },
-        {
-          "$ref": "#/definitions/SlackNotification"
-        },
-        {
-          "$ref": "#/definitions/SMSNotification"
-        },
-        {
-          "$ref": "#/definitions/Snyk"
-        },
-        {
-          "$ref": "#/definitions/SSHToSandbox"
-        },
-        {
-          "$ref": "#/definitions/SplitTests"
-        },
-        {
-          "$ref": "#/definitions/SSHCommand"
-        },
-        {
-          "$ref": "#/definitions/TCPMonitoring"
-        },
-        {
-          "$ref": "#/definitions/TelegramNotification"
-        },
-        {
-          "$ref": "#/definitions/SSLVerify"
-        },
-        {
-          "$ref": "#/definitions/TransferToSandbox"
-        },
-        {
-          "$ref": "#/definitions/TriggerPipeline"
-        },
-        {
-          "$ref": "#/definitions/TerraformCLI"
-        },
-        {
-          "$ref": "#/definitions/VisualTests"
-        },
-        {
-          "$ref": "#/definitions/StackHawkCLI"
-        },
-        {
-          "$ref": "#/definitions/UpCloud"
-        },
-        {
-          "$ref": "#/definitions/Vultr"
-        },
-        {
-          "$ref": "#/definitions/WaitForApproval"
-        },
-        {
-          "$ref": "#/definitions/Windows"
-        },
-        {
-          "$ref": "#/definitions/WebMonitoring"
-        },
-        {
-          "$ref": "#/definitions/WebDAV"
-        },
-        {
-          "$ref": "#/definitions/WPCLI"
-        },
-        {
-          "$ref": "#/definitions/Xcode"
-        },
-        {
-          "$ref": "#/definitions/ZIP"
         }
       ]
     }

@@ -176,6 +176,10 @@ scraper
         mainDefinition.definitions!.Action = {
             oneOf: actionNames.map(name => ({ $ref: `#/definitions/${name}` }))
         };
+
+        mainDefinition.definitions = Object.fromEntries(
+            Object.entries(mainDefinition.definitions!).toSorted(([a], [b]) => a.localeCompare(b))
+        );
     })
     .then(() => fs.writeFile('../types/schema.json', JSON.stringify(mainDefinition, null, 2)))
     .then(() =>
