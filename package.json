@@ -5,7 +5,7 @@
         "build": "turbo run build",
         "changeset": "changeset",
         "check": "biome check .",
-        "do-release": "turbo run build && changeset publish",
+        "do-release": "turbo run build && pnpm publish --recursive",
         "format": "biome format --write",
         "lint": "turbo run lint",
         "lint:changed": "turbo run lint:changed",
