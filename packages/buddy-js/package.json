@@ -1,5 +1,6 @@
 {
     "name": "buddy-js",
+    "version": "0.0.0",
     "exports": {
         ".": {
             "require": "./lib/cjs/index.js",
