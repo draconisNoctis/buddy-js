@@ -1,6 +1,23 @@
 {
     "name": "buddy-js",
-    "type": "module",
-    "scripts": {},
-    "dependencies": {}
+    "exports": {
+        ".": {
+            "require": "./lib/cjs/index.js",
+            "import": "./lib/esm/index.js",
+            "types": "./src/index.ts"
+        },
+        "./package.json": "./package.json"
+    },
+    "main": "./lib/cjs/index.js",
+    "typings": "./src/index.ts",
+    "scripts": {
+        "build": "tsc && tsc -p tsconfig.esm.json",
+        "postbuild": "echo '{ \"type\": \"module\" }' > lib/esm/package.json"
+    },
+    "dependencies": {
+        "@buddy-js/types": "workspace:*"
+    },
+    "devDependencies": {
+        "typescript": "5.6.3"
+    }
 }
