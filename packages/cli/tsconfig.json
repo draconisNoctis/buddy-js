@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "module": "commonjs",
+        "outDir": "dist",
+        "rootDir": "src",
+        "strict": true,
+        "strictNullChecks": true,
+        "noImplicitOverride": true,
+        "target": "es2022",
+        "esModuleInterop": true,
+        "resolveJsonModule": true
+    },
+    "include": ["./src/**/*"]
+}

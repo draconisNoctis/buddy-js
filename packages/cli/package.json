@@ -1,0 +1,61 @@
+{
+    "name": "@buddy-js/cli",
+    "version": "0.0.0",
+    "description": "A new CLI generated with oclif",
+    "keywords": ["oclif"],
+    "homepage": "https://github.com/draconisNoctis/buddy-js",
+    "bugs": "https://github.com/draconisNoctis/buddy-js/issues",
+    "repository": "draconisNoctis/buddy-js",
+    "license": "MIT",
+    "author": "Mark Wecke",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "bin": {
+        "buddyjs": "./bin/run.js"
+    },
+    "files": ["/bin", "/dist", "/oclif.manifest.json"],
+    "scripts": {
+        "build": "rm -rf dist && tsc -b",
+        "prepack": "oclif manifest && oclif readme",
+        "postpack": "rm -f oclif.manifest.json",
+        "test": "node --require ts-node/register --test 'test/**/*.test.ts' 'src/**/*.spec.ts'",
+        "test:watch": "node --require ts-node/register --test --watch 'test/**/*.test.ts' 'src/**/*.spec.ts'",
+        "version": "oclif readme && git add README.md"
+    },
+    "oclif": {
+        "bin": "buddyjs",
+        "commands": "./dist/commands",
+        "dirname": "buddyjs",
+        "plugins": ["@oclif/plugin-help"],
+        "topicSeparator": " ",
+        "topics": {
+            "hello": {
+                "description": "Say hello to the world and others"
+            }
+        }
+    },
+    "dependencies": {
+        "@buddy-js/types": "workspace:*",
+        "@oclif/core": "4.0.27",
+        "@oclif/plugin-help": "6.2.14",
+        "ajv": "8.17.1",
+        "ajv-draft-04": "1.0.0",
+        "ajv-formats": "3.0.1",
+        "buddy-js": "workspace:*",
+        "chalk": "4.1.2",
+        "glob": "11.0.0",
+        "sanitize-filename": "1.6.3",
+        "yaml": "2.6.0"
+    },
+    "devDependencies": {
+        "@oclif/prettier-config": "0.2.1",
+        "@oclif/test": "4.0.9",
+        "@types/node": "22.7.5",
+        "oclif": "4.15.6",
+        "ts-node": "10.9.2",
+        "typescript": "5.6.3"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}

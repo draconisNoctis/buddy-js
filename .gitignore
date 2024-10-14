@@ -8,6 +8,7 @@ dist
 app.config.timestamp_*.js
 .turbo
 node_modules
+tsconfig.tsbuildinfo
 
 # Environment
 .env
