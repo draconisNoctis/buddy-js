@@ -1,6 +1,6 @@
 {
-    "name": "dsa-wiki",
-    "type": "module",
+    "name": "@buddy-js/root",
+    "private": true,
     "scripts": {
         "build": "turbo run build",
         "check": "biome check .",
