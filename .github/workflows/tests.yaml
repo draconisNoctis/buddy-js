@@ -1,0 +1,93 @@
+name: Run Checks
+
+on: [push]
+
+jobs:
+    'Unit_Tests':
+        concurrency: ci-unit-tests-${{ github.ref }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+
+            - name: Install Node
+              uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
+              with:
+                  node-version-file: '.nvmrc'
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+
+            - name: Install
+              run: |
+                  pnpm install
+
+            - name: Unit-Tests
+              run: |
+                  pnpm run test
+    'Build':
+        concurrency: ci-build-${{ github.ref }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+
+            - name: Install Node
+              uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
+              with:
+                  node-version-file: '.nvmrc'
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+
+            - name: Install
+              run: |
+                  pnpm install
+
+            - name: Unit-Tests
+              run: |
+                  pnpm run build
+    'Scape':
+        concurrency: ci-scrape-${{ github.ref }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+
+            - name: Install Node
+              uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
+              with:
+                  node-version-file: '.nvmrc'
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+
+            - name: Install
+              run: |
+                  pnpm install
+
+            - name: Unit-Tests
+              run: |
+                  pnpm run scrape
+    'Linting':
+        concurrency: ci-linting-${{ github.ref }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+
+            - name: Install Node
+              uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
+              with:
+                  node-version-file: '.nvmrc'
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+
+            - name: Install
+              run: |
+                  pnpm install
+
+            - name: Check
+              run: |
+                  pnpm run check --diagnostic-level=error

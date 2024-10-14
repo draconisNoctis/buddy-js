@@ -2,12 +2,14 @@
     "name": "dsa-wiki",
     "type": "module",
     "scripts": {
+        "build": "turbo run build",
         "check": "biome check .",
         "format": "biome format --write",
         "lint": "turbo run lint",
         "lint:changed": "turbo run lint:changed",
         "lint:staged": "turbo run lint:staged",
         "prepare": "husky",
+        "scrape": "turbo run scrape",
         "test": "turbo test"
     },
     "devDependencies": {
