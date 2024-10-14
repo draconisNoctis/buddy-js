@@ -178,8 +178,31 @@ scraper
         };
     })
     .then(() => fs.writeFile('../types/schema.json', JSON.stringify(mainDefinition, null, 2)))
+    .then(() =>
+        fs.writeFile(
+            '../types/schema.js',
+            `Object.defineProperty(exports, "__esModule", { value: true });
+module.exports.default = ${JSON.stringify(mainDefinition, null, 2)};`
+        )
+    )
+    .then(() =>
+        fs.writeFile(
+            '../types/schema.mjs',
+            `const Schema = ${JSON.stringify(mainDefinition, null, 2)};
+    
+export default Schema;`
+        )
+    )
     .then(() => compile(mainDefinition, 'Buddy YAML'))
-    .then(types => fs.writeFile('../types/schema.d.ts', types))
+    .then(types =>
+        fs.writeFile(
+            '../types/schema.d.ts',
+            `${types}
+
+declare const Schema: typeof import('./schema.json');
+export default Schema;`
+        )
+    )
     .then(
         () => console.log('Done'),
         err => console.error(err)

@@ -14,7 +14,11 @@ export class Scraper<T extends EventMap<T>> extends EventEmitter<
 > {
     #queue: [type: keyof T, url: string][] = [];
     #index = 0;
+    #done = 0;
+    #running = 0;
     #parsers: ParserMap<T>;
+
+    CONCURRENCY_LIMIT = 10;
 
     constructor(parsers: ParserMap<T>) {
         super();
@@ -22,11 +26,21 @@ export class Scraper<T extends EventMap<T>> extends EventEmitter<
     }
 
     private async next() {
-        if (this.#index >= this.#queue.length) return this.emit('done');
+        if (this.#done >= this.#queue.length && !this.#running) return this.emit('done');
+        if (this.#running >= this.CONCURRENCY_LIMIT || this.#index > this.#queue.length - 1) return;
+
+        if (!this.#queue[this.#index]) {
+            console.debug(this, {
+                index: this.#index,
+                done: this.#done,
+                running: this.#running
+            });
+        }
+
         const [type, url] = this.#queue[this.#index++]!;
-        const done = this.#index;
 
         try {
+            this.#running++;
             const response = await fetch(url);
             const html = await response.text();
             const $ = cheerio.load(html);
@@ -34,24 +48,27 @@ export class Scraper<T extends EventMap<T>> extends EventEmitter<
             const result = await this.#parsers[type]($, html, url);
             // biome-ignore lint/suspicious/noExplicitAny: required
             this.emit(type, ...([result] as any));
-            this.emit('progress', { done, total: this.#queue.length });
-            this.next();
         } catch (e) {
             if (e instanceof Error) {
                 this.emit('error', e);
             } else {
                 this.emit('error', new Error(String(e)));
             }
+        } finally {
+            this.#running--;
+            this.#done++;
+            this.emit('progress', { done: this.#done, total: this.#queue.length });
+            this.next();
         }
     }
 
     queue(type: keyof T, url: string): void {
         this.#queue.push([type, url]);
+        this.next();
     }
 
     start(type: keyof T, url: string): Promise<void> {
         this.queue(type, url);
-        this.next();
 
         return new Promise<void>((resolve, reject) => {
             this.once('error', reject);

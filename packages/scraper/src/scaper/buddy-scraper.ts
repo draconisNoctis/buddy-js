@@ -110,6 +110,10 @@ export class BuddyScraper extends Scraper<{
             $(tds[0]).children().remove();
             const name = $(tds[0]).text().replace(/\W/g, '');
 
+            if (name in definition.properties!) {
+                continue;
+            }
+
             this.prepareDescription($, tds[2], baseUrl);
             definition.properties![name] = this.parseType(
                 name,
@@ -124,6 +128,9 @@ export class BuddyScraper extends Scraper<{
                 (definition.required as string[]).push(name);
             }
         }
+        if (!(definition.required as string[]).length) {
+            definition.required = undefined;
+        }
         return definition;
     }
 
@@ -132,6 +139,8 @@ export class BuddyScraper extends Scraper<{
         if (isArray) {
             type = type.substring(0, type.length - 2);
         }
+
+        const tags: { tag: string; value?: string }[] = [];
 
         let inner: JSONSchema4 | undefined;
 
@@ -159,9 +168,8 @@ export class BuddyScraper extends Scraper<{
             inner = { type: 'boolean' };
         } else if (type === 'String' || type === 'ExecutionPriority') {
             const exact = /(?:Should|Must) be set to\s`?([\w-]+)`?/.exec(description);
-            // const oneOf = /Can be one of ([\w-]+(?: \(default\))?(?:\s?,\s?[\w-]+)* or [\w-]+(?: \(default\))?)/.exec(description);
             const oneOf =
-                /Can be one of ([\w'`_-]+(?:\s?,\s?[\w'`_-]+)*(?:,?\s)?or\s[\w'`_-]+)(?:\. (?:The )?[Dd]efault \w+ is ([\w'`_-]+))?/.exec(
+                /Can be one of ([\w'`\/_-]+(?:\s?,\s?[\w'`\/_-]+)*(?:(?:,?\s)?or|,)\s[\w'`\/_-]+)(?:.*[Dd]efault \w+ is ([\w'`\/_-]+))?/.exec(
                     description
                 );
             if (exact) {
@@ -172,17 +180,14 @@ export class BuddyScraper extends Scraper<{
             } else if (oneOf) {
                 const defaultValue: string | undefined = oneOf[2]?.replace(/^['`](.*)['`]$/, '$1');
                 if (defaultValue != null) {
-                    description += `\n@default ${JSON.stringify(defaultValue)}`;
+                    tags.push({ tag: 'default', value: JSON.stringify(defaultValue) });
                 }
                 const values = oneOf[1]
                     .split(/\s*(?:,|or)\s*/)
                     .map(t => {
                         if (t.startsWith("'") || t.startsWith('`')) t = t.substring(1);
                         if (t.endsWith("'") || t.endsWith('`')) t = t.substring(0, t.length - 1);
-                        // if (t.endsWith(' (default)')) {
-                        //     t = t.substring(0, t.length - 10);
-                        //     defaultValue = t;
-                        // }
+
                         return t;
                     })
                     .filter(Boolean);
@@ -196,11 +201,15 @@ export class BuddyScraper extends Scraper<{
             }
         }
 
+        const descriptionWithTags = tags.length
+            ? `${description}\n\n${tags.map(({ tag, value }) => (value ? `@${tag} ${value}` : `@${tag}`)).join('\n')}`
+            : description;
+
         if (inner) {
             if (isArray) {
-                return { type: 'array', items: inner, description };
+                return { type: 'array', items: inner, description: descriptionWithTags };
             }
-            inner.description = description;
+            inner.description = descriptionWithTags;
             return inner;
         }
 
@@ -208,8 +217,11 @@ export class BuddyScraper extends Scraper<{
             type = 'Permission';
         }
 
+        if (isArray) {
+            return { type: 'array', items: { $ref: `#/definitions/${type}` }, description: descriptionWithTags };
+        }
         // wrap in `oneOf` to be able to set a description
-        return { oneOf: [{ $ref: `#/definitions/${type}` }], description };
+        return { oneOf: [{ $ref: `#/definitions/${type}` }], description: descriptionWithTags };
     }
 
     async start(): Promise<void> {
