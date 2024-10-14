@@ -33,20 +33,13 @@ importers:
         specifier: 2.1.3
         version: 2.1.3
 
-  packages/buddy-js:
-    dependencies:
-      '@buddy-js/types':
-        specifier: workspace:0.0.0
-        version: link:../types
-    devDependencies:
-      typescript:
-        specifier: 5.6.3
-        version: 5.6.3
-
   packages/cli:
     dependencies:
+      '@buddy-js/core':
+        specifier: workspace:0.0.1
+        version: link:../core
       '@buddy-js/types':
-        specifier: workspace:0.0.0
+        specifier: workspace:0.0.1
         version: link:../types
       '@oclif/core':
         specifier: 4.0.28
@@ -63,9 +56,6 @@ importers:
       ajv-formats:
         specifier: 3.0.1
         version: 3.0.1(ajv@8.17.1)
-      buddy-js:
-        specifier: workspace:0.0.0
-        version: link:../buddy-js
       chalk:
         specifier: 4.1.2
         version: 4.1.2
@@ -94,6 +84,16 @@ importers:
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@22.7.5)(typescript@5.6.3)
+      typescript:
+        specifier: 5.6.3
+        version: 5.6.3
+
+  packages/core:
+    dependencies:
+      '@buddy-js/types':
+        specifier: workspace:0.0.1
+        version: link:../types
+    devDependencies:
       typescript:
         specifier: 5.6.3
         version: 5.6.3

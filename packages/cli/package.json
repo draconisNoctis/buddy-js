@@ -35,13 +35,13 @@
         }
     },
     "dependencies": {
+        "@buddy-js/core": "workspace:0.0.1",
         "@buddy-js/types": "workspace:0.0.1",
         "@oclif/core": "4.0.28",
         "@oclif/plugin-help": "6.2.15",
         "ajv": "8.17.1",
         "ajv-draft-04": "1.0.0",
         "ajv-formats": "3.0.1",
-        "buddy-js": "workspace:0.0.1",
         "chalk": "4.1.2",
         "glob": "11.0.0",
         "sanitize-filename": "1.6.3",

@@ -1,10 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { getRegisteredPipelines, isFixed } from '@buddy-js/core';
 import Schema from '@buddy-js/types';
 import { Args, Command, Flags, type Interfaces } from '@oclif/core';
 import Ajv from 'ajv-draft-04';
 import addFormats from 'ajv-formats';
-import { getRegisteredPipelines, isFixed } from 'buddy-js';
 import chalk from 'chalk';
 import { glob } from 'glob';
 import sanitizeFilename from 'sanitize-filename';
