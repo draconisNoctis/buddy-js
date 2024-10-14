@@ -1,22 +1,12 @@
 {
     "$schema": "https://turbo.build/schema.json",
     "tasks": {
-        "build": {
-            "outputs": ["dist/**"]
-        },
+        "build": {},
         "clean": {},
+        "scrape": {},
         "test": {},
         "lint": { "outputs": [] },
         "lint:staged": { "outputs": [] },
-        "lint:changed": { "outputs": [] },
-        "dev": {
-            "cache": false,
-            "persistent": true
-        },
-        "start": {
-            "env": ["PORT"],
-            "cache": false,
-            "persistent": true
-        }
+        "lint:changed": { "outputs": [] }
     }
 }
