@@ -3,17 +3,21 @@
     "private": true,
     "scripts": {
         "build": "turbo run build",
+        "changeset": "changeset",
         "check": "biome check .",
+        "do-release": "turbo run build && changeset publish",
         "format": "biome format --write",
         "lint": "turbo run lint",
         "lint:changed": "turbo run lint:changed",
         "lint:staged": "turbo run lint:staged",
         "prepare": "husky",
         "scrape": "turbo run scrape",
-        "test": "turbo test"
+        "test": "turbo test",
+        "version": "changeset version"
     },
     "devDependencies": {
         "@biomejs/biome": "1.9.3",
+        "@changesets/cli": "2.27.9",
         "@types/node": "22.7.5",
         "husky": "9.1.6",
         "lint-staged": "15.2.10",
