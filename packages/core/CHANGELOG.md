@@ -1,5 +1,11 @@
 # buddy-js
 
+## 0.0.2
+
+### Patch Changes
+
+-   Rename buddy-js to @buddy-js/core
+
 ## 0.0.1
 
 ### Patch Changes

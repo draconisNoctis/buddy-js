@@ -1,5 +1,13 @@
 # @buddy-js/cli
 
+## 0.0.2
+
+### Patch Changes
+
+-   Rename buddy-js to @buddy-js/core
+-   Updated dependencies
+    -   @buddy-js/core@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
