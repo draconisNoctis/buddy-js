@@ -37,7 +37,7 @@
     "dependencies": {
         "@buddy-js/types": "workspace:*",
         "@oclif/core": "4.0.28",
-        "@oclif/plugin-help": "6.2.14",
+        "@oclif/plugin-help": "6.2.15",
         "ajv": "8.17.1",
         "ajv-draft-04": "1.0.0",
         "ajv-formats": "3.0.1",
