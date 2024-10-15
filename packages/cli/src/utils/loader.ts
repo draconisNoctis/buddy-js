@@ -1,3 +1,4 @@
+import { createRequire } from 'node:module';
 import * as tsNode from 'ts-node';
 
 export interface Loader {
@@ -8,22 +9,22 @@ export interface Loader {
 const CjsLoader: Loader = {
     extensions: ['.js', '.cjs'],
     load(file) {
-        require(file);
+        createRequire(import.meta.url)(file);
     }
 };
 
 const EsmLoader: Loader = {
     extensions: ['.mjs'],
     async load(file) {
-        await new Function('file', 'return import(file)')(file);
+        await import(file);
     }
 };
 
 const TsLoader: Loader = {
     extensions: ['.ts'],
-    load(file) {
-        tsNode.register();
-        require(file);
+    async load(file) {
+        tsNode.register({ esm: true });
+        await import(file);
     }
 };
 
