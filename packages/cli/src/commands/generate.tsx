@@ -2,42 +2,20 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { getRegisteredPipelines, isFixed } from '@buddy-js/core';
 import Schema from '@buddy-js/types';
-import { Args, Command, Flags, type Interfaces } from '@oclif/core';
+import { Args, Flags } from '@oclif/core';
 import Ajv from 'ajv-draft-04';
 import addFormats from 'ajv-formats';
-import chalk from 'chalk';
 import { glob } from 'glob';
 import sanitizeFilename from 'sanitize-filename';
 import YAML from 'yaml';
-import { getLoader } from '../utils/loader';
+import { getLoader } from '../utils/loader.js';
 
-export type Flags<T extends typeof Command> = Interfaces.InferredFlags<(typeof BaseCommand)['baseFlags'] & T['flags']>;
-export type Args<T extends typeof Command> = Interfaces.InferredArgs<T['args']>;
+import { Text } from 'ink';
+import { BaseCommand, type View } from '../utils/base-command.js';
 
-abstract class BaseCommand<T extends typeof Command> extends Command {
-    protected flags!: Flags<T>;
-    protected args!: Args<T>;
+export default class Generate extends BaseCommand<typeof Generate, { step: string }> {
+    static override enableJsonFlag = true;
 
-    public override async init(): Promise<void> {
-        await super.init();
-        const { args, flags } = await this.parse({
-            baseFlags: this.ctor.baseFlags,
-            flags: this.ctor.flags,
-            args: this.ctor.args,
-            enableJsonFlag: this.ctor.enableJsonFlag,
-            strict: this.ctor.strict
-        });
-        this.args = args as Args<T>;
-        this.flags = flags as Flags<T>;
-    }
-
-    // biome-ignore lint/suspicious/useAwait: required by interface
-    protected override async catch(err: Interfaces.CommandError): Promise<void> {
-        this.logToStderr(chalk.red`❌ ${err.message}`);
-    }
-}
-
-export default class Generate extends BaseCommand<typeof Generate> {
     static override aliases = ['gen', 'g'];
 
     static override description = 'Generates YAML files for Buddy CI pipeline definitions';
@@ -60,19 +38,16 @@ export default class Generate extends BaseCommand<typeof Generate> {
         lineWidth: Flags.integer({ description: 'Max line width for generated YAML files', default: 80, helpGroup: 'YAML format' })
     };
 
-    public async run(): Promise<void> {
-        const { flags } = await this.parse(Generate);
+    protected view: View<{ step: string }> = ({ step }) => <Text>{step}</Text>;
+    protected override initialState = { step: 'init' };
 
+    public async *handle() {
         const inputFile = await this.findInputFile();
-
-        if (!inputFile) {
-            throw new Error(`Cannot find input file: "${flags.input}"`);
-        }
-
-        console.debug(this.args, this.flags);
 
         const extension = path.extname(inputFile);
         const loader = getLoader(extension);
+
+        yield { step: 'load' };
 
         await loader.load(path.resolve(this.flags.cwd, inputFile));
 
@@ -81,15 +56,19 @@ export default class Generate extends BaseCommand<typeof Generate> {
 
         const pipelines = [...getRegisteredPipelines()];
 
+        yield { step: 'validate' };
         if (!ajv.validate(Schema, pipelines)) {
             throw new Error(ajv.errors!.map(error => error.message).join('\n'));
         }
 
         if (this.flags.clear) {
+            yield { step: 'clear' };
             const cwd = path.resolve(this.flags.cwd, this.flags.output);
             const files = await glob('*.yml', { cwd, absolute: true });
             await Promise.all(files.map(file => fs.unlink(file)));
         }
+
+        yield { step: 'emit' };
 
         for (const pipeline of pipelines) {
             const filename = `${sanitizeFilename(pipeline.pipeline).replace(/ +/g, '-') + (isFixed(pipeline) ? '.fixed' : '')}.yml`;
@@ -97,19 +76,20 @@ export default class Generate extends BaseCommand<typeof Generate> {
             await fs.writeFile(path.resolve(this.flags.output, filename), yaml, { flag: 'a+' });
         }
 
-        // console.log(Schema);
-        // for (const pipeline of pipelines) {
-        //     if (!ajv.validate(Schema.definitions.Pipeline, pipeline)) {
-        //         throw new Error(ajv.errors!.map(error => error.message).join('\n'));
-        //     }
-        // }
+        yield { step: 'done' };
 
-        // console.debug({ pipelines, Schema });
+        return {
+            result: `created ${pipelines.length} pipelines`
+        };
     }
 
-    private async findInputFile(): Promise<string | undefined> {
+    private async findInputFile(): Promise<string> {
         const files = await glob(this.args.input, { cwd: this.flags.cwd, absolute: true });
 
-        return files[0];
+        if (!files[0]) {
+            throw new Error(`Cannot find input file: "${this.flags.input}"`);
+        }
+
+        return files[0]!;
     }
 }
