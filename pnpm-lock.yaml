@@ -36,7 +36,7 @@ importers:
   packages/cli:
     dependencies:
       '@buddy-js/core':
-        specifier: workspace:0.0.1
+        specifier: workspace:0.0.2
         version: link:../core
       '@buddy-js/types':
         specifier: workspace:0.0.1
@@ -79,8 +79,8 @@ importers:
         specifier: 22.7.5
         version: 22.7.5
       oclif:
-        specifier: 4.15.8
-        version: 4.15.8
+        specifier: 4.15.9
+        version: 4.15.9
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@22.7.5)(typescript@5.6.3)
@@ -1513,8 +1513,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  oclif@4.15.8:
-    resolution: {integrity: sha512-QrIUvKrvidxE04qlhgxK2wpfMgHB/XHAel/Z1QmIrh1N1sJHCrz6eWxQ+8PenUXmJo1AaZ5I+l2i2JAhIBP2DA==}
+  oclif@4.15.9:
+    resolution: {integrity: sha512-+qFTMht3OK/dP1dLARbaExswdcGDYC4iOBrqFNoc9Vm2zifOgbNuQJsMwTniatS2xmIa3YMevrLU67SxVHgF+g==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -4219,7 +4219,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  oclif@4.15.8:
+  oclif@4.15.9:
     dependencies:
       '@aws-sdk/client-cloudfront': 3.669.0
       '@aws-sdk/client-s3': 3.670.0
