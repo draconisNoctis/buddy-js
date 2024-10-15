@@ -1,7 +1,10 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "module": "commonjs",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
         "outDir": "dist",
         "rootDir": "src",
         "strict": true,

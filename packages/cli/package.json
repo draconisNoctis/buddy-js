@@ -2,31 +2,40 @@
     "name": "@buddy-js/cli",
     "version": "0.0.2",
     "description": "A new CLI generated with oclif",
-    "keywords": ["oclif"],
+    "keywords": [
+        "oclif"
+    ],
     "homepage": "https://github.com/draconisNoctis/buddy-js",
     "bugs": "https://github.com/draconisNoctis/buddy-js/issues",
     "repository": "draconisNoctis/buddy-js",
     "license": "MIT",
     "author": "Mark Wecke",
+    "type": "module",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "bin": {
         "buddyjs": "./bin/run.js"
     },
-    "files": ["/bin", "/dist", "/oclif.manifest.json"],
+    "files": [
+        "/bin",
+        "/dist",
+        "/oclif.manifest.json"
+    ],
     "scripts": {
         "build": "rm -rf dist && tsc -b",
         "prepack": "oclif manifest && oclif readme",
         "postpack": "rm -f oclif.manifest.json",
-        "test": "node --require ts-node/register --test 'test/**/*.test.ts' 'src/**/*.spec.ts'",
-        "test:watch": "node --require ts-node/register --test --watch 'test/**/*.test.ts' 'src/**/*.spec.ts'",
+        "test": "OCLIF_TEST_ROOT=$(pwd) node --loader ts-node/esm --disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning --test 'test/**/*.test.ts' 'src/**/*.spec.ts'",
+        "test:watch": "OCLIF_TEST_ROOT=$(pwd) node --loader ts-node/esm --disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning --test --watch 'test/**/*.test.ts' 'src/**/*.spec.ts'",
         "version": "oclif readme && git add README.md"
     },
     "oclif": {
         "bin": "buddyjs",
         "commands": "./dist/commands",
         "dirname": "buddyjs",
-        "plugins": ["@oclif/plugin-help"],
+        "plugins": [
+            "@oclif/plugin-help"
+        ],
         "topicSeparator": " ",
         "topics": {
             "hello": {
@@ -50,7 +59,9 @@
     "devDependencies": {
         "@oclif/prettier-config": "0.2.1",
         "@oclif/test": "4.0.10",
+        "@types/chai": "5.0.0",
         "@types/node": "22.7.6",
+        "chai": "5.1.1",
         "oclif": "4.15.9",
         "ts-node": "10.9.2",
         "typescript": "5.6.3"
