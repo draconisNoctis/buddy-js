@@ -9,46 +9,43 @@ module.exports.default = {
     "Action": {
       "oneOf": [
         {
+          "$ref": "#/definitions/AmazonElasticContainerService"
+        },
+        {
           "$ref": "#/definitions/AmazonS3"
         },
         {
           "$ref": "#/definitions/AWSAppRunnerDeploy"
         },
         {
-          "$ref": "#/definitions/AWSCLI"
+          "$ref": "#/definitions/AWSAppRunnerDeploy"
         },
         {
           "$ref": "#/definitions/AWSCDKCLI"
         },
         {
+          "$ref": "#/definitions/AWSCLI"
+        },
+        {
           "$ref": "#/definitions/AWSCLI2"
-        },
-        {
-          "$ref": "#/definitions/AWSElasticBeanstalk"
-        },
-        {
-          "$ref": "#/definitions/AWSAppRunnerDeploy"
-        },
-        {
-          "$ref": "#/definitions/AmazonElasticContainerService"
-        },
-        {
-          "$ref": "#/definitions/AWSCodePipeline"
         },
         {
           "$ref": "#/definitions/AWSCodeDeploy"
         },
         {
-          "$ref": "#/definitions/AWSLambda"
+          "$ref": "#/definitions/AWSCodePipeline"
+        },
+        {
+          "$ref": "#/definitions/AWSElasticBeanstalk"
         },
         {
           "$ref": "#/definitions/AWSElasticBeanstalkMonitoring"
         },
         {
-          "$ref": "#/definitions/AWSLambdaDeploy"
+          "$ref": "#/definitions/AWSLambda"
         },
         {
-          "$ref": "#/definitions/Blackfire"
+          "$ref": "#/definitions/AWSLambdaDeploy"
         },
         {
           "$ref": "#/definitions/AzureCLI"
@@ -57,19 +54,34 @@ module.exports.default = {
           "$ref": "#/definitions/AzureStorage"
         },
         {
-          "$ref": "#/definitions/Bugsnag"
+          "$ref": "#/definitions/BackblazeB2"
         },
         {
-          "$ref": "#/definitions/BackblazeB2"
+          "$ref": "#/definitions/Blackfire"
+        },
+        {
+          "$ref": "#/definitions/Bugsnag"
         },
         {
           "$ref": "#/definitions/BuildACordovaApp"
         },
         {
+          "$ref": "#/definitions/BuildAFastlaneAppiOS"
+        },
+        {
+          "$ref": "#/definitions/BuildAndroidApp"
+        },
+        {
+          "$ref": "#/definitions/BuildApplication"
+        },
+        {
           "$ref": "#/definitions/BuildAReactNativeApp"
         },
         {
-          "$ref": "#/definitions/BuildAFastlaneAppiOS"
+          "$ref": "#/definitions/BuildDockerImage"
+        },
+        {
+          "$ref": "#/definitions/BuildFlutterApp"
         },
         {
           "$ref": "#/definitions/BuildFlutterAppiOS"
@@ -78,31 +90,19 @@ module.exports.default = {
           "$ref": "#/definitions/BuildMultiArchImage"
         },
         {
-          "$ref": "#/definitions/BuildFlutterApp"
-        },
-        {
-          "$ref": "#/definitions/BuildAndroidApp"
-        },
-        {
-          "$ref": "#/definitions/BuildDockerImage"
-        },
-        {
-          "$ref": "#/definitions/BuildApplication"
-        },
-        {
-          "$ref": "#/definitions/Cloudfront"
+          "$ref": "#/definitions/ClearCache"
         },
         {
           "$ref": "#/definitions/Cloudflare"
         },
         {
-          "$ref": "#/definitions/ClearCache"
-        },
-        {
-          "$ref": "#/definitions/CompressImages"
+          "$ref": "#/definitions/Cloudfront"
         },
         {
           "$ref": "#/definitions/CodeSignAndExportAnIOSApp"
+        },
+        {
+          "$ref": "#/definitions/CompressImages"
         },
         {
           "$ref": "#/definitions/CopyFilesAction"
@@ -120,13 +120,13 @@ module.exports.default = {
           "$ref": "#/definitions/DeployToAppStoreConnect"
         },
         {
+          "$ref": "#/definitions/DigitalOcean"
+        },
+        {
           "$ref": "#/definitions/DigitalOceanCDN"
         },
         {
           "$ref": "#/definitions/DigitalOceanCLI"
-        },
-        {
-          "$ref": "#/definitions/DigitalOcean"
         },
         {
           "$ref": "#/definitions/DigitalOceanSpaces"
@@ -147,10 +147,10 @@ module.exports.default = {
           "$ref": "#/definitions/DownloadBackblazeB2"
         },
         {
-          "$ref": "#/definitions/DownloadFTP"
+          "$ref": "#/definitions/DownloadFromSandbox"
         },
         {
-          "$ref": "#/definitions/DownloadFromSandbox"
+          "$ref": "#/definitions/DownloadFTP"
         },
         {
           "$ref": "#/definitions/DownloadFTPS"
@@ -159,28 +159,28 @@ module.exports.default = {
           "$ref": "#/definitions/DownloadGCS"
         },
         {
-          "$ref": "#/definitions/ESLint"
-        },
-        {
           "$ref": "#/definitions/DownloadS3"
-        },
-        {
-          "$ref": "#/definitions/Firebase"
-        },
-        {
-          "$ref": "#/definitions/EmailNotification"
         },
         {
           "$ref": "#/definitions/DownloadSFTP"
         },
         {
+          "$ref": "#/definitions/EmailNotification"
+        },
+        {
+          "$ref": "#/definitions/ESLint"
+        },
+        {
+          "$ref": "#/definitions/Firebase"
+        },
+        {
           "$ref": "#/definitions/FTP"
         },
         {
-          "$ref": "#/definitions/GenerateVariables"
+          "$ref": "#/definitions/FTPS"
         },
         {
-          "$ref": "#/definitions/FTPS"
+          "$ref": "#/definitions/GenerateVariables"
         },
         {
           "$ref": "#/definitions/GhostInspector"
@@ -189,16 +189,13 @@ module.exports.default = {
           "$ref": "#/definitions/GhostInspectorCLI"
         },
         {
-          "$ref": "#/definitions/GitHubCLI"
-        },
-        {
           "$ref": "#/definitions/GitcryptLock"
         },
         {
-          "$ref": "#/definitions/GitPush"
+          "$ref": "#/definitions/GitcryptUnlock"
         },
         {
-          "$ref": "#/definitions/GitcryptUnlock"
+          "$ref": "#/definitions/GitHubCLI"
         },
         {
           "$ref": "#/definitions/GitHubRelease"
@@ -207,10 +204,13 @@ module.exports.default = {
           "$ref": "#/definitions/GitLabCLI"
         },
         {
-          "$ref": "#/definitions/GKERunHelm"
+          "$ref": "#/definitions/GitPush"
         },
         {
           "$ref": "#/definitions/GKEApplyDeployment"
+        },
+        {
+          "$ref": "#/definitions/GKERunHelm"
         },
         {
           "$ref": "#/definitions/GKERunJob"
@@ -225,25 +225,25 @@ module.exports.default = {
           "$ref": "#/definitions/GoogleAppEngine"
         },
         {
-          "$ref": "#/definitions/GoogleChat"
-        },
-        {
           "$ref": "#/definitions/GoogleCDN"
         },
         {
-          "$ref": "#/definitions/GoogleCloudRun"
-        },
-        {
-          "$ref": "#/definitions/GoogleFunctions"
-        },
-        {
-          "$ref": "#/definitions/GoogleCloudStorage"
+          "$ref": "#/definitions/GoogleChat"
         },
         {
           "$ref": "#/definitions/GoogleCloudCLI"
         },
         {
+          "$ref": "#/definitions/GoogleCloudRun"
+        },
+        {
+          "$ref": "#/definitions/GoogleCloudStorage"
+        },
+        {
           "$ref": "#/definitions/GoogleComputeEngine"
+        },
+        {
+          "$ref": "#/definitions/GoogleFunctions"
         },
         {
           "$ref": "#/definitions/GoogleFunctionsDeploy"
@@ -258,10 +258,10 @@ module.exports.default = {
           "$ref": "#/definitions/Honeybadger"
         },
         {
-          "$ref": "#/definitions/JMeterCLI"
+          "$ref": "#/definitions/HTTPRequest"
         },
         {
-          "$ref": "#/definitions/HTTPRequest"
+          "$ref": "#/definitions/JMeterCLI"
         },
         {
           "$ref": "#/definitions/KubernetesApplyDeployment"
@@ -279,6 +279,9 @@ module.exports.default = {
           "$ref": "#/definitions/KubernetesRunPod"
         },
         {
+          "$ref": "#/definitions/KubernetesSetImage"
+        },
+        {
           "$ref": "#/definitions/Lighthouse"
         },
         {
@@ -288,13 +291,10 @@ module.exports.default = {
           "$ref": "#/definitions/Linux"
         },
         {
-          "$ref": "#/definitions/MacOS"
-        },
-        {
           "$ref": "#/definitions/Loggly"
         },
         {
-          "$ref": "#/definitions/KubernetesSetImage"
+          "$ref": "#/definitions/MacOS"
         },
         {
           "$ref": "#/definitions/MicrosoftAzure"
@@ -303,10 +303,13 @@ module.exports.default = {
           "$ref": "#/definitions/MicrosoftTeams"
         },
         {
+          "$ref": "#/definitions/Netlify"
+        },
+        {
           "$ref": "#/definitions/NewRelicCLI"
         },
         {
-          "$ref": "#/definitions/Netlify"
+          "$ref": "#/definitions/OperateSandbox"
         },
         {
           "$ref": "#/definitions/PassArguments"
@@ -315,10 +318,13 @@ module.exports.default = {
           "$ref": "#/definitions/PingMonitoring"
         },
         {
-          "$ref": "#/definitions/OperateSandbox"
+          "$ref": "#/definitions/PublishAndroidApp"
         },
         {
-          "$ref": "#/definitions/PublishAndroidApp"
+          "$ref": "#/definitions/PublishBundleToGooglePlay"
+        },
+        {
+          "$ref": "#/definitions/Pushbullet"
         },
         {
           "$ref": "#/definitions/PushDockerImage"
@@ -327,16 +333,10 @@ module.exports.default = {
           "$ref": "#/definitions/Pushover"
         },
         {
-          "$ref": "#/definitions/PublishBundleToGooglePlay"
+          "$ref": "#/definitions/Rackspace"
         },
         {
           "$ref": "#/definitions/Raygun"
-        },
-        {
-          "$ref": "#/definitions/Pushbullet"
-        },
-        {
-          "$ref": "#/definitions/Rackspace"
         },
         {
           "$ref": "#/definitions/Replace"
@@ -357,13 +357,13 @@ module.exports.default = {
           "$ref": "#/definitions/SetVariables"
         },
         {
-          "$ref": "#/definitions/ShopifyCLI"
+          "$ref": "#/definitions/SFTP"
         },
         {
           "$ref": "#/definitions/Shopify"
         },
         {
-          "$ref": "#/definitions/SFTP"
+          "$ref": "#/definitions/ShopifyCLI"
         },
         {
           "$ref": "#/definitions/ShopifyThemeKitCLI"
@@ -381,19 +381,16 @@ module.exports.default = {
           "$ref": "#/definitions/Sleep"
         },
         {
-          "$ref": "#/definitions/SplitTests"
-        },
-        {
-          "$ref": "#/definitions/SSHCommand"
+          "$ref": "#/definitions/SMSNotification"
         },
         {
           "$ref": "#/definitions/Snyk"
         },
         {
-          "$ref": "#/definitions/SMSNotification"
+          "$ref": "#/definitions/SplitTests"
         },
         {
-          "$ref": "#/definitions/TCPMonitoring"
+          "$ref": "#/definitions/SSHCommand"
         },
         {
           "$ref": "#/definitions/SSHToSandbox"
@@ -405,7 +402,13 @@ module.exports.default = {
           "$ref": "#/definitions/StackHawkCLI"
         },
         {
+          "$ref": "#/definitions/TCPMonitoring"
+        },
+        {
           "$ref": "#/definitions/TelegramNotification"
+        },
+        {
+          "$ref": "#/definitions/TerraformCLI"
         },
         {
           "$ref": "#/definitions/TransferToSandbox"
@@ -414,28 +417,25 @@ module.exports.default = {
           "$ref": "#/definitions/TriggerPipeline"
         },
         {
-          "$ref": "#/definitions/TerraformCLI"
-        },
-        {
           "$ref": "#/definitions/UpCloud"
         },
         {
           "$ref": "#/definitions/VisualTests"
         },
         {
-          "$ref": "#/definitions/WaitForApproval"
+          "$ref": "#/definitions/Vultr"
         },
         {
-          "$ref": "#/definitions/Vultr"
+          "$ref": "#/definitions/WaitForApproval"
         },
         {
           "$ref": "#/definitions/WebDAV"
         },
         {
-          "$ref": "#/definitions/Windows"
+          "$ref": "#/definitions/WebMonitoring"
         },
         {
-          "$ref": "#/definitions/WebMonitoring"
+          "$ref": "#/definitions/Windows"
         },
         {
           "$ref": "#/definitions/WPCLI"
@@ -758,9 +758,9 @@ module.exports.default = {
             "type": {
               "type": "string",
               "enum": [
-                "AWS_APP_RUNNER_DEPLOY"
+                "AWS_APP_RUNNER_MONITOR"
               ],
-              "description": "The type of the action. Should be set to `AWS_APP_RUNNER_DEPLOY`."
+              "description": "The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`."
             },
             "service": {
               "type": "string",
@@ -773,6 +773,10 @@ module.exports.default = {
             "integration": {
               "type": "string",
               "description": "The ID of the integration."
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`."
             }
           },
           "required": [
@@ -780,7 +784,8 @@ module.exports.default = {
             "type",
             "service",
             "region",
-            "integration"
+            "integration",
+            "timeout"
           ],
           "additionalProperties": false
         }

@@ -177,7 +177,7 @@ scraper
             mainDefinition.definitions!.TriggerPipeline.allOf![1].required as string[]
         ).filter(property => !['next_pipeline_id', 'next_project_name', 'next_pipeline_name'].includes(property));
         mainDefinition.definitions!.Action = {
-            oneOf: actionNames.map(name => ({ $ref: `#/definitions/${name}` }))
+            oneOf: actionNames.toSorted((a, b) => a.localeCompare(b)).map(name => ({ $ref: `#/definitions/${name}` }))
         };
 
         mainDefinition.definitions = Object.fromEntries(
