@@ -15,7 +15,13 @@ module.exports.default = {
           "$ref": "#/definitions/AWSAppRunnerDeploy"
         },
         {
-          "$ref": "#/definitions/AWSCodePipeline"
+          "$ref": "#/definitions/AWSCLI"
+        },
+        {
+          "$ref": "#/definitions/AWSCDKCLI"
+        },
+        {
+          "$ref": "#/definitions/AWSCLI2"
         },
         {
           "$ref": "#/definitions/AWSElasticBeanstalk"
@@ -24,10 +30,16 @@ module.exports.default = {
           "$ref": "#/definitions/AWSAppRunnerDeploy"
         },
         {
+          "$ref": "#/definitions/AmazonElasticContainerService"
+        },
+        {
+          "$ref": "#/definitions/AWSCodePipeline"
+        },
+        {
           "$ref": "#/definitions/AWSCodeDeploy"
         },
         {
-          "$ref": "#/definitions/AWSCDKCLI"
+          "$ref": "#/definitions/AWSLambda"
         },
         {
           "$ref": "#/definitions/AWSElasticBeanstalkMonitoring"
@@ -36,43 +48,28 @@ module.exports.default = {
           "$ref": "#/definitions/AWSLambdaDeploy"
         },
         {
+          "$ref": "#/definitions/Blackfire"
+        },
+        {
           "$ref": "#/definitions/AzureCLI"
-        },
-        {
-          "$ref": "#/definitions/BackblazeB2"
-        },
-        {
-          "$ref": "#/definitions/AmazonElasticContainerService"
-        },
-        {
-          "$ref": "#/definitions/AWSLambda"
-        },
-        {
-          "$ref": "#/definitions/AWSCLI2"
         },
         {
           "$ref": "#/definitions/AzureStorage"
         },
         {
-          "$ref": "#/definitions/AWSCLI"
+          "$ref": "#/definitions/Bugsnag"
         },
         {
-          "$ref": "#/definitions/Bugsnag"
+          "$ref": "#/definitions/BackblazeB2"
         },
         {
           "$ref": "#/definitions/BuildACordovaApp"
         },
         {
-          "$ref": "#/definitions/BuildAFastlaneAppiOS"
-        },
-        {
           "$ref": "#/definitions/BuildAReactNativeApp"
         },
         {
-          "$ref": "#/definitions/Blackfire"
-        },
-        {
-          "$ref": "#/definitions/BuildAndroidApp"
+          "$ref": "#/definitions/BuildAFastlaneAppiOS"
         },
         {
           "$ref": "#/definitions/BuildFlutterAppiOS"
@@ -81,10 +78,16 @@ module.exports.default = {
           "$ref": "#/definitions/BuildMultiArchImage"
         },
         {
-          "$ref": "#/definitions/BuildApplication"
+          "$ref": "#/definitions/BuildFlutterApp"
         },
         {
-          "$ref": "#/definitions/BuildFlutterApp"
+          "$ref": "#/definitions/BuildAndroidApp"
+        },
+        {
+          "$ref": "#/definitions/BuildDockerImage"
+        },
+        {
+          "$ref": "#/definitions/BuildApplication"
         },
         {
           "$ref": "#/definitions/Cloudfront"
@@ -96,16 +99,13 @@ module.exports.default = {
           "$ref": "#/definitions/ClearCache"
         },
         {
-          "$ref": "#/definitions/BuildDockerImage"
-        },
-        {
           "$ref": "#/definitions/CompressImages"
         },
         {
-          "$ref": "#/definitions/CopyFilesAction"
+          "$ref": "#/definitions/CodeSignAndExportAnIOSApp"
         },
         {
-          "$ref": "#/definitions/CodeSignAndExportAnIOSApp"
+          "$ref": "#/definitions/CopyFilesAction"
         },
         {
           "$ref": "#/definitions/CreateNewSandbox"
@@ -114,13 +114,10 @@ module.exports.default = {
           "$ref": "#/definitions/Datadog"
         },
         {
-          "$ref": "#/definitions/DeployToAppStoreConnect"
-        },
-        {
           "$ref": "#/definitions/DatadogServiceCheck"
         },
         {
-          "$ref": "#/definitions/DigitalOcean"
+          "$ref": "#/definitions/DeployToAppStoreConnect"
         },
         {
           "$ref": "#/definitions/DigitalOceanCDN"
@@ -129,28 +126,31 @@ module.exports.default = {
           "$ref": "#/definitions/DigitalOceanCLI"
         },
         {
+          "$ref": "#/definitions/DigitalOcean"
+        },
+        {
+          "$ref": "#/definitions/DigitalOceanSpaces"
+        },
+        {
           "$ref": "#/definitions/Discord"
         },
         {
           "$ref": "#/definitions/Docker"
         },
         {
-          "$ref": "#/definitions/DigitalOceanSpaces"
-        },
-        {
           "$ref": "#/definitions/DockerCLI"
-        },
-        {
-          "$ref": "#/definitions/DownloadBackblazeB2"
         },
         {
           "$ref": "#/definitions/DockerfileLinter"
         },
         {
-          "$ref": "#/definitions/DownloadFromSandbox"
+          "$ref": "#/definitions/DownloadBackblazeB2"
         },
         {
           "$ref": "#/definitions/DownloadFTP"
+        },
+        {
+          "$ref": "#/definitions/DownloadFromSandbox"
         },
         {
           "$ref": "#/definitions/DownloadFTPS"
@@ -159,28 +159,28 @@ module.exports.default = {
           "$ref": "#/definitions/DownloadGCS"
         },
         {
-          "$ref": "#/definitions/DownloadS3"
-        },
-        {
-          "$ref": "#/definitions/EmailNotification"
-        },
-        {
           "$ref": "#/definitions/ESLint"
         },
         {
-          "$ref": "#/definitions/FTP"
-        },
-        {
-          "$ref": "#/definitions/DownloadSFTP"
-        },
-        {
-          "$ref": "#/definitions/FTPS"
+          "$ref": "#/definitions/DownloadS3"
         },
         {
           "$ref": "#/definitions/Firebase"
         },
         {
+          "$ref": "#/definitions/EmailNotification"
+        },
+        {
+          "$ref": "#/definitions/DownloadSFTP"
+        },
+        {
+          "$ref": "#/definitions/FTP"
+        },
+        {
           "$ref": "#/definitions/GenerateVariables"
+        },
+        {
+          "$ref": "#/definitions/FTPS"
         },
         {
           "$ref": "#/definitions/GhostInspector"
@@ -189,16 +189,16 @@ module.exports.default = {
           "$ref": "#/definitions/GhostInspectorCLI"
         },
         {
-          "$ref": "#/definitions/GitPush"
+          "$ref": "#/definitions/GitHubCLI"
         },
         {
           "$ref": "#/definitions/GitcryptLock"
         },
         {
-          "$ref": "#/definitions/GitcryptUnlock"
+          "$ref": "#/definitions/GitPush"
         },
         {
-          "$ref": "#/definitions/GitHubCLI"
+          "$ref": "#/definitions/GitcryptUnlock"
         },
         {
           "$ref": "#/definitions/GitHubRelease"
@@ -207,82 +207,82 @@ module.exports.default = {
           "$ref": "#/definitions/GitLabCLI"
         },
         {
-          "$ref": "#/definitions/GKERunJob"
+          "$ref": "#/definitions/GKERunHelm"
         },
         {
           "$ref": "#/definitions/GKEApplyDeployment"
         },
         {
-          "$ref": "#/definitions/GoogleAppEngine"
-        },
-        {
-          "$ref": "#/definitions/KubernetesRunHelmCMDs"
-        },
-        {
-          "$ref": "#/definitions/GKESetImage"
-        },
-        {
-          "$ref": "#/definitions/GoogleChat"
+          "$ref": "#/definitions/GKERunJob"
         },
         {
           "$ref": "#/definitions/GKERunPod"
         },
         {
-          "$ref": "#/definitions/GoogleCDN"
+          "$ref": "#/definitions/GKESetImage"
         },
         {
-          "$ref": "#/definitions/GoogleCloudCLI"
+          "$ref": "#/definitions/GoogleAppEngine"
+        },
+        {
+          "$ref": "#/definitions/GoogleChat"
+        },
+        {
+          "$ref": "#/definitions/GoogleCDN"
         },
         {
           "$ref": "#/definitions/GoogleCloudRun"
         },
         {
-          "$ref": "#/definitions/HerokuCLI"
-        },
-        {
           "$ref": "#/definitions/GoogleFunctions"
-        },
-        {
-          "$ref": "#/definitions/GoogleFunctionsDeploy"
         },
         {
           "$ref": "#/definitions/GoogleCloudStorage"
         },
         {
+          "$ref": "#/definitions/GoogleCloudCLI"
+        },
+        {
+          "$ref": "#/definitions/GoogleComputeEngine"
+        },
+        {
+          "$ref": "#/definitions/GoogleFunctionsDeploy"
+        },
+        {
           "$ref": "#/definitions/Heroku"
         },
         {
-          "$ref": "#/definitions/HTTPRequest"
+          "$ref": "#/definitions/HerokuCLI"
         },
         {
           "$ref": "#/definitions/Honeybadger"
         },
         {
-          "$ref": "#/definitions/KubernetesRunHelmCMDs"
-        },
-        {
           "$ref": "#/definitions/JMeterCLI"
         },
         {
-          "$ref": "#/definitions/KubernetesRunJob"
-        },
-        {
-          "$ref": "#/definitions/KubernetesKubectl"
-        },
-        {
-          "$ref": "#/definitions/KubernetesRunPod"
-        },
-        {
-          "$ref": "#/definitions/KubernetesSetImage"
+          "$ref": "#/definitions/HTTPRequest"
         },
         {
           "$ref": "#/definitions/KubernetesApplyDeployment"
         },
         {
-          "$ref": "#/definitions/LinkChecker"
+          "$ref": "#/definitions/KubernetesKubectl"
         },
         {
-          "$ref": "#/definitions/Loggly"
+          "$ref": "#/definitions/KubernetesRunHelmCMDs"
+        },
+        {
+          "$ref": "#/definitions/KubernetesRunJob"
+        },
+        {
+          "$ref": "#/definitions/KubernetesRunPod"
+        },
+        {
+          "$ref": "#/definitions/Lighthouse"
+        },
+        {
+          "$ref": "#/definitions/LinkChecker"
         },
         {
           "$ref": "#/definitions/Linux"
@@ -291,10 +291,16 @@ module.exports.default = {
           "$ref": "#/definitions/MacOS"
         },
         {
-          "$ref": "#/definitions/MicrosoftTeams"
+          "$ref": "#/definitions/Loggly"
+        },
+        {
+          "$ref": "#/definitions/KubernetesSetImage"
         },
         {
           "$ref": "#/definitions/MicrosoftAzure"
+        },
+        {
+          "$ref": "#/definitions/MicrosoftTeams"
         },
         {
           "$ref": "#/definitions/NewRelicCLI"
@@ -303,40 +309,31 @@ module.exports.default = {
           "$ref": "#/definitions/Netlify"
         },
         {
-          "$ref": "#/definitions/OperateSandbox"
-        },
-        {
-          "$ref": "#/definitions/Lighthouse"
+          "$ref": "#/definitions/PassArguments"
         },
         {
           "$ref": "#/definitions/PingMonitoring"
         },
         {
-          "$ref": "#/definitions/PassArguments"
-        },
-        {
-          "$ref": "#/definitions/GoogleComputeEngine"
+          "$ref": "#/definitions/OperateSandbox"
         },
         {
           "$ref": "#/definitions/PublishAndroidApp"
         },
         {
-          "$ref": "#/definitions/PublishBundleToGooglePlay"
-        },
-        {
           "$ref": "#/definitions/PushDockerImage"
         },
         {
-          "$ref": "#/definitions/Pushbullet"
+          "$ref": "#/definitions/Pushover"
+        },
+        {
+          "$ref": "#/definitions/PublishBundleToGooglePlay"
         },
         {
           "$ref": "#/definitions/Raygun"
         },
         {
-          "$ref": "#/definitions/Rollbar"
-        },
-        {
-          "$ref": "#/definitions/Rsync"
+          "$ref": "#/definitions/Pushbullet"
         },
         {
           "$ref": "#/definitions/Rackspace"
@@ -345,61 +342,64 @@ module.exports.default = {
           "$ref": "#/definitions/Replace"
         },
         {
-          "$ref": "#/definitions/Sentry"
+          "$ref": "#/definitions/Rollbar"
+        },
+        {
+          "$ref": "#/definitions/Rsync"
         },
         {
           "$ref": "#/definitions/RunDockerContainer"
         },
         {
-          "$ref": "#/definitions/Pushover"
+          "$ref": "#/definitions/Sentry"
         },
         {
           "$ref": "#/definitions/SetVariables"
         },
         {
-          "$ref": "#/definitions/Shopify"
-        },
-        {
           "$ref": "#/definitions/ShopifyCLI"
         },
         {
-          "$ref": "#/definitions/ShopifyThemeKitCLI"
+          "$ref": "#/definitions/Shopify"
         },
         {
           "$ref": "#/definitions/SFTP"
         },
         {
+          "$ref": "#/definitions/ShopifyThemeKitCLI"
+        },
+        {
           "$ref": "#/definitions/SignAndroidApp"
-        },
-        {
-          "$ref": "#/definitions/Sleep"
-        },
-        {
-          "$ref": "#/definitions/SlackNotification"
-        },
-        {
-          "$ref": "#/definitions/SMSNotification"
         },
         {
           "$ref": "#/definitions/SignBundle"
         },
         {
-          "$ref": "#/definitions/Snyk"
+          "$ref": "#/definitions/SlackNotification"
+        },
+        {
+          "$ref": "#/definitions/Sleep"
         },
         {
           "$ref": "#/definitions/SplitTests"
         },
         {
-          "$ref": "#/definitions/SSHToSandbox"
-        },
-        {
           "$ref": "#/definitions/SSHCommand"
         },
         {
-          "$ref": "#/definitions/SSLVerify"
+          "$ref": "#/definitions/Snyk"
+        },
+        {
+          "$ref": "#/definitions/SMSNotification"
         },
         {
           "$ref": "#/definitions/TCPMonitoring"
+        },
+        {
+          "$ref": "#/definitions/SSHToSandbox"
+        },
+        {
+          "$ref": "#/definitions/SSLVerify"
         },
         {
           "$ref": "#/definitions/StackHawkCLI"
@@ -408,16 +408,16 @@ module.exports.default = {
           "$ref": "#/definitions/TelegramNotification"
         },
         {
-          "$ref": "#/definitions/TerraformCLI"
+          "$ref": "#/definitions/TransferToSandbox"
         },
         {
           "$ref": "#/definitions/TriggerPipeline"
         },
         {
-          "$ref": "#/definitions/TransferToSandbox"
+          "$ref": "#/definitions/TerraformCLI"
         },
         {
-          "$ref": "#/definitions/Vultr"
+          "$ref": "#/definitions/UpCloud"
         },
         {
           "$ref": "#/definitions/VisualTests"
@@ -426,10 +426,10 @@ module.exports.default = {
           "$ref": "#/definitions/WaitForApproval"
         },
         {
-          "$ref": "#/definitions/WPCLI"
+          "$ref": "#/definitions/Vultr"
         },
         {
-          "$ref": "#/definitions/UpCloud"
+          "$ref": "#/definitions/WebDAV"
         },
         {
           "$ref": "#/definitions/Windows"
@@ -438,7 +438,7 @@ module.exports.default = {
           "$ref": "#/definitions/WebMonitoring"
         },
         {
-          "$ref": "#/definitions/WebDAV"
+          "$ref": "#/definitions/WPCLI"
         },
         {
           "$ref": "#/definitions/Xcode"
@@ -479,7 +479,7 @@ module.exports.default = {
         },
         "disabled": {
           "type": "boolean",
-          "description": "When set to 'true' the action is disabled.  By default it is set to 'false'."
+          "description": "When set to 'true' the action is disabled.  By default it is set to `false`."
         },
         "run_next": {
           "type": "string",
@@ -487,7 +487,7 @@ module.exports.default = {
         },
         "run_only_on_first_failure": {
           "type": "boolean",
-          "description": "Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is 'ON_FAILURE'."
+          "description": "Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`."
         },
         "ignore_errors": {
           "type": "boolean",
@@ -758,9 +758,9 @@ module.exports.default = {
             "type": {
               "type": "string",
               "enum": [
-                "AWS_APP_RUNNER_MONITOR"
+                "AWS_APP_RUNNER_DEPLOY"
               ],
-              "description": "The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`."
+              "description": "The type of the action. Should be set to `AWS_APP_RUNNER_DEPLOY`."
             },
             "service": {
               "type": "string",
@@ -773,10 +773,6 @@ module.exports.default = {
             "integration": {
               "type": "string",
               "description": "The ID of the integration."
-            },
-            "timeout": {
-              "type": "integer",
-              "description": "Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`."
             }
           },
           "required": [
@@ -784,8 +780,7 @@ module.exports.default = {
             "type",
             "service",
             "region",
-            "integration",
-            "timeout"
+            "integration"
           ],
           "additionalProperties": false
         }
@@ -5271,6 +5266,99 @@ module.exports.default = {
         }
       ]
     },
+    "GKERunHelm": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActionCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "The ID of the action."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "HELM"
+              ],
+              "description": "The type of the action. Should be set to `HELM`."
+            },
+            "execute_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The commands that will be executed."
+            },
+            "integration_hash": {
+              "type": "string",
+              "description": "The ID of the Google integration."
+            },
+            "zone_id": {
+              "type": "string",
+              "description": "The ID of the GKE zone."
+            },
+            "cluster": {
+              "type": "string",
+              "description": "The ID of the GKE cluster."
+            },
+            "application_id": {
+              "type": "string",
+              "description": "The ID of the GKE application."
+            },
+            "helm_version": {
+              "type": "string",
+              "description": "The Helm version."
+            },
+            "gke_auth_type": {
+              "type": "string",
+              "description": "Authorization type. Set to `SERVICE_ACCOUNT`."
+            },
+            "helm_repository_region": {
+              "type": "string",
+              "description": "Helm repository region. Set it if Helm repository is on AWS S3."
+            },
+            "helm_repository_integration": {
+              "type": "string",
+              "description": "Amazon integration ID. Set it if Helm repository is on AWS S3."
+            },
+            "helm_repository_key": {
+              "type": "string",
+              "description": "Service Account Key from Google Cloud Storage. Set it if Helm repository is on GCS."
+            },
+            "setup_commands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Allow you to install Helm plugins."
+            },
+            "kubectl_version": {
+              "type": "string",
+              "description": "Version of the kubectl used in the action. Default is “latest”."
+            },
+            "shell": {
+              "type": "string",
+              "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+            }
+          },
+          "required": [
+            "action",
+            "type",
+            "execute_commands",
+            "integration_hash",
+            "zone_id",
+            "cluster",
+            "application_id",
+            "helm_version",
+            "gke_auth_type"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
     "GKERunJob": {
       "allOf": [
         {
@@ -7824,21 +7912,21 @@ module.exports.default = {
             "SCHEDULE"
           ],
           "default": "EVENT",
-          "description": "The trigger mode of the pipeline. Can be one of 'CLICK', 'EVENT', 'SCHEDULE'. If not set, the default value is 'EVENT'\n\n@default \"EVENT\""
+          "description": "The trigger mode of the pipeline. Can be one of `CLICK`, `EVENT`, `SCHEDULE`. If not set, the default value is `EVENT`\n\n@default \"EVENT\""
         },
         "refs": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Set it if `on` is set to 'CLICK' or 'SCHEDULE'. The list of refs for which the pipeline will be triggered. Automatically set to 'NONE' if not provided."
+          "description": "Set it if `on` is set to `CLICK` or `SCHEDULE`. The list of refs for which the pipeline will be triggered. Automatically set to `NONE` if not provided."
         },
         "events": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Event"
           },
-          "description": "[The list of events](https://buddy.works/docs/yaml/yaml-schema#event-schema) for which the pipeline will be triggered. Set it if 'on' is set to 'EVENT'. Required if 'ON' is set or not set to 'EVENT'."
+          "description": "[The list of events](https://buddy.works/docs/yaml/yaml-schema#event-schema) for which the pipeline will be triggered. Set it if 'on' is set to `EVENT`. Required if `ON` is set or not set to `EVENT`."
         },
         "trigger_conditions": {
           "type": "array",
@@ -7866,15 +7954,15 @@ module.exports.default = {
         "start_date": {
           "type": "string",
           "format": "date-time",
-          "description": "Required if the pipeline is set to 'on: SCHEDULE' and no 'cron' is specified. Defines when the pipeline execution should start. Format: 2016-11-18T12:38:16.000Z"
+          "description": "Required if the pipeline is set to `on: SCHEDULE` and no `cron` is specified. Defines when the pipeline execution should start. Format: 2016-11-18T12:38:16.000Z"
         },
         "delay": {
           "type": "integer",
-          "description": "Required if the pipeline is set to 'on: SCHEDULE' and no 'cron' is specified. Defines the intervals in which the pipeline should be executed (in minutes)."
+          "description": "Required if the pipeline is set to `on: SCHEDULE` and no `cron` is specified. Defines the intervals in which the pipeline should be executed (in minutes)."
         },
         "cron": {
           "type": "string",
-          "description": "Required if the pipeline is set to 'on: SCHEDULE' and neither 'start_date' nor 'delay' is specified. The standard CRON expression defining the execution schedule."
+          "description": "Required if the pipeline is set to `on: SCHEDULE` and neither `start_date` nor `delay` is specified. The standard CRON expression defining the execution schedule."
         },
         "actions": {
           "type": "array",
@@ -7892,11 +7980,11 @@ module.exports.default = {
         },
         "ignore_fail_on_project_status": {
           "type": "boolean",
-          "description": "If set to 'true' the status of a given pipeline will not impact the project status on the dashboard."
+          "description": "If set to `true` the status of a given pipeline will not impact the project status on the dashboard."
         },
         "execution_message_template": {
           "type": "string",
-          "description": "The title of every execution in this pipeline. By default it is set to '$BUDDY_EXECUTION_REVISION_SUBJECT'."
+          "description": "The title of every execution in this pipeline. By default it is set to `$BUDDY_EXECUTION_REVISION_SUBJECT`."
         },
         "target_site_url": {
           "type": "string",
@@ -7922,13 +8010,13 @@ module.exports.default = {
           ],
           "description": "Define to set permissions for the pipeline."
         },
-        "change_set_base": {
+        "git_changeset_base": {
           "type": "string",
-          "description": "Defines the way the changeset for deployments and trigger conditions between subsequent executions in the pipeline will be calculated. Available values: 'LATEST_RUN', 'LATEST_RUN_MATCHING_REF', 'PULL_REQUEST'. By default, it is set to 'LATEST_RUN'."
+          "description": "Defines the way the changeset for deployments and trigger conditions between subsequent executions in the pipeline will be calculated. Available values: `LATEST_RUN`, `LATEST_RUN_MATCHING_REF`, `PULL_REQUEST`. By default, it is set to `LATEST_RUN`."
         },
         "cache_scope": {
           "type": "string",
-          "description": "Docker cache scope. Available values: 'WORKSPACE', 'PROJECT', PIPELINE'. By default, it is set to 'PIPELINE'."
+          "description": "Docker cache scope. Available values: `WORKSPACE`, `PROJECT`, `PIPELINE`. By default, it is set to `PIPELINE`."
         },
         "description_required": {
           "type": "boolean",
@@ -7937,6 +8025,10 @@ module.exports.default = {
         "pause_on_repeated_failures": {
           "type": "integer",
           "description": "Pauses the pipeline after `n` failed pipeline runs. Restricted to pipelines set to 'on: SCHEDULE'. Possible values: 1-100 (the default value is 100)."
+        },
+        "filesystem_changeset_base": {
+          "type": "string",
+          "description": "Defines changeset calculation method whenever deployment action has `input_type` set to `BUILD_ARTIFACTS`. Default set to `DATE_MODIFIED`. Possible values: `DATE_MODIFIED`, `CONTENTS`"
         }
       },
       "required": [
@@ -10163,52 +10255,52 @@ module.exports.default = {
             "TRIGGERING_USER_IS_NOT_IN_GROUP",
             "SUCCESS_PIPELINE"
           ],
-          "description": "Defines when the action should be run. Can be one of 'ON_CHANGE', 'ON_CHANGE_AT_PATH', 'VAR_IS', 'VAR_IS_NOT', 'VAR_CONTAINS', 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL', 'DAY', 'HOUR', 'TRIGGERING_USER_IS', 'TRIGGERING_USER_IS_NOT', 'TRIGGERING_USER_IS_IN_GROUP', 'TRIGGERING_USER_IS_NOT_IN_GROUP', or 'SUCCESS_PIPELINE', 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT' (last two can only be set in the action)."
+          "description": "Defines when the action should be run. Can be one of `ON_CHANGE`, `ON_CHANGE_AT_PATH`, `VAR_IS`, `VAR_IS_NOT`, `VAR_CONTAINS`, `VAR_NOT_CONTAINS`, `VAR_LESS_THAN`, `VAR_LESS_THAN_OR_EQUAL`, `VAR_GREATER_THAN`, `VAR_GREATER_THAN_OR_EQUAL`, `DAY`, `HOUR`, `TRIGGERING_USER_IS`, `TRIGGERING_USER_IS_NOT`, `TRIGGERING_USER_IS_IN_GROUP`, `TRIGGERING_USER_IS_NOT_IN_GROUP`, or `SUCCESS_PIPELINE`, `ACTION_STATUS_IS` or `ACTION_STATUS_IS_NOT` (last two can only be set in the action)."
         },
         "trigger_condition_paths": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Required when 'trigger_condition' is set to 'ON_CHANGE_AT_PATH'."
+          "description": "Required when 'trigger_condition' is set to `ON_CHANGE_AT_PATH`."
         },
         "trigger_variable_key": {
           "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'VAR_IS', 'VAR_IS_NOT' or 'VAR_CONTAINS' or 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL'. Defines the name of the desired variable."
+          "description": "Required when 'trigger_condition' is set to `VAR_IS`, `VAR_IS_NOT` or `VAR_CONTAINS` or `VAR_NOT_CONTAINS`, `VAR_LESS_THAN`, `VAR_LESS_THAN_OR_EQUAL`, `VAR_GREATER_THAN`, `VAR_GREATER_THAN_OR_EQUAL`. Defines the name of the desired variable."
         },
         "trigger_variable_value": {
           "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'VAR_IS', 'VAR_IS_NOT' or 'VAR_CONTAINS' or 'VAR_NOT_CONTAINS', 'VAR_LESS_THAN', 'VAR_LESS_THAN_OR_EQUAL', 'VAR_GREATER_THAN', 'VAR_GREATER_THAN_OR_EQUAL'. Defines the value of the desired variable which will be compared with its current value."
+          "description": "Required when 'trigger_condition' is set to `VAR_IS`, `VAR_IS_NOT` or `VAR_CONTAINS` or `VAR_NOT_CONTAINS`, `VAR_LESS_THAN`, `VAR_LESS_THAN_OR_EQUAL`, `VAR_GREATER_THAN`, `VAR_GREATER_THAN_OR_EQUAL`. Defines the value of the desired variable which will be compared with its current value."
         },
         "trigger_hours": {
           "type": "array",
           "items": {
             "type": "integer"
           },
-          "description": "Available when 'trigger_condition' is set to 'HOUR'. Defines the time – by default running from 1 to 24."
+          "description": "Available when `trigger_condition` is set to `HOUR`. Defines the time – by default running from 1 to 24."
         },
         "trigger_days": {
           "type": "array",
           "items": {
             "type": "integer"
           },
-          "description": "Available when 'trigger_condition' is set to 'DAY'. Defines the days running from 1 to 7 where 1 is for Monday."
+          "description": "Available when `trigger_condition` is set to `DAY`. Defines the days running from 1 to 7 where 1 is for Monday."
         },
         "zone_id": {
           "type": "string",
-          "description": "Available when 'trigger_condition' is set to 'DAY' or 'HOUR'. Defines the timezone (by default it is UTC) and takes values from [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)."
+          "description": "Available when `trigger_condition` is set to `DAY` or `HOUR`. Defines the timezone (by default it is UTC) and takes values from [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)."
         },
         "trigger_project_name": {
           "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'SUCCESS_PIPELINE'. Defines the name of the project in which the 'trigger_pipeline_name' is."
+          "description": "Required when `trigger_condition` is set to `SUCCESS_PIPELINE`. Defines the name of the project in which the `trigger_pipeline_name` is."
         },
         "trigger_pipeline_name": {
           "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'SUCCESS_PIPELINE'. Defines the name of the pipeline."
+          "description": "Required when `trigger_condition` is set to `SUCCESS_PIPELINE`. Defines the name of the pipeline."
         },
         "trigger_action_name": {
           "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT'. Defines the name of the action."
+          "description": "Required when `trigger_condition` is set to 'ACTION_STATUS_IS' or `ACTION_STATUS_IS_NOT`. Defines the name of the action."
         },
         "trigger_status": {
           "type": "string",
@@ -10218,15 +10310,15 @@ module.exports.default = {
             "SUPRESSED",
             "FAILED"
           ],
-          "description": "Required when 'trigger_condition' is set to 'ACTION_STATUS_IS' or 'ACTION_STATUS_IS_NOT'. Defines the status that the action should or shouldn't have. Can be one of 'SUCCESSFUL', 'SKIPPED', 'SUPRESSED' or 'FAILED'."
+          "description": "Required when `trigger_condition` is set to `ACTION_STATUS_IS` or `ACTION_STATUS_IS_NOT`. Defines the status that the action should or shouldn't have. Can be one of 'SUCCESSFUL', 'SKIPPED', 'SUPRESSED' or 'FAILED'."
         },
         "trigger_user": {
           "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'TRIGGERING_USER_IS' or 'TRIGGERING_USER_IS_NOT'. Defines the email address of the user."
+          "description": "Required when `trigger_condition` is set to `TRIGGERING_USER_IS` or `TRIGGERING_USER_IS_NOT`. Defines the email address of the user."
         },
         "trigger_group": {
           "type": "string",
-          "description": "Required when 'trigger_condition' is set to 'TRIGGERING_USER_IS_IN_GROUP' or 'TRIGGERING_USER_IS_NOT_IN_GROUP'. Defines the name of the group."
+          "description": "Required when `trigger_condition` is set to `TRIGGERING_USER_IS_IN_GROUP` or `TRIGGERING_USER_IS_NOT_IN_GROUP`. Defines the name of the group."
         }
       },
       "additionalProperties": false
@@ -10299,10 +10391,7 @@ module.exports.default = {
           },
           "required": [
             "action",
-            "type",
-            "next_pipeline_id",
-            "next_project_name",
-            "next_pipeline_name"
+            "type"
           ],
           "additionalProperties": false
         }
@@ -10413,7 +10502,7 @@ module.exports.default = {
         },
         "value": {
           "type": "string",
-          "description": "The value of the variable. If the 'type' is 'FILE', the value must be Base64 encoded."
+          "description": "The value of the variable. If the 'type' is `FILE`, the value must be Base64 encoded."
         },
         "type": {
           "type": "string",
@@ -10422,7 +10511,7 @@ module.exports.default = {
             "SSH_KEY",
             "FILE"
           ],
-          "description": "The type of the added variable. Can be one of 'VAR', 'SSH_KEY' or 'FILE'."
+          "description": "The type of the added variable. Can be one of `VAR`, `SSH_KEY` or `FILE`."
         },
         "description": {
           "type": "string",
@@ -10438,15 +10527,15 @@ module.exports.default = {
         },
         "file_place": {
           "type": "string",
-          "description": "Available values: 'CONTAINER', 'NONE'. Set if type is 'SSH_KEY' or 'FILE'. If it's 'NONE', the variable can be used as a parameter in an action. For 'CONTAINER', the given file/key is additionally copied to an action container on each run."
+          "description": "Available values: `CONTAINER`, `NONE`. Set if type is `SSH_KEY` or `FILE`. If it's `NONE`, the variable can be used as a parameter in an action. For `CONTAINER`, the given file/key is additionally copied to an action container on each run."
         },
         "file_path": {
           "type": "string",
-          "description": "Specifies where to copy the file on each run. Set if 'type' is 'SSH_KEY' or 'FILE'."
+          "description": "Specifies where to copy the file on each run. Set if `type` is `SSH_KEY` or `FILE`."
         },
         "file_chmod": {
           "type": "string",
-          "description": "File permission set on copy to a container on each run. Set if 'type' is 'SSH_KEY' or 'FILE'."
+          "description": "File permission set on copy to a container on each run. Set if `type` is `SSH_KEY` or `FILE`."
         }
       },
       "required": [

@@ -173,6 +173,9 @@ scraper.on('progress', ({ done, total }) => {
 scraper
     .start()
     .then(() => {
+        mainDefinition.definitions!.TriggerPipeline.allOf![1].required = (
+            mainDefinition.definitions!.TriggerPipeline.allOf![1].required as string[]
+        ).filter(property => !['next_pipeline_id', 'next_project_name', 'next_pipeline_name'].includes(property));
         mainDefinition.definitions!.Action = {
             oneOf: actionNames.map(name => ({ $ref: `#/definitions/${name}` }))
         };
