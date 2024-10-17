@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { getRegisteredPipelines, isFixed } from '@buddy-js/core';
 import Schema from '@buddy-js/types';
 import { Args, Flags } from '@oclif/core';
@@ -70,10 +71,20 @@ export default class Generate extends BaseCommand<typeof Generate, { step: strin
 
         yield { step: 'emit' };
 
+        const schemaFile = fileURLToPath(import.meta.resolve('@buddy-js/types/schema.json'));
         for (const pipeline of pipelines) {
             const filename = `${sanitizeFilename(pipeline.pipeline).replace(/ +/g, '-') + (isFixed(pipeline) ? '.fixed' : '')}.yml`;
             const yaml = YAML.stringify([pipeline], { indent: this.flags.indent, lineWidth: this.flags.lineWidth });
-            await fs.writeFile(path.resolve(this.flags.output, filename), yaml, { flag: 'a+' });
+            const file = path.resolve(this.flags.output, filename);
+            if (
+                !(await fs.access(file).then(
+                    () => true,
+                    () => false
+                ))
+            ) {
+                await fs.writeFile(file, `# yaml-language-server: $schema=${path.relative(path.dirname(file), schemaFile)}\n`);
+            }
+            await fs.appendFile(file, yaml);
         }
 
         yield { step: 'done' };
