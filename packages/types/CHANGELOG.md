@@ -1,5 +1,11 @@
 # @buddy-js/types
 
+## 0.0.4
+
+### Patch Changes
+
+-   01533b4: fix integration typing for push docker image action
+
 ## 0.0.3
 
 ### Patch Changes

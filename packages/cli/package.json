@@ -1,6 +1,6 @@
 {
     "name": "@buddy-js/cli",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "A new CLI generated with oclif",
     "keywords": ["oclif"],
     "homepage": "https://github.com/draconisNoctis/buddy-js",
@@ -36,8 +36,8 @@
         }
     },
     "dependencies": {
-        "@buddy-js/core": "workspace:0.0.6",
-        "@buddy-js/types": "workspace:0.0.3",
+        "@buddy-js/core": "workspace:0.0.7",
+        "@buddy-js/types": "workspace:0.0.4",
         "@oclif/core": "4.0.29",
         "@oclif/plugin-help": "6.2.15",
         "ajv": "8.17.1",

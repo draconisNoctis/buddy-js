@@ -1,5 +1,13 @@
 # @buddy-js/cli
 
+## 0.0.7
+
+### Patch Changes
+
+-   Updated dependencies [01533b4]
+    -   @buddy-js/types@0.0.4
+    -   @buddy-js/core@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

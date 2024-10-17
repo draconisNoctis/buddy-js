@@ -1,6 +1,6 @@
 {
     "name": "@buddy-js/core",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "exports": {
         ".": {
             "require": "./lib/cjs/index.js",
@@ -17,7 +17,7 @@
         "postbuild": "echo '{ \"type\": \"module\" }' > lib/esm/package.json"
     },
     "dependencies": {
-        "@buddy-js/types": "workspace:0.0.3"
+        "@buddy-js/types": "workspace:0.0.4"
     },
     "devDependencies": {
         "typescript": "5.6.3"
