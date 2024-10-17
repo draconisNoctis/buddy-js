@@ -138,16 +138,29 @@ const mainDefinition: JSONSchema4 = {
 };
 
 const actionNames: string[] = [];
+let commonAction: JSONSchema4 | undefined;
 
 scraper.on('base', definitions => {
     for (const { name, definition } of definitions) {
-        mainDefinition.definitions![name] = definition;
+        if (name === 'ActionCommon') {
+            commonAction = definition;
+        } else {
+            mainDefinition.definitions![name] = definition;
+        }
     }
 });
 
 scraper.on('action', ({ name, definition, additionalDefinitions }) => {
     actionNames.push(name);
-    mainDefinition.definitions![name] = definition;
+    mainDefinition.definitions![name] = {
+        ...commonAction,
+        ...definition,
+        properties: {
+            ...commonAction?.properties,
+            ...definition.properties
+        },
+        required: [...new Set([...(commonAction?.required as string[]), ...(definition.required as string[])])]
+    };
     for (const { name, definition } of additionalDefinitions) {
         mainDefinition.definitions![name] = definition;
     }
@@ -173,8 +186,8 @@ scraper.on('progress', ({ done, total }) => {
 scraper
     .start()
     .then(() => {
-        mainDefinition.definitions!.TriggerPipeline.allOf![1].required = (
-            mainDefinition.definitions!.TriggerPipeline.allOf![1].required as string[]
+        mainDefinition.definitions!.TriggerPipeline./* allOf![1]. */ required = (
+            mainDefinition.definitions!.TriggerPipeline./* allOf![1]. */ required as string[]
         ).filter(property => !['next_pipeline_id', 'next_project_name', 'next_pipeline_name'].includes(property));
         mainDefinition.definitions!.Action = {
             oneOf: actionNames.toSorted((a, b) => a.localeCompare(b)).map(name => ({ $ref: `#/definitions/${name}` }))

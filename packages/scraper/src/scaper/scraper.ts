@@ -2,7 +2,9 @@ import EventEmitter, {} from 'node:events';
 import * as cheerio from 'cheerio';
 
 export type EventMap<T> = Record<keyof T, unknown>;
-export type ParserMap<T> = { [K in keyof T]: ($: cheerio.CheerioAPI, html: string, url: string) => T[K] | Promise<T[K]> };
+export type ParserMap<T> = {
+    [K in keyof T]: ($: cheerio.CheerioAPI, html: string, url: string) => T[K] | undefined | Promise<T[K] | undefined>;
+};
 
 export type ProgressEvent = {
     done: number;
@@ -38,8 +40,10 @@ export class Scraper<T extends EventMap<T>> extends EventEmitter<
             const $ = cheerio.load(html);
 
             const result = await this.#parsers[type]($, html, url);
-            // biome-ignore lint/suspicious/noExplicitAny: required
-            this.emit(type, ...([result] as any));
+            if (result != null) {
+                // biome-ignore lint/suspicious/noExplicitAny: required
+                this.emit(type, ...([result] as any));
+            }
         } catch (e) {
             if (e instanceof Error) {
                 this.emit('error', e);

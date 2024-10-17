@@ -50,14 +50,15 @@ export class BuddyScraper extends Scraper<{
                     .replace(/[ -](\w)/g, (_, c) => c.toUpperCase())
                     .replace(/\W/g, '');
 
+                const definition = this.parseTable(name, $, $('.table-responsive').first().find('table'), baseUrl);
+
+                if (definition.properties!.type.enum![0] === 'BUILD' && name !== 'BuildApplication') {
+                    return;
+                }
+
                 return {
                     name,
-                    definition: {
-                        allOf: [
-                            { $ref: '#/definitions/ActionCommon' },
-                            this.parseTable(name, $, $('.table-responsive').first().find('table'), baseUrl)
-                        ]
-                    },
+                    definition,
                     additionalDefinitions: $('[id$="-schema"]:is(h2, h3),[id$="-properties"]:is(h2, h3)')
                         .toArray()
                         .map(h => $(h))

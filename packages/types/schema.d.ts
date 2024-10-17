@@ -25,11 +25,9 @@ export type Action =
   | Bugsnag
   | BuildACordovaApp
   | BuildAFastlaneAppiOS
-  | BuildAndroidApp
   | BuildApplication
   | BuildAReactNativeApp
   | BuildDockerImage
-  | BuildFlutterApp
   | BuildFlutterAppiOS
   | BuildMultiArchImage
   | ClearCache
@@ -151,6086 +149,6 @@ export type Action =
   | WPCLI
   | Xcode
   | ZIP;
-export type AmazonElasticContainerService = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_ECS`.
-   */
-  type: "AWS_ECS";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The path to the JSON file with task definition.
-   */
-  local_path: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  cluster: string;
-  /**
-   * The ID of the ECS service.
-   */
-  service: string;
-};
-export type AmazonS3 = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AMAZON_S3`.
-   */
-  type: "AMAZON_S3";
-  /**
-   * The name of the Amazon S3 Bucket.
-   */
-  bucket_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * Access control lists (ACLs) enable you to manage access to buckets and objects. It defines which AWS accounts or groups are granted access and the type of access.
-   */
-  acl?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * Specifies the expiration period for the objects (how long they stay in the cache).
-   */
-  expires_date?: string;
-  /**
-   * Specifies how long objects stay in the cache.
-   */
-  cache_control?: string;
-  /**
-   * When set to `true` all files will have their mime-types set to `application/octet-stream`.
-   */
-  skip_content_type_setting?: boolean;
-  /**
-   * Set to `true` if you want to use Reduced Redundancy Storage
-   */
-  reduced_redundancy?: boolean;
-  /**
-   * Defines tags for files categorization as a key value pairs list.
-   */
-  deploy_tags?: Tag[];
-  /**
-   * If set to `true`, files are not deleted if changeset indcates that.
-   */
-  deletion_disabled?: boolean;
-  /**
-   * ContentEncoding that will be set for the deployed files e.g. "gzip".
-   */
-  content_encoding?: string;
-};
-export type AWSAppRunnerDeploy = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`.
-   */
-  type: "AWS_APP_RUNNER_MONITOR";
-  /**
-   * The ID of the App Runner service ARN.
-   */
-  service: string;
-  /**
-   * The name of the Amazon region. The full list of regions is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`.
-   */
-  timeout: number;
-};
-export type AWSCDKCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_CDK_CLI`.
-   */
-  type: "AWS_CDK_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string;
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string;
-};
-export type AWSCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_CLI`.
-   */
-  type: "AWS_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type AWSCLI2 = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_CLI_2`.
-   */
-  type: "AWS_CLI_2";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type AWSCodeDeploy = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `CODE_DEPLOY`.
-   */
-  type: "CODE_DEPLOY";
-  /**
-   * The name of the application.
-   */
-  application_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region: string;
-  /**
-   * The Amazon group name.
-   */
-  group_name: string;
-  /**
-   * The name of the CodeDeploy configuration.
-   */
-  config_name: string;
-  /**
-   * The comment about the deployment.
-   */
-  description?: string;
-  /**
-   * See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html).
-   */
-  ignore_application_stop_failures?: boolean;
-  /**
-   * See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html).
-   */
-  update_outdated_instances_only?: boolean;
-  /**
-   * Defines whether to wait for the finish of the deployment in Amazon Code Deploy.
-   */
-  wait_for_finish_deployment?: boolean;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-};
-export type AWSCodePipeline = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `CODE_PIPELINE`.
-   */
-  type: "CODE_PIPELINE";
-  /**
-   * The name of the AWS CodePipeline pipeline triggered by the action.
-   */
-  code_pipeline_name: string;
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * If set to `true`, the action will wait for the CodePipeline to finish.
-   */
-  wait_for_complete?: boolean;
-};
-export type AWSElasticBeanstalk = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `ELASTIC_BEANSTALK`.
-   */
-  type: "ELASTIC_BEANSTALK";
-  /**
-   * The name of the application.
-   */
-  application_name: string;
-  /**
-   * The Amazon environment.
-   */
-  environment: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The label of the deployed version.
-   */
-  version_label?: string;
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-};
-export type AWSElasticBeanstalkMonitoring = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `MONITOR`.
-   */
-  type: "MONITOR";
-  /**
-   * The name of the application.
-   */
-  application_name: string;
-  /**
-   * The Amazon environment.
-   */
-  environment: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region: string;
-  /**
-   * Defines whether or not the action should be marked as failed when Amazon returns ‘yellow’ health status.
-   */
-  fail_on_yellow?: boolean;
-  /**
-   * Defines whether or not to show verbose logs.
-   */
-  verbose?: boolean;
-};
-export type AWSLambda = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `LAMBDA`.
-   */
-  type: "LAMBDA";
-  /**
-   * The name of the Lambda function.
-   */
-  function_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The Amazon region.
-   */
-  region: string;
-  /**
-   * The Lambda function version or the alias name. More info [here](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
-   */
-  qualifier?: string;
-  /**
-   * The way in which the Lambda function will be invoked. More info [here](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
-   */
-  invocation_type?: string;
-  /**
-   * Logging type. Can be one of `TAIL` or `NONE`.
-   */
-  log_type?: "TAIL" | "NONE";
-  /**
-   * The type of log data produced by the Lambda function. More info [here](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
-   */
-  client_context?: string;
-  /**
-   * The JSON that will be provided as input to the Lambda function. More info [here](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
-   */
-  payload?: string;
-};
-export type AWSLambdaDeploy = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AWS_LAMBDA_DEPLOY`.
-   */
-  type: "AWS_LAMBDA_DEPLOY";
-  /**
-   * The name of the Lambda function.
-   */
-  function_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region: string;
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-};
-export type AzureCLI = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AZURE_CLI`.
-   */
-  type: "AZURE_CLI";
-  /**
-   * The ID of the application.
-   */
-  application_name: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type AzureStorage = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AZURE_STORAGE`.
-   */
-  type: "AZURE_STORAGE";
-  /**
-   * The name of the bucket.
-   */
-  bucket_name: string;
-  /**
-   * The integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the  build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The name of the application.
-   */
-  application_name?: string;
-  /**
-   * If set to `true`, files are not deleted if changeset indcates that.
-   */
-  deletion_disabled?: boolean;
-  /**
-   * When set to `true`, all files will have their mime-types set to `application/octet-stream`.
-   */
-  skip_content_type_setting?: boolean;
-  /**
-   * ContentEncoding that will be set for the deployed files e.g. "gzip".
-   */
-  content_encoding?: string;
-};
-export type BackblazeB2 = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `BACKBLAZE_B2`.
-   */
-  type: "BACKBLAZE_B2";
-  /**
-   * The name of the Backblaze B2 Bucket.
-   */
-  bucket_name: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the Backblaze region.
-   */
-  region: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string;
-  /**
-   * The exceptions from the ignore patterns set in deployment_excludes.
-   */
-  deployment_includes?: string;
-  /**
-   * Specifies how long objects stay in the cache.
-   */
-  cache_control?: string;
-  /**
-   * If set to `true`, files are not deleted if changeset indcates that.
-   */
-  deletion_disabled?: string;
-  /**
-   * ContentEncoding that will be set for the deployed files e.g. "gzip".
-   */
-  content_encoding?: string;
-};
-export type Blackfire = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `BLACKFIRE_PYTHON`.
-   */
-  type: "BLACKFIRE_PYTHON";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The version of Python.
-   */
-  version: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH`(default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type Bugsnag = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `BUGSNAG`.
-   */
-  type: "BUGSNAG";
-  /**
-   * See `appVersion` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
-   */
-  version: string;
-  /**
-   * See `releaseStage` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
-   */
-  release_stage: string;
-  /**
-   * See `apiKey` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
-   */
-  token: string;
-  /**
-   * See `sourceControl.revision` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
-   */
-  revision?: string;
-  /**
-   * See `builderName` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
-   */
-  builder_name?: string;
-  /**
-   * See `autoAssignRelease` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
-   */
-  auto_assign_release?: boolean;
-};
-export type BuildACordovaApp = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FASTLANE`.
-   */
-  type: "NATIVE_BUILD_MAC_FASTLANE";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * The list of simulators initiated before the action runs.
-   */
-  pre_start_simulators?: string[];
-  /**
-   * The version of Node.js used in the action.
-   */
-  node_version?: string;
-  /**
-   * The list of variables added to the iOS keychain.
-   */
-  certificates?: string[];
-  /**
-   * The list of variables added as iOS Provisioning Profiles.
-   */
-  provision_profiles?: string[];
-  /**
-   * Defines the Xcode version.
-   */
-  xcode_version?: string;
-};
-export type BuildAFastlaneAppiOS = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FASTLANE`.
-   */
-  type: "NATIVE_BUILD_MAC_FASTLANE";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * The list of simulators initiated before the action runs.
-   */
-  pre_start_simulators?: string[];
-  /**
-   * The version of Node.js used in the action.
-   */
-  node_version?: string;
-  /**
-   * The list of variables added to the iOS keychain.
-   */
-  certificates?: string[];
-  /**
-   * The list of variables added as iOS Provisioning Profiles.
-   */
-  provision_profiles?: string[];
-  /**
-   * Defines the Xcode version.
-   */
-  xcode_version?: string;
-};
-export type BuildAndroidApp = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `BUILD`.
-   */
-  type: "BUILD";
-  /**
-   * The name of the Docker image.
-   */
-  docker_image_name: string;
-  /**
-   * The tag of the Docker image.
-   */
-  docker_image_tag: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The dependencies & directories to be cached and available to every execution in this pipeline.
-   */
-  cached_dirs?: string[];
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-  /**
-   * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`.
-   */
-  services?: Service[];
-  /**
-   * The username required to connect to the Docker hub, private registry or GCR.
-   */
-  login?: string;
-  /**
-   * The password required to connect to the Docker hub, private registry or GCR.
-   */
-  password?: string;
-  /**
-   * The url to the Docker registry or GCR.
-   */
-  registry?: string;
-  /**
-   * The ID of the integration. Required for using the image from the Amazon ECR.
-   */
-  integration?: string;
-  /**
-   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-};
-export type BuildApplication = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `BUILD`.
-   */
-  type: "BUILD";
-  /**
-   * The name of the Docker image.
-   */
-  docker_image_name: string;
-  /**
-   * The tag of the Docker image.
-   */
-  docker_image_tag: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The dependencies & directories to be cached and available to every execution in this pipeline.
-   */
-  cached_dirs?: string[];
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`.
-   */
-  services?: Service[];
-  /**
-   * The hostname of the container in which the action is run. The container will be available under this name in the docker network for services defined in the `services` field.
-   */
-  main_service_name?: string;
-  /**
-   * The username required to connect to a private registry.
-   */
-  login?: string;
-  /**
-   * The password required to connect to a private registry.
-   */
-  password?: string;
-  /**
-   * The url to the Docker registry or GCR. Required for Google GCR.
-   */
-  registry?: string;
-  /**
-   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
-   */
-  integration?: string;
-  /**
-   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-  /**
-   * If set to `true` the Docker image will be taken from action defined by `docker_build_action_id` or `docker_build_action_name`.
-   */
-  use_image_from_action?: boolean;
-  /**
-   * The ID of the action which built the desired Docker image. If set to 0, the image will be taken from previous pipeline action. Can be used instead of `docker_build_action_name`.
-   */
-  docker_build_action_id?: number;
-  /**
-   * The name of the action which built the desired Docker image. Can be used instead of `docker_build_action_id`.
-   */
-  docker_build_action_name?: string;
-  /**
-   * If set to `true`, all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-  /**
-   * If set to `true`, the cached version of the image is used, instead of being pulled each time.
-   */
-  cache_base_image?: boolean;
-  /**
-   * If set to `true`, use cached image on timeouts (only for official images).
-   */
-  ignore_image_pull_failures?: boolean;
-  /**
-   * All build commands are run as the default user defined in the selected Docker image. Can be set to another username (on the condition that this user exists in the selected image).
-   */
-  run_as_user?: string;
-  /**
-   * The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action.
-   */
-  image_location?: string;
-  /**
-   * The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with `image_location`. If not specified, the system will automatically set it based on other data from the action.
-   */
-  docker_registry?: string;
-};
-export type BuildAReactNativeApp = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC_REACT`.
-   */
-  type: "NATIVE_BUILD_MAC_REACT";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * The list of simulators initiated before the action runs.
-   */
-  pre_start_simulators?: string[];
-  /**
-   * The version of Node.js used in the action.
-   */
-  node_version?: string;
-  /**
-   * The list of variables added to the iOS keychain.
-   */
-  certificates?: string[];
-  /**
-   * The list of variables added as iOS Provisioning Profiles.
-   */
-  provision_profiles?: string[];
-  /**
-   * Defines the Xcode version.
-   */
-  xcode_version?: string;
-};
-export type BuildDockerImage = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOCKERFILE`.
-   */
-  type: "DOCKERFILE";
-  /**
-   * The path of the desired dockerfile in the repository. Default is `DOCKERFILE`.
-   */
-  dockerfile_path: string;
-  /**
-   * The docker build image context path.
-   */
-  context_path?: string;
-  /**
-   * The tag of the Docker image.
-   */
-  docker_image_tag?: string;
-  /**
-   * The username required to connect to the server. Required for delivering the Dockerfile to a private registry.
-   */
-  login?: string;
-  /**
-   * The password required to connect to the server. Required for delivering the Dockerfile to a private registry.
-   */
-  password?: string;
-  /**
-   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
-   */
-  integration?: string;
-  /**
-   * The name of the Amazon S3 region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-  /**
-   * The url to GCR. Can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io. Required for Google GCR.
-   */
-  registry?: string;
-  /**
-   * The location of the Docker repository.
-   */
-  repository?: string;
-  /**
-   * The arguments used when building the image from the Dockerfile.
-   */
-  build_args?: string[];
-  /**
-   * If set to `true`, ignore SSL errors upon connecting to the Docker registry.
-   */
-  insecure_registry?: boolean;
-  /**
-   * If set to `true`, dangling images will not be pruned after the build.
-   */
-  do_not_prune_images?: boolean;
-  /**
-   * The Docker BuildKit will be activated while invoking the `docker build` command. By default, it is set to `true`.
-   */
-  buildkit?: boolean;
-  /**
-   * The list of [secrets](https://buddy.works/docs/yaml/yaml-actions/build-docker-image#dockerbuildsecret-schema) to be sent using the `--secret` parameter.
-   */
-  secrets?: DockerBuildSecret[];
-  /**
-   * Refers to the `--provenance` switch of the Docker build. Available values: `NONE`, `MIN`, `MAX`. The default value is `NONE`.
-   */
-  provenance?: string;
-  /**
-   * Available if the cache_scope in the pipeline where this action is located, is set to `WORKSPACE` or `PROJECT`. Defines the Docker cache mode. Available values are `MIN` or `MAX`. By default, it is set to `MIN`.
-   */
-  cache_mode?: string;
-  /**
-   * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
-   */
-  docker_registry?: string;
-};
-export type BuildFlutterApp = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  name: string;
-  /**
-   * The type of the action. Should be set to `BUILD`.
-   */
-  type: "BUILD";
-  /**
-   * The name of the Docker image.
-   */
-  docker_image_name: string;
-  /**
-   * The tag of the Docker image.
-   */
-  docker_image_tag: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The dependencies & directories to be cached and available to every execution in this pipeline.
-   */
-  cached_dirs?: string[];
-  /**
-   * The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located).
-   */
-  volume_mappings?: string[];
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-  /**
-   * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`, `CUSTOM`.
-   */
-  services?: Service[];
-};
-export type BuildFlutterAppiOS = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FLUTTER`.
-   */
-  type: "NATIVE_BUILD_MAC_FLUTTER";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * The list of simulators initiated before the action runs.
-   */
-  pre_start_simulators?: string[];
-  /**
-   * The version of Node.js used in the action.
-   */
-  node_version?: string;
-  /**
-   * The list of variables added to the iOS keychain.
-   */
-  certificates?: string[];
-  /**
-   * The list of variables added as iOS Provisioning Profiles.
-   */
-  provision_profiles?: string[];
-  /**
-   * Defines the Xcode version.
-   */
-  xcode_version?: string;
-};
-export type BuildMultiArchImage = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOCKER_BUILD_MULTI_ARCH`.
-   */
-  type: "DOCKER_BUILD_MULTI_ARCH";
-  /**
-   * The path of the desired dockerfile in the repository. Default is `DOCKERFILE`.
-   */
-  dockerfile_path: string;
-  /**
-   * The docker build image context path.
-   */
-  context_path?: string;
-  /**
-   * Specifes an intermediate build stage by name as a final stage for the resulting image. Commands after the target stage are skipped.
-   */
-  target_stage?: string;
-  /**
-   * The identifier to pass into the `docker build --secret`. This identifier is associated with the `RUN --mount` identifier to use in the Dockerfile.
-   */
-  secret_id?: string;
-  /**
-   * Renames the secret file to a specific file in the Dockerfile RUN command to use.
-   */
-  secret_src?: string;
-  /**
-   * The arguments used when building the image from the Dockerfile.
-   */
-  build_args?: string[];
-  /**
-   * Specifies the target platform for the build output. You can set multiple target platforms. Default value: `linux/amd64`. Available values: `linux/amd64`, `linux/arm64`, `linux/arm/v7`, `linux/arm/v6`.
-   */
-  target_platform?: string[];
-  /**
-   * The tag of the Docker image.
-   */
-  docker_image_tag?: string;
-  /**
-   * The username required to connect to the server. Required for delivering the Dockerfile to a private registry.
-   */
-  login?: string;
-  /**
-   * The password required to connect to the server. Required for delivering the Dockerfile to a private registry.
-   */
-  password?: string;
-  /**
-   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
-   */
-  integration?: string;
-  /**
-   * The name of the Amazon S3 region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-  /**
-   * The url to GCR. Can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io. Required for Google GCR.
-   */
-  registry?: string;
-  /**
-   * The location of the Docker repository.
-   */
-  repository?: string;
-  /**
-   * Available if the cache_scope in the pipeline where this action is located, is set to `WORKSPACE` or `PROJECT`. Defines the Docker cache mode. Available values are `MIN` or `MAX`. By default, it is set to `MIN`.
-   */
-  cache_mode?: string;
-  /**
-   * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
-   */
-  docker_registry?: string;
-};
-export type ClearCache = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `CLEAR_CACHE`.
-   */
-  type: "CLEAR_CACHE";
-  /**
-   * Defines the cache layer cleared by the action. Available values: `DOCKER`, `FILE_SYSTEM`,  `SERVICES`, `ADDITIONAL`.
-   */
-  cache_types: string[];
-};
-export type Cloudflare = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `CLOUDFLARE`.
-   */
-  type: "CLOUDFLARE";
-  /**
-   * The ID of the Cloudflare zone.
-   */
-  zone_id: string;
-  /**
-   * The name of the Cloudflare web distribution.
-   */
-  distribution_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The URL address to the desired site.
-   */
-  base_url?: string;
-  /**
-   * Specifies whether or not the whole cache should be removed.
-   */
-  purge_all?: boolean;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type Cloudfront = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `CLOUDFLARE`.
-   */
-  type: "CLOUDFLARE";
-  /**
-   * The ID of the Cloudfront web distribution.
-   */
-  distribution_id: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  base_url?: string;
-  /**
-   * Specifies whether or not the whole cache should be removed.
-   */
-  purge_all?: boolean;
-  /**
-   * The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type CodeSignAndExportAnIOSApp = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC_SIGN`.
-   */
-  type: "NATIVE_BUILD_MAC_SIGN";
-  /**
-   * The filesystem path of the signed archive file.
-   */
-  archive_location: string;
-  /**
-   * Defines the filesystem path to which the signed file is exported.
-   */
-  export_location?: string;
-  /**
-   * Defines the source of the `property_list` used by the action. Available options: `ACTION`, `GENERATED`,`PIPELINE_VOLUME`.
-   */
-  property_list_source?: string;
-  /**
-   * Filesystem path of the properties file or the list of properties separated by the newline character `\n`.
-   */
-  property_list?: string;
-  /**
-   * Defines the distribution method from one of the available: `APP_STORE`, `ENTERPRISE`, `AD_HOC`, `DEVELOPMENT`.
-   */
-  distribution_method?: string;
-  /**
-   * The list of variables added to the iOS keychain.
-   */
-  certificates?: string[];
-  /**
-   * The list of variables added as iOS Provisioning Profiles.
-   */
-  provision_profiles?: string[];
-};
-export type CompressImages = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `IMAGE_COMPRESSION`.
-   */
-  type: "IMAGE_COMPRESSION";
-  /**
-   * The path in the repository.
-   */
-  local_path: string;
-  /**
-   * Output directory for compressed images.
-   */
-  destination: string;
-  /**
-   * The level of image compression. Can be set to `1` (low), `2` (medium) or `3` (high).
-   */
-  level: string;
-  /**
-   * Supported image formats. Available types: `jpg`, `png`, `gif`, `svg`.
-   */
-  types: string;
-};
-export type CopyFilesAction = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `COPY_FILES`.
-   */
-  type: "COPY_FILES";
-  /**
-   * The ID of the pipeline from which files will be copied. Not required if both `source_project_name` and `source_pipeline_name` are set instead. If not set, the source pipeline will be the current pipeline.
-   */
-  source_pipeline_id?: number;
-  /**
-   * The name of the project containing the pipeline from which files will be copied. Required if `source_pipeline_name` is set. Not valid if `source_pipeline_id` is set.
-   */
-  source_project_name?: string;
-  /**
-   * The name of the pipeline from which files will be copied. Required if `source_project_name` is set. Not valid if `source_pipeline_id` is set. If not set, the source pipeline will be the current pipeline.
-   */
-  source_pipeline_name?: string;
-  /**
-   * The name of the project containing the pipeline to which files will be copied. Required if `target_pipeline_name` is set.
-   */
-  target_project_name?: string;
-  /**
-   * The name of the pipeline to which files will be copied. Required if `target_project_name` is set. If not set, the target pipeline will be the current pipeline.
-   */
-  target_pipeline_name?: string;
-  /**
-   * The path in the source pipeline’s filesystem.
-   */
-  source_path?: string;
-  /**
-   * The path in the current pipeline’s filesystem.
-   */
-  target_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * When set to `true` the hidden files and folders (the ones with the name beginning with a ".") are copied.
-   */
-  copy_hidden_files?: boolean;
-};
-export type CreateNewSandbox = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `SANDBOX_CREATE_NEW`.
-   */
-  type: "SANDBOX_CREATE_NEW";
-  /**
-   * Defines the name of the created sandbox.
-   */
-  sandbox_name: string;
-  /**
-   * Defines the OS distro of the sandbox. Can be one of `ubuntu/focal` or `debian/buster`.
-   */
-  sandbox_distribution: "ubuntu/focal" | "debian/buster";
-  /**
-   * Defines the list of playbooks to install during the sandbox creation.
-   */
-  sandbox_playbooks?: SandboxPlaybook[];
-  /**
-   * The list of tags applied to the sandbox.
-   */
-  tags?: string[];
-  /**
-   * Defines the amount of RAM available to the sandbox. Can be one of `2` or `4`.
-   */
-  ram_limit: number;
-  /**
-   * Defines the number of vCPUs of the sandbox. Can be one of `1` or `2`.
-   */
-  cpu_limit: number;
-  /**
-   * Defines the sandbox disk size. Expressed in GB. Can be one of `5` or `10`.
-   */
-  disk_size_limit: number;
-  /**
-   * Defines the port-subdomain mappings that allow to access exposed resources on the sandbox.
-   */
-  mappings: Mapping[];
-  /**
-   * Defines the port used in the mapping.
-   */
-  application_port?: number;
-  /**
-   * Defines the subdomain used in the mapping.
-   */
-  subdomain?: string;
-  /**
-   * If set to `true`, it allows you to use basic authorization in mappings
-   */
-  basic_auth?: boolean;
-  /**
-   * Defines the basic auth username required to access the exposed resources.
-   */
-  mappings_username?: string;
-  /**
-   * Defines the basic auth password required to access the exposed resources.
-   */
-  mappings_password?: string;
-};
-export type Datadog = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DATADOG`.
-   */
-  type: "DATADOG";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The type of the alert. Can be one of `SUCCESS`, `WARNING` or `ERROR`.
-   */
-  alert_type: "SUCCESS" | "WARNING" | "ERROR";
-  /**
-   * The title of the posted event.
-   */
-  title?: string;
-  /**
-   * The content of the posted event.
-   */
-  content?: string;
-  /**
-   * An arbitrary string to use for aggregation, max length of 100 characters. If you specify a key, all events using that key will be grouped together in the Event Stream.
-   */
-  aggregation_key?: string;
-  /**
-   * The Host name to associate with the event. Any tags associated with the host will also be applied to this event.
-   */
-  host?: string;
-  /**
-   * The list of tags to apply to the event.
-   */
-  tags?: string[];
-  /**
-   * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
-   */
-  region?: "US1" | "US3" | "US5" | "EU1" | "AP1" | "US1_FED";
-};
-export type DatadogServiceCheck = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DATADOG_STATUS_CHECK`.
-   */
-  type: "DATADOG_STATUS_CHECK";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The Host name to associate with the event. Any tags associated with the host will also be applied to this event.
-   */
-  host_name?: string;
-  /**
-   * An integer for the status of the check.
-   */
-  status?: number;
-  /**
-   * The text for the message.
-   */
-  check?: string;
-  /**
-   * A description of why this status occurred.
-   */
-  message?: string;
-  /**
-   * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
-   */
-  region?: "US1" | "US3" | "US5" | "EU1" | "AP1" | "US1_FED";
-};
-export type DeployToAppStoreConnect = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC_DEPLOY`.
-   */
-  type: "NATIVE_BUILD_MAC_DEPLOY";
-  /**
-   * The filesystem path of the signed archive file.
-   */
-  archive_location: string;
-  /**
-   * Defines if the app is submitted to Fastlane pre-check before sending for review.
-   */
-  validate_before_upload?: string;
-  /**
-   * Defines if the app is sent to review.
-   */
-  submit_for_review?: boolean;
-  /**
-   * Defines if the app metadata is updated.
-   */
-  skip_metadata?: boolean;
-  /**
-   * Defines if the app version is increased.
-   */
-  skip_app_version_update?: boolean;
-  /**
-   * Defines is the app screenshots are updated.
-   */
-  skip_screenshots?: boolean;
-};
-export type DigitalOcean = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DIGITAL_OCEAN`.
-   */
-  type: "DIGITAL_OCEAN";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * The port for the connection.
-   */
-  port?: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type DigitalOceanCDN = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_CDN`.
-   */
-  type: "GOOGLE_CDN";
-  /**
-   * The ID of the DigitalOcean CDN web distribution.
-   */
-  endpoint_id: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the DigitalOcean CDN web distribution.
-   */
-  distribution_name: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * Specifies whether or not the whole cache should be removed.
-   */
-  purge_all?: boolean;
-  /**
-   * The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type DigitalOceanCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOCTL`.
-   */
-  type: "DOCTL";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type DigitalOceanSpaces = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DO_SPACES`.
-   */
-  type: "DO_SPACES";
-  /**
-   * The name of the DigitalOcean Spaces Bucket.
-   */
-  bucket_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the DigitalOcean Spaces region.
-   */
-  region: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * Makes files accessible through public HTTP.
-   */
-  public_access?: boolean;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * Specifies how long objects stay in the cache.
-   */
-  cache_control?: string;
-  /**
-   * ContentEncoding that will be set for the deployed files e.g. "gzip".
-   */
-  content_encoding?: string;
-};
-export type Discord = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DISCORD`.
-   */
-  type: "DISCORD";
-  /**
-   * The URL do the desired Discord [webhook](https://discordapp.com/developers/docs/resources/webhook#execute-webhook).
-   */
-  notification_url: string;
-  /**
-   * The content of the notification.
-   */
-  content?: string;
-  /**
-   * The embedded rich content. More info [here](https://discordapp.com/developers/docs/resources/channel#attachment-object-attachment-structure).
-   */
-  attachments?: string;
-  /**
-   * The attached files.
-   */
-  file_attachments?: string[];
-};
-export type Docker = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOCKER`.
-   */
-  type: "DOCKER";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-  /**
-   * The integration. Required to authorize in Amazon ECR, Google GCR and Docker Hub.
-   */
-  integration?: string;
-  /**
-   * The name of the Amazon region. If the Amazon ECR integration has been selected, provide the region to authorize in. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-  /**
-   * Provide if you want to authorize in a private registry or Google GCR. For GCR, it can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io.
-   */
-  registry?: string;
-  /**
-   * The username required to authorize in a private registry.
-   */
-  login?: string;
-  /**
-   * The password required to authorize in a private registry.
-   */
-  password?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * If set to `true`, all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-};
-export type DockerCLI = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_DOCKER_CLI`.
-   */
-  type: "NATIVE_BUILD_DOCKER_CLI";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * Enables or disables Docker layer caching.
-   */
-  docker_layer_caching?: boolean;
-  /**
-   * Required if `docker_layer_caching` is set to `true`. Defines the caching scope. Available values: `WORKSPACE`, `PROJECT`, `PIPELINE`, `ACTION`.
-   */
-  docker_layer_caching_scope?: boolean;
-  /**
-   * Defines the name of the tag assigned to the cached layer.
-   */
-  docker_layer_caching_tag?: string;
-  /**
-   * Set to `true` if you want the action to use the VM from the previous Docker CLI action.
-   */
-  vm_from_prev_action?: boolean;
-  /**
-   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
-   */
-  vm_action_name?: string;
-  /**
-   * Set to `AMI` if you want to use your own ami (default `UBUNTU_20_04`)
-   */
-  distribution?: string;
-  /**
-   * Set if `distribution` is set to `AMI`.
-   */
-  ami?: Ami;
-};
-export type DockerfileLinter = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOCKERFILE_LINTER`.
-   */
-  type: "DOCKERFILE_LINTER";
-  /**
-   * The path from which a Dockerfile is chosen.
-   */
-  local_path?: string;
-  /**
-   * Type of shell in which the errors will be detected. Available values: `sh`, `bash`, `dash`, `ksh`
-   */
-  shell_type?: string;
-  /**
-   * The errors that will be ignored by linter. You can find the error codes below or use [ShellCheck](https://github.com/koalaman/shellcheck/wiki/Checks).
-   */
-  ignore_codes?: string;
-  /**
-   * The path to the yaml file with [ignores](https://github.com/buddy-works/dockerfile-linter#yaml-file-with-ignores).
-   */
-  ignores_path?: string;
-};
-export type DownloadBackblazeB2 = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOWNLOAD_BACKBLAZE_B2`.
-   */
-  type: "DOWNLOAD_BACKBLAZE_B2";
-  /**
-   * The name of the Backblaze B2 Bucket.
-   */
-  bucket_name: string;
-  /**
-   * The path from which the file will be downloaded.
-   */
-  source_path: string;
-  /**
-   * The path in which the file will be saved.
-   */
-  destination_path: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the Backblaze region.
-   */
-  region: string;
-  /**
-   * Replace files if they already exist.
-   */
-  overwrite?: boolean;
-  /**
-   * If set to `true`, the whole directory tree is downloaded. Otherwise only the files from the path are downloaded.
-   */
-  recursive?: boolean;
-  /**
-   * The paths and/or files that will be excluded from the upload.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type DownloadFromSandbox = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOWNLOAD_FROM_SANDBOX`.
-   */
-  type: "DOWNLOAD_FROM_SANDBOX";
-  /**
-   * The path from which the file will be downloaded.
-   */
-  source_path?: string;
-  /**
-   * The path in which the file will be saved.
-   */
-  destination_path?: string;
-  /**
-   * The paths and/or files that will be excluded from the upload.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
-   */
-  sandbox_references: string;
-  /**
-   * The ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
-   */
-  sandbox_id?: string;
-  /**
-   * The ID of the action that creates the target sandbox. Required when `sandbox_references` is set to `BY_ACTION`.
-   */
-  referenced_action_id?: number;
-  /**
-   * The name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
-   */
-  referenced_sanbox_name?: string;
-  /**
-   * The list of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
-   */
-  tags?: string[];
-  /**
-   * The name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
-   */
-  sandbox_project_name?: string;
-  /**
-   * The number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
-   */
-  days?: number;
-  /**
-   * If set to `true`, the whole directory tree is downloaded. Otherwise only the files from the path are downloaded.
-   */
-  recursive?: boolean;
-  /**
-   * Replace files if they already exist.
-   */
-  overwrite?: boolean;
-};
-export type DownloadFTP = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOWNLOAD_FTP`.
-   */
-  type: "DOWNLOAD_FTP";
-  /**
-   * The path from which the file will be downloaded.
-   */
-  source_path: string;
-  /**
-   * The path in which the file will be saved.
-   */
-  destination_path: string;
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * Replace files if they already exist.
-   */
-  overwrite?: boolean;
-  /**
-   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
-   */
-  recursive?: boolean;
-  /**
-   * The paths and/or files that will be left out during the download.
-   */
-  download_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `download_excludes`.
-   */
-  download_includes?: string[];
-};
-export type DownloadFTPS = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOWNLOAD_FTPS`.
-   */
-  type: "DOWNLOAD_FTPS";
-  /**
-   * The path from which the file will be downloaded.
-   */
-  source_path: string;
-  /**
-   * The path in which the file will be saved.
-   */
-  destination_path: string;
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * Replace files if they already exist.
-   */
-  overwrite?: boolean;
-  /**
-   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
-   */
-  recursive?: boolean;
-  /**
-   * The paths and/or files that will be left out during the download.
-   */
-  download_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `download_excludes`.
-   */
-  download_includes?: string[];
-};
-export type DownloadGCS = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOWNLOAD_GCS`.
-   */
-  type: "DOWNLOAD_GCS";
-  /**
-   * The name of the GCS Bucket.
-   */
-  bucket_name: string;
-  /**
-   * The path from which the file will be downloaded.
-   */
-  source_path: string;
-  /**
-   * The path in which the file will be saved.
-   */
-  destination_path: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the GCS application.
-   */
-  application_name?: string;
-  /**
-   * Replace files if they already exist.
-   */
-  overwrite?: boolean;
-  /**
-   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
-   */
-  recursive?: boolean;
-  /**
-   * The paths and/or files that will be left out during the download.
-   */
-  download_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `download_excludes`.
-   */
-  download_includes?: string[];
-};
-export type DownloadS3 = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOWNLOAD_S3`.
-   */
-  type: "DOWNLOAD_S3";
-  /**
-   * The name of the Amazon S3 Bucket.
-   */
-  bucket_name: string;
-  /**
-   * The path from which the file will be downloaded.
-   */
-  source_path: string;
-  /**
-   * The path in which the file will be saved.
-   */
-  destination_path: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Replace files if they already exist.
-   */
-  overwrite?: boolean;
-  /**
-   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
-   */
-  recursive?: boolean;
-  /**
-   * The paths and/or files that will be left out during the download.
-   */
-  download_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `download_excludes`.
-   */
-  download_includes?: string[];
-};
-export type DownloadSFTP = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOWNLOAD_SSH`.
-   */
-  type: "DOWNLOAD_SSH";
-  /**
-   * The path from which the file will be downloaded.
-   */
-  source_path: string;
-  /**
-   * The path in which the file will be saved.
-   */
-  destination_path: string;
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * Replace files if they already exist.
-   */
-  overwrite?: boolean;
-  /**
-   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
-   */
-  recursive?: boolean;
-  /**
-   * The paths and/or files that will be left out during the download.
-   */
-  download_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `download_excludes`.
-   */
-  download_includes?: string[];
-};
-export type EmailNotification = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `EMAIL`.
-   */
-  type: "EMAIL";
-  /**
-   * The recipients of the notification: email addresses (one per line). One of `send_to_groups` or `recipients` must be specified.
-   */
-  recipients: string;
-  /**
-   * The list of groups' names to which emails will be sent. One of `send_to_groups` or `recipients` must be specified.
-   */
-  send_to_groups: string;
-  /**
-   * The content of the notification.
-   */
-  content: string;
-  /**
-   * The title of the notification.
-   */
-  title: string;
-  /**
-   * Defines whether to send the content as HTML.
-   */
-  send_as_html?: boolean;
-  /**
-   * The attached files.
-   */
-  file_attachments?: string;
-  /**
-   * The e-mail sender name.
-   */
-  from_name?: string;
-};
-export type ESLint = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `ESLINT`.
-   */
-  type: "ESLINT";
-  /**
-   * The version of the NodeJS.
-   */
-  version: string;
-  /**
-   * The name of the code style. Can be one of `airbnb`, `canonical`, `canonical/ava`, `canonical/flowtype`, `canonical/jest`, `canonical/lodash`, `canonical/mocha`, `canonical/react`, `eslint`, `es/2015/server`, `es/2015/client`, `facebook`, `google`, `standard`, `xo`, `xo/esnext`, `xo/browser` or `custom`.
-   */
-  style:
-    | "airbnb"
-    | "canonical"
-    | "canonical/ava"
-    | "canonical/flowtype"
-    | "canonical/jest"
-    | "canonical/lodash"
-    | "canonical/mocha"
-    | "canonical/react"
-    | "eslint"
-    | "es/2015/server"
-    | "es/2015/client"
-    | "facebook"
-    | "google"
-    | "standard"
-    | "xo"
-    | "xo/esnext"
-    | "xo/browser"
-    | "custom";
-  /**
-   * Required if `style` is set to `custom`. Path to the style config file.
-   */
-  config_path?: string;
-  /**
-   * Defines whether to automatically fix code issues or just perform the code analyse.
-   */
-  fix?: boolean;
-  /**
-   * When set to `true`, reports only errors, without warnings.
-   */
-  quiet?: boolean;
-};
-export type Firebase = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `FIREBASE`.
-   */
-  type: "FIREBASE";
-  /**
-   * The ID of the Firebase application.
-   */
-  application_id: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located).
-   */
-  volume_mappings?: string[];
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  working_directory?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type FTP = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `FTP`.
-   */
-  type: "FTP";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * Enables the active mode for the connection.
-   */
-  active_mode?: boolean;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
-   */
-  use_temporary_files?: boolean;
-};
-export type FTPS = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `FTPS`.
-   */
-  type: "FTPS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type GenerateVariables = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `INTEGRATION_VARIABLES`.
-   */
-  type: "INTEGRATION_VARIABLES";
-  /**
-   * Defines the hash ID of the integration from which the system generates variables. Supported integrations: `AMAZON`, `GIT_HUB_API`, `DOCKER_HUB`, `DIGITAL_OCEAN`.
-   */
-  integration: string;
-};
-export type GhostInspector = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GHOST_INSPECTOR`.
-   */
-  type: "GHOST_INSPECTOR";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name to associate with the event.
-   */
-  user?: string;
-  /**
-   * The password to associate with the event.
-   */
-  password?: string;
-  /**
-   * Use to initiate the execution, then immediate return a response (without results).
-   */
-  immediate?: boolean;
-  /**
-   * Use to disable all notifications for this execution only.
-   */
-  disable_notifications?: boolean;
-  /**
-   * Geo-location for test execution. The following options are available: `us-east-1`, `us-west-1`, `ca-central-1`, `eu-central-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `eu-north-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-southeast-1`, `ap-southeast-2`, `ap-south-1`, `sa-east-1`.
-   */
-  region?: string;
-  /**
-   * Alternate browser to use for this execution. The following options are available: `firefox` (default), `firefox-<version>` specific version of Firefox, for example `firefox-57`, `chrome` (paid plans only), `phantomjs`.
-   */
-  browser?: string;
-  /**
-   * The ID of the suite to execute.
-   */
-  suite_id?: string;
-  /**
-   * The ID of the folder to execute.
-   */
-  folder_id?: string;
-  /**
-   * Specify the Slack channel to notify for this suite run. Note that the value must be `myChannel` or `%23myChannel` and not `#myChannel`.
-   */
-  channel?: string;
-  /**
-   * Alternate screen size to use for all tests in this execution only. This should be a string formatted as `{width}x{height}`, for example `1024x768`.
-   */
-  viewport?: string;
-  /**
-   * A CSV file containing a row of variable values for each suite run. A POST request must be used when sending this file. When included, an array of suite results will be returned instead of an array of test result.
-   */
-  data_file?: string;
-  /**
-   * Alternate start URL to use for all tests in this execution only.
-   */
-  start_url?: string;
-  /**
-   * Alternate user agent to use for all tests in this execution only.
-   */
-  user_agent?: string;
-};
-export type GhostInspectorCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GHOST_INSPECTOR_CLI`.
-   */
-  type: "GHOST_INSPECTOR_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string;
-};
-export type GitcryptLock = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GIT_CRYPT_LOCK`.
-   */
-  type: "GIT_CRYPT_LOCK";
-  /**
-   * Key names you want to use to lock your repository.
-   */
-  keys: string;
-  /**
-   * Set to `true` if you want to lock even if there is uncommitted work in pipeline filesystem.
-   */
-  force_arg?: string;
-};
-export type GitcryptUnlock = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GIT_CRYPT_UNLOCK`.
-   */
-  type: "GIT_CRYPT_UNLOCK";
-  /**
-   * Key names you want to use to unlock your repository.
-   */
-  keys: string;
-};
-export type GitHubCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `GIT_HUB_CLI`.
-   */
-  type: "GIT_HUB_CLI";
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-};
-export type GitHubRelease = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GIT_HUB_RELEASE`.
-   */
-  type: "GIT_HUB_RELEASE";
-  /**
-   * The name of the tag.
-   */
-  tag_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The account owner of the repository. The name is not case-sensitive.
-   */
-  organization: string;
-  /**
-   * The name of the repository. The name is not case-sensitive. Created from the field 'organization/repository name.'
-   */
-  external_project_id: string;
-  /**
-   * Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.
-   */
-  target_commitish?: string;
-  /**
-   * Set to `true` to create a draft (unpublished) release or to `false` to create a published one. By default, it's set to `false`.
-   */
-  draft?: boolean;
-  /**
-   * Set to `true` to identify the release as a prerelease. Set to `false` to identify the release as a full release. By default, it's set to `false`.
-   */
-  prerelease?: boolean;
-  /**
-   * The name of the release.
-   */
-  release_name?: string;
-  /**
-   * Text describing the contents of the tag.
-   */
-  body?: string;
-  /**
-   * The package of assets for this release. The path has to be provided in the `source_path` field and the label name in the `label` field.
-   */
-  assets?: Asset;
-};
-export type GitLabCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `GIT_LAB_CLI`.
-   */
-  type: "GIT_LAB_CLI";
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-};
-export type GitPush = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `PUSH`.
-   */
-  type: "PUSH";
-  /**
-   * The url to the repository.
-   */
-  push_url: string;
-  /**
-   * The authentication mode for GIT. Should be set to `HTTP`.
-   */
-  git_auth_mode: "HTTP";
-  /**
-   * The name of the tag to push.
-   */
-  tag?: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * Defines whether the tags should be pushed to the remote repository or  not.
-   */
-  push_tags?: boolean;
-  /**
-   * When set to `false` the push will ignore paths listed in .gitignore  file.
-   */
-  use_custom_gitignore?: boolean;
-  /**
-   * When set to `true`, action will push only repository files (without  artifacts).
-   */
-  isolated?: boolean;
-  /**
-   * Defines the remote branch to which the push will be performed. If empty, files will be pushed to the same branch.
-   */
-  target_branch?: string;
-  /**
-   * The paths and/or files that will be left out during the push. Only works  when `use_custom_gitignore` is set to `true`.
-   */
-  deployment_excludes?: string[];
-  /**
-   * Defines whether the `--force` flag should be used when invoking  the git push command or not.
-   */
-  without_force?: boolean;
-  /**
-   * Optional custom git commit message.
-   */
-  comment?: string;
-  /**
-   * Use custom git push options.
-   */
-  custom_options?: string;
-};
-export type GKEApplyDeployment = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_APPLY`.
-   */
-  type: "KUBERNETES_APPLY";
-  /**
-   * The path to the configuration file.
-   */
-  config_path: string;
-  /**
-   * The ID of the Google integration.
-   */
-  integration: string;
-  /**
-   * Authorization type. Set to `SERVICE_ACCOUNT`.
-   */
-  gke_auth_type: string;
-  /**
-   * The ID of the GKE zone.
-   */
-  zone_id: string;
-  /**
-   * The ID of the GKE cluster.
-   */
-  cluster: string;
-  /**
-   * The ID of the GKE application.
-   */
-  application_id: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `true`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
-   */
-  save_config_arg?: boolean;
-  /**
-   * Delete and re-create the specified resource, when PATCH encounters conflict and has retried for 5 times.
-   */
-  force_arg?: boolean;
-  /**
-   * Automatically resolve conflicts between the modified and live configuration by using values from the modified configuration.
-   */
-  overwrite_arg?: boolean;
-  /**
-   * Only relevant during a prune or a force apply. If `true`, cascade the deletion of the resources managed by pruned or deleted resources (e.g. Pods created by a ReplicationController).
-   */
-  cascade_arg?: boolean;
-  /**
-   * Defines whether to select all the specified resources.
-   */
-  all_arg?: boolean;
-  /**
-   * Only relevant during a prune or a force apply. Period of time in seconds given to pruned or deleted resources to terminate gracefully. Ignored if negative.
-   */
-  grace_period_arg?: number;
-  /**
-   * Automatically delete resource objects that do not appear in the configs and are created by either apply or create –save-config. Should be used with either -l or –all.
-   */
-  prune_arg?: boolean;
-  /**
-   * Overwrite the default whitelist with <group/version/kind< for –prune.
-   */
-  prune_whitelist_arg?: string;
-  /**
-   * Version of the kubectl used in the action. Default is <latest<.
-   */
-  kubectl_version?: string;
-};
-export type GKERunHelm = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `HELM`.
-   */
-  type: "HELM";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the Google integration.
-   */
-  integration_hash: string;
-  /**
-   * The ID of the GKE zone.
-   */
-  zone_id: string;
-  /**
-   * The ID of the GKE cluster.
-   */
-  cluster: string;
-  /**
-   * The ID of the GKE application.
-   */
-  application_id: string;
-  /**
-   * The Helm version.
-   */
-  helm_version: string;
-  /**
-   * Authorization type. Set to `SERVICE_ACCOUNT`.
-   */
-  gke_auth_type: string;
-  /**
-   * Helm repository region. Set it if Helm repository is on AWS S3.
-   */
-  helm_repository_region?: string;
-  /**
-   * Amazon integration ID. Set it if Helm repository is on AWS S3.
-   */
-  helm_repository_integration?: string;
-  /**
-   * Service Account Key from Google Cloud Storage. Set it if Helm repository is on GCS.
-   */
-  helm_repository_key?: string;
-  /**
-   * Allow you to install Helm plugins.
-   */
-  setup_commands?: string[];
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-};
-export type GKERunJob = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_RUN_JOB`.
-   */
-  type: "KUBERNETES_RUN_JOB";
-  /**
-   * The ID of the Google integration.
-   */
-  integration: string;
-  /**
-   * Authorization type. Set to `SERVICE_ACCOUNT`.
-   */
-  gke_auth_type: string;
-  /**
-   * The ID of the GKE zone.
-   */
-  zone_id: string;
-  /**
-   * The ID of the GKE cluster.
-   */
-  cluster: string;
-  /**
-   * The ID of the GKE application.
-   */
-  application_id: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `true`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
-   */
-  config_path?: string;
-  /**
-   * Defines whether to leave the Pod or delete it after the action finishes.
-   */
-  leave_after?: boolean;
-  /**
-   * The configuration content. One of `config_path` or `content` must be specified.
-   */
-  content?: string;
-  /**
-   * Defines whether the execution should or should not wait for job to end.
-   */
-  not_wait?: boolean;
-  /**
-   * Version of the kubectl used in the action. Default is <latest<.
-   */
-  kubectl_version?: string;
-};
-export type GKERunPod = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_RUN_POD`.
-   */
-  type: "KUBERNETES_RUN_POD";
-  /**
-   * The ID of the Google integration.
-   */
-  integration: string;
-  /**
-   * Authorization type. Set to `SERVICE_ACCOUNT`.
-   */
-  gke_auth_type: string;
-  /**
-   * The ID of the GKE zone.
-   */
-  zone_id: string;
-  /**
-   * The ID of the GKE cluster.
-   */
-  cluster: string;
-  /**
-   * The ID of the GKE application.
-   */
-  application_id: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `true`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
-   */
-  config_path?: string;
-  /**
-   * Defines whether to leave the Pod or delete it after the action finishes.
-   */
-  leave_after?: boolean;
-  /**
-   * The configuration content. One of `config_path` or `content` must be specified.
-   */
-  content?: string;
-  /**
-   * Defines whether the execution should or should not wait for job to end.
-   */
-  not_wait?: boolean;
-  /**
-   * Version of the kubectl used in the action. Default is <latest<.
-   */
-  kubectl_version?: string;
-};
-export type GKESetImage = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_SET_IMAGE`.
-   */
-  type: "KUBERNETES_SET_IMAGE";
-  /**
-   * The name of the container.
-   */
-  container: string;
-  /**
-   * The name of the namespace.
-   */
-  namespace: string;
-  /**
-   * The name of the deployment from the namespace.
-   */
-  deployment: string;
-  /**
-   * The name of the image to set.
-   */
-  image_name: string;
-  /**
-   * The tag of the chosen image.
-   */
-  image_tag: string;
-  /**
-   * The path to the configuration file.
-   */
-  config_path: string;
-  /**
-   * The ID of the Google integration.
-   */
-  integration: string;
-  /**
-   * Authorization type. Set to `SERVICE_ACCOUNT`.
-   */
-  gke_auth_type: string;
-  /**
-   * The ID of the GKE zone.
-   */
-  zone_id: string;
-  /**
-   * The ID of the GKE cluster.
-   */
-  cluster: string;
-  /**
-   * The ID of the GKE application.
-   */
-  application_id: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `true`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * Version of the kubectl used in the action. Default is <latest<.
-   */
-  kubectl_version?: string;
-};
-export type GoogleAppEngine = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_APP_DEPLOY`.
-   */
-  type?: "GOOGLE_APP_DEPLOY";
-  /**
-   * The name of the GAE Bucket.
-   */
-  bucket_name: string;
-  /**
-   * The name of the GAE application.
-   */
-  application_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The label of the image version.
-   */
-  version_label?: string;
-  /**
-   * The URL address to the desired image.
-   */
-  image_url?: string;
-  /**
-   * Specifies whether or not to send all traffic to the new version immediately.
-   */
-  promote_all_traffic?: boolean;
-  /**
-   * Specifies whether or not to stop previous version instances.
-   */
-  stop_previous_version?: boolean;
-  /**
-   * The verbosity level. Default level is `warning`. Can be one of `critical`, `debug`, `error`, `info`, `none` or `warning`.
-   */
-  verbosity?: "critical" | "debug" | "err" | "info" | "none" | "warning";
-  /**
-   * YAML configuration file.
-   */
-  config_path?: string;
-};
-export type GoogleCDN = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_CDN_INVALIDATE`.
-   */
-  type: "GOOGLE_CDN_INVALIDATE";
-  /**
-   * The ID of the Google web distribution.
-   */
-  distribution_id: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The name of the mapping rules.
-   */
-  url_map?: string;
-  /**
-   * Specifies whether or not the whole cache should be removed.
-   */
-  purge_all?: boolean;
-  /**
-   * The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type GoogleChat = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_CHAT`.
-   */
-  type: "GOOGLE_CHAT";
-  /**
-   * The content of the notification.
-   */
-  content: string;
-  /**
-   * The ID of the Google Chat channel.
-   */
-  channel: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-};
-export type GoogleCloudCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_CLOUD_CLI`.
-   */
-  type: "GOOGLE_CLOUD_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the Google integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The name of the Google application.
-   */
-  application_name?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type GoogleCloudRun = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_CLOUD_RUN_DEPLOY`.
-   */
-  type: "GOOGLE_CLOUD_RUN_DEPLOY";
-  /**
-   * The name of the service.
-   */
-  service: string;
-  /**
-   * The name of the application.
-   */
-  application_name: string;
-  /**
-   * The display name of the application.
-   */
-  application_display_name: string;
-  /**
-   * The name of the image.
-   */
-  image: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The [region](https://cloud.google.com/compute/docs/regions-zones) in which the resource can be found. Required when platform is set to `MANAGED`.
-   */
-  region?: string;
-  /**
-   * The ID of the cluster or fully qualified identifier for the cluster. Required when the platform is set to `GKE`.
-   */
-  cluster?: string;
-  /**
-   * The zone in which the cluster is located. Required when the platform is set to `GKE`.
-   */
-  cluster_location?: string;
-  /**
-   * The name of the context in your kubectl config file to use for connecting. Required when the platform is set to `KUBERNETES`.
-   */
-  context?: string;
-  /**
-   * Kubectl configuration file. Required when the platform is set to `KUBERNETES`.
-   */
-  config_path?: string;
-  /**
-   * Target platform for running commands. Can be set to: `MANAGED`, `GKE` or `KUBERNETES`.
-   */
-  platform?: string;
-};
-export type GoogleCloudStorage = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_CLOUD_STORAGE`.
-   */
-  type: "GOOGLE_CLOUD_STORAGE";
-  /**
-   * The name of the GCS Bucket.
-   */
-  bucket_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * Makes files accessible through public HTTP.
-   */
-  public_access?: boolean;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The name of the GCS application.
-   */
-  application_name?: string;
-  /**
-   * ContentEncoding that will be set for the deployed files e.g. "gzip".
-   */
-  content_encoding?: string;
-};
-export type GoogleComputeEngine = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GCE`.
-   */
-  type: "GCE";
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type GoogleFunctions = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_FUNCTION_INVOKE`.
-   */
-  type: "GOOGLE_FUNCTION_INVOKE";
-  /**
-   * The name of the Google function.
-   */
-  function_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The id of the Google Cloud project.
-   */
-  application_id: string;
-  /**
-   * The JSON that will be provided as input to the Google function.
-   */
-  payload?: string;
-  /**
-   * Region in which function can be found or will be created.
-   */
-  region?: string;
-};
-export type GoogleFunctionsDeploy = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `GOOGLE_FUNCTION_DEPLOY`.
-   */
-  type: "GOOGLE_FUNCTION_DEPLOY";
-  /**
-   * The name of the Google function.
-   */
-  function_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The id of the Google Cloud project.
-   */
-  application_id: string;
-  /**
-   * Region in which function can be found or will be created.
-   */
-  region?: string;
-  /**
-   * The Cloud Functions execution environment. Options: `nodejs6`, `nodejs8`, `nodejs10`, `nodejs12`, `python37`, `go111`.
-   */
-  runtime?: string;
-  /**
-   * Additional arguments sent upon deploying the function.
-   */
-  command_args?: string;
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-};
-export type Heroku = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `HEROKU`.
-   */
-  type: "HEROKU";
-  /**
-   * The ID of the application.
-   */
-  application_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * When set to `false` the push will ignore paths listed in .gitignore file.
-   */
-  use_custom_gitignore?: boolean;
-  /**
-   * When set to `true`, action will push only repository files (without artifacts).
-   */
-  isolated?: boolean;
-  /**
-   * The paths and/or files that will be left out during the push. Only works when `use_custom_gitignore`is set to `true`.
-   */
-  deployment_excludes?: string[];
-  /**
-   * Defines whether the `--force` flag should be used when invoking the git push command or not.
-   */
-  without_force?: boolean;
-};
-export type HerokuCLI = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `HEROKU_CLI`.
-   */
-  type: "HEROKU_CLI";
-  /**
-   * The ID of the application.
-   */
-  application_name: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type Honeybadger = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `HONEYBADGER`.
-   */
-  type: "HONEYBADGER";
-  /**
-   * The Honeybadger environment.
-   */
-  environment: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The Honeybadger token.
-   */
-  token: string;
-};
-export type HTTPRequest = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `HTTP`.
-   */
-  type: "HTTP";
-  /**
-   * The target URL.
-   */
-  notification_url: string;
-  /**
-   * The desired HTTP method. Available values are `GET`, `POST`, `PUT`, `PATCH` or `DELETE`.
-   */
-  method_url: string;
-  /**
-   * The port for the connection.
-   */
-  port?: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * The content of the request.
-   */
-  content?: string;
-  /**
-   * The headers that will be sent with the request.
-   */
-  headers?: Header[];
-};
-export type JMeterCLI = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `JMETER_CLI`.
-   */
-  type: "JMETER_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type KubernetesApplyDeployment = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_APPLY`.
-   */
-  type: "KUBERNETES_APPLY";
-  /**
-   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
-   */
-  auth_type: "BASIC" | "TOKEN" | "CERTS";
-  /**
-   * The host for the connection.
-   */
-  server: string;
-  /**
-   * The path to the configuration file.
-   */
-  config_path: string;
-  /**
-   * Only relevant during a prune or a force apply. Period of time in seconds given to pruned or deleted resources to terminate gracefully. Ignored if negative.
-   */
-  grace_period_arg: number;
-  /**
-   * The username required when `auth_type` is set to `BASIC`.
-   */
-  login?: string;
-  /**
-   * The password required when `auth_type` is set to `BASIC`.
-   */
-  password?: string;
-  /**
-   * The token required when `auth_type` is set to `TOKEN`.
-   */
-  token?: string;
-  /**
-   * The certificate authority required when `auth_type` is set to `CERTS`.
-   */
-  client_ca?: string;
-  /**
-   * The client certificate required when `auth_type` is set to `CERTS`.
-   */
-  client_cert?: string;
-  /**
-   * The client key required when `auth_type` is set to `CERTS`.
-   */
-  client_key?: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * Delete and re-create the specified resource, when PATCH encounters conflict and has retried for 5 times.
-   */
-  force_arg?: boolean;
-  /**
-   * Automatically resolve conflicts between the modified and live configuration by using values from the modified configuration.
-   */
-  overwrite_arg?: boolean;
-  /**
-   * Only relevant during a prune or a force apply. If `true`, cascade the deletion of the resources managed by pruned or deleted resources (e.g. Pods created by a ReplicationController).
-   */
-  cascade_arg?: boolean;
-  /**
-   * Defines whether to select all the specified resources.
-   */
-  all_arg?: boolean;
-  /**
-   * Automatically delete resource objects that do not appear in the configs and are created by either apply or create –save-config. Should be used with either -l or –all.
-   */
-  prune_arg?: boolean;
-  /**
-   * Overwrite the default whitelist with <group/version/kind> for –prune.
-   */
-  prune_whitelist_arg?: string;
-  /**
-   * Version of the kubectl used in the action. Default is <latest>.
-   */
-  kubectl_version?: string;
-};
-export type KubernetesKubectl = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_CLI`.
-   */
-  type: "KUBERNETES_CLI";
-  /**
-   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
-   */
-  auth_type: "BASIC" | "TOKEN" | "CERTS";
-  /**
-   * The host for the connection.
-   */
-  server: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The username required when `auth_type` is set to `BASIC`.
-   */
-  login?: string;
-  /**
-   * The password required when `auth_type` is set to `BASIC`.
-   */
-  password?: string;
-  /**
-   * The token required when `auth_type` is set to `TOKEN`.
-   */
-  token?: string;
-  /**
-   * The certificate authority required when `auth_type` is set to `CERTS`.
-   */
-  client_ca?: string;
-  /**
-   * The client certificate required when `auth_type` is set to `CERTS`.
-   */
-  client_cert?: string;
-  /**
-   * The client key required when `auth_type` is set to `CERTS`.
-   */
-  client_key?: string;
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-};
-export type KubernetesRunHelmCMDs = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `HELM`.
-   */
-  type: "HELM";
-  /**
-   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
-   */
-  auth_type: "BASIC" | "TOKEN" | "CERTS";
-  /**
-   * The host for the connection.
-   */
-  server: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The Helm version.
-   */
-  helm_version: string;
-  /**
-   * Helm repository region. Set it if Helm repository is on AWS S3.
-   */
-  helm_repository_region?: string;
-  /**
-   * Amazon or Google integration ID. Set it if Helm repository is on AWS S3 or Google Cloud Storage.
-   */
-  helm_integration?: string;
-  /**
-   * Allow you to install Helm plugins.
-   */
-  setup_commands?: string[];
-  /**
-   * The username required when `auth_type` is set to `BASIC`.
-   */
-  login?: string;
-  /**
-   * The password required when `auth_type` is set to `BASIC`.
-   */
-  password?: string;
-  /**
-   * The token required when `auth_type` is set to `TOKEN`.
-   */
-  token?: string;
-  /**
-   * The certificate authority required when `auth_type` is set to `CERTS`.
-   */
-  client_ca?: string;
-  /**
-   * The client certificate required when `auth_type` is set to `CERTS`.
-   */
-  client_cert?: string;
-  /**
-   * The client key required when `auth_type` is set to `CERTS`.
-   */
-  client_key?: string;
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-};
-export type KubernetesRunJob = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_RUN_JOB`.
-   */
-  type: "KUBERNETES_RUN_JOB";
-  /**
-   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
-   */
-  auth_type: "BASIC" | "TOKEN" | "CERTS";
-  /**
-   * The host for the connection.
-   */
-  server: string;
-  /**
-   * If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
-   */
-  save_config_arg?: boolean;
-  /**
-   * The username required when `auth_type` is set to `BASIC`.
-   */
-  login?: string;
-  /**
-   * The password required when `auth_type` is set to `BASIC`.
-   */
-  password?: string;
-  /**
-   * The token required when `auth_type` is set to `TOKEN`.
-   */
-  token?: string;
-  /**
-   * The certificate authority required when `auth_type` is set to `CERTS`.
-   */
-  client_ca?: string;
-  /**
-   * The client certificate required when `auth_type` is set to `CERTS`.
-   */
-  client_cert?: string;
-  /**
-   * The client key required when `auth_type` is set to `CERTS`.
-   */
-  client_key?: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to `FALSE`, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * Defines whether to leave the Pod or delete it after the action finishes.
-   */
-  leave_after?: boolean;
-  /**
-   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
-   */
-  config_path?: string;
-  /**
-   * The configuration content. One of `config_path` or `content` must be specified.
-   */
-  content?: string;
-  /**
-   * Defines whether the execution should or should not wait for job to end.
-   */
-  not_wait?: boolean;
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-};
-export type KubernetesRunPod = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_RUN_POD`.
-   */
-  type: "KUBERNETES_RUN_POD";
-  /**
-   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
-   */
-  auth_type: "BASIC" | "TOKEN" | "CERTS";
-  /**
-   * The host for the connection.
-   */
-  server: string;
-  /**
-   * If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
-   */
-  save_config_arg?: boolean;
-  /**
-   * The username required when `auth_type` is set to `BASIC`.
-   */
-  login?: string;
-  /**
-   * The password required when `auth_type` is set to `BASIC`.
-   */
-  password?: string;
-  /**
-   * The token required when `auth_type` is set to `TOKEN`.
-   */
-  token?: string;
-  /**
-   * The certificate authority required when `auth_type` is set to `CERTS`.
-   */
-  client_ca?: string;
-  /**
-   * The client certificate required when `auth_type` is set to `CERTS`.
-   */
-  client_cert?: string;
-  /**
-   * The client key required when `auth_type` is set to `CERTS`.
-   */
-  client_key?: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to `FALSE`, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * Defines whether to leave the Pod or delete it after the action finishes.
-   */
-  leave_after?: boolean;
-  /**
-   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
-   */
-  config_path?: string;
-  /**
-   * The configuration content. One of `config_path` or `content` must be specified.
-   */
-  content?: string;
-  /**
-   * Defines whether the execution should or should not wait for job to end.
-   */
-  not_wait?: boolean;
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-};
-export type KubernetesSetImage = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `KUBERNETES_SET_IMAGE`.
-   */
-  type: "KUBERNETES_SET_IMAGE";
-  /**
-   * The name of the container.
-   */
-  container: string;
-  /**
-   * The name of the namespace.
-   */
-  namespace: string;
-  /**
-   * The name of the deployment from the namespace.
-   */
-  deployment: string;
-  /**
-   * The name of the image to set.
-   */
-  image_name: string;
-  /**
-   * The tag of the chosen image.
-   */
-  image_tag: string;
-  /**
-   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
-   */
-  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
-  /**
-   * Version of the kubectl used in the action. Default is “latest”.
-   */
-  kubectl_version?: string;
-};
-export type Lighthouse = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `LIGHTHOUSE`.
-   */
-  type: "LIGHTHOUSE";
-  /**
-   * The address of the site on which the audit should run.
-   */
-  website: string;
-  /**
-   * The device on which the audit will be run. Can be one of `mobile`, `desktop` and `mobileDesktop`.
-   */
-  device: "mobile" | "desktop";
-  /**
-   * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
-   */
-  performance: number;
-  /**
-   * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
-   */
-  accessibility: number;
-  /**
-   * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
-   */
-  best_practices: number;
-  /**
-   * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
-   */
-  seo: number;
-};
-export type LinkChecker = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `LINK_CHECKER`.
-   */
-  type: "LINK_CHECKER";
-  /**
-   * The address of the site to be checked by the validator.
-   */
-  scan_url: string;
-  /**
-   * The basic auth username value.
-   */
-  ba_username?: string;
-  /**
-   * The basic auth password value.
-   */
-  ba_password?: string;
-  /**
-   * The HTML form username value.
-   */
-  html_form_auth_username?: string;
-  /**
-   * The HTML form password value.
-   */
-  html_form_auth_password?: string;
-  /**
-   * The name attribute of the username input element.
-   */
-  html_form_auth_username_input_name?: string;
-  /**
-   * The name attribute of the password input element.
-   */
-  html_form_auth_password_input_name?: string;
-  /**
-   * The URL of a login page to be visited before link checking. The page is expected to contain an HTML form to collect credentials and submit them to the address in its action attribute using an HTTP POST request.
-   */
-  html_form_auth_url?: string;
-  /**
-   * Check recursively all links up to the given depth. A negative depth will enable infinite recursion. The default depth is infinite.
-   */
-  depth?: number;
-  /**
-   * Set the cookie name/value. Can be given more than once.
-   */
-  cookies?: Cookie[];
-  /**
-   * Set the timeout for connection attempts in seconds. The default timeout is 60 seconds.
-   */
-  connection_timeout?: number;
-  /**
-   * When using HTTP, fetch robots.txt, and confirm whether each URL should be accessed before checking. The default is to use robots.txt files.
-   */
-  respect_robot_exclusions?: boolean;
-  /**
-   * If set to zero, it disables the SSL certificate checking. If set to one, it enables the SSL certificate checking with the provided CA certificate file. If a filename is specified, it will be used as the certificate file.
-   */
-  check_ssl_certificate?: boolean;
-  /**
-   * The regular expression to add more URLs recognized as internal links. The default is that URLs given on the command line are internal.
-   */
-  internal_links?: string;
-  /**
-   * Check external links. The default is to check internal links only.
-   */
-  check_external_links?: boolean;
-  /**
-   * Only check the syntax of URLs matching the given regular expressions.
-   */
-  ignore_urls?: string[];
-  /**
-   * Check but do not recurse into URLs matching the given regular expressions.
-   */
-  no_follow_urls?: string[];
-  /**
-   * Only check syntax of URLs matching the given regular expressions.
-   */
-  warning_regex?: string;
-  /**
-   * Specify the User-Agent string to send to the HTTP server, for example `Mozilla/4.0`. The default is `LinkChecker/X.Y` where X.Y is the current version of LinkChecker.
-   */
-  user_agent?: string;
-  /**
-   * Generate no more than the given number of threads. The default number of threads is 10. To disable threading specify a non-positive number.
-   */
-  threads?: number;
-  /**
-   * Limit the maximum number of HTTP requests per second to one host. The average number of requests per second is approximately one third of the maximum. Values less than 1 and at least 0.001 can be used. To use values greater than 10, the HTTP server must return a “LinkChecker” response header. The default is 10.
-   */
-  requests_per_host?: number;
-};
-export type Linux = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_LINUX`.
-   */
-  type: "NATIVE_BUILD_LINUX";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Defines the image used to create the VM. Use `UBUNTU_20_04` for the default image, `AMI` for a custom AMI.
-   */
-  distribution: string;
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * Set to `true` if you want the action to use the VM from the previous Linux action.
-   */
-  vm_from_prev_action?: boolean;
-  /**
-   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
-   */
-  vm_action_name?: string;
-  /**
-   * Set if `distribution` is set to `AMI`.
-   */
-  ami?: Ami;
-};
-export type Loggly = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `LOGGLY`.
-   */
-  type: "LOGGLY";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The list of Loggly tags used for segmentation and filtering.
-   */
-  tags: string[];
-  /**
-   * The content of the notification.
-   */
-  content?: string;
-};
-export type MacOS = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `NATIVE_BUILD_MAC`.
-   */
-  type: "NATIVE_BUILD_MAC";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * The list of simulators initiated before the action runs.
-   */
-  pre_start_simulators?: string[];
-  /**
-   * The list of variables added to the MacOS keychain.
-   */
-  certificates?: string[];
-  /**
-   * The list of variables added as MacOS Provisioning Profiles.
-   */
-  provision_profiles?: string[];
-  /**
-   * Defines the Xcode version.
-   */
-  xcode_version?: string;
-};
-export type MicrosoftAzure = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `AZURE`.
-   */
-  type: "AZURE";
-  /**
-   * The URL to the repository.
-   */
-  push_url: string;
-  /**
-   * The authentication mode for Git Push. Should always be set to `HTTP` .
-   */
-  git_auth_mode: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * When set to `false` the push will ignore paths listed in .gitignore file.
-   */
-  use_custom_gitignore?: boolean;
-  /**
-   * When set to `true`, action will push only repository files (without artifacts).
-   */
-  isolated?: boolean;
-  /**
-   * Defines the remote branch to which the push will be performed. If empty, files will be pushed to the same branch.
-   */
-  target_branch?: string;
-  /**
-   * The paths and/or files that will be left out during the push. Only works when `use_custom_gitignore` is set to `true`.
-   */
-  deployment_excludes?: string[];
-  /**
-   * Defines whether the `--force` flag should be used when invoking the git push command or not.
-   */
-  without_force?: boolean;
-};
-export type MicrosoftTeams = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `MICROSOFT_TEAMS`.
-   */
-  type: "MICROSOFT_TEAMS";
-  /**
-   * The title of the notification.
-   */
-  title: string;
-  /**
-   * The content of the notification.
-   */
-  content: string;
-  /**
-   * The recipient of the notification: email address.
-   */
-  recipients: string;
-  /**
-   * The attached files.
-   */
-  file_attachments?: string[];
-  /**
-   * Defines whether to send the content as HTML.
-   */
-  send_as_html?: boolean;
-};
-export type Netlify = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `NETLIFY`.
-   */
-  type: "NETLIFY";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The API ID in the site details.
-   */
-  site_id?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type NewRelicCLI = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `NEW_RELIC_CLI`.
-   */
-  type: "NEW_RELIC_CLI";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type OperateSandbox = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `SANDBOX_START`.
-   */
-  type: "SANDBOX_START";
-  /**
-   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
-   */
-  sandbox_references: string;
-  /**
-   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
-   */
-  sandbox_id?: string;
-  /**
-   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
-   */
-  referenced_action_id?: number;
-  /**
-   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
-   */
-  referenced_sanbox_name?: string;
-  /**
-   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
-   */
-  tags?: string[];
-  /**
-   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
-   */
-  sandbox_project_name?: string;
-  /**
-   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
-   */
-  days?: number;
-};
-export type PassArguments = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `WAIT_FOR_VARIABLES`.
-   */
-  type: "WAIT_FOR_VARIABLES";
-  /**
-   * The list of variables to set as parameters for the pipeline. At least one parameter is required.
-   */
-  variables: Variable[];
-  /**
-   * The name of the parameter.
-   */
-  key: string;
-  /**
-   * The value of the parameter.
-   */
-  defaults?: string;
-  /**
-   * Encrypted values will not be visible once saved. Can be used for things like passwords.
-   */
-  encrypted?: boolean;
-  /**
-   * Path to the file with options.
-   */
-  init_path?: string;
-  /**
-   * The custom comment that will be displayed upon passing arguments.
-   */
-  comment?: string;
-  /**
-   * Define to set permissions for the action.
-   */
-  permissions?: Permission;
-};
-export type PingMonitoring = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `PING`.
-   */
-  type: "PING";
-  /**
-   * The target URL.
-   */
-  destination: string;
-};
-export type PublishAndroidApp = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `ANDROID_PUBLISH_APK`.
-   */
-  type: "ANDROID_PUBLISH_APK";
-  /**
-   * The ID of the Android Application.
-   */
-  application_id: string;
-  /**
-   * The track type to read or modify. Can be one of `production`, `alpha`, `beta`, `rollout`, `internal` or custom track as configured in Google Play Console.
-   */
-  track: "production" | "alpha" | "beta" | "rollout" | "internal" | "custom";
-  /**
-   * The list of sets of paths to the APKs.
-   */
-  apk_files: APKs[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Set to `true` to publish as a draft.
-   */
-  draft?: boolean;
-  /**
-   * Portion of the users who should get the staged rollout version of the APK (range 0.0 - 1.0). Required if `track` is set to `rollout`.
-   */
-  user_fraction?: number;
-  /**
-   * The path to the deobfuscated file of the specified APK.
-   */
-  mapping_path?: string;
-  /**
-   * The path to the changelog file.
-   */
-  changes_path?: string;
-  /**
-   * Check and disable superseded versions in other tracks (if any).
-   */
-  supersede_versions?: boolean;
-};
-export type PublishBundleToGooglePlay = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `ANDROID_PUBLISH_APP_BUNDLE`.
-   */
-  type: "ANDROID_PUBLISH_APP_BUNDLE";
-  /**
-   * The ID of the Android Application.
-   */
-  application_id: string;
-  /**
-   * The track type to read or modify. Can be one of `production`, `alpha`, `beta`, `rollout`, `internal` or custom track as configured in Google Play Console.
-   */
-  track: "production" | "alpha" | "beta" | "rollout" | "internal" | "custom";
-  /**
-   * The list of sets of paths to the APKs.
-   */
-  apk_files: APKs[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Set to `true` to publish as a draft.
-   */
-  draft?: boolean;
-  /**
-   * Portion of the users who should get the staged rollout version of the APK (range 0.0 - 1.0). Required if `track` is set to `rollout`.
-   */
-  user_fraction?: number;
-  /**
-   * The path to the changelog file.
-   */
-  changes_path?: string;
-  /**
-   * Check and disable superseded versions in other tracks (if any).
-   */
-  supersede_versions?: boolean;
-};
-export type Pushbullet = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `PUSHBULLET`.
-   */
-  type: "PUSHBULLET";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The content of the notification.
-   */
-  content?: string;
-  /**
-   * The name of the device to which the notification will be sent.
-   */
-  device?: string;
-  /**
-   * The link of the notification.
-   */
-  link?: string;
-  /**
-   * The title of the notification.
-   */
-  title?: string;
-};
-export type PushDockerImage = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `DOCKER_PUSH`.
-   */
-  type: "DOCKER_PUSH";
-  /**
-   * The tag of the Docker image.
-   */
-  docker_image_tag?: string;
-  /**
-   * The username required to connect to the server. Required for delivering the Dockerfile to a private registry.
-   */
-  login?: string;
-  /**
-   * The password required to connect to the server. Required for delivering the Dockerfile to a private registry.
-   */
-  password?: string;
-  /**
-   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
-   */
-  integration: string;
-  /**
-   * The name of the Amazon region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-  /**
-   * The url to the GCR. Can be one of gcr.io, us.gcr.io , eu.gcr.io or asia.gcr.io. Required for Google GCR.
-   */
-  registry?: string;
-  /**
-   * The location of the Docker repository.
-   */
-  repository?: string;
-  /**
-   * The ID of the action which built the desired Docker image. If set to 0, the image will be taken from previous pipeline action. Can be used instead of `docker_build_action_name`.
-   */
-  docker_build_action_id?: number;
-  /**
-   * The name of the action which built the desired Docker image. Can be used instead of `docker_build_action_id`.
-   */
-  docker_build_action_name?: string;
-  /**
-   * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
-   */
-  docker_registry?: string;
-};
-export type Pushover = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `PUSHOVER`.
-   */
-  type: "PUSHOVER";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The content of the notification.
-   */
-  content: string;
-  /**
-   * The name of the device to whick notification will be sent.
-   */
-  device?: string;
-  /**
-   * Specifies the priority of the notification. Can be one of `LOW`, `NORMAL` or `HIGH`.
-   */
-  priority?: "LOW" | "NORMAL" | "HIGH";
-  /**
-   * The link of the notification.
-   */
-  link?: string;
-  /**
-   * The title of the notification link.
-   */
-  link_title?: string;
-  /**
-   * The title of the notification.
-   */
-  title?: string;
-};
-export type Rackspace = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `RACKSPACE`.
-   */
-  type: "RACKSPACE";
-  /**
-   * The name of the Rackspace container.
-   */
-  container: string;
-  /**
-   * The name of the Rackspace region.
-   */
-  region: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * ContentEncoding that will be set for the deployed files e.g. "gzip".
-   */
-  content_encoding?: string;
-};
-export type Raygun = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `RAYGUN`.
-   */
-  type: "RAYGUN";
-  /**
-   * See `authToken` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
-   */
-  token: string;
-  /**
-   * See `apiKey` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
-   */
-  device: string;
-  /**
-   * See `version` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
-   */
-  version?: string;
-  /**
-   * See `ownerName` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
-   */
-  user?: string;
-  /**
-   * See `emailAddress` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
-   */
-  email?: string;
-  /**
-   * See `comment` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
-   */
-  comment?: string;
-};
-export type Replace = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `REPLACE`.
-   */
-  type: "REPLACE";
-  /**
-   * The list of pairs of strings for replacement.
-   */
-  replacements: Replacement[];
-  /**
-   * The path in the filesystem.
-   */
-  local_path?: string;
-};
-export type Rollbar = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `ROLLBAR`.
-   */
-  type: "ROLLBAR";
-  /**
-   * The post_server_item-scope project access token.
-   */
-  token: string;
-  /**
-   * The ID of the Rollbar application.
-   */
-  application_id: number;
-  /**
-   * The name of the environment being deployed.
-   */
-  environment: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The local Username who deployed.
-   */
-  user: string;
-  /**
-   * The name of the project access token.
-   */
-  token_name?: string;
-  /**
-   * The Rollbar username of the user who deployed.
-   */
-  rollbar_username?: string;
-  /**
-   * The additional text data to record with this deploy.
-   */
-  comment?: string;
-};
-export type Rsync = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `RSYNC`.
-   */
-  type: "RSYNC";
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * An equivalent for `rsync --delete` option. See [here](https://ss64.com/bash/rsync_options.html).
-   */
-  delete_extra_files?: boolean;
-  /**
-   * An equivalent for `rsync -a` option. See [here](https://linux.die.net/man/1/rsync).
-   */
-  archive?: boolean;
-  /**
-   * An equivalent for `rsync -z` option. See [here](https://linux.die.net/man/1/rsync).
-   */
-  compress?: boolean;
-  /**
-   * An equivalent for `rsync -r` option. See [here](https://linux.die.net/man/1/rsync).
-   */
-  recursive?: boolean;
-  /**
-   * An equivalent for `rsync -d` option. See [here](https://linux.die.net/man/1/rsync).
-   */
-  dirs?: boolean;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type RunDockerContainer = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `RUN_DOCKER_CONTAINER`.
-   */
-  type: "RUN_DOCKER_CONTAINER";
-  /**
-   * The name of the Docker image.
-   */
-  docker_image_name: string;
-  /**
-   * The tag of the Docker image.
-   */
-  docker_image_tag: string;
-  /**
-   * The commands that will be executed.
-   */
-  inline_commands: string;
-  /**
-   * Defines whether or not to mount the filesystem to the running container.
-   */
-  mount_filesystem_disable?: boolean;
-  /**
-   * The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located).
-   */
-  volume_mappings?: string[];
-  /**
-   * The username required to connect to a private registry.
-   */
-  login?: string;
-  /**
-   * The password required to connect to a private registry.
-   */
-  password?: string;
-  /**
-   * The url to the Docker registry or GCR. Required for Google GCR.
-   */
-  registry?: string;
-  /**
-   * Defines the export path of the container’s filesystem as a tar archive.
-   */
-  export_container_path?: string;
-  /**
-   * The ID of the integration. Required for using the image from the Amazon ECR, Google GCR or Docker Hub.
-   */
-  integration?: string;
-  /**
-   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-   */
-  region?: string;
-  /**
-   * If set to `true` the Docker image will be taken from action defined by `docker_build_action_id`.
-   */
-  use_image_from_action?: boolean;
-  /**
-   * All build commands are run as the default user defined in the selected Docker image. Can be set to another username (on the condition that this user exists in the selected image).
-   */
-  run_as_user?: string;
-  /**
-   * The ID of the action which built the desired Docker image. If set to 0, the image will be taken from previous pipeline action. Can be used instead of `docker_build_action_name`.
-   */
-  docker_build_action_id?: number;
-  /**
-   * The name of the action which built the desired Docker image. Can be used instead of `docker_build_action_id`.
-   */
-  docker_build_action_name?: string;
-  /**
-   * Default command to execute at runtime. Overwrites the default entrypoint set by the image.
-   */
-  entrypoint?: string;
-  /**
-   * The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action.
-   */
-  image_location?: string;
-  /**
-   * The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
-   */
-  docker_registry?: string;
-};
-export type Sentry = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SENTRY`.
-   */
-  type: "SENTRY";
-  /**
-   * The slug of the organization the release belongs to.
-   */
-  organization_slug: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The version identifier of the release.
-   */
-  version: string;
-  /**
-   * The environment you’re deploying to.
-   */
-  environment: string;
-  /**
-   * The optional url that points to the deploy.
-   */
-  deploy_url?: string;
-  /**
-   * An optional commit reference.
-   */
-  release_url?: string;
-  /**
-   * The list of project slugs that are involved in this release.
-   */
-  projects: string[];
-  /**
-   * If Sentry is integrated with repository provider, you can enter the project slug here. You can use the `$BUDDY_REPO_SLUG` variable as well.
-   */
-  repository?: string;
-};
-export type SetVariables = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SET_VARIABLES`.
-   */
-  type: "SET_VARIABLES";
-  /**
-   * The list of existing settable variables.
-   */
-  variables: Variable[];
-  /**
-   * The name of the variable.
-   */
-  key: string;
-  /**
-   * The value of the variable.
-   */
-  defaults?: string;
-  /**
-   * Encrypted values will not be visible once saved. Can be used for things like passwords.
-   */
-  encrypted?: boolean;
-  /**
-   * Path to the file with options.
-   */
-  init_path?: string;
-  /**
-   * The custom comment that will be displayed upon passing arguments.
-   */
-  comment?: string;
-  /**
-   * Define to set permissions for the action.
-   */
-  permissions?: Permission;
-};
-export type SFTP = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SFTP`.
-   */
-  type: "SFTP";
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
-   */
-  use_temporary_files?: boolean;
-};
-export type Shopify = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SHOPIFY`.
-   */
-  type: "SHOPIFY";
-  /**
-   * The name of the Shopify theme.
-   */
-  theme_name: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-};
-export type ShopifyCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SHOPIFY_CLI`.
-   */
-  type: "SHOPIFY_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type ShopifyThemeKitCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SHOPIFY_THEMEKIT_CLI`.
-   */
-  type: "SHOPIFY_THEMEKIT_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type SignAndroidApp = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `ANDROID_SIGN`.
-   */
-  type: "ANDROID_SIGN";
-  /**
-   * The path to the generated .apk file.
-   */
-  local_path: string;
-  /**
-   * The name of the signed APK file.
-   */
-  application_name: string;
-  /**
-   * The path to the authorization key file.
-   */
-  key_path: string;
-  /**
-   * The version of the Android Build Tools.
-   */
-  build_tool_version: string;
-  /**
-   * The keystore password.
-   */
-  keystore_password: string;
-  /**
-   * The directory in which the signed APK will be stored.
-   */
-  output_dir?: string;
-  /**
-   * The key alias name.
-   */
-  key_alias?: string;
-  /**
-   * The key password.
-   */
-  key_password?: string;
-};
-export type SignBundle = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `ANDROID_SIGN_BUNDLE`.
-   */
-  type: "ANDROID_SIGN_BUNDLE";
-  /**
-   * The path to the generated .apk file.
-   */
-  local_path: string;
-  /**
-   * The name of the signed APK file.
-   */
-  application_name: string;
-  /**
-   * The path to the authorization key file.
-   */
-  key_path: string;
-  /**
-   * The keystore password.
-   */
-  keystore_password: string;
-  /**
-   * The directory in which the signed APK will be stored.
-   */
-  output_dir?: string;
-  /**
-   * The key alias name.
-   */
-  key_alias?: string;
-  /**
-   * The key password.
-   */
-  key_password?: string;
-};
-export type SlackNotification = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SLACK`.
-   */
-  type: "SLACK";
-  /**
-   * The ID of the Slack channel. More info [here](https://api.slack.com/types/channel).
-   */
-  channel: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The content of the notification.
-   */
-  content: string;
-  /**
-   * The array of the Slack message attachments. More info [here](https://api.slack.com/docs/message-attachments).
-   */
-  attachments?: string[];
-  /**
-   * The attached files.
-   */
-  file_attachments?: string[];
-};
-export type Sleep = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SLEEP`.
-   */
-  type: "SLEEP";
-  /**
-   * The time (in seconds) to sleep. The value should be between 0 and 1200.
-   */
-  sleep_in_sec: number;
-};
-export type SMSNotification = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SMS`.
-   */
-  type: "SMS";
-  /**
-   * The recipients of the notification: phone numbers (one per line).
-   */
-  recipients: string;
-  /**
-   * The content of the notification.
-   */
-  content: string;
-};
-export type Snyk = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SNYK_CLI`.
-   */
-  type: "SNYK_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-  /**
-   * Snyk version.
-   */
-  version?: string;
-};
-export type SplitTests = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SPLIT_TESTS`.
-   */
-  type: "SPLIT_TESTS";
-  /**
-   * The path in the filesystem containing files with tests.
-   */
-  source_path: string;
-  /**
-   * The amount of groups to split. Can't be lower than 2.
-   */
-  groups_count: number;
-  /**
-   * Defines how test files should be split. Can be one of `BY_FILE_SIZE` or `ALPHABETICALLY`.
-   */
-  files_order?: "BY_FILE_SIZE" | "ALPHABETICALLY";
-};
-export type SSHCommand = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SSH_COMMAND`.
-   */
-  type: "SSH_COMMAND";
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The array of commands invoked on the remote server.
-   */
-  commands: string[];
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * If set to `true`, commands are executed as a regular script. If set to false, the commands will be executed one by one, in non-interactive mode.
-   */
-  run_as_script?: boolean;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  working_directory?: string;
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-};
-export type SSHToSandbox = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `SANDBOX_EXEC`.
-   */
-  type: "SANDBOX_EXEC";
-  /**
-   * The absolute or relative path on the sandbox.
-   */
-  working_directory?: string;
-  /**
-   * The name of the local (to the sandbox server) user who uploads the files.
-   */
-  user?: string;
-  /**
-   * The array of commands invoked on the sandbox.
-   */
-  commands: string[];
-  /**
-   * The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`.
-   */
-  shell?: string;
-  /**
-   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
-   */
-  sandbox_references: string;
-  /**
-   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
-   */
-  sandbox_id?: string;
-  /**
-   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
-   */
-  referenced_action_id?: number;
-  /**
-   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
-   */
-  referenced_sanbox_name?: string;
-  /**
-   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
-   */
-  tags?: string[];
-  /**
-   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
-   */
-  sandbox_project_name?: string;
-  /**
-   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
-   */
-  days?: number;
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-};
-export type SSLVerify = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `SSL_VERIFY`.
-   */
-  type: "SSL_VERIFY";
-  /**
-   * The URL of the website to be monitored.
-   */
-  website: string;
-  /**
-   * Validation period for SSL certificate.
-   */
-  valid_for_days: number;
-  /**
-   * The port for the connection. By default it is 443.
-   */
-  port?: string;
-};
-export type StackHawkCLI = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `STACK_HAWK_CLI`.
-   */
-  type: "STACK_HAWK_CLI";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-};
-export type TCPMonitoring = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `TCP`.
-   */
-  type: "TCP";
-  /**
-   * The target URL.
-   */
-  destination: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * The data that will be sent.
-   */
-  post_data?: string;
-  /**
-   * Text that should or should not be present in the response.
-   */
-  text?: string;
-};
-export type TelegramNotification = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `TELEGRAM`.
-   */
-  type: "TELEGRAM";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The content of the notification.
-   */
-  content: string;
-  /**
-   * The attached files.
-   */
-  file_attachments?: string[];
-};
-export type TerraformCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `TERRAFORM`.
-   */
-  type: "TERRAFORM";
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string;
-  /**
-   * The ID of the Google or Amazon integration.
-   */
-  integration?: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be `SH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string;
-  /**
-   * The version of the Terraform CLI.
-   */
-  version: string;
-};
-export type TransferToSandbox = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Must be set to `DEPLOY_TO_SANDBOX`.
-   */
-  type: "DEPLOY_TO_SANDBOX";
-  /**
-   * Defines whether the files are uploaded from the repository or from the pipeline filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The source path of the files to be uploaded.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the sandbox where the files are uploaded.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that excluded from the upload.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-  /**
-   * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
-   */
-  use_temporary_files?: boolean;
-  /**
-   * When set to `false`, deletes files on the server that were deleted between revisions.
-   */
-  deletion_disabled?: boolean;
-  /**
-   * The name of the local (to the sandbox server) user who uploads the files.
-   */
-  user?: string;
-  /**
-   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
-   */
-  sandbox_references: string;
-  /**
-   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
-   */
-  sandbox_id?: string;
-  /**
-   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
-   */
-  referenced_action_id?: number;
-  /**
-   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
-   */
-  referenced_sanbox_name?: string;
-  /**
-   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
-   */
-  tags?: string[];
-  /**
-   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
-   */
-  sandbox_project_name?: string;
-  /**
-   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
-   */
-  days?: number;
-};
-export type TriggerPipeline = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `RUN_NEXT_PIPELINE`.
-   */
-  type: "RUN_NEXT_PIPELINE";
-  /**
-   * The ID of the pipeline that will be triggered. Not required if both `next_project_name` and `next_pipeline_name` are set instead.
-   */
-  next_pipeline_id?: number;
-  /**
-   * The name of the project containing the pipeline that will be triggered. Not required if `next_pipeline_id` is set instead.
-   */
-  next_project_name?: string;
-  /**
-   * The name of the pipeline that will be triggered. Not required if `next_pipeline_id` is set instead.
-   */
-  next_pipeline_name?: string;
-  /**
-   * The execution comment of the triggered pipeline.
-   */
-  comment?: string;
-  /**
-   * Can be one of `HEAD`, `INHERIT`or `SPECIFIC`. Default is `HEAD`.
-   */
-  revision?: "HEAD" | "INHERIT" | "SPECIFIC";
-  /**
-   * Set if you want to run the pipeline for a specific revision or ref.
-   */
-  specific_revision?: string;
-  /**
-   * Set to `true` if you want the execution to run with the `clear_cache` flag. Default is `false`.
-   */
-  clear_cache?: boolean;
-  /**
-   * Set to `true` if you want the execution to run from scratch. Default is `false`.
-   */
-  refresh?: boolean;
-  /**
-   * Set if you want the execution to run with priority other than set in the next pipeline. Can be one of `LOW`, `NORMAL` or `HIGH`.
-   */
-  priority?: "LOW" | "NORMAL" | "HIGH";
-};
-export type UpCloud = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `UPCLOUD`.
-   */
-  type: "UPCLOUD";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The hostname of the UpCloud server.
-   */
-  host_name: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type VisualTests = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `VISUAL_TESTS`.
-   */
-  type: "VISUAL_TESTS";
-  /**
-   * Defines which browser will be used in tests. Can be one of `CHROME` or `FIREFOX`.
-   */
-  browser_type: "CHROME" | "FIREFOX";
-  /**
-   * Resolution width.
-   */
-  resolution_width: number;
-  /**
-   * Resolution height.
-   */
-  resolution_height: number;
-  /**
-   * The acceptable level of pixel tolerance. Allowed number of decimal places is two.
-   */
-  pixel_tolerance_level: number;
-  /**
-   * The number of items that should be kept in history.
-   */
-  images_history_limit: number;
-  /**
-   * Defines the URLs of the sites that will be tested. Contains information about baseline, headers and excluded areas.
-   */
-  screenshots: Screenshot[];
-  /**
-   * The headers that will be sent with the request.
-   */
-  headers?: Header[];
-  /**
-   * Define to set permissions for the action.
-   */
-  permissions?: Permission;
-};
-export type Vultr = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `VULTR`.
-   */
-  type: "VULTR";
-  /**
-   * The authentication mode for SSH. Should be set to `PASS`.
-   */
-  authentication_mode: "PASS";
-  /**
-   * The host for the connection.
-   */
-  host: string;
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The port for the connection.
-   */
-  port: string;
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type WaitForApproval = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `WAIT_FOR_APPLY`.
-   */
-  type: "WAIT_FOR_APPLY";
-  /**
-   * The question displayed before accepting to continue the execution.
-   */
-  comment?: string;
-  /**
-   * Define to set permissions for the action.
-   */
-  permissions?: Permission;
-};
-export type WebDAV = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `WEB_DAV`.
-   */
-  type: "WEB_DAV";
-  /**
-   * The username required to connect to the server.
-   */
-  login: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password: string;
-  /**
-   * The URL to your WebDAV server.
-   */
-  web_dav_url: string;
-  /**
-   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
-   */
-  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
-  /**
-   * The path in the repository.
-   */
-  local_path?: string;
-  /**
-   * The absolute or relative path on the remote server.
-   */
-  remote_path?: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
-export type WebMonitoring = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `WEB`.
-   */
-  type: "WEB";
-  /**
-   * The target URL.
-   */
-  destination: string;
-  /**
-   * The headers that will be sent with the request.
-   */
-  headers?: Header[];
-  /**
-   * The username required to connect to the server.
-   */
-  login?: string;
-  /**
-   * The password required to connect to the server.
-   */
-  password?: string;
-  /**
-   * The port for the connection.
-   */
-  port?: string;
-  /**
-   * The data that will be sent.
-   */
-  post_data?: string;
-  /**
-   * The text that should or should not be present in the response.
-   */
-  text?: string;
-  /**
-   * Defines whether the response should or should not contain given text. If set, the `text` argument is required.
-   */
-  text_existence?: boolean;
-};
-export type Windows = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `NATIVE_BUILD_WINDOWS`.
-   */
-  type: "NATIVE_BUILD_WINDOWS";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-  /**
-   * Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`.
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * Set to `true` if you want the action to use the VM from the previous Windows action.
-   */
-  vm_from_prev_action?: boolean;
-  /**
-   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
-   */
-  vm_action_name?: string;
-  /**
-   * Defines the image used to create the VM. Use `WINDOWS_SERVER_2019` for the default image, `AMI` for a custom `AMI`.
-   */
-  distribution?: string;
-  /**
-   * Set if `distribution` is set to `AMI`.
-   */
-  ami?: Ami;
-};
-export type WPCLI = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `WP_CLI`.
-   */
-  type: "WP_CLI";
-  /**
-   * The ID of the integration.
-   */
-  integration: string;
-  /**
-   * The commands that will be executed.
-   */
-  execute_commands: string[];
-  /**
-   * The version of the WordPress CLI.
-   */
-  version: string;
-  /**
-   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
-   */
-  shell?: string;
-  /**
-   * The command that will be executed only on the first run.
-   */
-  setup_commands?: string[];
-  /**
-   * The WP CLI config set as text.
-   */
-  config?: string;
-  /**
-   * The WP CLI config set as asset.
-   */
-  env_key?: string;
-};
-export type Xcode = ActionCommon & {
-  /**
-   * The ID of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `NATIVE_BUILD_MAC`.
-   */
-  type: "NATIVE_BUILD_MAC";
-  /**
-   * The directory in which the pipeline filesystem will be mounted.
-   */
-  working_directory: string;
-  /**
-   * The commands that will be executed.
-   */
-  commands: string[];
-  /**
-   * The Xcode version for the action. Available values: `11.7`, `10.3`, `12.1`, `12.2`, `12`.
-   */
-  image: string;
-  /**
-   * If set to `true` all commands will be executed regardless of the result of the previous command.
-   */
-  execute_every_command?: boolean;
-  /**
-   * Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`.
-   */
-  sync_paths?: SyncPath[];
-  /**
-   * A series of simulators to be launched before the action starts. Available values: `iPad (7th generation)`,`iPad (9th generation)`, `iPad Air (3rd generation)`, `iPad Air (4th generation)`, `iPad Air (5th generation)`, `iPad Pro (11-inch) (2nd generation)`,`iPad Pro (11-inch) (3rd generation)`,`iPad Pro (12.9-inch) (4th generation)`,`iPad Pro (12.9-inch) (5th generation)`, `iPad Pro (9.7-inch)`, `iPad mini (6th generation)`, `iPhone 11`, `iPhone 11 Pro`, `iPhone 11 Pro Max`, `iPhone 12`, `iPhone 12 Pro`, `iPhone 12 Pro Max`, `iPhone 12 mini`, `iPhone 13`, `Phone 13 Pro`, `iPhone 13 Pro Max`, `iPhone 13 mini`, `iPhone 14`, `iPhone 14 Plus`, `iPhone 14 Pro`, `iPhone 14 Pro Max`, `iPhone 8`, `iPhone 8 Plus`, `iPhone SE (2nd generation)`, `iPhone SE (3rd generation)`
-   */
-  preStartSimulators?: string[];
-};
-export type ZIP = ActionCommon & {
-  /**
-   * The name of the action.
-   */
-  action: string;
-  /**
-   * The type of the action. Should be set to `ZIP`.
-   */
-  type: "ZIP";
-  /**
-   * The path in the repository.
-   */
-  local_path: string;
-  /**
-   * The target path.
-   */
-  destination: string;
-  /**
-   * The paths and/or files that will be left out during the deployment.
-   */
-  deployment_excludes?: string[];
-  /**
-   * The exceptions from the ignore patterns set in `deployment_excludes`.
-   */
-  deployment_includes?: string[];
-};
 export type BuddyYAML = Pipeline[];
 
 export interface Pipeline {
@@ -6426,15 +344,15 @@ export interface TriggerCondition {
    */
   trigger_group?: string;
 }
-export interface ActionCommon {
+export interface AmazonElasticContainerService {
   /**
-   * The ID of the action.
+   * The name of the action.
    */
   action: string;
   /**
-   * The type of the action.
+   * The type of the action. Should be set to `AWS_ECS`.
    */
-  type: string;
+  type: "AWS_ECS";
   /**
    * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
    */
@@ -6477,6 +395,26 @@ export interface ActionCommon {
    * @default "ON_EVERY_EXECUTION"
    */
   trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The path to the JSON file with task definition.
+   */
+  local_path: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  cluster: string;
+  /**
+   * The ID of the ECS service.
+   */
+  service: string;
 }
 export interface Variable {
   /**
@@ -6516,9 +454,1381 @@ export interface Variable {
    */
   file_chmod?: string;
 }
+export interface AmazonS3 {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AMAZON_S3`.
+   */
+  type: "AMAZON_S3";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Amazon S3 Bucket.
+   */
+  bucket_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * Access control lists (ACLs) enable you to manage access to buckets and objects. It defines which AWS accounts or groups are granted access and the type of access.
+   */
+  acl?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * Specifies the expiration period for the objects (how long they stay in the cache).
+   */
+  expires_date?: string;
+  /**
+   * Specifies how long objects stay in the cache.
+   */
+  cache_control?: string;
+  /**
+   * When set to `true` all files will have their mime-types set to `application/octet-stream`.
+   */
+  skip_content_type_setting?: boolean;
+  /**
+   * Set to `true` if you want to use Reduced Redundancy Storage
+   */
+  reduced_redundancy?: boolean;
+  /**
+   * Defines tags for files categorization as a key value pairs list.
+   */
+  deploy_tags?: Tag[];
+  /**
+   * If set to `true`, files are not deleted if changeset indcates that.
+   */
+  deletion_disabled?: boolean;
+  /**
+   * ContentEncoding that will be set for the deployed files e.g. "gzip".
+   */
+  content_encoding?: string;
+}
 export interface Tag {
   key: string;
   value: string;
+}
+export interface AWSAppRunnerDeploy {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`.
+   */
+  type: "AWS_APP_RUNNER_MONITOR";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`.
+   */
+  timeout: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the App Runner service ARN.
+   */
+  service: string;
+  /**
+   * The name of the Amazon region. The full list of regions is available [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+}
+export interface AWSCDKCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_CDK_CLI`.
+   */
+  type: "AWS_CDK_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string;
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string;
+}
+export interface AWSCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_CLI`.
+   */
+  type: "AWS_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface AWSCLI2 {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_CLI_2`.
+   */
+  type: "AWS_CLI_2";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface AWSCodeDeploy {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `CODE_DEPLOY`.
+   */
+  type: "CODE_DEPLOY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the application.
+   */
+  application_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region: string;
+  /**
+   * The Amazon group name.
+   */
+  group_name: string;
+  /**
+   * The name of the CodeDeploy configuration.
+   */
+  config_name: string;
+  /**
+   * The comment about the deployment.
+   */
+  description?: string;
+  /**
+   * See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html).
+   */
+  ignore_application_stop_failures?: boolean;
+  /**
+   * See [here](http://docs.aws.amazon.com/codedeploy/latest/APIReference/API_DeploymentInfo.html).
+   */
+  update_outdated_instances_only?: boolean;
+  /**
+   * Defines whether to wait for the finish of the deployment in Amazon Code Deploy.
+   */
+  wait_for_finish_deployment?: boolean;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+}
+export interface AWSCodePipeline {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `CODE_PIPELINE`.
+   */
+  type: "CODE_PIPELINE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the AWS CodePipeline pipeline triggered by the action.
+   */
+  code_pipeline_name: string;
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * If set to `true`, the action will wait for the CodePipeline to finish.
+   */
+  wait_for_complete?: boolean;
+}
+export interface AWSElasticBeanstalk {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ELASTIC_BEANSTALK`.
+   */
+  type: "ELASTIC_BEANSTALK";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the application.
+   */
+  application_name: string;
+  /**
+   * The Amazon environment.
+   */
+  environment: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The label of the deployed version.
+   */
+  version_label?: string;
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+}
+export interface AWSElasticBeanstalkMonitoring {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `MONITOR`.
+   */
+  type: "MONITOR";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the application.
+   */
+  application_name: string;
+  /**
+   * The Amazon environment.
+   */
+  environment: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region: string;
+  /**
+   * Defines whether or not the action should be marked as failed when Amazon returns ‘yellow’ health status.
+   */
+  fail_on_yellow?: boolean;
+  /**
+   * Defines whether or not to show verbose logs.
+   */
+  verbose?: boolean;
+}
+export interface AWSLambda {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `LAMBDA`.
+   */
+  type: "LAMBDA";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Lambda function.
+   */
+  function_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The Amazon region.
+   */
+  region: string;
+  /**
+   * The Lambda function version or the alias name. More info [here](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
+   */
+  qualifier?: string;
+  /**
+   * The way in which the Lambda function will be invoked. More info [here](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
+   */
+  invocation_type?: string;
+  /**
+   * Logging type. Can be one of `TAIL` or `NONE`.
+   */
+  log_type?: "TAIL" | "NONE";
+  /**
+   * The type of log data produced by the Lambda function. More info [here](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
+   */
+  client_context?: string;
+  /**
+   * The JSON that will be provided as input to the Lambda function. More info [here](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
+   */
+  payload?: string;
+}
+export interface AWSLambdaDeploy {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AWS_LAMBDA_DEPLOY`.
+   */
+  type: "AWS_LAMBDA_DEPLOY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Lambda function.
+   */
+  function_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the Amazon region. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region: string;
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+}
+export interface AzureCLI {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AZURE_CLI`.
+   */
+  type: "AZURE_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the application.
+   */
+  application_name: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface AzureStorage {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AZURE_STORAGE`.
+   */
+  type: "AZURE_STORAGE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the bucket.
+   */
+  bucket_name: string;
+  /**
+   * The integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the  build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The name of the application.
+   */
+  application_name?: string;
+  /**
+   * If set to `true`, files are not deleted if changeset indcates that.
+   */
+  deletion_disabled?: boolean;
+  /**
+   * When set to `true`, all files will have their mime-types set to `application/octet-stream`.
+   */
+  skip_content_type_setting?: boolean;
+  /**
+   * ContentEncoding that will be set for the deployed files e.g. "gzip".
+   */
+  content_encoding?: string;
+}
+export interface BackblazeB2 {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `BACKBLAZE_B2`.
+   */
+  type: "BACKBLAZE_B2";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Backblaze B2 Bucket.
+   */
+  bucket_name: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the Backblaze region.
+   */
+  region: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string;
+  /**
+   * The exceptions from the ignore patterns set in deployment_excludes.
+   */
+  deployment_includes?: string;
+  /**
+   * Specifies how long objects stay in the cache.
+   */
+  cache_control?: string;
+  /**
+   * If set to `true`, files are not deleted if changeset indcates that.
+   */
+  deletion_disabled?: string;
+  /**
+   * ContentEncoding that will be set for the deployed files e.g. "gzip".
+   */
+  content_encoding?: string;
+}
+export interface Blackfire {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `BLACKFIRE_PYTHON`.
+   */
+  type: "BLACKFIRE_PYTHON";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The version of Python.
+   */
+  version: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH`(default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface Bugsnag {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `BUGSNAG`.
+   */
+  type: "BUGSNAG";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * See `appVersion` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
+   */
+  version: string;
+  /**
+   * See `releaseStage` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
+   */
+  release_stage: string;
+  /**
+   * See `apiKey` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
+   */
+  token: string;
+  /**
+   * See `sourceControl.revision` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
+   */
+  revision?: string;
+  /**
+   * See `builderName` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
+   */
+  builder_name?: string;
+  /**
+   * See `autoAssignRelease` [here](https://bugsnagbuildapi.docs.apiary.io/#/reference/0/build).
+   */
+  auto_assign_release?: boolean;
+}
+export interface BuildACordovaApp {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FASTLANE`.
+   */
+  type: "NATIVE_BUILD_MAC_FASTLANE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * The list of simulators initiated before the action runs.
+   */
+  pre_start_simulators?: string[];
+  /**
+   * The version of Node.js used in the action.
+   */
+  node_version?: string;
+  /**
+   * The list of variables added to the iOS keychain.
+   */
+  certificates?: string[];
+  /**
+   * The list of variables added as iOS Provisioning Profiles.
+   */
+  provision_profiles?: string[];
+  /**
+   * Defines the Xcode version.
+   */
+  xcode_version?: string;
 }
 export interface SyncPath {
   pipeline_path: string;
@@ -6526,11 +1836,443 @@ export interface SyncPath {
   direction: "PIPELINE_TO_VM" | "VM_TO_PIPELINE";
   excludes: string;
 }
+export interface BuildAFastlaneAppiOS {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FASTLANE`.
+   */
+  type: "NATIVE_BUILD_MAC_FASTLANE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * The list of simulators initiated before the action runs.
+   */
+  pre_start_simulators?: string[];
+  /**
+   * The version of Node.js used in the action.
+   */
+  node_version?: string;
+  /**
+   * The list of variables added to the iOS keychain.
+   */
+  certificates?: string[];
+  /**
+   * The list of variables added as iOS Provisioning Profiles.
+   */
+  provision_profiles?: string[];
+  /**
+   * Defines the Xcode version.
+   */
+  xcode_version?: string;
+}
+export interface BuildApplication {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `BUILD`.
+   */
+  type: "BUILD";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Docker image.
+   */
+  docker_image_name: string;
+  /**
+   * The tag of the Docker image.
+   */
+  docker_image_tag: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The dependencies & directories to be cached and available to every execution in this pipeline.
+   */
+  cached_dirs?: string[];
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`.
+   */
+  services?: Service[];
+  /**
+   * The hostname of the container in which the action is run. The container will be available under this name in the docker network for services defined in the `services` field.
+   */
+  main_service_name?: string;
+  /**
+   * The username required to connect to a private registry.
+   */
+  login?: string;
+  /**
+   * The password required to connect to a private registry.
+   */
+  password?: string;
+  /**
+   * The url to the Docker registry or GCR. Required for Google GCR.
+   */
+  registry?: string;
+  /**
+   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
+   */
+  integration?: string;
+  /**
+   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+  /**
+   * If set to `true` the Docker image will be taken from action defined by `docker_build_action_id` or `docker_build_action_name`.
+   */
+  use_image_from_action?: boolean;
+  /**
+   * The ID of the action which built the desired Docker image. If set to 0, the image will be taken from previous pipeline action. Can be used instead of `docker_build_action_name`.
+   */
+  docker_build_action_id?: number;
+  /**
+   * The name of the action which built the desired Docker image. Can be used instead of `docker_build_action_id`.
+   */
+  docker_build_action_name?: string;
+  /**
+   * If set to `true`, all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+  /**
+   * If set to `true`, the cached version of the image is used, instead of being pulled each time.
+   */
+  cache_base_image?: boolean;
+  /**
+   * If set to `true`, use cached image on timeouts (only for official images).
+   */
+  ignore_image_pull_failures?: boolean;
+  /**
+   * All build commands are run as the default user defined in the selected Docker image. Can be set to another username (on the condition that this user exists in the selected image).
+   */
+  run_as_user?: string;
+  /**
+   * The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action.
+   */
+  image_location?: string;
+  /**
+   * The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with `image_location`. If not specified, the system will automatically set it based on other data from the action.
+   */
+  docker_registry?: string;
+}
 export interface Service {
   type: "MYSQL" | "MONGO_DB" | "MARIADB" | "POSTGRE_SQL" | "REDIS" | "MEMCACHED" | "ELASTICSEARCH" | "CUSTOM";
   version?: string;
   connection?: unknown;
   [k: string]: unknown;
+}
+export interface BuildAReactNativeApp {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC_REACT`.
+   */
+  type: "NATIVE_BUILD_MAC_REACT";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * The list of simulators initiated before the action runs.
+   */
+  pre_start_simulators?: string[];
+  /**
+   * The version of Node.js used in the action.
+   */
+  node_version?: string;
+  /**
+   * The list of variables added to the iOS keychain.
+   */
+  certificates?: string[];
+  /**
+   * The list of variables added as iOS Provisioning Profiles.
+   */
+  provision_profiles?: string[];
+  /**
+   * Defines the Xcode version.
+   */
+  xcode_version?: string;
+}
+export interface BuildDockerImage {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOCKERFILE`.
+   */
+  type: "DOCKERFILE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path of the desired dockerfile in the repository. Default is `DOCKERFILE`.
+   */
+  dockerfile_path: string;
+  /**
+   * The docker build image context path.
+   */
+  context_path?: string;
+  /**
+   * The tag of the Docker image.
+   */
+  docker_image_tag?: string;
+  /**
+   * The username required to connect to the server. Required for delivering the Dockerfile to a private registry.
+   */
+  login?: string;
+  /**
+   * The password required to connect to the server. Required for delivering the Dockerfile to a private registry.
+   */
+  password?: string;
+  /**
+   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
+   */
+  integration?: string;
+  /**
+   * The name of the Amazon S3 region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+  /**
+   * The url to GCR. Can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io. Required for Google GCR.
+   */
+  registry?: string;
+  /**
+   * The location of the Docker repository.
+   */
+  repository?: string;
+  /**
+   * The arguments used when building the image from the Dockerfile.
+   */
+  build_args?: string[];
+  /**
+   * If set to `true`, ignore SSL errors upon connecting to the Docker registry.
+   */
+  insecure_registry?: boolean;
+  /**
+   * If set to `true`, dangling images will not be pruned after the build.
+   */
+  do_not_prune_images?: boolean;
+  /**
+   * The Docker BuildKit will be activated while invoking the `docker build` command. By default, it is set to `true`.
+   */
+  buildkit?: boolean;
+  /**
+   * The list of [secrets](https://buddy.works/docs/yaml/yaml-actions/build-docker-image#dockerbuildsecret-schema) to be sent using the `--secret` parameter.
+   */
+  secrets?: DockerBuildSecret[];
+  /**
+   * Refers to the `--provenance` switch of the Docker build. Available values: `NONE`, `MIN`, `MAX`. The default value is `NONE`.
+   */
+  provenance?: string;
+  /**
+   * Available if the cache_scope in the pipeline where this action is located, is set to `WORKSPACE` or `PROJECT`. Defines the Docker cache mode. Available values are `MIN` or `MAX`. By default, it is set to `MIN`.
+   */
+  cache_mode?: string;
+  /**
+   * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
+   */
+  docker_registry?: string;
 }
 export interface DockerBuildSecret {
   /**
@@ -6546,6 +2288,778 @@ export interface DockerBuildSecret {
    */
   type?: string;
 }
+export interface BuildFlutterAppiOS {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC_FLUTTER`.
+   */
+  type: "NATIVE_BUILD_MAC_FLUTTER";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * The list of simulators initiated before the action runs.
+   */
+  pre_start_simulators?: string[];
+  /**
+   * The version of Node.js used in the action.
+   */
+  node_version?: string;
+  /**
+   * The list of variables added to the iOS keychain.
+   */
+  certificates?: string[];
+  /**
+   * The list of variables added as iOS Provisioning Profiles.
+   */
+  provision_profiles?: string[];
+  /**
+   * Defines the Xcode version.
+   */
+  xcode_version?: string;
+}
+export interface BuildMultiArchImage {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOCKER_BUILD_MULTI_ARCH`.
+   */
+  type: "DOCKER_BUILD_MULTI_ARCH";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path of the desired dockerfile in the repository. Default is `DOCKERFILE`.
+   */
+  dockerfile_path: string;
+  /**
+   * The docker build image context path.
+   */
+  context_path?: string;
+  /**
+   * Specifes an intermediate build stage by name as a final stage for the resulting image. Commands after the target stage are skipped.
+   */
+  target_stage?: string;
+  /**
+   * The identifier to pass into the `docker build --secret`. This identifier is associated with the `RUN --mount` identifier to use in the Dockerfile.
+   */
+  secret_id?: string;
+  /**
+   * Renames the secret file to a specific file in the Dockerfile RUN command to use.
+   */
+  secret_src?: string;
+  /**
+   * The arguments used when building the image from the Dockerfile.
+   */
+  build_args?: string[];
+  /**
+   * Specifies the target platform for the build output. You can set multiple target platforms. Default value: `linux/amd64`. Available values: `linux/amd64`, `linux/arm64`, `linux/arm/v7`, `linux/arm/v6`.
+   */
+  target_platform?: string[];
+  /**
+   * The tag of the Docker image.
+   */
+  docker_image_tag?: string;
+  /**
+   * The username required to connect to the server. Required for delivering the Dockerfile to a private registry.
+   */
+  login?: string;
+  /**
+   * The password required to connect to the server. Required for delivering the Dockerfile to a private registry.
+   */
+  password?: string;
+  /**
+   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
+   */
+  integration?: string;
+  /**
+   * The name of the Amazon S3 region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+  /**
+   * The url to GCR. Can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io. Required for Google GCR.
+   */
+  registry?: string;
+  /**
+   * The location of the Docker repository.
+   */
+  repository?: string;
+  /**
+   * Available if the cache_scope in the pipeline where this action is located, is set to `WORKSPACE` or `PROJECT`. Defines the Docker cache mode. Available values are `MIN` or `MAX`. By default, it is set to `MIN`.
+   */
+  cache_mode?: string;
+  /**
+   * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
+   */
+  docker_registry?: string;
+}
+export interface ClearCache {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `CLEAR_CACHE`.
+   */
+  type: "CLEAR_CACHE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Defines the cache layer cleared by the action. Available values: `DOCKER`, `FILE_SYSTEM`,  `SERVICES`, `ADDITIONAL`.
+   */
+  cache_types: string[];
+}
+export interface Cloudflare {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `CLOUDFLARE`.
+   */
+  type: "CLOUDFLARE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Cloudflare zone.
+   */
+  zone_id: string;
+  /**
+   * The name of the Cloudflare web distribution.
+   */
+  distribution_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The URL address to the desired site.
+   */
+  base_url?: string;
+  /**
+   * Specifies whether or not the whole cache should be removed.
+   */
+  purge_all?: boolean;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface Cloudfront {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `CLOUDFLARE`.
+   */
+  type: "CLOUDFLARE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Cloudfront web distribution.
+   */
+  distribution_id: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  base_url?: string;
+  /**
+   * Specifies whether or not the whole cache should be removed.
+   */
+  purge_all?: boolean;
+  /**
+   * The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface CodeSignAndExportAnIOSApp {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC_SIGN`.
+   */
+  type: "NATIVE_BUILD_MAC_SIGN";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The filesystem path of the signed archive file.
+   */
+  archive_location: string;
+  /**
+   * Defines the filesystem path to which the signed file is exported.
+   */
+  export_location?: string;
+  /**
+   * Defines the source of the `property_list` used by the action. Available options: `ACTION`, `GENERATED`,`PIPELINE_VOLUME`.
+   */
+  property_list_source?: string;
+  /**
+   * Filesystem path of the properties file or the list of properties separated by the newline character `\n`.
+   */
+  property_list?: string;
+  /**
+   * Defines the distribution method from one of the available: `APP_STORE`, `ENTERPRISE`, `AD_HOC`, `DEVELOPMENT`.
+   */
+  distribution_method?: string;
+  /**
+   * The list of variables added to the iOS keychain.
+   */
+  certificates?: string[];
+  /**
+   * The list of variables added as iOS Provisioning Profiles.
+   */
+  provision_profiles?: string[];
+}
+export interface CompressImages {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `IMAGE_COMPRESSION`.
+   */
+  type: "IMAGE_COMPRESSION";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path in the repository.
+   */
+  local_path: string;
+  /**
+   * Output directory for compressed images.
+   */
+  destination: string;
+  /**
+   * The level of image compression. Can be set to `1` (low), `2` (medium) or `3` (high).
+   */
+  level: string;
+  /**
+   * Supported image formats. Available types: `jpg`, `png`, `gif`, `svg`.
+   */
+  types: string;
+}
+export interface CopyFilesAction {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `COPY_FILES`.
+   */
+  type: "COPY_FILES";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the pipeline from which files will be copied. Not required if both `source_project_name` and `source_pipeline_name` are set instead. If not set, the source pipeline will be the current pipeline.
+   */
+  source_pipeline_id?: number;
+  /**
+   * The name of the project containing the pipeline from which files will be copied. Required if `source_pipeline_name` is set. Not valid if `source_pipeline_id` is set.
+   */
+  source_project_name?: string;
+  /**
+   * The name of the pipeline from which files will be copied. Required if `source_project_name` is set. Not valid if `source_pipeline_id` is set. If not set, the source pipeline will be the current pipeline.
+   */
+  source_pipeline_name?: string;
+  /**
+   * The name of the project containing the pipeline to which files will be copied. Required if `target_pipeline_name` is set.
+   */
+  target_project_name?: string;
+  /**
+   * The name of the pipeline to which files will be copied. Required if `target_project_name` is set. If not set, the target pipeline will be the current pipeline.
+   */
+  target_pipeline_name?: string;
+  /**
+   * The path in the source pipeline’s filesystem.
+   */
+  source_path?: string;
+  /**
+   * The path in the current pipeline’s filesystem.
+   */
+  target_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * When set to `true` the hidden files and folders (the ones with the name beginning with a ".") are copied.
+   */
+  copy_hidden_files?: boolean;
+}
+export interface CreateNewSandbox {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `SANDBOX_CREATE_NEW`.
+   */
+  type: "SANDBOX_CREATE_NEW";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Defines the name of the created sandbox.
+   */
+  sandbox_name: string;
+  /**
+   * Defines the OS distro of the sandbox. Can be one of `ubuntu/focal` or `debian/buster`.
+   */
+  sandbox_distribution: "ubuntu/focal" | "debian/buster";
+  /**
+   * Defines the list of playbooks to install during the sandbox creation.
+   */
+  sandbox_playbooks?: SandboxPlaybook[];
+  /**
+   * The list of tags applied to the sandbox.
+   */
+  tags?: string[];
+  /**
+   * Defines the amount of RAM available to the sandbox. Can be one of `2` or `4`.
+   */
+  ram_limit: number;
+  /**
+   * Defines the number of vCPUs of the sandbox. Can be one of `1` or `2`.
+   */
+  cpu_limit: number;
+  /**
+   * Defines the sandbox disk size. Expressed in GB. Can be one of `5` or `10`.
+   */
+  disk_size_limit: number;
+  /**
+   * Defines the port-subdomain mappings that allow to access exposed resources on the sandbox.
+   */
+  mappings: Mapping[];
+  /**
+   * Defines the port used in the mapping.
+   */
+  application_port?: number;
+  /**
+   * Defines the subdomain used in the mapping.
+   */
+  subdomain?: string;
+  /**
+   * If set to `true`, it allows you to use basic authorization in mappings
+   */
+  basic_auth?: boolean;
+  /**
+   * Defines the basic auth username required to access the exposed resources.
+   */
+  mappings_username?: string;
+  /**
+   * Defines the basic auth password required to access the exposed resources.
+   */
+  mappings_password?: string;
+}
 export interface SandboxPlaybook {
   type: string;
   [k: string]: unknown;
@@ -6555,6 +3069,842 @@ export interface Mapping {
   subdomain: string;
   username?: string;
   password?: string;
+}
+export interface Datadog {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DATADOG`.
+   */
+  type: "DATADOG";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The type of the alert. Can be one of `SUCCESS`, `WARNING` or `ERROR`.
+   */
+  alert_type: "SUCCESS" | "WARNING" | "ERROR";
+  /**
+   * The title of the posted event.
+   */
+  title?: string;
+  /**
+   * The content of the posted event.
+   */
+  content?: string;
+  /**
+   * An arbitrary string to use for aggregation, max length of 100 characters. If you specify a key, all events using that key will be grouped together in the Event Stream.
+   */
+  aggregation_key?: string;
+  /**
+   * The Host name to associate with the event. Any tags associated with the host will also be applied to this event.
+   */
+  host?: string;
+  /**
+   * The list of tags to apply to the event.
+   */
+  tags?: string[];
+  /**
+   * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
+   */
+  region?: "US1" | "US3" | "US5" | "EU1" | "AP1" | "US1_FED";
+}
+export interface DatadogServiceCheck {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DATADOG_STATUS_CHECK`.
+   */
+  type: "DATADOG_STATUS_CHECK";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The Host name to associate with the event. Any tags associated with the host will also be applied to this event.
+   */
+  host_name?: string;
+  /**
+   * An integer for the status of the check.
+   */
+  status?: number;
+  /**
+   * The text for the message.
+   */
+  check?: string;
+  /**
+   * A description of why this status occurred.
+   */
+  message?: string;
+  /**
+   * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
+   */
+  region?: "US1" | "US3" | "US5" | "EU1" | "AP1" | "US1_FED";
+}
+export interface DeployToAppStoreConnect {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC_DEPLOY`.
+   */
+  type: "NATIVE_BUILD_MAC_DEPLOY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The filesystem path of the signed archive file.
+   */
+  archive_location: string;
+  /**
+   * Defines if the app is submitted to Fastlane pre-check before sending for review.
+   */
+  validate_before_upload?: string;
+  /**
+   * Defines if the app is sent to review.
+   */
+  submit_for_review?: boolean;
+  /**
+   * Defines if the app metadata is updated.
+   */
+  skip_metadata?: boolean;
+  /**
+   * Defines if the app version is increased.
+   */
+  skip_app_version_update?: boolean;
+  /**
+   * Defines is the app screenshots are updated.
+   */
+  skip_screenshots?: boolean;
+}
+export interface DigitalOcean {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DIGITAL_OCEAN`.
+   */
+  type: "DIGITAL_OCEAN";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * The port for the connection.
+   */
+  port?: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface DigitalOceanCDN {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_CDN`.
+   */
+  type: "GOOGLE_CDN";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the DigitalOcean CDN web distribution.
+   */
+  endpoint_id: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the DigitalOcean CDN web distribution.
+   */
+  distribution_name: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * Specifies whether or not the whole cache should be removed.
+   */
+  purge_all?: boolean;
+  /**
+   * The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface DigitalOceanCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOCTL`.
+   */
+  type: "DOCTL";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface DigitalOceanSpaces {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DO_SPACES`.
+   */
+  type: "DO_SPACES";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the DigitalOcean Spaces Bucket.
+   */
+  bucket_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the DigitalOcean Spaces region.
+   */
+  region: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * Makes files accessible through public HTTP.
+   */
+  public_access?: boolean;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * Specifies how long objects stay in the cache.
+   */
+  cache_control?: string;
+  /**
+   * ContentEncoding that will be set for the deployed files e.g. "gzip".
+   */
+  content_encoding?: string;
+}
+export interface Discord {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DISCORD`.
+   */
+  type: "DISCORD";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The URL do the desired Discord [webhook](https://discordapp.com/developers/docs/resources/webhook#execute-webhook).
+   */
+  notification_url: string;
+  /**
+   * The content of the notification.
+   */
+  content?: string;
+  /**
+   * The embedded rich content. More info [here](https://discordapp.com/developers/docs/resources/channel#attachment-object-attachment-structure).
+   */
+  attachments?: string;
+  /**
+   * The attached files.
+   */
+  file_attachments?: string[];
+}
+export interface Docker {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOCKER`.
+   */
+  type: "DOCKER";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+  /**
+   * The integration. Required to authorize in Amazon ECR, Google GCR and Docker Hub.
+   */
+  integration?: string;
+  /**
+   * The name of the Amazon region. If the Amazon ECR integration has been selected, provide the region to authorize in. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+  /**
+   * Provide if you want to authorize in a private registry or Google GCR. For GCR, it can be one of gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io.
+   */
+  registry?: string;
+  /**
+   * The username required to authorize in a private registry.
+   */
+  login?: string;
+  /**
+   * The password required to authorize in a private registry.
+   */
+  password?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * If set to `true`, all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+}
+export interface DockerCLI {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_DOCKER_CLI`.
+   */
+  type: "NATIVE_BUILD_DOCKER_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * Enables or disables Docker layer caching.
+   */
+  docker_layer_caching?: boolean;
+  /**
+   * Required if `docker_layer_caching` is set to `true`. Defines the caching scope. Available values: `WORKSPACE`, `PROJECT`, `PIPELINE`, `ACTION`.
+   */
+  docker_layer_caching_scope?: boolean;
+  /**
+   * Defines the name of the tag assigned to the cached layer.
+   */
+  docker_layer_caching_tag?: string;
+  /**
+   * Set to `true` if you want the action to use the VM from the previous Docker CLI action.
+   */
+  vm_from_prev_action?: boolean;
+  /**
+   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
+   */
+  vm_action_name?: string;
+  /**
+   * Set to `AMI` if you want to use your own ami (default `UBUNTU_20_04`)
+   */
+  distribution?: string;
+  /**
+   * Set if `distribution` is set to `AMI`.
+   */
+  ami?: Ami;
 }
 export interface Ami {
   /**
@@ -6566,17 +3916,4999 @@ export interface Ami {
    */
   password?: string;
 }
+export interface DockerfileLinter {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOCKERFILE_LINTER`.
+   */
+  type: "DOCKERFILE_LINTER";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path from which a Dockerfile is chosen.
+   */
+  local_path?: string;
+  /**
+   * Type of shell in which the errors will be detected. Available values: `sh`, `bash`, `dash`, `ksh`
+   */
+  shell_type?: string;
+  /**
+   * The errors that will be ignored by linter. You can find the error codes below or use [ShellCheck](https://github.com/koalaman/shellcheck/wiki/Checks).
+   */
+  ignore_codes?: string;
+  /**
+   * The path to the yaml file with [ignores](https://github.com/buddy-works/dockerfile-linter#yaml-file-with-ignores).
+   */
+  ignores_path?: string;
+}
+export interface DownloadBackblazeB2 {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOWNLOAD_BACKBLAZE_B2`.
+   */
+  type: "DOWNLOAD_BACKBLAZE_B2";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Backblaze B2 Bucket.
+   */
+  bucket_name: string;
+  /**
+   * The path from which the file will be downloaded.
+   */
+  source_path: string;
+  /**
+   * The path in which the file will be saved.
+   */
+  destination_path: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the Backblaze region.
+   */
+  region: string;
+  /**
+   * Replace files if they already exist.
+   */
+  overwrite?: boolean;
+  /**
+   * If set to `true`, the whole directory tree is downloaded. Otherwise only the files from the path are downloaded.
+   */
+  recursive?: boolean;
+  /**
+   * The paths and/or files that will be excluded from the upload.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface DownloadFromSandbox {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOWNLOAD_FROM_SANDBOX`.
+   */
+  type: "DOWNLOAD_FROM_SANDBOX";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path from which the file will be downloaded.
+   */
+  source_path?: string;
+  /**
+   * The path in which the file will be saved.
+   */
+  destination_path?: string;
+  /**
+   * The paths and/or files that will be excluded from the upload.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
+   */
+  sandbox_references: string;
+  /**
+   * The ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
+   */
+  sandbox_id?: string;
+  /**
+   * The ID of the action that creates the target sandbox. Required when `sandbox_references` is set to `BY_ACTION`.
+   */
+  referenced_action_id?: number;
+  /**
+   * The name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
+   */
+  referenced_sanbox_name?: string;
+  /**
+   * The list of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
+   */
+  tags?: string[];
+  /**
+   * The name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
+   */
+  sandbox_project_name?: string;
+  /**
+   * The number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
+   */
+  days?: number;
+  /**
+   * If set to `true`, the whole directory tree is downloaded. Otherwise only the files from the path are downloaded.
+   */
+  recursive?: boolean;
+  /**
+   * Replace files if they already exist.
+   */
+  overwrite?: boolean;
+}
+export interface DownloadFTP {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOWNLOAD_FTP`.
+   */
+  type: "DOWNLOAD_FTP";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path from which the file will be downloaded.
+   */
+  source_path: string;
+  /**
+   * The path in which the file will be saved.
+   */
+  destination_path: string;
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password: string;
+  /**
+   * Replace files if they already exist.
+   */
+  overwrite?: boolean;
+  /**
+   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
+   */
+  recursive?: boolean;
+  /**
+   * The paths and/or files that will be left out during the download.
+   */
+  download_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `download_excludes`.
+   */
+  download_includes?: string[];
+}
+export interface DownloadFTPS {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOWNLOAD_FTPS`.
+   */
+  type: "DOWNLOAD_FTPS";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path from which the file will be downloaded.
+   */
+  source_path: string;
+  /**
+   * The path in which the file will be saved.
+   */
+  destination_path: string;
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password: string;
+  /**
+   * Replace files if they already exist.
+   */
+  overwrite?: boolean;
+  /**
+   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
+   */
+  recursive?: boolean;
+  /**
+   * The paths and/or files that will be left out during the download.
+   */
+  download_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `download_excludes`.
+   */
+  download_includes?: string[];
+}
+export interface DownloadGCS {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOWNLOAD_GCS`.
+   */
+  type: "DOWNLOAD_GCS";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the GCS Bucket.
+   */
+  bucket_name: string;
+  /**
+   * The path from which the file will be downloaded.
+   */
+  source_path: string;
+  /**
+   * The path in which the file will be saved.
+   */
+  destination_path: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the GCS application.
+   */
+  application_name?: string;
+  /**
+   * Replace files if they already exist.
+   */
+  overwrite?: boolean;
+  /**
+   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
+   */
+  recursive?: boolean;
+  /**
+   * The paths and/or files that will be left out during the download.
+   */
+  download_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `download_excludes`.
+   */
+  download_includes?: string[];
+}
+export interface DownloadS3 {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOWNLOAD_S3`.
+   */
+  type: "DOWNLOAD_S3";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Amazon S3 Bucket.
+   */
+  bucket_name: string;
+  /**
+   * The path from which the file will be downloaded.
+   */
+  source_path: string;
+  /**
+   * The path in which the file will be saved.
+   */
+  destination_path: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Replace files if they already exist.
+   */
+  overwrite?: boolean;
+  /**
+   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
+   */
+  recursive?: boolean;
+  /**
+   * The paths and/or files that will be left out during the download.
+   */
+  download_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `download_excludes`.
+   */
+  download_includes?: string[];
+}
+export interface DownloadSFTP {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOWNLOAD_SSH`.
+   */
+  type: "DOWNLOAD_SSH";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path from which the file will be downloaded.
+   */
+  source_path: string;
+  /**
+   * The path in which the file will be saved.
+   */
+  destination_path: string;
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password: string;
+  /**
+   * Replace files if they already exist.
+   */
+  overwrite?: boolean;
+  /**
+   * If set to `true`, the whole directory tree is downloaded, otherwise only the files from the path are downloaded.
+   */
+  recursive?: boolean;
+  /**
+   * The paths and/or files that will be left out during the download.
+   */
+  download_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `download_excludes`.
+   */
+  download_includes?: string[];
+}
+export interface EmailNotification {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `EMAIL`.
+   */
+  type: "EMAIL";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The recipients of the notification: email addresses (one per line). One of `send_to_groups` or `recipients` must be specified.
+   */
+  recipients: string;
+  /**
+   * The list of groups' names to which emails will be sent. One of `send_to_groups` or `recipients` must be specified.
+   */
+  send_to_groups: string;
+  /**
+   * The content of the notification.
+   */
+  content: string;
+  /**
+   * The title of the notification.
+   */
+  title: string;
+  /**
+   * Defines whether to send the content as HTML.
+   */
+  send_as_html?: boolean;
+  /**
+   * The attached files.
+   */
+  file_attachments?: string;
+  /**
+   * The e-mail sender name.
+   */
+  from_name?: string;
+}
+export interface ESLint {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ESLINT`.
+   */
+  type: "ESLINT";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The version of the NodeJS.
+   */
+  version: string;
+  /**
+   * The name of the code style. Can be one of `airbnb`, `canonical`, `canonical/ava`, `canonical/flowtype`, `canonical/jest`, `canonical/lodash`, `canonical/mocha`, `canonical/react`, `eslint`, `es/2015/server`, `es/2015/client`, `facebook`, `google`, `standard`, `xo`, `xo/esnext`, `xo/browser` or `custom`.
+   */
+  style:
+    | "airbnb"
+    | "canonical"
+    | "canonical/ava"
+    | "canonical/flowtype"
+    | "canonical/jest"
+    | "canonical/lodash"
+    | "canonical/mocha"
+    | "canonical/react"
+    | "eslint"
+    | "es/2015/server"
+    | "es/2015/client"
+    | "facebook"
+    | "google"
+    | "standard"
+    | "xo"
+    | "xo/esnext"
+    | "xo/browser"
+    | "custom";
+  /**
+   * Required if `style` is set to `custom`. Path to the style config file.
+   */
+  config_path?: string;
+  /**
+   * Defines whether to automatically fix code issues or just perform the code analyse.
+   */
+  fix?: boolean;
+  /**
+   * When set to `true`, reports only errors, without warnings.
+   */
+  quiet?: boolean;
+}
+export interface Firebase {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `FIREBASE`.
+   */
+  type: "FIREBASE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Firebase application.
+   */
+  application_id: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located).
+   */
+  volume_mappings?: string[];
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  working_directory?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface FTP {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `FTP`.
+   */
+  type: "FTP";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * Enables the active mode for the connection.
+   */
+  active_mode?: boolean;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
+   */
+  use_temporary_files?: boolean;
+}
+export interface FTPS {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `FTPS`.
+   */
+  type: "FTPS";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface GenerateVariables {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `INTEGRATION_VARIABLES`.
+   */
+  type: "INTEGRATION_VARIABLES";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Defines the hash ID of the integration from which the system generates variables. Supported integrations: `AMAZON`, `GIT_HUB_API`, `DOCKER_HUB`, `DIGITAL_OCEAN`.
+   */
+  integration: string;
+}
+export interface GhostInspector {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GHOST_INSPECTOR`.
+   */
+  type: "GHOST_INSPECTOR";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name to associate with the event.
+   */
+  user?: string;
+  /**
+   * The password to associate with the event.
+   */
+  password?: string;
+  /**
+   * Use to initiate the execution, then immediate return a response (without results).
+   */
+  immediate?: boolean;
+  /**
+   * Use to disable all notifications for this execution only.
+   */
+  disable_notifications?: boolean;
+  /**
+   * Geo-location for test execution. The following options are available: `us-east-1`, `us-west-1`, `ca-central-1`, `eu-central-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `eu-north-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-southeast-1`, `ap-southeast-2`, `ap-south-1`, `sa-east-1`.
+   */
+  region?: string;
+  /**
+   * Alternate browser to use for this execution. The following options are available: `firefox` (default), `firefox-<version>` specific version of Firefox, for example `firefox-57`, `chrome` (paid plans only), `phantomjs`.
+   */
+  browser?: string;
+  /**
+   * The ID of the suite to execute.
+   */
+  suite_id?: string;
+  /**
+   * The ID of the folder to execute.
+   */
+  folder_id?: string;
+  /**
+   * Specify the Slack channel to notify for this suite run. Note that the value must be `myChannel` or `%23myChannel` and not `#myChannel`.
+   */
+  channel?: string;
+  /**
+   * Alternate screen size to use for all tests in this execution only. This should be a string formatted as `{width}x{height}`, for example `1024x768`.
+   */
+  viewport?: string;
+  /**
+   * A CSV file containing a row of variable values for each suite run. A POST request must be used when sending this file. When included, an array of suite results will be returned instead of an array of test result.
+   */
+  data_file?: string;
+  /**
+   * Alternate start URL to use for all tests in this execution only.
+   */
+  start_url?: string;
+  /**
+   * Alternate user agent to use for all tests in this execution only.
+   */
+  user_agent?: string;
+}
+export interface GhostInspectorCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GHOST_INSPECTOR_CLI`.
+   */
+  type: "GHOST_INSPECTOR_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string;
+}
+export interface GitcryptLock {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GIT_CRYPT_LOCK`.
+   */
+  type: "GIT_CRYPT_LOCK";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Key names you want to use to lock your repository.
+   */
+  keys: string;
+  /**
+   * Set to `true` if you want to lock even if there is uncommitted work in pipeline filesystem.
+   */
+  force_arg?: string;
+}
+export interface GitcryptUnlock {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GIT_CRYPT_UNLOCK`.
+   */
+  type: "GIT_CRYPT_UNLOCK";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Key names you want to use to unlock your repository.
+   */
+  keys: string;
+}
+export interface GitHubCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `GIT_HUB_CLI`.
+   */
+  type: "GIT_HUB_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+}
+export interface GitHubRelease {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GIT_HUB_RELEASE`.
+   */
+  type: "GIT_HUB_RELEASE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the tag.
+   */
+  tag_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The account owner of the repository. The name is not case-sensitive.
+   */
+  organization: string;
+  /**
+   * The name of the repository. The name is not case-sensitive. Created from the field 'organization/repository name.'
+   */
+  external_project_id: string;
+  /**
+   * Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.
+   */
+  target_commitish?: string;
+  /**
+   * Set to `true` to create a draft (unpublished) release or to `false` to create a published one. By default, it's set to `false`.
+   */
+  draft?: boolean;
+  /**
+   * Set to `true` to identify the release as a prerelease. Set to `false` to identify the release as a full release. By default, it's set to `false`.
+   */
+  prerelease?: boolean;
+  /**
+   * The name of the release.
+   */
+  release_name?: string;
+  /**
+   * Text describing the contents of the tag.
+   */
+  body?: string;
+  /**
+   * The package of assets for this release. The path has to be provided in the `source_path` field and the label name in the `label` field.
+   */
+  assets?: Asset;
+}
 export interface Asset {
   source_path: string;
   label: string;
+}
+export interface GitLabCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `GIT_LAB_CLI`.
+   */
+  type: "GIT_LAB_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+}
+export interface GitPush {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `PUSH`.
+   */
+  type: "PUSH";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The url to the repository.
+   */
+  push_url: string;
+  /**
+   * The authentication mode for GIT. Should be set to `HTTP`.
+   */
+  git_auth_mode: "HTTP";
+  /**
+   * The name of the tag to push.
+   */
+  tag?: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * Defines whether the tags should be pushed to the remote repository or  not.
+   */
+  push_tags?: boolean;
+  /**
+   * When set to `false` the push will ignore paths listed in .gitignore  file.
+   */
+  use_custom_gitignore?: boolean;
+  /**
+   * When set to `true`, action will push only repository files (without  artifacts).
+   */
+  isolated?: boolean;
+  /**
+   * Defines the remote branch to which the push will be performed. If empty, files will be pushed to the same branch.
+   */
+  target_branch?: string;
+  /**
+   * The paths and/or files that will be left out during the push. Only works  when `use_custom_gitignore` is set to `true`.
+   */
+  deployment_excludes?: string[];
+  /**
+   * Defines whether the `--force` flag should be used when invoking  the git push command or not.
+   */
+  without_force?: boolean;
+  /**
+   * Optional custom git commit message.
+   */
+  comment?: string;
+  /**
+   * Use custom git push options.
+   */
+  custom_options?: string;
+}
+export interface GKEApplyDeployment {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_APPLY`.
+   */
+  type: "KUBERNETES_APPLY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path to the configuration file.
+   */
+  config_path: string;
+  /**
+   * The ID of the Google integration.
+   */
+  integration: string;
+  /**
+   * Authorization type. Set to `SERVICE_ACCOUNT`.
+   */
+  gke_auth_type: string;
+  /**
+   * The ID of the GKE zone.
+   */
+  zone_id: string;
+  /**
+   * The ID of the GKE cluster.
+   */
+  cluster: string;
+  /**
+   * The ID of the GKE application.
+   */
+  application_id: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `true`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
+   */
+  save_config_arg?: boolean;
+  /**
+   * Delete and re-create the specified resource, when PATCH encounters conflict and has retried for 5 times.
+   */
+  force_arg?: boolean;
+  /**
+   * Automatically resolve conflicts between the modified and live configuration by using values from the modified configuration.
+   */
+  overwrite_arg?: boolean;
+  /**
+   * Only relevant during a prune or a force apply. If `true`, cascade the deletion of the resources managed by pruned or deleted resources (e.g. Pods created by a ReplicationController).
+   */
+  cascade_arg?: boolean;
+  /**
+   * Defines whether to select all the specified resources.
+   */
+  all_arg?: boolean;
+  /**
+   * Only relevant during a prune or a force apply. Period of time in seconds given to pruned or deleted resources to terminate gracefully. Ignored if negative.
+   */
+  grace_period_arg?: number;
+  /**
+   * Automatically delete resource objects that do not appear in the configs and are created by either apply or create –save-config. Should be used with either -l or –all.
+   */
+  prune_arg?: boolean;
+  /**
+   * Overwrite the default whitelist with <group/version/kind< for –prune.
+   */
+  prune_whitelist_arg?: string;
+  /**
+   * Version of the kubectl used in the action. Default is <latest<.
+   */
+  kubectl_version?: string;
+}
+export interface GKERunHelm {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HELM`.
+   */
+  type: "HELM";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the Google integration.
+   */
+  integration_hash: string;
+  /**
+   * The ID of the GKE zone.
+   */
+  zone_id: string;
+  /**
+   * The ID of the GKE cluster.
+   */
+  cluster: string;
+  /**
+   * The ID of the GKE application.
+   */
+  application_id: string;
+  /**
+   * The Helm version.
+   */
+  helm_version: string;
+  /**
+   * Authorization type. Set to `SERVICE_ACCOUNT`.
+   */
+  gke_auth_type: string;
+  /**
+   * Helm repository region. Set it if Helm repository is on AWS S3.
+   */
+  helm_repository_region?: string;
+  /**
+   * Amazon integration ID. Set it if Helm repository is on AWS S3.
+   */
+  helm_repository_integration?: string;
+  /**
+   * Service Account Key from Google Cloud Storage. Set it if Helm repository is on GCS.
+   */
+  helm_repository_key?: string;
+  /**
+   * Allow you to install Helm plugins.
+   */
+  setup_commands?: string[];
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+}
+export interface GKERunJob {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_RUN_JOB`.
+   */
+  type: "KUBERNETES_RUN_JOB";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Google integration.
+   */
+  integration: string;
+  /**
+   * Authorization type. Set to `SERVICE_ACCOUNT`.
+   */
+  gke_auth_type: string;
+  /**
+   * The ID of the GKE zone.
+   */
+  zone_id: string;
+  /**
+   * The ID of the GKE cluster.
+   */
+  cluster: string;
+  /**
+   * The ID of the GKE application.
+   */
+  application_id: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `true`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
+   */
+  config_path?: string;
+  /**
+   * Defines whether to leave the Pod or delete it after the action finishes.
+   */
+  leave_after?: boolean;
+  /**
+   * The configuration content. One of `config_path` or `content` must be specified.
+   */
+  content?: string;
+  /**
+   * Defines whether the execution should or should not wait for job to end.
+   */
+  not_wait?: boolean;
+  /**
+   * Version of the kubectl used in the action. Default is <latest<.
+   */
+  kubectl_version?: string;
+}
+export interface GKERunPod {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_RUN_POD`.
+   */
+  type: "KUBERNETES_RUN_POD";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Google integration.
+   */
+  integration: string;
+  /**
+   * Authorization type. Set to `SERVICE_ACCOUNT`.
+   */
+  gke_auth_type: string;
+  /**
+   * The ID of the GKE zone.
+   */
+  zone_id: string;
+  /**
+   * The ID of the GKE cluster.
+   */
+  cluster: string;
+  /**
+   * The ID of the GKE application.
+   */
+  application_id: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `true`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
+   */
+  config_path?: string;
+  /**
+   * Defines whether to leave the Pod or delete it after the action finishes.
+   */
+  leave_after?: boolean;
+  /**
+   * The configuration content. One of `config_path` or `content` must be specified.
+   */
+  content?: string;
+  /**
+   * Defines whether the execution should or should not wait for job to end.
+   */
+  not_wait?: boolean;
+  /**
+   * Version of the kubectl used in the action. Default is <latest<.
+   */
+  kubectl_version?: string;
+}
+export interface GKESetImage {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_SET_IMAGE`.
+   */
+  type: "KUBERNETES_SET_IMAGE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the container.
+   */
+  container: string;
+  /**
+   * The name of the namespace.
+   */
+  namespace: string;
+  /**
+   * The name of the deployment from the namespace.
+   */
+  deployment: string;
+  /**
+   * The name of the image to set.
+   */
+  image_name: string;
+  /**
+   * The tag of the chosen image.
+   */
+  image_tag: string;
+  /**
+   * The path to the configuration file.
+   */
+  config_path: string;
+  /**
+   * The ID of the Google integration.
+   */
+  integration: string;
+  /**
+   * Authorization type. Set to `SERVICE_ACCOUNT`.
+   */
+  gke_auth_type: string;
+  /**
+   * The ID of the GKE zone.
+   */
+  zone_id: string;
+  /**
+   * The ID of the GKE cluster.
+   */
+  cluster: string;
+  /**
+   * The ID of the GKE application.
+   */
+  application_id: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `true`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * Version of the kubectl used in the action. Default is <latest<.
+   */
+  kubectl_version?: string;
+}
+export interface GoogleAppEngine {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_APP_DEPLOY`.
+   */
+  type: "GOOGLE_APP_DEPLOY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the GAE Bucket.
+   */
+  bucket_name: string;
+  /**
+   * The name of the GAE application.
+   */
+  application_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The label of the image version.
+   */
+  version_label?: string;
+  /**
+   * The URL address to the desired image.
+   */
+  image_url?: string;
+  /**
+   * Specifies whether or not to send all traffic to the new version immediately.
+   */
+  promote_all_traffic?: boolean;
+  /**
+   * Specifies whether or not to stop previous version instances.
+   */
+  stop_previous_version?: boolean;
+  /**
+   * The verbosity level. Default level is `warning`. Can be one of `critical`, `debug`, `error`, `info`, `none` or `warning`.
+   */
+  verbosity?: "critical" | "debug" | "err" | "info" | "none" | "warning";
+  /**
+   * YAML configuration file.
+   */
+  config_path?: string;
+}
+export interface GoogleCDN {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_CDN_INVALIDATE`.
+   */
+  type: "GOOGLE_CDN_INVALIDATE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Google web distribution.
+   */
+  distribution_id: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The name of the mapping rules.
+   */
+  url_map?: string;
+  /**
+   * Specifies whether or not the whole cache should be removed.
+   */
+  purge_all?: boolean;
+  /**
+   * The paths and/or files that will be left out during the deployment. Available only if `purge_all` is set to `false`.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface GoogleChat {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_CHAT`.
+   */
+  type: "GOOGLE_CHAT";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The content of the notification.
+   */
+  content: string;
+  /**
+   * The ID of the Google Chat channel.
+   */
+  channel: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+}
+export interface GoogleCloudCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_CLOUD_CLI`.
+   */
+  type: "GOOGLE_CLOUD_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the Google integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The name of the Google application.
+   */
+  application_name?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface GoogleCloudRun {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_CLOUD_RUN_DEPLOY`.
+   */
+  type: "GOOGLE_CLOUD_RUN_DEPLOY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the service.
+   */
+  service: string;
+  /**
+   * The name of the application.
+   */
+  application_name: string;
+  /**
+   * The display name of the application.
+   */
+  application_display_name: string;
+  /**
+   * The name of the image.
+   */
+  image: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The [region](https://cloud.google.com/compute/docs/regions-zones) in which the resource can be found. Required when platform is set to `MANAGED`.
+   */
+  region?: string;
+  /**
+   * The ID of the cluster or fully qualified identifier for the cluster. Required when the platform is set to `GKE`.
+   */
+  cluster?: string;
+  /**
+   * The zone in which the cluster is located. Required when the platform is set to `GKE`.
+   */
+  cluster_location?: string;
+  /**
+   * The name of the context in your kubectl config file to use for connecting. Required when the platform is set to `KUBERNETES`.
+   */
+  context?: string;
+  /**
+   * Kubectl configuration file. Required when the platform is set to `KUBERNETES`.
+   */
+  config_path?: string;
+  /**
+   * Target platform for running commands. Can be set to: `MANAGED`, `GKE` or `KUBERNETES`.
+   */
+  platform?: string;
+}
+export interface GoogleCloudStorage {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_CLOUD_STORAGE`.
+   */
+  type: "GOOGLE_CLOUD_STORAGE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the GCS Bucket.
+   */
+  bucket_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * Makes files accessible through public HTTP.
+   */
+  public_access?: boolean;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The name of the GCS application.
+   */
+  application_name?: string;
+  /**
+   * ContentEncoding that will be set for the deployed files e.g. "gzip".
+   */
+  content_encoding?: string;
+}
+export interface GoogleComputeEngine {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GCE`.
+   */
+  type: "GCE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface GoogleFunctions {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_FUNCTION_INVOKE`.
+   */
+  type: "GOOGLE_FUNCTION_INVOKE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Google function.
+   */
+  function_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The id of the Google Cloud project.
+   */
+  application_id: string;
+  /**
+   * The JSON that will be provided as input to the Google function.
+   */
+  payload?: string;
+  /**
+   * Region in which function can be found or will be created.
+   */
+  region?: string;
+}
+export interface GoogleFunctionsDeploy {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `GOOGLE_FUNCTION_DEPLOY`.
+   */
+  type: "GOOGLE_FUNCTION_DEPLOY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Google function.
+   */
+  function_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The id of the Google Cloud project.
+   */
+  application_id: string;
+  /**
+   * Region in which function can be found or will be created.
+   */
+  region?: string;
+  /**
+   * The Cloud Functions execution environment. Options: `nodejs6`, `nodejs8`, `nodejs10`, `nodejs12`, `python37`, `go111`.
+   */
+  runtime?: string;
+  /**
+   * Additional arguments sent upon deploying the function.
+   */
+  command_args?: string;
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+}
+export interface Heroku {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HEROKU`.
+   */
+  type: "HEROKU";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the application.
+   */
+  application_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * When set to `false` the push will ignore paths listed in .gitignore file.
+   */
+  use_custom_gitignore?: boolean;
+  /**
+   * When set to `true`, action will push only repository files (without artifacts).
+   */
+  isolated?: boolean;
+  /**
+   * The paths and/or files that will be left out during the push. Only works when `use_custom_gitignore`is set to `true`.
+   */
+  deployment_excludes?: string[];
+  /**
+   * Defines whether the `--force` flag should be used when invoking the git push command or not.
+   */
+  without_force?: boolean;
+}
+export interface HerokuCLI {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HEROKU_CLI`.
+   */
+  type: "HEROKU_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the application.
+   */
+  application_name: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface Honeybadger {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HONEYBADGER`.
+   */
+  type: "HONEYBADGER";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The Honeybadger environment.
+   */
+  environment: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The Honeybadger token.
+   */
+  token: string;
+}
+export interface HTTPRequest {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HTTP`.
+   */
+  type: "HTTP";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The target URL.
+   */
+  notification_url: string;
+  /**
+   * The desired HTTP method. Available values are `GET`, `POST`, `PUT`, `PATCH` or `DELETE`.
+   */
+  method_url: string;
+  /**
+   * The port for the connection.
+   */
+  port?: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * The content of the request.
+   */
+  content?: string;
+  /**
+   * The headers that will be sent with the request.
+   */
+  headers?: Header[];
 }
 export interface Header {
   name: string;
   value: string;
 }
+export interface JMeterCLI {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `JMETER_CLI`.
+   */
+  type: "JMETER_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface KubernetesApplyDeployment {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_APPLY`.
+   */
+  type: "KUBERNETES_APPLY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   */
+  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  /**
+   * The host for the connection.
+   */
+  server: string;
+  /**
+   * The path to the configuration file.
+   */
+  config_path: string;
+  /**
+   * Only relevant during a prune or a force apply. Period of time in seconds given to pruned or deleted resources to terminate gracefully. Ignored if negative.
+   */
+  grace_period_arg: number;
+  /**
+   * The username required when `auth_type` is set to `BASIC`.
+   */
+  login?: string;
+  /**
+   * The password required when `auth_type` is set to `BASIC`.
+   */
+  password?: string;
+  /**
+   * The token required when `auth_type` is set to `TOKEN`.
+   */
+  token?: string;
+  /**
+   * The certificate authority required when `auth_type` is set to `CERTS`.
+   */
+  client_ca?: string;
+  /**
+   * The client certificate required when `auth_type` is set to `CERTS`.
+   */
+  client_cert?: string;
+  /**
+   * The client key required when `auth_type` is set to `CERTS`.
+   */
+  client_key?: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * Delete and re-create the specified resource, when PATCH encounters conflict and has retried for 5 times.
+   */
+  force_arg?: boolean;
+  /**
+   * Automatically resolve conflicts between the modified and live configuration by using values from the modified configuration.
+   */
+  overwrite_arg?: boolean;
+  /**
+   * Only relevant during a prune or a force apply. If `true`, cascade the deletion of the resources managed by pruned or deleted resources (e.g. Pods created by a ReplicationController).
+   */
+  cascade_arg?: boolean;
+  /**
+   * Defines whether to select all the specified resources.
+   */
+  all_arg?: boolean;
+  /**
+   * Automatically delete resource objects that do not appear in the configs and are created by either apply or create –save-config. Should be used with either -l or –all.
+   */
+  prune_arg?: boolean;
+  /**
+   * Overwrite the default whitelist with <group/version/kind> for –prune.
+   */
+  prune_whitelist_arg?: string;
+  /**
+   * Version of the kubectl used in the action. Default is <latest>.
+   */
+  kubectl_version?: string;
+}
+export interface KubernetesKubectl {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_CLI`.
+   */
+  type: "KUBERNETES_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   */
+  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  /**
+   * The host for the connection.
+   */
+  server: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The username required when `auth_type` is set to `BASIC`.
+   */
+  login?: string;
+  /**
+   * The password required when `auth_type` is set to `BASIC`.
+   */
+  password?: string;
+  /**
+   * The token required when `auth_type` is set to `TOKEN`.
+   */
+  token?: string;
+  /**
+   * The certificate authority required when `auth_type` is set to `CERTS`.
+   */
+  client_ca?: string;
+  /**
+   * The client certificate required when `auth_type` is set to `CERTS`.
+   */
+  client_cert?: string;
+  /**
+   * The client key required when `auth_type` is set to `CERTS`.
+   */
+  client_key?: string;
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+}
+export interface KubernetesRunHelmCMDs {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `HELM`.
+   */
+  type: "HELM";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   */
+  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  /**
+   * The host for the connection.
+   */
+  server: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The Helm version.
+   */
+  helm_version: string;
+  /**
+   * Helm repository region. Set it if Helm repository is on AWS S3.
+   */
+  helm_repository_region?: string;
+  /**
+   * Amazon or Google integration ID. Set it if Helm repository is on AWS S3 or Google Cloud Storage.
+   */
+  helm_integration?: string;
+  /**
+   * Allow you to install Helm plugins.
+   */
+  setup_commands?: string[];
+  /**
+   * The username required when `auth_type` is set to `BASIC`.
+   */
+  login?: string;
+  /**
+   * The password required when `auth_type` is set to `BASIC`.
+   */
+  password?: string;
+  /**
+   * The token required when `auth_type` is set to `TOKEN`.
+   */
+  token?: string;
+  /**
+   * The certificate authority required when `auth_type` is set to `CERTS`.
+   */
+  client_ca?: string;
+  /**
+   * The client certificate required when `auth_type` is set to `CERTS`.
+   */
+  client_cert?: string;
+  /**
+   * The client key required when `auth_type` is set to `CERTS`.
+   */
+  client_key?: string;
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+}
+export interface KubernetesRunJob {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_RUN_JOB`.
+   */
+  type: "KUBERNETES_RUN_JOB";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   */
+  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  /**
+   * The host for the connection.
+   */
+  server: string;
+  /**
+   * If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
+   */
+  save_config_arg?: boolean;
+  /**
+   * The username required when `auth_type` is set to `BASIC`.
+   */
+  login?: string;
+  /**
+   * The password required when `auth_type` is set to `BASIC`.
+   */
+  password?: string;
+  /**
+   * The token required when `auth_type` is set to `TOKEN`.
+   */
+  token?: string;
+  /**
+   * The certificate authority required when `auth_type` is set to `CERTS`.
+   */
+  client_ca?: string;
+  /**
+   * The client certificate required when `auth_type` is set to `CERTS`.
+   */
+  client_cert?: string;
+  /**
+   * The client key required when `auth_type` is set to `CERTS`.
+   */
+  client_key?: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to `FALSE`, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * Defines whether to leave the Pod or delete it after the action finishes.
+   */
+  leave_after?: boolean;
+  /**
+   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
+   */
+  config_path?: string;
+  /**
+   * The configuration content. One of `config_path` or `content` must be specified.
+   */
+  content?: string;
+  /**
+   * Defines whether the execution should or should not wait for job to end.
+   */
+  not_wait?: boolean;
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+}
+export interface KubernetesRunPod {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_RUN_POD`.
+   */
+  type: "KUBERNETES_RUN_POD";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Authorization type. Can be one of `BASIC`, `TOKEN` or `CERTS`.
+   */
+  auth_type: "BASIC" | "TOKEN" | "CERTS";
+  /**
+   * The host for the connection.
+   */
+  server: string;
+  /**
+   * If `true`, the configuration of current object will be saved in its annotation. Otherwise, the annotation will be unchanged. This flag is useful when you want to perform kubectl apply on this object in the future.
+   */
+  save_config_arg?: boolean;
+  /**
+   * The username required when `auth_type` is set to `BASIC`.
+   */
+  login?: string;
+  /**
+   * The password required when `auth_type` is set to `BASIC`.
+   */
+  password?: string;
+  /**
+   * The token required when `auth_type` is set to `TOKEN`.
+   */
+  token?: string;
+  /**
+   * The certificate authority required when `auth_type` is set to `CERTS`.
+   */
+  client_ca?: string;
+  /**
+   * The client certificate required when `auth_type` is set to `CERTS`.
+   */
+  client_cert?: string;
+  /**
+   * The client key required when `auth_type` is set to `CERTS`.
+   */
+  client_key?: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to `FALSE`, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * Defines whether to leave the Pod or delete it after the action finishes.
+   */
+  leave_after?: boolean;
+  /**
+   * The repository path to the configuration file. One of `config_path` or `content` must be specified.
+   */
+  config_path?: string;
+  /**
+   * The configuration content. One of `config_path` or `content` must be specified.
+   */
+  content?: string;
+  /**
+   * Defines whether the execution should or should not wait for job to end.
+   */
+  not_wait?: boolean;
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+}
+export interface KubernetesSetImage {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `KUBERNETES_SET_IMAGE`.
+   */
+  type: "KUBERNETES_SET_IMAGE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the container.
+   */
+  container: string;
+  /**
+   * The name of the namespace.
+   */
+  namespace: string;
+  /**
+   * The name of the deployment from the namespace.
+   */
+  deployment: string;
+  /**
+   * The name of the image to set.
+   */
+  image_name: string;
+  /**
+   * The tag of the chosen image.
+   */
+  image_tag: string;
+  /**
+   * Record current kubectl command in the resource annotation. Can be one of `TRUE`, `FALSE` or `NOT_SET`. If set to false, do not record the command. If set to `TRUE`, record the command. If not set, default to updating the existing annotation value only if one already exists.
+   */
+  record_arg?: "TRUE" | "FALSE" | "NOT_SET";
+  /**
+   * Version of the kubectl used in the action. Default is “latest”.
+   */
+  kubectl_version?: string;
+}
+export interface Lighthouse {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `LIGHTHOUSE`.
+   */
+  type: "LIGHTHOUSE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The address of the site on which the audit should run.
+   */
+  website: string;
+  /**
+   * The device on which the audit will be run. Can be one of `mobile`, `desktop` and `mobileDesktop`.
+   */
+  device: "mobile" | "desktop";
+  /**
+   * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
+   */
+  performance: number;
+  /**
+   * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
+   */
+  accessibility: number;
+  /**
+   * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
+   */
+  best_practices: number;
+  /**
+   * Values from 0 to 100 are accepted. The action returns an error if the score is below the values that are set.
+   */
+  seo: number;
+}
+export interface LinkChecker {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `LINK_CHECKER`.
+   */
+  type: "LINK_CHECKER";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The address of the site to be checked by the validator.
+   */
+  scan_url: string;
+  /**
+   * The basic auth username value.
+   */
+  ba_username?: string;
+  /**
+   * The basic auth password value.
+   */
+  ba_password?: string;
+  /**
+   * The HTML form username value.
+   */
+  html_form_auth_username?: string;
+  /**
+   * The HTML form password value.
+   */
+  html_form_auth_password?: string;
+  /**
+   * The name attribute of the username input element.
+   */
+  html_form_auth_username_input_name?: string;
+  /**
+   * The name attribute of the password input element.
+   */
+  html_form_auth_password_input_name?: string;
+  /**
+   * The URL of a login page to be visited before link checking. The page is expected to contain an HTML form to collect credentials and submit them to the address in its action attribute using an HTTP POST request.
+   */
+  html_form_auth_url?: string;
+  /**
+   * Check recursively all links up to the given depth. A negative depth will enable infinite recursion. The default depth is infinite.
+   */
+  depth?: number;
+  /**
+   * Set the cookie name/value. Can be given more than once.
+   */
+  cookies?: Cookie[];
+  /**
+   * Set the timeout for connection attempts in seconds. The default timeout is 60 seconds.
+   */
+  connection_timeout?: number;
+  /**
+   * When using HTTP, fetch robots.txt, and confirm whether each URL should be accessed before checking. The default is to use robots.txt files.
+   */
+  respect_robot_exclusions?: boolean;
+  /**
+   * If set to zero, it disables the SSL certificate checking. If set to one, it enables the SSL certificate checking with the provided CA certificate file. If a filename is specified, it will be used as the certificate file.
+   */
+  check_ssl_certificate?: boolean;
+  /**
+   * The regular expression to add more URLs recognized as internal links. The default is that URLs given on the command line are internal.
+   */
+  internal_links?: string;
+  /**
+   * Check external links. The default is to check internal links only.
+   */
+  check_external_links?: boolean;
+  /**
+   * Only check the syntax of URLs matching the given regular expressions.
+   */
+  ignore_urls?: string[];
+  /**
+   * Check but do not recurse into URLs matching the given regular expressions.
+   */
+  no_follow_urls?: string[];
+  /**
+   * Only check syntax of URLs matching the given regular expressions.
+   */
+  warning_regex?: string;
+  /**
+   * Specify the User-Agent string to send to the HTTP server, for example `Mozilla/4.0`. The default is `LinkChecker/X.Y` where X.Y is the current version of LinkChecker.
+   */
+  user_agent?: string;
+  /**
+   * Generate no more than the given number of threads. The default number of threads is 10. To disable threading specify a non-positive number.
+   */
+  threads?: number;
+  /**
+   * Limit the maximum number of HTTP requests per second to one host. The average number of requests per second is approximately one third of the maximum. Values less than 1 and at least 0.001 can be used. To use values greater than 10, the HTTP server must return a “LinkChecker” response header. The default is 10.
+   */
+  requests_per_host?: number;
+}
 export interface Cookie {
   name: string;
   value: string;
+}
+export interface Linux {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_LINUX`.
+   */
+  type: "NATIVE_BUILD_LINUX";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * Defines the image used to create the VM. Use `UBUNTU_20_04` for the default image, `AMI` for a custom AMI.
+   */
+  distribution: string;
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * Set to `true` if you want the action to use the VM from the previous Linux action.
+   */
+  vm_from_prev_action?: boolean;
+  /**
+   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
+   */
+  vm_action_name?: string;
+  /**
+   * Set if `distribution` is set to `AMI`.
+   */
+  ami?: Ami;
+}
+export interface Loggly {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `LOGGLY`.
+   */
+  type: "LOGGLY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The list of Loggly tags used for segmentation and filtering.
+   */
+  tags: string[];
+  /**
+   * The content of the notification.
+   */
+  content?: string;
+}
+export interface MacOS {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `NATIVE_BUILD_MAC`.
+   */
+  type: "NATIVE_BUILD_MAC";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * Define file paths that should be copied before (`PIPELINE_TO_VM`) and after the execution (`VM_TO_PIPELINE`).
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * The list of simulators initiated before the action runs.
+   */
+  pre_start_simulators?: string[];
+  /**
+   * The list of variables added to the MacOS keychain.
+   */
+  certificates?: string[];
+  /**
+   * The list of variables added as MacOS Provisioning Profiles.
+   */
+  provision_profiles?: string[];
+  /**
+   * Defines the Xcode version.
+   */
+  xcode_version?: string;
+}
+export interface MicrosoftAzure {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `AZURE`.
+   */
+  type: "AZURE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The URL to the repository.
+   */
+  push_url: string;
+  /**
+   * The authentication mode for Git Push. Should always be set to `HTTP` .
+   */
+  git_auth_mode: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * When set to `false` the push will ignore paths listed in .gitignore file.
+   */
+  use_custom_gitignore?: boolean;
+  /**
+   * When set to `true`, action will push only repository files (without artifacts).
+   */
+  isolated?: boolean;
+  /**
+   * Defines the remote branch to which the push will be performed. If empty, files will be pushed to the same branch.
+   */
+  target_branch?: string;
+  /**
+   * The paths and/or files that will be left out during the push. Only works when `use_custom_gitignore` is set to `true`.
+   */
+  deployment_excludes?: string[];
+  /**
+   * Defines whether the `--force` flag should be used when invoking the git push command or not.
+   */
+  without_force?: boolean;
+}
+export interface MicrosoftTeams {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `MICROSOFT_TEAMS`.
+   */
+  type: "MICROSOFT_TEAMS";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The title of the notification.
+   */
+  title: string;
+  /**
+   * The content of the notification.
+   */
+  content: string;
+  /**
+   * The recipient of the notification: email address.
+   */
+  recipients: string;
+  /**
+   * The attached files.
+   */
+  file_attachments?: string[];
+  /**
+   * Defines whether to send the content as HTML.
+   */
+  send_as_html?: boolean;
+}
+export interface Netlify {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `NETLIFY`.
+   */
+  type: "NETLIFY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The API ID in the site details.
+   */
+  site_id?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface NewRelicCLI {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `NEW_RELIC_CLI`.
+   */
+  type: "NEW_RELIC_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface OperateSandbox {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `SANDBOX_START`.
+   */
+  type: "SANDBOX_START";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
+   */
+  sandbox_references: string;
+  /**
+   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
+   */
+  sandbox_id?: string;
+  /**
+   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
+   */
+  referenced_action_id?: number;
+  /**
+   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
+   */
+  referenced_sanbox_name?: string;
+  /**
+   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
+   */
+  tags?: string[];
+  /**
+   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
+   */
+  sandbox_project_name?: string;
+  /**
+   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
+   */
+  days?: number;
+}
+export interface PassArguments {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `WAIT_FOR_VARIABLES`.
+   */
+  type: "WAIT_FOR_VARIABLES";
+  /**
+   * The list of variables to set as parameters for the pipeline. At least one parameter is required.
+   */
+  variables: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the parameter.
+   */
+  key: string;
+  /**
+   * The value of the parameter.
+   */
+  defaults?: string;
+  /**
+   * Encrypted values will not be visible once saved. Can be used for things like passwords.
+   */
+  encrypted?: boolean;
+  /**
+   * Path to the file with options.
+   */
+  init_path?: string;
+  /**
+   * The custom comment that will be displayed upon passing arguments.
+   */
+  comment?: string;
+  /**
+   * Define to set permissions for the action.
+   */
+  permissions?: Permission;
 }
 export interface Permission {
   /**
@@ -6598,14 +8930,2890 @@ export interface Permission {
     [k: string]: string;
   };
 }
+export interface PingMonitoring {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `PING`.
+   */
+  type: "PING";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The target URL.
+   */
+  destination: string;
+}
+export interface PublishAndroidApp {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ANDROID_PUBLISH_APK`.
+   */
+  type: "ANDROID_PUBLISH_APK";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Android Application.
+   */
+  application_id: string;
+  /**
+   * The track type to read or modify. Can be one of `production`, `alpha`, `beta`, `rollout`, `internal` or custom track as configured in Google Play Console.
+   */
+  track: "production" | "alpha" | "beta" | "rollout" | "internal" | "custom";
+  /**
+   * The list of sets of paths to the APKs.
+   */
+  apk_files: APKs[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Set to `true` to publish as a draft.
+   */
+  draft?: boolean;
+  /**
+   * Portion of the users who should get the staged rollout version of the APK (range 0.0 - 1.0). Required if `track` is set to `rollout`.
+   */
+  user_fraction?: number;
+  /**
+   * The path to the deobfuscated file of the specified APK.
+   */
+  mapping_path?: string;
+  /**
+   * The path to the changelog file.
+   */
+  changes_path?: string;
+  /**
+   * Check and disable superseded versions in other tracks (if any).
+   */
+  supersede_versions?: boolean;
+}
 export interface APKs {
   apk_path: string;
   main_expansion_path?: string;
   patch_expansion_path?: string;
 }
+export interface PublishBundleToGooglePlay {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ANDROID_PUBLISH_APP_BUNDLE`.
+   */
+  type: "ANDROID_PUBLISH_APP_BUNDLE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Android Application.
+   */
+  application_id: string;
+  /**
+   * The track type to read or modify. Can be one of `production`, `alpha`, `beta`, `rollout`, `internal` or custom track as configured in Google Play Console.
+   */
+  track: "production" | "alpha" | "beta" | "rollout" | "internal" | "custom";
+  /**
+   * The list of sets of paths to the APKs.
+   */
+  apk_files: APKs[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Set to `true` to publish as a draft.
+   */
+  draft?: boolean;
+  /**
+   * Portion of the users who should get the staged rollout version of the APK (range 0.0 - 1.0). Required if `track` is set to `rollout`.
+   */
+  user_fraction?: number;
+  /**
+   * The path to the changelog file.
+   */
+  changes_path?: string;
+  /**
+   * Check and disable superseded versions in other tracks (if any).
+   */
+  supersede_versions?: boolean;
+}
+export interface Pushbullet {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `PUSHBULLET`.
+   */
+  type: "PUSHBULLET";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The content of the notification.
+   */
+  content?: string;
+  /**
+   * The name of the device to which the notification will be sent.
+   */
+  device?: string;
+  /**
+   * The link of the notification.
+   */
+  link?: string;
+  /**
+   * The title of the notification.
+   */
+  title?: string;
+}
+export interface PushDockerImage {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `DOCKER_PUSH`.
+   */
+  type: "DOCKER_PUSH";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The tag of the Docker image.
+   */
+  docker_image_tag?: string;
+  /**
+   * The username required to connect to the server. Required for delivering the Dockerfile to a private registry.
+   */
+  login?: string;
+  /**
+   * The password required to connect to the server. Required for delivering the Dockerfile to a private registry.
+   */
+  password?: string;
+  /**
+   * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
+   */
+  integration: string;
+  /**
+   * The name of the Amazon region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+  /**
+   * The url to the GCR. Can be one of gcr.io, us.gcr.io , eu.gcr.io or asia.gcr.io. Required for Google GCR.
+   */
+  registry?: string;
+  /**
+   * The location of the Docker repository.
+   */
+  repository?: string;
+  /**
+   * The ID of the action which built the desired Docker image. If set to 0, the image will be taken from previous pipeline action. Can be used instead of `docker_build_action_name`.
+   */
+  docker_build_action_id?: number;
+  /**
+   * The name of the action which built the desired Docker image. Can be used instead of `docker_build_action_id`.
+   */
+  docker_build_action_name?: string;
+  /**
+   * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
+   */
+  docker_registry?: string;
+}
+export interface Pushover {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `PUSHOVER`.
+   */
+  type: "PUSHOVER";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The content of the notification.
+   */
+  content: string;
+  /**
+   * The name of the device to whick notification will be sent.
+   */
+  device?: string;
+  /**
+   * Specifies the priority of the notification. Can be one of `LOW`, `NORMAL` or `HIGH`.
+   */
+  priority?: "LOW" | "NORMAL" | "HIGH";
+  /**
+   * The link of the notification.
+   */
+  link?: string;
+  /**
+   * The title of the notification link.
+   */
+  link_title?: string;
+  /**
+   * The title of the notification.
+   */
+  title?: string;
+}
+export interface Rackspace {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `RACKSPACE`.
+   */
+  type: "RACKSPACE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Rackspace container.
+   */
+  container: string;
+  /**
+   * The name of the Rackspace region.
+   */
+  region: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * ContentEncoding that will be set for the deployed files e.g. "gzip".
+   */
+  content_encoding?: string;
+}
+export interface Raygun {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `RAYGUN`.
+   */
+  type: "RAYGUN";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * See `authToken` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
+   */
+  token: string;
+  /**
+   * See `apiKey` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
+   */
+  device: string;
+  /**
+   * See `version` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
+   */
+  version?: string;
+  /**
+   * See `ownerName` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
+   */
+  user?: string;
+  /**
+   * See `emailAddress` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
+   */
+  email?: string;
+  /**
+   * See `comment` [here](https://raygun.com/documentation/product-guides/deployment-tracking/deployments-api/).
+   */
+  comment?: string;
+}
+export interface Replace {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `REPLACE`.
+   */
+  type: "REPLACE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The list of pairs of strings for replacement.
+   */
+  replacements: Replacement[];
+  /**
+   * The path in the filesystem.
+   */
+  local_path?: string;
+}
 export interface Replacement {
   replace_from: string;
   replace_to: string;
+}
+export interface Rollbar {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ROLLBAR`.
+   */
+  type: "ROLLBAR";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The post_server_item-scope project access token.
+   */
+  token: string;
+  /**
+   * The ID of the Rollbar application.
+   */
+  application_id: number;
+  /**
+   * The name of the environment being deployed.
+   */
+  environment: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The local Username who deployed.
+   */
+  user: string;
+  /**
+   * The name of the project access token.
+   */
+  token_name?: string;
+  /**
+   * The Rollbar username of the user who deployed.
+   */
+  rollbar_username?: string;
+  /**
+   * The additional text data to record with this deploy.
+   */
+  comment?: string;
+}
+export interface Rsync {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `RSYNC`.
+   */
+  type: "RSYNC";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * An equivalent for `rsync --delete` option. See [here](https://ss64.com/bash/rsync_options.html).
+   */
+  delete_extra_files?: boolean;
+  /**
+   * An equivalent for `rsync -a` option. See [here](https://linux.die.net/man/1/rsync).
+   */
+  archive?: boolean;
+  /**
+   * An equivalent for `rsync -z` option. See [here](https://linux.die.net/man/1/rsync).
+   */
+  compress?: boolean;
+  /**
+   * An equivalent for `rsync -r` option. See [here](https://linux.die.net/man/1/rsync).
+   */
+  recursive?: boolean;
+  /**
+   * An equivalent for `rsync -d` option. See [here](https://linux.die.net/man/1/rsync).
+   */
+  dirs?: boolean;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface RunDockerContainer {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `RUN_DOCKER_CONTAINER`.
+   */
+  type: "RUN_DOCKER_CONTAINER";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Docker image.
+   */
+  docker_image_name: string;
+  /**
+   * The tag of the Docker image.
+   */
+  docker_image_tag: string;
+  /**
+   * The commands that will be executed.
+   */
+  inline_commands: string;
+  /**
+   * Defines whether or not to mount the filesystem to the running container.
+   */
+  mount_filesystem_disable?: boolean;
+  /**
+   * The path preceding the colon is the filesystem path (the folder from the filesystem to be mounted in the container). The path after the colon is the container path (the path in the container, where this filesystem will be located).
+   */
+  volume_mappings?: string[];
+  /**
+   * The username required to connect to a private registry.
+   */
+  login?: string;
+  /**
+   * The password required to connect to a private registry.
+   */
+  password?: string;
+  /**
+   * The url to the Docker registry or GCR. Required for Google GCR.
+   */
+  registry?: string;
+  /**
+   * Defines the export path of the container’s filesystem as a tar archive.
+   */
+  export_container_path?: string;
+  /**
+   * The ID of the integration. Required for using the image from the Amazon ECR, Google GCR or Docker Hub.
+   */
+  integration?: string;
+  /**
+   * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+   */
+  region?: string;
+  /**
+   * If set to `true` the Docker image will be taken from action defined by `docker_build_action_id`.
+   */
+  use_image_from_action?: boolean;
+  /**
+   * All build commands are run as the default user defined in the selected Docker image. Can be set to another username (on the condition that this user exists in the selected image).
+   */
+  run_as_user?: string;
+  /**
+   * The ID of the action which built the desired Docker image. If set to 0, the image will be taken from previous pipeline action. Can be used instead of `docker_build_action_name`.
+   */
+  docker_build_action_id?: number;
+  /**
+   * The name of the action which built the desired Docker image. Can be used instead of `docker_build_action_id`.
+   */
+  docker_build_action_name?: string;
+  /**
+   * Default command to execute at runtime. Overwrites the default entrypoint set by the image.
+   */
+  entrypoint?: string;
+  /**
+   * The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action.
+   */
+  image_location?: string;
+  /**
+   * The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
+   */
+  docker_registry?: string;
+}
+export interface Sentry {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SENTRY`.
+   */
+  type: "SENTRY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The slug of the organization the release belongs to.
+   */
+  organization_slug: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The version identifier of the release.
+   */
+  version: string;
+  /**
+   * The environment you’re deploying to.
+   */
+  environment: string;
+  /**
+   * The optional url that points to the deploy.
+   */
+  deploy_url?: string;
+  /**
+   * An optional commit reference.
+   */
+  release_url?: string;
+  /**
+   * The list of project slugs that are involved in this release.
+   */
+  projects: string[];
+  /**
+   * If Sentry is integrated with repository provider, you can enter the project slug here. You can use the `$BUDDY_REPO_SLUG` variable as well.
+   */
+  repository?: string;
+}
+export interface SetVariables {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SET_VARIABLES`.
+   */
+  type: "SET_VARIABLES";
+  /**
+   * The list of existing settable variables.
+   */
+  variables: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the variable.
+   */
+  key: string;
+  /**
+   * The value of the variable.
+   */
+  defaults?: string;
+  /**
+   * Encrypted values will not be visible once saved. Can be used for things like passwords.
+   */
+  encrypted?: boolean;
+  /**
+   * Path to the file with options.
+   */
+  init_path?: string;
+  /**
+   * The custom comment that will be displayed upon passing arguments.
+   */
+  comment?: string;
+  /**
+   * Define to set permissions for the action.
+   */
+  permissions?: Permission;
+}
+export interface SFTP {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SFTP`.
+   */
+  type: "SFTP";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
+   */
+  use_temporary_files?: boolean;
+}
+export interface Shopify {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SHOPIFY`.
+   */
+  type: "SHOPIFY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The name of the Shopify theme.
+   */
+  theme_name: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+}
+export interface ShopifyCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SHOPIFY_CLI`.
+   */
+  type: "SHOPIFY_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface ShopifyThemeKitCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SHOPIFY_THEMEKIT_CLI`.
+   */
+  type: "SHOPIFY_THEMEKIT_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface SignAndroidApp {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ANDROID_SIGN`.
+   */
+  type: "ANDROID_SIGN";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path to the generated .apk file.
+   */
+  local_path: string;
+  /**
+   * The name of the signed APK file.
+   */
+  application_name: string;
+  /**
+   * The path to the authorization key file.
+   */
+  key_path: string;
+  /**
+   * The version of the Android Build Tools.
+   */
+  build_tool_version: string;
+  /**
+   * The keystore password.
+   */
+  keystore_password: string;
+  /**
+   * The directory in which the signed APK will be stored.
+   */
+  output_dir?: string;
+  /**
+   * The key alias name.
+   */
+  key_alias?: string;
+  /**
+   * The key password.
+   */
+  key_password?: string;
+}
+export interface SignBundle {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ANDROID_SIGN_BUNDLE`.
+   */
+  type: "ANDROID_SIGN_BUNDLE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path to the generated .apk file.
+   */
+  local_path: string;
+  /**
+   * The name of the signed APK file.
+   */
+  application_name: string;
+  /**
+   * The path to the authorization key file.
+   */
+  key_path: string;
+  /**
+   * The keystore password.
+   */
+  keystore_password: string;
+  /**
+   * The directory in which the signed APK will be stored.
+   */
+  output_dir?: string;
+  /**
+   * The key alias name.
+   */
+  key_alias?: string;
+  /**
+   * The key password.
+   */
+  key_password?: string;
+}
+export interface SlackNotification {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SLACK`.
+   */
+  type: "SLACK";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the Slack channel. More info [here](https://api.slack.com/types/channel).
+   */
+  channel: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The content of the notification.
+   */
+  content: string;
+  /**
+   * The array of the Slack message attachments. More info [here](https://api.slack.com/docs/message-attachments).
+   */
+  attachments?: string[];
+  /**
+   * The attached files.
+   */
+  file_attachments?: string[];
+}
+export interface Sleep {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SLEEP`.
+   */
+  type: "SLEEP";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The time (in seconds) to sleep. The value should be between 0 and 1200.
+   */
+  sleep_in_sec: number;
+}
+export interface SMSNotification {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SMS`.
+   */
+  type: "SMS";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The recipients of the notification: phone numbers (one per line).
+   */
+  recipients: string;
+  /**
+   * The content of the notification.
+   */
+  content: string;
+}
+export interface Snyk {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SNYK_CLI`.
+   */
+  type: "SNYK_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+  /**
+   * Snyk version.
+   */
+  version?: string;
+}
+export interface SplitTests {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SPLIT_TESTS`.
+   */
+  type: "SPLIT_TESTS";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path in the filesystem containing files with tests.
+   */
+  source_path: string;
+  /**
+   * The amount of groups to split. Can't be lower than 2.
+   */
+  groups_count: number;
+  /**
+   * Defines how test files should be split. Can be one of `BY_FILE_SIZE` or `ALPHABETICALLY`.
+   */
+  files_order?: "BY_FILE_SIZE" | "ALPHABETICALLY";
+}
+export interface SSHCommand {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SSH_COMMAND`.
+   */
+  type: "SSH_COMMAND";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The array of commands invoked on the remote server.
+   */
+  commands: string[];
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * If set to `true`, commands are executed as a regular script. If set to false, the commands will be executed one by one, in non-interactive mode.
+   */
+  run_as_script?: boolean;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  working_directory?: string;
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+}
+export interface SSHToSandbox {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `SANDBOX_EXEC`.
+   */
+  type: "SANDBOX_EXEC";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The absolute or relative path on the sandbox.
+   */
+  working_directory?: string;
+  /**
+   * The name of the local (to the sandbox server) user who uploads the files.
+   */
+  user?: string;
+  /**
+   * The array of commands invoked on the sandbox.
+   */
+  commands: string[];
+  /**
+   * The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`.
+   */
+  shell?: string;
+  /**
+   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
+   */
+  sandbox_references: string;
+  /**
+   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
+   */
+  sandbox_id?: string;
+  /**
+   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
+   */
+  referenced_action_id?: number;
+  /**
+   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
+   */
+  referenced_sanbox_name?: string;
+  /**
+   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
+   */
+  tags?: string[];
+  /**
+   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
+   */
+  sandbox_project_name?: string;
+  /**
+   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
+   */
+  days?: number;
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+}
+export interface SSLVerify {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `SSL_VERIFY`.
+   */
+  type: "SSL_VERIFY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The URL of the website to be monitored.
+   */
+  website: string;
+  /**
+   * Validation period for SSL certificate.
+   */
+  valid_for_days: number;
+  /**
+   * The port for the connection. By default it is 443.
+   */
+  port?: string;
+}
+export interface StackHawkCLI {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `STACK_HAWK_CLI`.
+   */
+  type: "STACK_HAWK_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+}
+export interface TCPMonitoring {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `TCP`.
+   */
+  type: "TCP";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The target URL.
+   */
+  destination: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * The data that will be sent.
+   */
+  post_data?: string;
+  /**
+   * Text that should or should not be present in the response.
+   */
+  text?: string;
+}
+export interface TelegramNotification {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `TELEGRAM`.
+   */
+  type: "TELEGRAM";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The content of the notification.
+   */
+  content: string;
+  /**
+   * The attached files.
+   */
+  file_attachments?: string[];
+}
+export interface TerraformCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `TERRAFORM`.
+   */
+  type: "TERRAFORM";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string;
+  /**
+   * The ID of the Google or Amazon integration.
+   */
+  integration?: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be `SH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string;
+  /**
+   * The version of the Terraform CLI.
+   */
+  version: string;
+}
+export interface TransferToSandbox {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Must be set to `DEPLOY_TO_SANDBOX`.
+   */
+  type: "DEPLOY_TO_SANDBOX";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Defines whether the files are uploaded from the repository or from the pipeline filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The source path of the files to be uploaded.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the sandbox where the files are uploaded.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that excluded from the upload.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+  /**
+   * The files will be uploaded with a "tmp" suffix that will be removed once the upload has finished.
+   */
+  use_temporary_files?: boolean;
+  /**
+   * When set to `false`, deletes files on the server that were deleted between revisions.
+   */
+  deletion_disabled?: boolean;
+  /**
+   * The name of the local (to the sandbox server) user who uploads the files.
+   */
+  user?: string;
+  /**
+   * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
+   */
+  sandbox_references: string;
+  /**
+   * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
+   */
+  sandbox_id?: string;
+  /**
+   * ID of the action that creates the target sandbox.Required when `sandbox_references` is set to `BY_ACTION`.
+   */
+  referenced_action_id?: number;
+  /**
+   * Name of the target sandbox. Required when `sandbox_references` is set to `BY_NAME`.
+   */
+  referenced_sanbox_name?: string;
+  /**
+   * List of tags applied to the target sandbox. Required when `sandbox_references` is set to `BY_TAGS`.
+   */
+  tags?: string[];
+  /**
+   * Name of the project with the target sandbox. Required when `sandbox_references` is set to `BY_PROJECT`.
+   */
+  sandbox_project_name?: string;
+  /**
+   * Number of days passed since the creation of the target sandbox. One of `1`, `2`, `3`, `7`, `14`, `30`. Required when `sandbox_references` is set to `BY_DAYS`.
+   */
+  days?: number;
+}
+export interface TriggerPipeline {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `RUN_NEXT_PIPELINE`.
+   */
+  type: "RUN_NEXT_PIPELINE";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the pipeline that will be triggered. Not required if both `next_project_name` and `next_pipeline_name` are set instead.
+   */
+  next_pipeline_id?: number;
+  /**
+   * The name of the project containing the pipeline that will be triggered. Not required if `next_pipeline_id` is set instead.
+   */
+  next_project_name?: string;
+  /**
+   * The name of the pipeline that will be triggered. Not required if `next_pipeline_id` is set instead.
+   */
+  next_pipeline_name?: string;
+  /**
+   * The execution comment of the triggered pipeline.
+   */
+  comment?: string;
+  /**
+   * Can be one of `HEAD`, `INHERIT`or `SPECIFIC`. Default is `HEAD`.
+   */
+  revision?: "HEAD" | "INHERIT" | "SPECIFIC";
+  /**
+   * Set if you want to run the pipeline for a specific revision or ref.
+   */
+  specific_revision?: string;
+  /**
+   * Set to `true` if you want the execution to run with the `clear_cache` flag. Default is `false`.
+   */
+  clear_cache?: boolean;
+  /**
+   * Set to `true` if you want the execution to run from scratch. Default is `false`.
+   */
+  refresh?: boolean;
+  /**
+   * Set if you want the execution to run with priority other than set in the next pipeline. Can be one of `LOW`, `NORMAL` or `HIGH`.
+   */
+  priority?: "LOW" | "NORMAL" | "HIGH";
+}
+export interface UpCloud {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `UPCLOUD`.
+   */
+  type: "UPCLOUD";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The hostname of the UpCloud server.
+   */
+  host_name: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface VisualTests {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `VISUAL_TESTS`.
+   */
+  type: "VISUAL_TESTS";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * Defines which browser will be used in tests. Can be one of `CHROME` or `FIREFOX`.
+   */
+  browser_type: "CHROME" | "FIREFOX";
+  /**
+   * Resolution width.
+   */
+  resolution_width: number;
+  /**
+   * Resolution height.
+   */
+  resolution_height: number;
+  /**
+   * The acceptable level of pixel tolerance. Allowed number of decimal places is two.
+   */
+  pixel_tolerance_level: number;
+  /**
+   * The number of items that should be kept in history.
+   */
+  images_history_limit: number;
+  /**
+   * Defines the URLs of the sites that will be tested. Contains information about baseline, headers and excluded areas.
+   */
+  screenshots: Screenshot[];
+  /**
+   * The headers that will be sent with the request.
+   */
+  headers?: Header[];
+  /**
+   * Define to set permissions for the action.
+   */
+  permissions?: Permission;
 }
 export interface Screenshot {
   url: string;
@@ -6618,6 +11826,638 @@ export interface Screenshot {
     max_x: number;
     max_y: number;
   }[];
+}
+export interface Vultr {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `VULTR`.
+   */
+  type: "VULTR";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The authentication mode for SSH. Should be set to `PASS`.
+   */
+  authentication_mode: "PASS";
+  /**
+   * The host for the connection.
+   */
+  host: string;
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The port for the connection.
+   */
+  port: string;
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface WaitForApproval {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `WAIT_FOR_APPLY`.
+   */
+  type: "WAIT_FOR_APPLY";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The question displayed before accepting to continue the execution.
+   */
+  comment?: string;
+  /**
+   * Define to set permissions for the action.
+   */
+  permissions?: Permission;
+}
+export interface WebDAV {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `WEB_DAV`.
+   */
+  type: "WEB_DAV";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The username required to connect to the server.
+   */
+  login: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password: string;
+  /**
+   * The URL to your WebDAV server.
+   */
+  web_dav_url: string;
+  /**
+   * Defines whether the files are deployed from the repository or from the build filesystem. Can be one of `SCM_REPOSITORY` or `BUILD_ARTIFACTS`.
+   */
+  input_type?: "SCM_REPOSITORY" | "BUILD_ARTIFACTS";
+  /**
+   * The path in the repository.
+   */
+  local_path?: string;
+  /**
+   * The absolute or relative path on the remote server.
+   */
+  remote_path?: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
+}
+export interface WebMonitoring {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `WEB`.
+   */
+  type: "WEB";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The target URL.
+   */
+  destination: string;
+  /**
+   * The headers that will be sent with the request.
+   */
+  headers?: Header[];
+  /**
+   * The username required to connect to the server.
+   */
+  login?: string;
+  /**
+   * The password required to connect to the server.
+   */
+  password?: string;
+  /**
+   * The port for the connection.
+   */
+  port?: string;
+  /**
+   * The data that will be sent.
+   */
+  post_data?: string;
+  /**
+   * The text that should or should not be present in the response.
+   */
+  text?: string;
+  /**
+   * Defines whether the response should or should not contain given text. If set, the `text` argument is required.
+   */
+  text_existence?: boolean;
+}
+export interface Windows {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `NATIVE_BUILD_WINDOWS`.
+   */
+  type: "NATIVE_BUILD_WINDOWS";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+  /**
+   * Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`.
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * Set to `true` if you want the action to use the VM from the previous Windows action.
+   */
+  vm_from_prev_action?: boolean;
+  /**
+   * The name of the action from which the VM is reused (if `vm_from_prev_action` is set to `true`). If not set, the previous one will be used.
+   */
+  vm_action_name?: string;
+  /**
+   * Defines the image used to create the VM. Use `WINDOWS_SERVER_2019` for the default image, `AMI` for a custom `AMI`.
+   */
+  distribution?: string;
+  /**
+   * Set if `distribution` is set to `AMI`.
+   */
+  ami?: Ami;
+}
+export interface WPCLI {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `WP_CLI`.
+   */
+  type: "WP_CLI";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The ID of the integration.
+   */
+  integration: string;
+  /**
+   * The commands that will be executed.
+   */
+  execute_commands: string[];
+  /**
+   * The version of the WordPress CLI.
+   */
+  version: string;
+  /**
+   * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   */
+  shell?: string;
+  /**
+   * The command that will be executed only on the first run.
+   */
+  setup_commands?: string[];
+  /**
+   * The WP CLI config set as text.
+   */
+  config?: string;
+  /**
+   * The WP CLI config set as asset.
+   */
+  env_key?: string;
+}
+export interface Xcode {
+  /**
+   * The ID of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `NATIVE_BUILD_MAC`.
+   */
+  type: "NATIVE_BUILD_MAC";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The directory in which the pipeline filesystem will be mounted.
+   */
+  working_directory: string;
+  /**
+   * The commands that will be executed.
+   */
+  commands: string[];
+  /**
+   * The Xcode version for the action. Available values: `11.7`, `10.3`, `12.1`, `12.2`, `12`.
+   */
+  image: string;
+  /**
+   * If set to `true` all commands will be executed regardless of the result of the previous command.
+   */
+  execute_every_command?: boolean;
+  /**
+   * Define file paths that should be copied before `PIPELINE_TO_VM` and after the execution `VM_TO_PIPELINE`.
+   */
+  sync_paths?: SyncPath[];
+  /**
+   * A series of simulators to be launched before the action starts. Available values: `iPad (7th generation)`,`iPad (9th generation)`, `iPad Air (3rd generation)`, `iPad Air (4th generation)`, `iPad Air (5th generation)`, `iPad Pro (11-inch) (2nd generation)`,`iPad Pro (11-inch) (3rd generation)`,`iPad Pro (12.9-inch) (4th generation)`,`iPad Pro (12.9-inch) (5th generation)`, `iPad Pro (9.7-inch)`, `iPad mini (6th generation)`, `iPhone 11`, `iPhone 11 Pro`, `iPhone 11 Pro Max`, `iPhone 12`, `iPhone 12 Pro`, `iPhone 12 Pro Max`, `iPhone 12 mini`, `iPhone 13`, `Phone 13 Pro`, `iPhone 13 Pro Max`, `iPhone 13 mini`, `iPhone 14`, `iPhone 14 Plus`, `iPhone 14 Pro`, `iPhone 14 Pro Max`, `iPhone 8`, `iPhone 8 Plus`, `iPhone SE (2nd generation)`, `iPhone SE (3rd generation)`
+   */
+  preStartSimulators?: string[];
+}
+export interface ZIP {
+  /**
+   * The name of the action.
+   */
+  action: string;
+  /**
+   * The type of the action. Should be set to `ZIP`.
+   */
+  type: "ZIP";
+  /**
+   * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
+   */
+  variables?: Variable[];
+  /**
+   * [The list of trigger conditions](https://buddy.works/docs/yaml/yaml-schema#trigger-condition-schema) to meet so that the action can be triggered.
+   */
+  trigger_conditions?: TriggerCondition[];
+  /**
+   * The timeout in seconds.
+   */
+  timeout?: number;
+  /**
+   * When set to 'true' the action is disabled.  By default it is set to `false`.
+   */
+  disabled?: boolean;
+  /**
+   * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   */
+  run_next?: string;
+  /**
+   * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
+   */
+  run_only_on_first_failure?: boolean;
+  /**
+   * If set to 'true' the execution will proceed, mark action as a warning and jump to the next action. Doesn't apply to deployment actions.
+   */
+  ignore_errors?: boolean;
+  /**
+   * Delay time between auto retries in seconds.
+   */
+  retry_interval?: number;
+  /**
+   * Number of retries if the action fails.
+   */
+  retry_count?: number;
+  /**
+   * Specifies when the action should be executed. Can be one of `ON_EVERY_EXECUTION`, `ON_FAILURE`, `ON_BACK_TO_SUCCESS`, `ON_WARNING` or `ON_WAIT_FOR_APPROVE`. The default value is `ON_EVERY_EXECUTION`.
+   *
+   * @default "ON_EVERY_EXECUTION"
+   */
+  trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
+  /**
+   * The path in the repository.
+   */
+  local_path: string;
+  /**
+   * The target path.
+   */
+  destination: string;
+  /**
+   * The paths and/or files that will be left out during the deployment.
+   */
+  deployment_excludes?: string[];
+  /**
+   * The exceptions from the ignore patterns set in `deployment_excludes`.
+   */
+  deployment_includes?: string[];
 }
 
 
