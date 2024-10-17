@@ -1,5 +1,16 @@
 # @buddy-js/cli
 
+## 0.0.6
+
+### Patch Changes
+
+-   9185ba4: fix validation issues
+-   4415314: fix typescript loading
+-   a498af7: emit metadata for YAML schema validation
+-   Updated dependencies [9185ba4]
+    -   @buddy-js/types@0.0.3
+    -   @buddy-js/core@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes

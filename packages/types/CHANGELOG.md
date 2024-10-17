@@ -1,5 +1,11 @@
 # @buddy-js/types
 
+## 0.0.3
+
+### Patch Changes
+
+-   9185ba4: fix validation issues
+
 ## 0.0.2
 
 ### Patch Changes

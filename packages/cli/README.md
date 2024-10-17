@@ -20,7 +20,7 @@ $ npm install -g @buddy-js/cli
 $ buddyjs COMMAND
 running command...
 $ buddyjs (--version)
-@buddy-js/cli/0.0.5 linux-arm64 node-v22.10.0
+@buddy-js/cli/0.0.6 linux-arm64 node-v22.9.0
 $ buddyjs --help [COMMAND]
 USAGE
   $ buddyjs COMMAND
@@ -46,7 +46,7 @@ USAGE
     <value>]
 
 ARGUMENTS
-  INPUT  [default: .buddy/buddy.{ts,js,mjs,cjs}] input file
+  INPUT  [default: .buddy/buddy.{ts,mts,cts,js,mjs,cjs}] input file
 
 FLAGS
   -o, --output=<value>  [default: .buddy] output directory
@@ -81,7 +81,7 @@ USAGE
     <value>]
 
 ARGUMENTS
-  INPUT  [default: .buddy/buddy.{ts,js,mjs,cjs}] input file
+  INPUT  [default: .buddy/buddy.{ts,mts,cts,js,mjs,cjs}] input file
 
 FLAGS
   -o, --output=<value>  [default: .buddy] output directory
@@ -116,7 +116,7 @@ USAGE
     <value>]
 
 ARGUMENTS
-  INPUT  [default: .buddy/buddy.{ts,js,mjs,cjs}] input file
+  INPUT  [default: .buddy/buddy.{ts,mts,cts,js,mjs,cjs}] input file
 
 FLAGS
   -o, --output=<value>  [default: .buddy] output directory
@@ -141,7 +141,7 @@ EXAMPLES
   $ buddyjs generate
 ```
 
-_See code: [src/commands/generate.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.5/src/commands/generate.ts)_
+_See code: [src/commands/generate.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.6/src/commands/generate.ts)_
 
 ## `buddyjs hello PERSON`
 
@@ -165,7 +165,7 @@ EXAMPLES
   hello friend from oclif! (./src/commands/hello/index.ts)
 ```
 
-_See code: [src/commands/hello/index.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.5/src/commands/hello/index.ts)_
+_See code: [src/commands/hello/index.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.6/src/commands/hello/index.ts)_
 
 ## `buddyjs hello world`
 
@@ -183,7 +183,7 @@ EXAMPLES
   hello world! (./src/commands/hello/world.ts)
 ```
 
-_See code: [src/commands/hello/world.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.5/src/commands/hello/world.ts)_
+_See code: [src/commands/hello/world.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.6/src/commands/hello/world.ts)_
 
 ## `buddyjs help [COMMAND]`
 
