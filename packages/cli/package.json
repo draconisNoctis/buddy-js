@@ -1,10 +1,8 @@
 {
     "name": "@buddy-js/cli",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "A new CLI generated with oclif",
-    "keywords": [
-        "oclif"
-    ],
+    "keywords": ["oclif"],
     "homepage": "https://github.com/draconisNoctis/buddy-js",
     "bugs": "https://github.com/draconisNoctis/buddy-js/issues",
     "repository": "draconisNoctis/buddy-js",
@@ -16,11 +14,7 @@
     "bin": {
         "buddyjs": "./bin/run.js"
     },
-    "files": [
-        "/bin",
-        "/dist",
-        "/oclif.manifest.json"
-    ],
+    "files": ["/bin", "/dist", "/oclif.manifest.json"],
     "scripts": {
         "build": "rm -rf dist && tsc -b",
         "prepack": "oclif manifest && oclif readme",
@@ -33,9 +27,7 @@
         "bin": "buddyjs",
         "commands": "./dist/commands",
         "dirname": "buddyjs",
-        "plugins": [
-            "@oclif/plugin-help"
-        ],
+        "plugins": ["@oclif/plugin-help"],
         "topicSeparator": " ",
         "topics": {
             "hello": {
@@ -44,8 +36,8 @@
         }
     },
     "dependencies": {
-        "@buddy-js/core": "workspace:0.0.3",
-        "@buddy-js/types": "workspace:0.0.1",
+        "@buddy-js/core": "workspace:0.0.4",
+        "@buddy-js/types": "workspace:0.0.2",
         "@oclif/core": "4.0.29",
         "@oclif/plugin-help": "6.2.15",
         "ajv": "8.17.1",
