@@ -107,12 +107,16 @@ export class BuddyScraper extends Scraper<{
 
         for (const row of rows) {
             const tds = $(row).find('td');
-            const isRequired = $(tds[0]).text().includes('Required');
+            let isRequired = $(tds[0]).text().includes('Required');
             $(tds[0]).children().remove();
             const name = $(tds[0]).text().replace(/\W/g, '');
 
             if (name in definition.properties!) {
                 continue;
+            }
+
+            if (schemaName === 'PushDockerImage' && name === 'integration') {
+                isRequired = false;
             }
 
             this.prepareDescription($, tds[2], baseUrl);

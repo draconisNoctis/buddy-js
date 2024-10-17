@@ -769,9 +769,9 @@ module.exports.default = {
         "type": {
           "type": "string",
           "enum": [
-            "AWS_APP_RUNNER_MONITOR"
+            "AWS_APP_RUNNER_DEPLOY"
           ],
-          "description": "The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`."
+          "description": "The type of the action. Should be set to `AWS_APP_RUNNER_DEPLOY`."
         },
         "variables": {
           "type": "array",
@@ -789,7 +789,7 @@ module.exports.default = {
         },
         "timeout": {
           "type": "integer",
-          "description": "Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`."
+          "description": "The timeout in seconds."
         },
         "disabled": {
           "type": "boolean",
@@ -845,8 +845,7 @@ module.exports.default = {
         "type",
         "service",
         "region",
-        "integration",
-        "timeout"
+        "integration"
       ],
       "additionalProperties": false
     },
@@ -12971,8 +12970,7 @@ module.exports.default = {
       },
       "required": [
         "action",
-        "type",
-        "integration"
+        "type"
       ],
       "additionalProperties": false
     },

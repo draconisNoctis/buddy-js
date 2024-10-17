@@ -576,9 +576,9 @@ export interface AWSAppRunnerDeploy {
    */
   action: string;
   /**
-   * The type of the action. Should be set to `AWS_APP_RUNNER_MONITOR`.
+   * The type of the action. Should be set to `AWS_APP_RUNNER_DEPLOY`.
    */
-  type: "AWS_APP_RUNNER_MONITOR";
+  type: "AWS_APP_RUNNER_DEPLOY";
   /**
    * [The list of variables](https://buddy.works/docs/yaml/yaml-schema#variables-schema) you can use the action.
    */
@@ -588,9 +588,9 @@ export interface AWSAppRunnerDeploy {
    */
   trigger_conditions?: TriggerCondition[];
   /**
-   * Wait for `operation_in_progress` to complete (0-5400 seconds). Default is set to `5400`.
+   * The timeout in seconds.
    */
-  timeout: number;
+  timeout?: number;
   /**
    * When set to 'true' the action is disabled.  By default it is set to `false`.
    */
@@ -9301,7 +9301,7 @@ export interface PushDockerImage {
   /**
    * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
    */
-  integration: string;
+  integration?: string;
   /**
    * The name of the Amazon region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
    */
