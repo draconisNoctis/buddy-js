@@ -36,10 +36,10 @@ importers:
   packages/cli:
     dependencies:
       '@buddy-js/core':
-        specifier: workspace:0.0.5
+        specifier: workspace:0.0.7
         version: link:../core
       '@buddy-js/types':
-        specifier: workspace:0.0.2
+        specifier: workspace:0.0.4
         version: link:../types
       '@oclif/core':
         specifier: 4.0.29
@@ -75,8 +75,8 @@ importers:
         specifier: 2.6.0
         version: 2.6.0
       zustand:
-        specifier: 4.5.5
-        version: 4.5.5(@types/react@18.3.11)(react@18.3.1)
+        specifier: 5.0.0
+        version: 5.0.0(@types/react@18.3.11)(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
     devDependencies:
       '@oclif/prettier-config':
         specifier: 0.2.1
@@ -109,7 +109,7 @@ importers:
   packages/core:
     dependencies:
       '@buddy-js/types':
-        specifier: workspace:0.0.2
+        specifier: workspace:0.0.4
         version: link:../types
     devDependencies:
       typescript:
@@ -2253,19 +2253,22 @@ packages:
   yoga-wasm-web@0.3.3:
     resolution: {integrity: sha512-N+d4UJSJbt/R3wqY7Coqs5pcV0aUj2j9IaQ3rNj9bVCLld8tTGKRa2USARjnvZJWVx1NDmQev8EknoczaOQDOA==}
 
-  zustand@4.5.5:
-    resolution: {integrity: sha512-+0PALYNJNgK6hldkgDq2vLrw5f6g/jCInz52n9RTpropGgeAf/ioFUCdtsjCqu4gNhW9D01rUQBROoRjdzyn2Q==}
-    engines: {node: '>=12.7.0'}
+  zustand@5.0.0:
+    resolution: {integrity: sha512-LE+VcmbartOPM+auOjCCLQOsQ05zUTp8RkgwRzefUk+2jISdMMFnxvyTjA4YNWr5ZGXYbVsEMZosttuxUBkojQ==}
+    engines: {node: '>=12.20.0'}
     peerDependencies:
-      '@types/react': '>=16.8'
+      '@types/react': '>=18.0.0'
       immer: '>=9.0.6'
-      react: '>=16.8'
+      react: '>=18.0.0'
+      use-sync-external-store: '>=1.2.0'
     peerDependenciesMeta:
       '@types/react':
         optional: true
       immer:
         optional: true
       react:
+        optional: true
+      use-sync-external-store:
         optional: true
 
 snapshots:
@@ -5063,6 +5066,7 @@ snapshots:
   use-sync-external-store@1.2.2(react@18.3.1):
     dependencies:
       react: 18.3.1
+    optional: true
 
   utf8-byte-length@1.0.5: {}
 
@@ -5139,9 +5143,8 @@ snapshots:
 
   yoga-wasm-web@0.3.3: {}
 
-  zustand@4.5.5(@types/react@18.3.11)(react@18.3.1):
-    dependencies:
-      use-sync-external-store: 1.2.2(react@18.3.1)
+  zustand@5.0.0(@types/react@18.3.11)(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1)):
     optionalDependencies:
       '@types/react': 18.3.11
       react: 18.3.1
+      use-sync-external-store: 1.2.2(react@18.3.1)
