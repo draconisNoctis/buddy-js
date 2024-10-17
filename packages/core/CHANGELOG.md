@@ -1,5 +1,11 @@
 # buddy-js
 
+## 0.0.3
+
+### Patch Changes
+
+-   1949436: Update action factory interface and reexport types from core
+
 ## 0.0.2
 
 ### Patch Changes

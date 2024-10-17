@@ -20,7 +20,7 @@ $ npm install -g @buddy-js/cli
 $ buddyjs COMMAND
 running command...
 $ buddyjs (--version)
-@buddy-js/cli/0.0.2 linux-arm64 node-v22.9.0
+@buddy-js/cli/0.0.3 linux-arm64 node-v22.9.0
 $ buddyjs --help [COMMAND]
 USAGE
   $ buddyjs COMMAND
@@ -42,7 +42,8 @@ Generates YAML files for Buddy CI pipeline definitions
 
 ```
 USAGE
-  $ buddyjs g [INPUT] [-o <value>] [--clear] [--cwd <value>] [--indent <value>] [--lineWidth <value>]
+  $ buddyjs g [INPUT] [--json] [-o <value>] [--clear] [--cwd <value>] [--indent <value>] [--lineWidth
+    <value>]
 
 ARGUMENTS
   INPUT  [default: .buddy/buddy.{ts,js,mjs,cjs}] input file
@@ -55,6 +56,9 @@ FLAGS
 YAML FORMAT FLAGS
   --indent=<value>     [default: 2] Indentation depth for generated YAML files
   --lineWidth=<value>  [default: 80] Max line width for generated YAML files
+
+GLOBAL FLAGS
+  --json  Format output as json.
 
 DESCRIPTION
   Generates YAML files for Buddy CI pipeline definitions
@@ -73,7 +77,8 @@ Generates YAML files for Buddy CI pipeline definitions
 
 ```
 USAGE
-  $ buddyjs gen [INPUT] [-o <value>] [--clear] [--cwd <value>] [--indent <value>] [--lineWidth <value>]
+  $ buddyjs gen [INPUT] [--json] [-o <value>] [--clear] [--cwd <value>] [--indent <value>] [--lineWidth
+    <value>]
 
 ARGUMENTS
   INPUT  [default: .buddy/buddy.{ts,js,mjs,cjs}] input file
@@ -86,6 +91,9 @@ FLAGS
 YAML FORMAT FLAGS
   --indent=<value>     [default: 2] Indentation depth for generated YAML files
   --lineWidth=<value>  [default: 80] Max line width for generated YAML files
+
+GLOBAL FLAGS
+  --json  Format output as json.
 
 DESCRIPTION
   Generates YAML files for Buddy CI pipeline definitions
@@ -104,7 +112,8 @@ Generates YAML files for Buddy CI pipeline definitions
 
 ```
 USAGE
-  $ buddyjs generate [INPUT] [-o <value>] [--clear] [--cwd <value>] [--indent <value>] [--lineWidth <value>]
+  $ buddyjs generate [INPUT] [--json] [-o <value>] [--clear] [--cwd <value>] [--indent <value>] [--lineWidth
+    <value>]
 
 ARGUMENTS
   INPUT  [default: .buddy/buddy.{ts,js,mjs,cjs}] input file
@@ -118,6 +127,9 @@ YAML FORMAT FLAGS
   --indent=<value>     [default: 2] Indentation depth for generated YAML files
   --lineWidth=<value>  [default: 80] Max line width for generated YAML files
 
+GLOBAL FLAGS
+  --json  Format output as json.
+
 DESCRIPTION
   Generates YAML files for Buddy CI pipeline definitions
 
@@ -129,7 +141,7 @@ EXAMPLES
   $ buddyjs generate
 ```
 
-_See code: [src/commands/generate.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.2/src/commands/generate.ts)_
+_See code: [src/commands/generate.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.3/src/commands/generate.ts)_
 
 ## `buddyjs hello PERSON`
 
@@ -153,7 +165,7 @@ EXAMPLES
   hello friend from oclif! (./src/commands/hello/index.ts)
 ```
 
-_See code: [src/commands/hello/index.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.2/src/commands/hello/index.ts)_
+_See code: [src/commands/hello/index.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.3/src/commands/hello/index.ts)_
 
 ## `buddyjs hello world`
 
@@ -171,7 +183,7 @@ EXAMPLES
   hello world! (./src/commands/hello/world.ts)
 ```
 
-_See code: [src/commands/hello/world.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.2/src/commands/hello/world.ts)_
+_See code: [src/commands/hello/world.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.3/src/commands/hello/world.ts)_
 
 ## `buddyjs help [COMMAND]`
 

@@ -1,6 +1,6 @@
 {
     "name": "@buddy-js/core",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "exports": {
         ".": {
             "require": "./lib/cjs/index.js",
