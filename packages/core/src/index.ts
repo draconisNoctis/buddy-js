@@ -1,5 +1,7 @@
 import type { Action, Pipeline } from '@buddy-js/types';
 
+export * from '@buddy-js/types';
+
 declare global {
     var REGISTERED_PIPELINES: Map<string, Pipeline>;
 }
@@ -43,6 +45,10 @@ export namespace pipeline {
     }
 }
 
-export function action<A extends Action>(action: A): A {
-    return action;
+export function action<T extends Action['type'], A extends Action & { type: T } = Action & { type: T }>(
+    name: string,
+    type: T,
+    props: Omit<A, 'action' | 'type'>
+): A {
+    return { action: name, type, ...props } as A;
 }
