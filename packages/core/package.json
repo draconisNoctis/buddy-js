@@ -11,6 +11,7 @@
     },
     "main": "./lib/cjs/index.js",
     "typings": "./src/index.ts",
+    "files": ["/src", "/lib"],
     "scripts": {
         "build": "tsc && tsc -p tsconfig.esm.json",
         "postbuild": "echo '{ \"type\": \"module\" }' > lib/esm/package.json"
