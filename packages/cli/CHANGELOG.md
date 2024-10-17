@@ -1,5 +1,13 @@
 # @buddy-js/cli
 
+## 0.0.5
+
+### Patch Changes
+
+-   c4d4235: fix published files
+-   Updated dependencies [c4d4235]
+    -   @buddy-js/core@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes

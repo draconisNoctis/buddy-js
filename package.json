@@ -13,7 +13,7 @@
         "prepare": "husky",
         "scrape": "turbo run scrape",
         "test": "turbo test",
-        "version": "changeset version"
+        "version": "changeset version && pnpm run -r version"
     },
     "devDependencies": {
         "@biomejs/biome": "1.9.3",

@@ -1,5 +1,11 @@
 # buddy-js
 
+## 0.0.5
+
+### Patch Changes
+
+-   c4d4235: fix published files
+
 ## 0.0.4
 
 ### Patch Changes

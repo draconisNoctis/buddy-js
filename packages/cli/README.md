@@ -20,7 +20,7 @@ $ npm install -g @buddy-js/cli
 $ buddyjs COMMAND
 running command...
 $ buddyjs (--version)
-@buddy-js/cli/0.0.4 linux-arm64 node-v22.9.0
+@buddy-js/cli/0.0.5 linux-arm64 node-v22.10.0
 $ buddyjs --help [COMMAND]
 USAGE
   $ buddyjs COMMAND
@@ -141,7 +141,7 @@ EXAMPLES
   $ buddyjs generate
 ```
 
-_See code: [src/commands/generate.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.4/src/commands/generate.ts)_
+_See code: [src/commands/generate.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.5/src/commands/generate.ts)_
 
 ## `buddyjs hello PERSON`
 
@@ -165,7 +165,7 @@ EXAMPLES
   hello friend from oclif! (./src/commands/hello/index.ts)
 ```
 
-_See code: [src/commands/hello/index.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.4/src/commands/hello/index.ts)_
+_See code: [src/commands/hello/index.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.5/src/commands/hello/index.ts)_
 
 ## `buddyjs hello world`
 
@@ -183,7 +183,7 @@ EXAMPLES
   hello world! (./src/commands/hello/world.ts)
 ```
 
-_See code: [src/commands/hello/world.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.4/src/commands/hello/world.ts)_
+_See code: [src/commands/hello/world.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.5/src/commands/hello/world.ts)_
 
 ## `buddyjs help [COMMAND]`
 
