@@ -6349,7 +6349,7 @@ export interface Event {
   /**
    * The list of refs for which the pipeline will be triggered in the given event.
    */
-  refs: string;
+  refs: string[];
   /**
    * Runs the pipeline on the runner with tag that matches at least one of those specified in the array.
    */

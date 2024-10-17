@@ -38,7 +38,7 @@ export class BuddyScraper extends Scraper<{
 
                         const table = h.nextAll('.table-responsive').first().find('table');
 
-                        return { name, definition: this.parseTable($, table, baseUrl) };
+                        return { name, definition: this.parseTable(name, $, table, baseUrl) };
                     });
             },
             action: ($, _html, url) => {
@@ -55,7 +55,7 @@ export class BuddyScraper extends Scraper<{
                     definition: {
                         allOf: [
                             { $ref: '#/definitions/ActionCommon' },
-                            this.parseTable($, $('.table-responsive').first().find('table'), baseUrl)
+                            this.parseTable(name, $, $('.table-responsive').first().find('table'), baseUrl)
                         ]
                     },
                     additionalDefinitions: $('[id$="-schema"]:is(h2, h3),[id$="-properties"]:is(h2, h3)')
@@ -70,7 +70,7 @@ export class BuddyScraper extends Scraper<{
 
                             const table = h.nextAll('.table-responsive').first().find('table');
 
-                            return { name, definition: this.parseTable($, table, baseUrl) };
+                            return { name, definition: this.parseTable(name, $, table, baseUrl) };
                         })
                 };
             }
@@ -96,7 +96,7 @@ export class BuddyScraper extends Scraper<{
             });
     }
 
-    private parseTable($: CheerioAPI, table: Cheerio<Element>, baseUrl: string) {
+    private parseTable(schemaName: string, $: CheerioAPI, table: Cheerio<Element>, baseUrl: string) {
         const rows = table
             .first()
             .find('tr:has(> td)')
@@ -116,6 +116,7 @@ export class BuddyScraper extends Scraper<{
 
             this.prepareDescription($, tds[2], baseUrl);
             definition.properties![name] = this.parseType(
+                schemaName,
                 name,
                 $(tds[1]).text().trim(),
                 $(tds[2])
@@ -134,10 +135,14 @@ export class BuddyScraper extends Scraper<{
         return definition;
     }
 
-    private parseType(_name: string, type: string, description: string): JSONSchema4 {
-        const isArray = type.endsWith('[]');
+    private parseType(schemaName: string, name: string, type: string, description: string): JSONSchema4 {
+        let isArray = type.endsWith('[]');
         if (isArray) {
             type = type.substring(0, type.length - 2);
+        }
+
+        if (schemaName === 'Event' && name === 'refs') {
+            isArray = true;
         }
 
         const tags: { tag: string; value?: string }[] = [];

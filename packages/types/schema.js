@@ -4426,7 +4426,10 @@ module.exports.default = {
           "description": "The type of the event. Available values: 'PUSH', 'CREATE_REF', 'DELETE_REF'."
         },
         "refs": {
-          "type": "string",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
           "description": "The list of refs for which the pipeline will be triggered in the given event."
         },
         "tags": {
