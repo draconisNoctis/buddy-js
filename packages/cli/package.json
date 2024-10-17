@@ -50,7 +50,7 @@
     "devDependencies": {
         "@oclif/prettier-config": "0.2.1",
         "@oclif/test": "4.0.10",
-        "@types/node": "22.7.5",
+        "@types/node": "22.7.6",
         "oclif": "4.15.9",
         "ts-node": "10.9.2",
         "typescript": "5.6.3"
