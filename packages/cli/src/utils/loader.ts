@@ -1,4 +1,6 @@
 import { createRequire } from 'node:module';
+import { register } from 'node:module';
+import { pathToFileURL } from 'node:url';
 import * as tsNode from 'ts-node';
 
 export interface Loader {
@@ -21,14 +23,22 @@ const EsmLoader: Loader = {
 };
 
 const TsLoader: Loader = {
-    extensions: ['.ts'],
+    extensions: ['.ts', '.cts'],
+    load(file) {
+        tsNode.register({ compilerOptions: { module: 'CommonJS' } });
+        createRequire(import.meta.url)(file);
+    }
+};
+
+const TsEsmLoader: Loader = {
+    extensions: ['.mts'],
     async load(file) {
-        tsNode.register({ esm: true });
+        register('ts-node/esm', pathToFileURL('./'));
         await import(file);
     }
 };
 
-const LOADERS: Loader[] = [CjsLoader, EsmLoader, TsLoader];
+const LOADERS: Loader[] = [CjsLoader, EsmLoader, TsLoader, TsEsmLoader];
 
 export function getLoader(extension: string) {
     for (const loader of LOADERS) {

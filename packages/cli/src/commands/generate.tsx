@@ -23,7 +23,7 @@ export default class Generate extends BaseCommand<typeof Generate, { step: strin
     static override examples = ['<%= config.bin %> <%= command.id %>'];
 
     static override args = {
-        input: Args.string({ char: 'i', description: 'input file', default: '.buddy/buddy.{ts,js,mjs,cjs}' })
+        input: Args.string({ char: 'i', description: 'input file', default: '.buddy/buddy.{ts,mts,cts,js,mjs,cjs}' })
     };
 
     static override flags = {
