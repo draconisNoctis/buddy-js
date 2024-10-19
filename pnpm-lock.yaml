@@ -15,8 +15,8 @@ importers:
         specifier: 2.27.9
         version: 2.27.9
       '@types/node':
-        specifier: 22.7.6
-        version: 22.7.6
+        specifier: 22.7.7
+        version: 22.7.7
       husky:
         specifier: 9.1.6
         version: 9.1.6
@@ -36,10 +36,10 @@ importers:
   packages/cli:
     dependencies:
       '@buddy-js/core':
-        specifier: workspace:0.0.5
+        specifier: workspace:0.0.7
         version: link:../core
       '@buddy-js/types':
-        specifier: workspace:0.0.2
+        specifier: workspace:0.0.4
         version: link:../types
       '@oclif/core':
         specifier: 4.0.29
@@ -88,8 +88,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0
       '@types/node':
-        specifier: 22.7.6
-        version: 22.7.6
+        specifier: 22.7.7
+        version: 22.7.7
       '@types/react':
         specifier: 18.3.11
         version: 18.3.11
@@ -101,7 +101,7 @@ importers:
         version: 4.15.9
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.7.36)(@types/node@22.7.6)(typescript@5.6.3)
+        version: 10.9.2(@swc/core@1.7.36)(@types/node@22.7.7)(typescript@5.6.3)
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -109,7 +109,7 @@ importers:
   packages/core:
     dependencies:
       '@buddy-js/types':
-        specifier: workspace:0.0.2
+        specifier: workspace:0.0.4
         version: link:../types
     devDependencies:
       typescript:
@@ -126,8 +126,8 @@ importers:
         specifier: 7.0.15
         version: 7.0.15
       '@types/node':
-        specifier: 22.7.6
-        version: 22.7.6
+        specifier: 22.7.7
+        version: 22.7.7
       domhandler:
         specifier: 5.0.3
         version: 5.0.3
@@ -136,7 +136,7 @@ importers:
         version: 15.0.2
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.7.36)(@types/node@22.7.6)(typescript@5.6.3)
+        version: 10.9.2(@swc/core@1.7.36)(@types/node@22.7.7)(typescript@5.6.3)
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -891,8 +891,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.7.6':
-    resolution: {integrity: sha512-/d7Rnj0/ExXDMcioS78/kf1lMzYk4BZV8MZGTBKzTGZ6/406ukkbYlIsZmMPhcR5KlkunDHQLrtAVmSq7r+mSw==}
+  '@types/node@22.7.7':
+    resolution: {integrity: sha512-SRxCrrg9CL/y54aiMCG3edPKdprgMVGDXjA3gB8UmmBW5TcXzRUYAh8EWzTnSJFAd1rgImPELza+A3bJ+qxz8Q==}
 
   '@types/prop-types@15.7.13':
     resolution: {integrity: sha512-hCZTSvwbzWGvhqxp/RqVqwU999pBf2vp7hzIjiYOsl8wqOmUxkQ6ddw1cV3l8811+kdUFus/q4d1Y3E3SyEifA==}
@@ -3240,7 +3240,7 @@ snapshots:
       '@inquirer/figures': 1.0.7
       '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
-      '@types/node': 22.7.6
+      '@types/node': 22.7.7
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
@@ -3801,11 +3801,11 @@ snapshots:
 
   '@types/mute-stream@0.0.4':
     dependencies:
-      '@types/node': 22.7.6
+      '@types/node': 22.7.7
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.7.6':
+  '@types/node@22.7.7':
     dependencies:
       undici-types: 6.19.8
 
@@ -4987,14 +4987,14 @@ snapshots:
     dependencies:
       utf8-byte-length: 1.0.5
 
-  ts-node@10.9.2(@swc/core@1.7.36)(@types/node@22.7.6)(typescript@5.6.3):
+  ts-node@10.9.2(@swc/core@1.7.36)(@types/node@22.7.7)(typescript@5.6.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.7.6
+      '@types/node': 22.7.7
       acorn: 8.12.1
       acorn-walk: 8.3.4
       arg: 4.1.3
