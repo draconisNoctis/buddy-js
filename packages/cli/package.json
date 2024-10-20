@@ -39,7 +39,7 @@
         "@buddy-js/core": "workspace:0.0.7",
         "@buddy-js/types": "workspace:0.0.4",
         "@oclif/core": "4.0.29",
-        "@oclif/plugin-help": "6.2.15",
+        "@oclif/plugin-help": "6.2.16",
         "ajv": "8.17.1",
         "ajv-draft-04": "1.0.0",
         "ajv-formats": "3.0.1",
