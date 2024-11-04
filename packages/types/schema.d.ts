@@ -275,10 +275,11 @@ export interface Event {
 }
 export interface TriggerCondition {
   /**
-   * Defines when the action should be run. Can be one of `ON_CHANGE`, `ON_CHANGE_AT_PATH`, `VAR_IS`, `VAR_IS_NOT`, `VAR_CONTAINS`, `VAR_NOT_CONTAINS`, `VAR_LESS_THAN`, `VAR_LESS_THAN_OR_EQUAL`, `VAR_GREATER_THAN`, `VAR_GREATER_THAN_OR_EQUAL`, `DAY`, `HOUR`, `TRIGGERING_USER_IS`, `TRIGGERING_USER_IS_NOT`, `TRIGGERING_USER_IS_IN_GROUP`, `TRIGGERING_USER_IS_NOT_IN_GROUP`, or `SUCCESS_PIPELINE`, `ACTION_STATUS_IS` or `ACTION_STATUS_IS_NOT` (last two can only be set in the action).
+   * Defines when the action should be run. Can be one of `ON_CHANGE`, `OR`, `ON_CHANGE_AT_PATH`, `VAR_IS`, `VAR_IS_NOT`, `VAR_CONTAINS`, `VAR_NOT_CONTAINS`, `VAR_LESS_THAN`, `VAR_LESS_THAN_OR_EQUAL`, `VAR_GREATER_THAN`, `VAR_GREATER_THAN_OR_EQUAL`, `DAY`, `HOUR`, `TRIGGERING_USER_IS`, `TRIGGERING_USER_IS_NOT`, `TRIGGERING_USER_IS_IN_GROUP`, `TRIGGERING_USER_IS_NOT_IN_GROUP`, or `SUCCESS_PIPELINE`, `ACTION_STATUS_IS` or `ACTION_STATUS_IS_NOT` (last two can only be set in the action).
    */
   trigger_condition?:
     | "ON_CHANGE"
+    | "OR"
     | "ON_CHANGE_AT_PATH"
     | "VAR_IS"
     | "VAR_IS_NOT"
@@ -11630,6 +11631,7 @@ export interface TriggerPipeline {
    * Set if you want the execution to run with priority other than set in the next pipeline. Can be one of `LOW`, `NORMAL` or `HIGH`.
    */
   priority?: "LOW" | "NORMAL" | "HIGH";
+  wait?: boolean;
 }
 export interface UpCloud {
   /**

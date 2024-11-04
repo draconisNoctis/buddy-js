@@ -16184,6 +16184,7 @@ module.exports.default = {
           "type": "string",
           "enum": [
             "ON_CHANGE",
+            "OR",
             "ON_CHANGE_AT_PATH",
             "VAR_IS",
             "VAR_IS_NOT",
@@ -16201,7 +16202,7 @@ module.exports.default = {
             "TRIGGERING_USER_IS_NOT_IN_GROUP",
             "SUCCESS_PIPELINE"
           ],
-          "description": "Defines when the action should be run. Can be one of `ON_CHANGE`, `ON_CHANGE_AT_PATH`, `VAR_IS`, `VAR_IS_NOT`, `VAR_CONTAINS`, `VAR_NOT_CONTAINS`, `VAR_LESS_THAN`, `VAR_LESS_THAN_OR_EQUAL`, `VAR_GREATER_THAN`, `VAR_GREATER_THAN_OR_EQUAL`, `DAY`, `HOUR`, `TRIGGERING_USER_IS`, `TRIGGERING_USER_IS_NOT`, `TRIGGERING_USER_IS_IN_GROUP`, `TRIGGERING_USER_IS_NOT_IN_GROUP`, or `SUCCESS_PIPELINE`, `ACTION_STATUS_IS` or `ACTION_STATUS_IS_NOT` (last two can only be set in the action)."
+          "description": "Defines when the action should be run. Can be one of `ON_CHANGE`, `OR`, `ON_CHANGE_AT_PATH`, `VAR_IS`, `VAR_IS_NOT`, `VAR_CONTAINS`, `VAR_NOT_CONTAINS`, `VAR_LESS_THAN`, `VAR_LESS_THAN_OR_EQUAL`, `VAR_GREATER_THAN`, `VAR_GREATER_THAN_OR_EQUAL`, `DAY`, `HOUR`, `TRIGGERING_USER_IS`, `TRIGGERING_USER_IS_NOT`, `TRIGGERING_USER_IS_IN_GROUP`, `TRIGGERING_USER_IS_NOT_IN_GROUP`, or `SUCCESS_PIPELINE`, `ACTION_STATUS_IS` or `ACTION_STATUS_IS_NOT` (last two can only be set in the action)."
         },
         "trigger_condition_paths": {
           "type": "array",
@@ -16382,6 +16383,9 @@ module.exports.default = {
             "HIGH"
           ],
           "description": "Set if you want the execution to run with priority other than set in the next pipeline. Can be one of `LOW`, `NORMAL` or `HIGH`."
+        },
+        "wait": {
+          "type": "boolean"
         }
       },
       "required": [
