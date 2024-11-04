@@ -45,8 +45,8 @@ importers:
         specifier: 4.0.31
         version: 4.0.31
       '@oclif/plugin-help':
-        specifier: 6.2.15
-        version: 6.2.15
+        specifier: 6.2.16
+        version: 6.2.16
       ajv:
         specifier: 8.17.1
         version: 8.17.1
@@ -577,10 +577,6 @@ packages:
 
   '@oclif/core@4.0.31':
     resolution: {integrity: sha512-7oyIZv/C1TP+fPc2tSzVPYqG1zU+nel1QvJxjAWyVhud0J8B5SpKZnryedxs3nlSVPJ6K1MT31C9esupCBYgZw==}
-    engines: {node: '>=18.0.0'}
-
-  '@oclif/plugin-help@6.2.15':
-    resolution: {integrity: sha512-P4UBgEDhNfx7KX522r0rtGbH4ZLg2GPR5MJRHqlhAp7N8E7DNsg5F2j2BP6gUhzwq6wpFMsWDbif/8daKQx4eg==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-help@6.2.16':
@@ -3289,10 +3285,6 @@ snapshots:
       widest-line: 3.1.0
       wordwrap: 1.0.0
       wrap-ansi: 7.0.0
-
-  '@oclif/plugin-help@6.2.15':
-    dependencies:
-      '@oclif/core': 4.0.31
 
   '@oclif/plugin-help@6.2.16':
     dependencies:
