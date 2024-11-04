@@ -1,5 +1,0 @@
-- pipeline: Foobar
-  on: CLICK
-  refs:
-      - master
-- pipeline: Foobar/
