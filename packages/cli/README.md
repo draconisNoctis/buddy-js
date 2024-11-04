@@ -1,110 +1,53 @@
 @buddy-js/cli
 =================
 
-A new CLI generated with oclif
+A IaC tool to create your [Buddy CI] pipelines programmatically via JS/TS.
 
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/@buddy-js/cli.svg)](https://npmjs.org/package/@buddy-js/cli)
 [![Downloads/week](https://img.shields.io/npm/dw/@buddy-js/cli.svg)](https://npmjs.org/package/@buddy-js/cli)
+[![License](https://img.shields.io/npm/l/@buddy-js/cli.svg)](https://github.com/draconisNoctis/buddy-js/blob/main/packages/cli/package.json)
 
 
 <!-- toc -->
+* [Installation](#installation)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
-# Usage
-<!-- usage -->
+
+# Installation
 ```sh-session
-$ npm install -g @buddy-js/cli
-$ buddyjs COMMAND
-running command...
-$ buddyjs (--version)
-@buddy-js/cli/0.0.8 linux-arm64 node-v22.10.0
-$ buddyjs --help [COMMAND]
-USAGE
-  $ buddyjs COMMAND
-...
+$ npm install @buddy-js/cli @buddy-js/core
+$ yarn add @buddy-js/cli @buddy-js/core
+$ pnpm add @buddy-js/cli @buddy-js/core
 ```
-<!-- usagestop -->
+
+# Usage
+Create the index file, e.g. `.buddy/buddy.mjs` with the following content:
+```javascript
+import { pipeline, action } from '@buddy-js/core';
+
+pipeline('Production', {
+  on: 'CLICK',
+  refs: ['refs/heads/main'],
+  actions: [
+    action('Execute: pnpm test', 'BUILD', {
+      docker_image_name: 'node',
+      docker_image_tag: '22',
+      execute_commands: [
+        'pnpm install',
+        'pnpm test'
+      ]
+    })
+  ]
+})
+```
+
 # Commands
 <!-- commands -->
-* [`buddyjs g [INPUT]`](#buddyjs-g-input)
-* [`buddyjs gen [INPUT]`](#buddyjs-gen-input)
 * [`buddyjs generate [INPUT]`](#buddyjs-generate-input)
-* [`buddyjs hello PERSON`](#buddyjs-hello-person)
-* [`buddyjs hello world`](#buddyjs-hello-world)
 * [`buddyjs help [COMMAND]`](#buddyjs-help-command)
-
-## `buddyjs g [INPUT]`
-
-Generates YAML files for Buddy CI pipeline definitions
-
-```
-USAGE
-  $ buddyjs g [INPUT] [--json] [-o <value>] [--clear] [--cwd <value>] [--indent <value>] [--lineWidth
-    <value>]
-
-ARGUMENTS
-  INPUT  [default: .buddy/buddy.{ts,mts,cts,js,mjs,cjs}] input file
-
-FLAGS
-  -o, --output=<value>  [default: .buddy] output directory
-      --[no-]clear      [default: true] Remove all YAML files from output directory before generating
-      --cwd=<value>     [default: /home/dracon/projects/neoskop/buddy-js/packages/cli]
-
-YAML FORMAT FLAGS
-  --indent=<value>     [default: 2] Indentation depth for generated YAML files
-  --lineWidth=<value>  [default: 80] Max line width for generated YAML files
-
-GLOBAL FLAGS
-  --json  Format output as json.
-
-DESCRIPTION
-  Generates YAML files for Buddy CI pipeline definitions
-
-ALIASES
-  $ buddyjs gen
-  $ buddyjs g
-
-EXAMPLES
-  $ buddyjs g
-```
-
-## `buddyjs gen [INPUT]`
-
-Generates YAML files for Buddy CI pipeline definitions
-
-```
-USAGE
-  $ buddyjs gen [INPUT] [--json] [-o <value>] [--clear] [--cwd <value>] [--indent <value>] [--lineWidth
-    <value>]
-
-ARGUMENTS
-  INPUT  [default: .buddy/buddy.{ts,mts,cts,js,mjs,cjs}] input file
-
-FLAGS
-  -o, --output=<value>  [default: .buddy] output directory
-      --[no-]clear      [default: true] Remove all YAML files from output directory before generating
-      --cwd=<value>     [default: /home/dracon/projects/neoskop/buddy-js/packages/cli]
-
-YAML FORMAT FLAGS
-  --indent=<value>     [default: 2] Indentation depth for generated YAML files
-  --lineWidth=<value>  [default: 80] Max line width for generated YAML files
-
-GLOBAL FLAGS
-  --json  Format output as json.
-
-DESCRIPTION
-  Generates YAML files for Buddy CI pipeline definitions
-
-ALIASES
-  $ buddyjs gen
-  $ buddyjs g
-
-EXAMPLES
-  $ buddyjs gen
-```
 
 ## `buddyjs generate [INPUT]`
 
@@ -121,7 +64,7 @@ ARGUMENTS
 FLAGS
   -o, --output=<value>  [default: .buddy] output directory
       --[no-]clear      [default: true] Remove all YAML files from output directory before generating
-      --cwd=<value>     [default: /home/dracon/projects/neoskop/buddy-js/packages/cli]
+      --cwd=<value>     [default: .]
 
 YAML FORMAT FLAGS
   --indent=<value>     [default: 2] Indentation depth for generated YAML files
@@ -141,49 +84,7 @@ EXAMPLES
   $ buddyjs generate
 ```
 
-_See code: [src/commands/generate.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.8/src/commands/generate.ts)_
-
-## `buddyjs hello PERSON`
-
-Say hello
-
-```
-USAGE
-  $ buddyjs hello PERSON -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Who is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ buddyjs hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [src/commands/hello/index.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.8/src/commands/hello/index.ts)_
-
-## `buddyjs hello world`
-
-Say hello world
-
-```
-USAGE
-  $ buddyjs hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ buddyjs hello world
-  hello world! (./src/commands/hello/world.ts)
-```
-
-_See code: [src/commands/hello/world.ts](https://github.com/draconisNoctis/buddy-js/blob/v0.0.8/src/commands/hello/world.ts)_
+_See code: [src/commands/generate.ts](https://github.com/draconisNoctis/buddy-js/tree/main/packages/cli/src/commands/generate.tsx)_
 
 ## `buddyjs help [COMMAND]`
 
@@ -203,5 +104,5 @@ DESCRIPTION
   Display help for buddyjs.
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v6.2.15/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/tree/main/packages/cli/src/commands/help.tsx)_
 <!-- commandsstop -->

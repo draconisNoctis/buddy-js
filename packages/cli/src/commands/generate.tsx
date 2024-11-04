@@ -34,7 +34,7 @@ export default class Generate extends BaseCommand<typeof Generate, { step: strin
             default: true,
             allowNo: true
         }),
-        cwd: Flags.string({ default: process.cwd() }),
+        cwd: Flags.string({ default: '.' }),
         indent: Flags.integer({ description: 'Indentation depth for generated YAML files', default: 2, helpGroup: 'YAML format' }),
         lineWidth: Flags.integer({ description: 'Max line width for generated YAML files', default: 80, helpGroup: 'YAML format' })
     };

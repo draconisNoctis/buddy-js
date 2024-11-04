@@ -1,8 +1,8 @@
 {
     "name": "@buddy-js/cli",
     "version": "0.0.8",
-    "description": "A new CLI generated with oclif",
-    "keywords": ["oclif"],
+    "description": "A IaC tool to create your [Buddy CI] pipelines programmatically via JS/TS.",
+    "keywords": ["buddy", "IaC"],
     "homepage": "https://github.com/draconisNoctis/buddy-js",
     "bugs": "https://github.com/draconisNoctis/buddy-js/issues",
     "repository": "draconisNoctis/buddy-js",
@@ -17,7 +17,7 @@
     "files": ["/bin", "/dist", "/oclif.manifest.json"],
     "scripts": {
         "build": "rm -rf dist && tsc -b",
-        "prepack": "oclif manifest && oclif readme",
+        "prepack": "oclif manifest && oclif readme --no-aliases --repository-prefix '<%- repo %>/tree/main/packages/cli/<%- commandPath %>x'",
         "postpack": "rm -f oclif.manifest.json",
         "pretest": "turbo run build",
         "test": "OCLIF_TEST_ROOT=$(pwd) NODE_ENV=production node --loader ts-node/esm --disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning --test 'test/**/*.test.ts' 'src/**/*.spec.ts'",
