@@ -9,6 +9,16 @@ export class BuddyScraper extends Scraper<{
     base: NamedSchemaDefinition[];
     action: NamedSchemaDefinition & { additionalDefinitions: NamedSchemaDefinition[] };
 }> {
+    patches: ((args: NamedSchemaDefinition) => NamedSchemaDefinition | void)[] = [
+        ({ definition }) => {
+            if (definition.properties?.type?.enum?.[0] !== 'RUN_NEXT_PIPELINE') return;
+
+            definition.properties!.wait = {
+                type: 'boolean'
+            };
+        }
+    ];
+
     constructor() {
         super({
             base: ($, _html, url) => {
@@ -137,7 +147,11 @@ export class BuddyScraper extends Scraper<{
         if (!(definition.required as string[]).length) {
             definition.required = undefined;
         }
-        return definition;
+        return this.applyPatches(schemaName, definition).definition;
+    }
+
+    private applyPatches(name: string, definition: JSONSchema4): NamedSchemaDefinition {
+        return this.patches.reduce((n, patch) => patch(n) ?? n, { name, definition });
     }
 
     private parseType(schemaName: string, name: string, type: string, description: string): JSONSchema4 {
