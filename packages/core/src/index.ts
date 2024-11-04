@@ -15,6 +15,9 @@ export const IS_FIXED = Symbol.for('buddy-js/is-fixed-pipeline');
 export function getRegisteredPipelines(): Iterable<Pipeline> {
     return REGISTERED_PIPELINES.values();
 }
+export function __internal_testing_resetRegisteredPipelines() {
+    REGISTERED_PIPELINES = new Map();
+}
 
 function registerPipeline(pipeline: Pipeline) {
     if (REGISTERED_PIPELINES.has(pipeline.pipeline)) {

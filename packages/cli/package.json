@@ -19,7 +19,8 @@
         "build": "rm -rf dist && tsc -b",
         "prepack": "oclif manifest && oclif readme",
         "postpack": "rm -f oclif.manifest.json",
-        "test": "OCLIF_TEST_ROOT=$(pwd) node --loader ts-node/esm --disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning --test 'test/**/*.test.ts' 'src/**/*.spec.ts'",
+        "pretest": "turbo run build",
+        "test": "OCLIF_TEST_ROOT=$(pwd) NODE_ENV=production node --loader ts-node/esm --disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning --test 'test/**/*.test.ts' 'src/**/*.spec.ts'",
         "test:watch": "OCLIF_TEST_ROOT=$(pwd) node --loader ts-node/esm --disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning --test --watch 'test/**/*.test.ts' 'src/**/*.spec.ts'",
         "version": "oclif readme && git add README.md"
     },

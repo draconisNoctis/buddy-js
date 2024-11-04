@@ -25,7 +25,10 @@ const EsmLoader: Loader = {
 const TsLoader: Loader = {
     extensions: ['.ts', '.cts'],
     load(file) {
-        tsNode.register({ compilerOptions: { module: 'CommonJS' } });
+        tsNode.register({
+            skipProject: true,
+            compilerOptions: { module: 'CommonJS' }
+        });
         createRequire(import.meta.url)(file);
     }
 };

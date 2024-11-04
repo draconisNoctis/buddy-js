@@ -1,6 +1,6 @@
 import { Command, type Interfaces } from '@oclif/core';
 import chalk from 'chalk';
-import type { Instance } from 'ink';
+import { type Instance, render } from 'ink';
 import type { FunctionComponent } from 'react';
 import React from 'react';
 import { create } from 'zustand';
@@ -34,12 +34,15 @@ export abstract class BaseCommand<T extends typeof Command, V extends {}> extend
 
     // biome-ignore lint/suspicious/useAwait: required by interface
     protected override async catch(err: Interfaces.CommandError): Promise<void> {
-        this.logToStderr(chalk.red`❌ ${err.message}`);
+        process.exitCode = process.exitCode ?? err.exitCode ?? 1;
+        if (this.jsonEnabled()) {
+            this.logJson(this.toErrorJson(err));
+        } else {
+            this.logToStderr(chalk.red`❌ ${err.message}`);
+        }
     }
 
     public async run(): Promise<void | unknown> {
-        const { render } = await import('ink');
-
         const useStore = create(() => this.initialState);
         this.viewInstance = this.jsonEnabled()
             ? undefined

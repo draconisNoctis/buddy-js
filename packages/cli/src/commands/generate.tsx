@@ -75,7 +75,8 @@ export default class Generate extends BaseCommand<typeof Generate, { step: strin
         for (const pipeline of pipelines) {
             const filename = `${sanitizeFilename(pipeline.pipeline).replace(/ +/g, '-') + (isFixed(pipeline) ? '.fixed' : '')}.yml`;
             const yaml = YAML.stringify([pipeline], { indent: this.flags.indent, lineWidth: this.flags.lineWidth });
-            const file = path.resolve(this.flags.output, filename);
+            const file = path.resolve(this.flags.cwd, this.flags.output, filename);
+            await fs.mkdir(path.dirname(file), { recursive: true });
             if (
                 !(await fs.access(file).then(
                     () => true,
@@ -98,7 +99,7 @@ export default class Generate extends BaseCommand<typeof Generate, { step: strin
         const files = await glob(this.args.input, { cwd: this.flags.cwd, absolute: true });
 
         if (!files[0]) {
-            throw new Error(`Cannot find input file: "${this.flags.input}"`);
+            throw new Error(`Cannot find input file: "${this.args.input}" in ${this.flags.cwd}`);
         }
 
         return files[0]!;
