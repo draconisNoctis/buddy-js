@@ -1,5 +1,11 @@
 # @buddy-js/types
 
+## 0.0.5
+
+### Patch Changes
+
+-   7962155: Add wait option for trigger pipeline action
+
 ## 0.0.4
 
 ### Patch Changes
