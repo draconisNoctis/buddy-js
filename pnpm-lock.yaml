@@ -42,8 +42,8 @@ importers:
         specifier: workspace:0.0.5
         version: link:../types
       '@oclif/core':
-        specifier: 4.0.29
-        version: 4.0.29
+        specifier: 4.0.31
+        version: 4.0.31
       '@oclif/plugin-help':
         specifier: 6.2.15
         version: 6.2.15
@@ -83,7 +83,7 @@ importers:
         version: 0.2.1
       '@oclif/test':
         specifier: 4.0.10
-        version: 4.0.10(@oclif/core@4.0.29)
+        version: 4.0.10(@oclif/core@4.0.31)
       '@types/chai':
         specifier: 5.0.0
         version: 5.0.0
@@ -530,8 +530,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@oclif/core@4.0.29':
-    resolution: {integrity: sha512-WEbrRn+X9FG8Wk8U/JUAd4bTzCwOtKPqpCP4ijfqEK8g2ZXV1bGG3FSCTmZkZLNDt/WUYYJpC0Tjjqxn1T4Bzg==}
+  '@oclif/core@4.0.31':
+    resolution: {integrity: sha512-7oyIZv/C1TP+fPc2tSzVPYqG1zU+nel1QvJxjAWyVhud0J8B5SpKZnryedxs3nlSVPJ6K1MT31C9esupCBYgZw==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-help@6.2.15':
@@ -1449,9 +1449,9 @@ packages:
   is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
 
-  is-docker@3.0.0:
-    resolution: {integrity: sha512-eljcgEDlEns/7AXFosB5K/2nCM4P7FQPkGc/DWLy5rmFEWvZayGrik1d9/QIY5nJ4f9YsVvBkA6kJpHn9rISdQ==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+  is-docker@2.2.1:
+    resolution: {integrity: sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==}
+    engines: {node: '>=8'}
     hasBin: true
 
   is-extglob@2.1.1:
@@ -1477,11 +1477,6 @@ packages:
   is-in-ci@0.1.0:
     resolution: {integrity: sha512-d9PXLEY0v1iJ64xLiQMJ51J128EYHAaOR4yZqQi8aHGfw6KgifM3/Viw1oZZ1GCVmb3gBuyhLyHj0HgR2DhSXQ==}
     engines: {node: '>=18'}
-    hasBin: true
-
-  is-inside-container@1.0.0:
-    resolution: {integrity: sha512-KIYLCCJghfHZxqjYBE7rEy0OBuTd5xCHS7tHVgvCLkx7StIoaxwNW3hCALgEUjFfeRk+MG/Qxmp/vtETEF3tRA==}
-    engines: {node: '>=14.16'}
     hasBin: true
 
   is-number@7.0.0:
@@ -1512,9 +1507,9 @@ packages:
     resolution: {integrity: sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==}
     engines: {node: '>=0.10.0'}
 
-  is-wsl@3.1.0:
-    resolution: {integrity: sha512-UcVfVfaK4Sc4m7X3dUSoHoozQGBEFeDC+zVo06t98xe8CzHSZZBekNXH+tu0NalHolcJ/QAGqS46Hef7QXBIMw==}
-    engines: {node: '>=16'}
+  is-wsl@2.2.0:
+    resolution: {integrity: sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==}
+    engines: {node: '>=8'}
 
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
@@ -3321,7 +3316,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@oclif/core@4.0.29':
+  '@oclif/core@4.0.31':
     dependencies:
       ansi-escapes: 4.3.2
       ansis: 3.3.2
@@ -3332,7 +3327,7 @@ snapshots:
       get-package-type: 0.1.0
       globby: 11.1.0
       indent-string: 4.0.0
-      is-wsl: 3.1.0
+      is-wsl: 2.2.0
       lilconfig: 3.1.2
       minimatch: 9.0.5
       semver: 7.6.3
@@ -3344,18 +3339,18 @@ snapshots:
 
   '@oclif/plugin-help@6.2.15':
     dependencies:
-      '@oclif/core': 4.0.29
+      '@oclif/core': 4.0.31
 
   '@oclif/plugin-not-found@3.2.22':
     dependencies:
       '@inquirer/confirm': 3.2.0
-      '@oclif/core': 4.0.29
+      '@oclif/core': 4.0.31
       ansis: 3.3.2
       fast-levenshtein: 3.0.0
 
   '@oclif/plugin-warn-if-update-available@3.1.18':
     dependencies:
-      '@oclif/core': 4.0.29
+      '@oclif/core': 4.0.31
       ansis: 3.3.2
       debug: 4.3.7(supports-color@8.1.1)
       http-call: 5.3.0
@@ -3366,9 +3361,9 @@ snapshots:
 
   '@oclif/prettier-config@0.2.1': {}
 
-  '@oclif/test@4.0.10(@oclif/core@4.0.29)':
+  '@oclif/test@4.0.10(@oclif/core@4.0.31)':
     dependencies:
-      '@oclif/core': 4.0.29
+      '@oclif/core': 4.0.31
       ansis: 3.3.2
       debug: 4.3.7(supports-color@8.1.1)
     transitivePeerDependencies:
@@ -4399,7 +4394,7 @@ snapshots:
 
   is-arrayish@0.2.1: {}
 
-  is-docker@3.0.0: {}
+  is-docker@2.2.1: {}
 
   is-extglob@2.1.1: {}
 
@@ -4417,10 +4412,6 @@ snapshots:
 
   is-in-ci@0.1.0: {}
 
-  is-inside-container@1.0.0:
-    dependencies:
-      is-docker: 3.0.0
-
   is-number@7.0.0: {}
 
   is-plain-obj@4.1.0: {}
@@ -4437,9 +4428,9 @@ snapshots:
 
   is-windows@1.0.2: {}
 
-  is-wsl@3.1.0:
+  is-wsl@2.2.0:
     dependencies:
-      is-inside-container: 1.0.0
+      is-docker: 2.2.1
 
   isexe@2.0.0: {}
 
@@ -4635,7 +4626,7 @@ snapshots:
       '@inquirer/confirm': 3.2.0
       '@inquirer/input': 2.3.0
       '@inquirer/select': 2.5.0
-      '@oclif/core': 4.0.29
+      '@oclif/core': 4.0.31
       '@oclif/plugin-help': 6.2.15
       '@oclif/plugin-not-found': 3.2.22
       '@oclif/plugin-warn-if-update-available': 3.1.18
