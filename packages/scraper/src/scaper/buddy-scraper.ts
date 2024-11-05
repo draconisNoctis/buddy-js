@@ -16,6 +16,17 @@ export class BuddyScraper extends Scraper<{
             definition.properties!.wait = {
                 type: 'boolean'
             };
+        },
+        ({ name, definition }) => {
+            if (name !== 'Pipeline') return;
+
+            definition.properties!.folder = { type: 'string' };
+            definition.properties!.priority = { oneOf: [{ $ref: '#/definitions/ExecutionPriority' }], description: '@default "NORMAL"' }; //{ type: 'string', enum: ['LOW', 'NORMAL', 'HIGH'], default: 'NORMAL' };
+        },
+        ({ name, definition }) => {
+            if (name !== 'GhostInspector') return;
+            // biome-ignore lint/performance/noDelete: required to remove the key for enumeration
+            delete definition.properties!.browser.enum;
         }
     ];
 
@@ -190,10 +201,10 @@ export class BuddyScraper extends Scraper<{
             };
         } else if (type === 'Boolean') {
             inner = { type: 'boolean' };
-        } else if (type === 'String' || type === 'ExecutionPriority') {
+        } else if (type === 'String' /*  || type === 'ExecutionPriority' */) {
             const exact = /(?:Should|Must) be set to\s`?([\w-]+)`?/.exec(description);
             const oneOf =
-                /Can be one of ([\w'`\/_-]+(?:\s?,\s?[\w'`\/_-]+)*(?:(?:,?\s)?or|,)\s[\w'`\/_-]+)(?:.*[Dd]efault \w+ is ([\w'`\/_-]+))?/.exec(
+                /(?:Can be one of|(?:Available|Possible) (?:values|types|options):|available:) ([\w'`\/_-]+(?:\s?\(.+?\))?(?:\s?,\s?[\w'`\/_-]+(?:\s?\(.+?\))?)*(?:(?:,?\s)?or|,)\s?[\w'`\/_-]+(?:\s?\(.+?\))?)(?:.*[Dd]efault (?:\w+ )?is ([\w'`\/_-]+))?/.exec(
                     description
                 );
             if (exact) {
@@ -202,19 +213,27 @@ export class BuddyScraper extends Scraper<{
                     enum: [exact[1]]
                 };
             } else if (oneOf) {
-                const defaultValue: string | undefined = oneOf[2]?.replace(/^['`](.*)['`]$/, '$1');
-                if (defaultValue != null) {
-                    tags.push({ tag: 'default', value: JSON.stringify(defaultValue) });
-                }
+                let defaultValue: string | undefined = oneOf[2]?.replace(/^['`](.*)['`]$/, '$1');
+
                 const values = oneOf[1]
                     .split(/\s*(?:,|or)\s*/)
                     .map(t => {
+                        const isDefault = t.endsWith(' (default)');
+                        t = t.replace(/\s?\(.*?\)$/, '');
                         if (t.startsWith("'") || t.startsWith('`')) t = t.substring(1);
                         if (t.endsWith("'") || t.endsWith('`')) t = t.substring(0, t.length - 1);
 
+                        if (isDefault) {
+                            defaultValue = t;
+                        }
+
                         return t;
                     })
-                    .filter(Boolean);
+                    .filter(Boolean)
+                    .filter((v, i, a) => a.indexOf(v) === i);
+                if (defaultValue != null) {
+                    tags.push({ tag: 'default', value: JSON.stringify(defaultValue) });
+                }
                 inner = {
                     type: 'string',
                     enum: values,

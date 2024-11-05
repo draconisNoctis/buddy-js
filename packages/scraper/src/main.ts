@@ -133,6 +133,11 @@ const mainDefinition: JSONSchema4 = {
             },
             required: ['url', 'baseline', 'headers', 'excluded_area'],
             additionalProperties: false
+        },
+        ExecutionPriority: {
+            type: 'string',
+            enum: ['LOW', 'NORMAL', 'HIGH'],
+            default: 'NORMAL'
         }
     }
 };

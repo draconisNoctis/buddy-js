@@ -149,6 +149,7 @@ export type Action =
   | WPCLI
   | Xcode
   | ZIP;
+export type ExecutionPriority = "LOW" | "NORMAL" | "HIGH";
 export type BuddyYAML = Pipeline[];
 
 export interface Pipeline {
@@ -241,11 +242,11 @@ export interface Pipeline {
   /**
    * Defines the way the changeset for deployments and trigger conditions between subsequent executions in the pipeline will be calculated. Available values: `LATEST_RUN`, `LATEST_RUN_MATCHING_REF`, `PULL_REQUEST`. By default, it is set to `LATEST_RUN`.
    */
-  git_changeset_base?: string;
+  git_changeset_base?: "LATEST_RUN" | "LATEST_RUN_MATCHING_REF" | "PULL_REQUEST";
   /**
    * Docker cache scope. Available values: `WORKSPACE`, `PROJECT`, `PIPELINE`. By default, it is set to `PIPELINE`.
    */
-  cache_scope?: string;
+  cache_scope?: "WORKSPACE" | "PROJECT" | "PIPELINE";
   /**
    * The default value is `false`. If set to `true` and the user does not provide a description when starting a pipeline, the pipeline won't run.
    */
@@ -257,13 +258,18 @@ export interface Pipeline {
   /**
    * Defines changeset calculation method whenever deployment action has `input_type` set to `BUILD_ARTIFACTS`. Default set to `DATE_MODIFIED`. Possible values: `DATE_MODIFIED`, `CONTENTS`
    */
-  filesystem_changeset_base?: string;
+  filesystem_changeset_base?: "DATE_MODIFIED" | "CONTENTS";
+  folder?: string;
+  /**
+   * @default "NORMAL"
+   */
+  priority?: ExecutionPriority;
 }
 export interface Event {
   /**
    * The type of the event. Available values: 'PUSH', 'CREATE_REF', 'DELETE_REF'.
    */
-  type: string;
+  type: "PUSH" | "CREATE_REF" | "DELETE_REF";
   /**
    * The list of refs for which the pipeline will be triggered in the given event.
    */
@@ -372,8 +378,10 @@ export interface AmazonElasticContainerService {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -445,7 +453,7 @@ export interface Variable {
   /**
    * Available values: `CONTAINER`, `NONE`. Set if type is `SSH_KEY` or `FILE`. If it's `NONE`, the variable can be used as a parameter in an action. For `CONTAINER`, the given file/key is additionally copied to an action container on each run.
    */
-  file_place?: string;
+  file_place?: "CONTAINER" | "NONE";
   /**
    * Specifies where to copy the file on each run. Set if `type` is `SSH_KEY` or `FILE`.
    */
@@ -482,8 +490,10 @@ export interface AmazonS3 {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -598,8 +608,10 @@ export interface AWSAppRunnerDeploy {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -662,8 +674,10 @@ export interface AWSCDKCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -700,8 +714,10 @@ export interface AWSCDKCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -734,8 +750,10 @@ export interface AWSCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -772,8 +790,10 @@ export interface AWSCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -806,8 +826,10 @@ export interface AWSCLI2 {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -844,8 +866,10 @@ export interface AWSCLI2 {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -878,8 +902,10 @@ export interface AWSCodeDeploy {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -978,8 +1004,10 @@ export interface AWSCodePipeline {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1046,8 +1074,10 @@ export interface AWSElasticBeanstalk {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1130,8 +1160,10 @@ export interface AWSElasticBeanstalkMonitoring {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1206,8 +1238,10 @@ export interface AWSLambda {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1290,8 +1324,10 @@ export interface AWSLambdaDeploy {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1362,8 +1398,10 @@ export interface AzureCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1400,8 +1438,10 @@ export interface AzureCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -1434,8 +1474,10 @@ export interface AzureStorage {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1530,8 +1572,10 @@ export interface BackblazeB2 {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1626,8 +1670,10 @@ export interface Blackfire {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1665,7 +1711,7 @@ export interface Blackfire {
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH`(default) or `BASH`.
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -1698,8 +1744,10 @@ export interface Bugsnag {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1774,8 +1822,10 @@ export interface BuildACordovaApp {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1864,8 +1914,10 @@ export interface BuildAFastlaneAppiOS {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1948,8 +2000,10 @@ export interface BuildApplication {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -1998,8 +2052,10 @@ export interface BuildApplication {
   setup_commands?: string[];
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The containers with the services that will be attached to this environment. Available types: `MYSQL`, `MONGO_DB`, `MARIADB`, `POSTGRE_SQL`, `REDIS`, `MEMCACHED`, `ELASTICSEARCH`.
    */
@@ -2023,7 +2079,14 @@ export interface BuildApplication {
   /**
    * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
    */
-  integration?: string;
+  integration?:
+    | "NONE"
+    | "DOCKER_HUB"
+    | "AMAZON_ECR"
+    | "GOOGLE_GCR"
+    | "GOOGLE_ARTIFACT_REGISTRY"
+    | "GIT_HUB_CONTAINER_REGISTRY"
+    | "OTHER";
   /**
    * The name of the Amazon S3 region. Required for using the image from the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
    */
@@ -2059,11 +2122,18 @@ export interface BuildApplication {
   /**
    * The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action.
    */
-  image_location?: string;
+  image_location?: "PUBLIC_REGISTRY" | "PRIVATE_REGISTRY" | "ACTION";
   /**
    * The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with `image_location`. If not specified, the system will automatically set it based on other data from the action.
    */
-  docker_registry?: string;
+  docker_registry?:
+    | "NONE"
+    | "DOCKER_HUB"
+    | "AMAZON_ECR"
+    | "GOOGLE_GCR"
+    | "GOOGLE_ARTIFACT_REGISTRY"
+    | "GIT_HUB_CONTAINER_REGISTRY"
+    | "OTHER";
 }
 export interface Service {
   type: "MYSQL" | "MONGO_DB" | "MARIADB" | "POSTGRE_SQL" | "REDIS" | "MEMCACHED" | "ELASTICSEARCH" | "CUSTOM";
@@ -2098,8 +2168,10 @@ export interface BuildAReactNativeApp {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2182,8 +2254,10 @@ export interface BuildDockerImage {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2229,7 +2303,14 @@ export interface BuildDockerImage {
   /**
    * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
    */
-  integration?: string;
+  integration?:
+    | "NONE"
+    | "DOCKER_HUB"
+    | "AMAZON_ECR"
+    | "GOOGLE_GCR"
+    | "GOOGLE_ARTIFACT_REGISTRY"
+    | "GIT_HUB_CONTAINER_REGISTRY"
+    | "OTHER";
   /**
    * The name of the Amazon S3 region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
    */
@@ -2264,8 +2345,10 @@ export interface BuildDockerImage {
   secrets?: DockerBuildSecret[];
   /**
    * Refers to the `--provenance` switch of the Docker build. Available values: `NONE`, `MIN`, `MAX`. The default value is `NONE`.
+   *
+   * @default "NONE"
    */
-  provenance?: string;
+  provenance?: "NONE" | "MIN" | "MAX";
   /**
    * Available if the cache_scope in the pipeline where this action is located, is set to `WORKSPACE` or `PROJECT`. Defines the Docker cache mode. Available values are `MIN` or `MAX`. By default, it is set to `MIN`.
    */
@@ -2273,7 +2356,14 @@ export interface BuildDockerImage {
   /**
    * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
    */
-  docker_registry?: string;
+  docker_registry?:
+    | "NONE"
+    | "DOCKER_HUB"
+    | "AMAZON_ECR"
+    | "GOOGLE_GCR"
+    | "GOOGLE_ARTIFACT_REGISTRY"
+    | "GIT_HUB_CONTAINER_REGISTRY"
+    | "OTHER";
 }
 export interface DockerBuildSecret {
   /**
@@ -2316,8 +2406,10 @@ export interface BuildFlutterAppiOS {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2400,8 +2492,10 @@ export interface BuildMultiArchImage {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2451,7 +2545,7 @@ export interface BuildMultiArchImage {
   /**
    * Specifies the target platform for the build output. You can set multiple target platforms. Default value: `linux/amd64`. Available values: `linux/amd64`, `linux/arm64`, `linux/arm/v7`, `linux/arm/v6`.
    */
-  target_platform?: string[];
+  target_platform?: ("linux/amd64" | "linux/arm64" | "linux/arm/v7" | "linux/arm/v6")[];
   /**
    * The tag of the Docker image.
    */
@@ -2467,7 +2561,14 @@ export interface BuildMultiArchImage {
   /**
    * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
    */
-  integration?: string;
+  integration?:
+    | "NONE"
+    | "DOCKER_HUB"
+    | "AMAZON_ECR"
+    | "GOOGLE_GCR"
+    | "GOOGLE_ARTIFACT_REGISTRY"
+    | "GIT_HUB_CONTAINER_REGISTRY"
+    | "OTHER";
   /**
    * The name of the Amazon S3 region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
    */
@@ -2487,7 +2588,14 @@ export interface BuildMultiArchImage {
   /**
    * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
    */
-  docker_registry?: string;
+  docker_registry?:
+    | "NONE"
+    | "DOCKER_HUB"
+    | "AMAZON_ECR"
+    | "GOOGLE_GCR"
+    | "GOOGLE_ARTIFACT_REGISTRY"
+    | "GIT_HUB_CONTAINER_REGISTRY"
+    | "OTHER";
 }
 export interface ClearCache {
   /**
@@ -2516,8 +2624,10 @@ export interface ClearCache {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2543,7 +2653,7 @@ export interface ClearCache {
   /**
    * Defines the cache layer cleared by the action. Available values: `DOCKER`, `FILE_SYSTEM`,  `SERVICES`, `ADDITIONAL`.
    */
-  cache_types: string[];
+  cache_types: ("DOCKER" | "FILE_SYSTEM")[];
 }
 export interface Cloudflare {
   /**
@@ -2572,8 +2682,10 @@ export interface Cloudflare {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2660,8 +2772,10 @@ export interface Cloudfront {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2744,8 +2858,10 @@ export interface CodeSignAndExportAnIOSApp {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2779,7 +2895,7 @@ export interface CodeSignAndExportAnIOSApp {
   /**
    * Defines the source of the `property_list` used by the action. Available options: `ACTION`, `GENERATED`,`PIPELINE_VOLUME`.
    */
-  property_list_source?: string;
+  property_list_source?: "ACTION" | "GENERATED" | "PIPELINE_VOLUME";
   /**
    * Filesystem path of the properties file or the list of properties separated by the newline character `\n`.
    */
@@ -2787,7 +2903,7 @@ export interface CodeSignAndExportAnIOSApp {
   /**
    * Defines the distribution method from one of the available: `APP_STORE`, `ENTERPRISE`, `AD_HOC`, `DEVELOPMENT`.
    */
-  distribution_method?: string;
+  distribution_method?: "APP_STORE" | "ENTERPRISE" | "AD_HOC" | "DEVELOPMENT";
   /**
    * The list of variables added to the iOS keychain.
    */
@@ -2824,8 +2940,10 @@ export interface CompressImages {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2863,7 +2981,7 @@ export interface CompressImages {
   /**
    * Supported image formats. Available types: `jpg`, `png`, `gif`, `svg`.
    */
-  types: string;
+  types: "jpg" | "png" | "gif" | "svg";
 }
 export interface CopyFilesAction {
   /**
@@ -2892,8 +3010,10 @@ export interface CopyFilesAction {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -2984,8 +3104,10 @@ export interface CreateNewSandbox {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3098,8 +3220,10 @@ export interface Datadog {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3152,6 +3276,8 @@ export interface Datadog {
   tags?: string[];
   /**
    * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
+   *
+   * @default "US1"
    */
   region?: "US1" | "US3" | "US5" | "EU1" | "AP1" | "US1_FED";
 }
@@ -3182,8 +3308,10 @@ export interface DatadogServiceCheck {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3228,6 +3356,8 @@ export interface DatadogServiceCheck {
   message?: string;
   /**
    * The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.
+   *
+   * @default "US1"
    */
   region?: "US1" | "US3" | "US5" | "EU1" | "AP1" | "US1_FED";
 }
@@ -3258,8 +3388,10 @@ export interface DeployToAppStoreConnect {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3334,8 +3466,10 @@ export interface DigitalOcean {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3430,8 +3564,10 @@ export interface DigitalOceanCDN {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3518,8 +3654,10 @@ export interface DigitalOceanCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3552,8 +3690,10 @@ export interface DigitalOceanCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -3586,8 +3726,10 @@ export interface DigitalOceanSpaces {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3682,8 +3824,10 @@ export interface Discord {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3750,8 +3894,10 @@ export interface Docker {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3804,8 +3950,10 @@ export interface Docker {
   password?: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * If set to `true`, all commands will be executed regardless of the result of the previous command.
    */
@@ -3838,8 +3986,10 @@ export interface DockerCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3944,8 +4094,10 @@ export interface DockerfileLinter {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -3975,7 +4127,7 @@ export interface DockerfileLinter {
   /**
    * Type of shell in which the errors will be detected. Available values: `sh`, `bash`, `dash`, `ksh`
    */
-  shell_type?: string;
+  shell_type?: "sh" | "bash" | "dash" | "ksh";
   /**
    * The errors that will be ignored by linter. You can find the error codes below or use [ShellCheck](https://github.com/koalaman/shellcheck/wiki/Checks).
    */
@@ -4012,8 +4164,10 @@ export interface DownloadBackblazeB2 {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4100,8 +4254,10 @@ export interface DownloadFromSandbox {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4143,7 +4299,7 @@ export interface DownloadFromSandbox {
   /**
    * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
    */
-  sandbox_references: string;
+  sandbox_references: "BY_TAGS" | "BY_NAME" | "BY_PROJECT" | "BY_DAYS" | "BY_ID" | "BY_ACTION";
   /**
    * The ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
    */
@@ -4204,8 +4360,10 @@ export interface DownloadFTP {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4296,8 +4454,10 @@ export interface DownloadFTPS {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4388,8 +4548,10 @@ export interface DownloadGCS {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4476,8 +4638,10 @@ export interface DownloadS3 {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4560,8 +4724,10 @@ export interface DownloadSFTP {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4656,8 +4822,10 @@ export interface EmailNotification {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4736,8 +4904,10 @@ export interface ESLint {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4826,8 +4996,10 @@ export interface Firebase {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -4872,8 +5044,10 @@ export interface Firebase {
   working_directory?: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -4906,8 +5080,10 @@ export interface FTP {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5002,8 +5178,10 @@ export interface FTPS {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5090,8 +5268,10 @@ export interface GenerateVariables {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5146,8 +5326,10 @@ export interface GhostInspector {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5193,9 +5375,27 @@ export interface GhostInspector {
   /**
    * Geo-location for test execution. The following options are available: `us-east-1`, `us-west-1`, `ca-central-1`, `eu-central-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `eu-north-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-southeast-1`, `ap-southeast-2`, `ap-south-1`, `sa-east-1`.
    */
-  region?: string;
+  region?:
+    | "us-east-1"
+    | "us-west-1"
+    | "ca-central-1"
+    | "eu-central-1"
+    | "eu-west-1"
+    | "eu-west-2"
+    | "eu-west-3"
+    | "eu-n"
+    | "th-1"
+    | "ap-n"
+    | "theast-1"
+    | "theast-2"
+    | "ap-southeast-1"
+    | "ap-southeast-2"
+    | "ap-south-1"
+    | "sa-east-1";
   /**
    * Alternate browser to use for this execution. The following options are available: `firefox` (default), `firefox-<version>` specific version of Firefox, for example `firefox-57`, `chrome` (paid plans only), `phantomjs`.
+   *
+   * @default "firefox"
    */
   browser?: string;
   /**
@@ -5254,8 +5454,10 @@ export interface GhostInspectorCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5288,8 +5490,10 @@ export interface GhostInspectorCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -5322,8 +5526,10 @@ export interface GitcryptLock {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5382,8 +5588,10 @@ export interface GitcryptUnlock {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5438,8 +5646,10 @@ export interface GitHubCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5464,8 +5674,10 @@ export interface GitHubCLI {
   trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
   /**
    * The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`.
+   *
+   * @default "BASH"
    */
-  shell?: string;
+  shell?: "BASH" | "SH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -5506,8 +5718,10 @@ export interface GitHubRelease {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5602,8 +5816,10 @@ export interface GitLabCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5628,8 +5844,10 @@ export interface GitLabCLI {
   trigger_time?: "ON_EVERY_EXECUTION" | "ON_FAILURE" | "ON_BACK_TO_SUCCESS" | "ON_WARNING" | "ON_WAIT_FOR_APPROVE";
   /**
    * The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`.
+   *
+   * @default "BASH"
    */
-  shell?: string;
+  shell?: "BASH" | "SH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -5670,8 +5888,10 @@ export interface GitPush {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5774,8 +5994,10 @@ export interface GKEApplyDeployment {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5890,8 +6112,10 @@ export interface GKERunHelm {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -5964,8 +6188,10 @@ export interface GKERunHelm {
   kubectl_version?: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
 }
 export interface GKERunJob {
   /**
@@ -5994,8 +6220,10 @@ export interface GKERunJob {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6090,8 +6318,10 @@ export interface GKERunPod {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6186,8 +6416,10 @@ export interface GKESetImage {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6290,8 +6522,10 @@ export interface GoogleAppEngine {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6386,8 +6620,10 @@ export interface GoogleCDN {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6474,8 +6710,10 @@ export interface GoogleChat {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6538,8 +6776,10 @@ export interface GoogleCloudCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6572,8 +6812,10 @@ export interface GoogleCloudCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The name of the Google application.
    */
@@ -6610,8 +6852,10 @@ export interface GoogleCloudRun {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6706,8 +6950,10 @@ export interface GoogleCloudStorage {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6798,8 +7044,10 @@ export interface GoogleComputeEngine {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6890,8 +7138,10 @@ export interface GoogleFunctions {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -6962,8 +7212,10 @@ export interface GoogleFunctionsDeploy {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7042,8 +7294,10 @@ export interface Heroku {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7118,8 +7372,10 @@ export interface HerokuCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7156,8 +7412,10 @@ export interface HerokuCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -7190,8 +7448,10 @@ export interface Honeybadger {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7254,8 +7514,10 @@ export interface HTTPRequest {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7338,8 +7600,10 @@ export interface JMeterCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7368,8 +7632,10 @@ export interface JMeterCLI {
   execute_commands: string[];
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -7402,8 +7668,10 @@ export interface KubernetesApplyDeployment {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7526,8 +7794,10 @@ export interface KubernetesKubectl {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7592,8 +7862,10 @@ export interface KubernetesKubectl {
   kubectl_version?: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
 }
 export interface KubernetesRunHelmCMDs {
   /**
@@ -7622,8 +7894,10 @@ export interface KubernetesRunHelmCMDs {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7704,8 +7978,10 @@ export interface KubernetesRunHelmCMDs {
   kubectl_version?: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
 }
 export interface KubernetesRunJob {
   /**
@@ -7734,8 +8010,10 @@ export interface KubernetesRunJob {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7846,8 +8124,10 @@ export interface KubernetesRunPod {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -7958,8 +8238,10 @@ export interface KubernetesSetImage {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8038,8 +8320,10 @@ export interface Lighthouse {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8114,8 +8398,10 @@ export interface LinkChecker {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8254,8 +8540,10 @@ export interface Linux {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8338,8 +8626,10 @@ export interface Loggly {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8402,8 +8692,10 @@ export interface MacOS {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8482,8 +8774,10 @@ export interface MicrosoftAzure {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8570,8 +8864,10 @@ export interface MicrosoftTeams {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8642,8 +8938,10 @@ export interface Netlify {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8680,8 +8978,10 @@ export interface Netlify {
   site_id?: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -8714,8 +9014,10 @@ export interface NewRelicCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8748,8 +9050,10 @@ export interface NewRelicCLI {
   execute_commands: string[];
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -8782,8 +9086,10 @@ export interface OperateSandbox {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8809,7 +9115,7 @@ export interface OperateSandbox {
   /**
    * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
    */
-  sandbox_references: string;
+  sandbox_references: "BY_TAGS" | "BY_NAME" | "BY_PROJECT" | "BY_DAYS" | "BY_ID" | "BY_ACTION";
   /**
    * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
    */
@@ -8862,8 +9168,10 @@ export interface PassArguments {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -8958,8 +9266,10 @@ export interface PingMonitoring {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9014,8 +9324,10 @@ export interface PublishAndroidApp {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9107,8 +9419,10 @@ export interface PublishBundleToGooglePlay {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9191,8 +9505,10 @@ export interface Pushbullet {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9263,8 +9579,10 @@ export interface PushDockerImage {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9302,7 +9620,14 @@ export interface PushDockerImage {
   /**
    * The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`.
    */
-  integration?: string;
+  integration?:
+    | "NONE"
+    | "DOCKER_HUB"
+    | "AMAZON_ECR"
+    | "GOOGLE_GCR"
+    | "GOOGLE_ARTIFACT_REGISTRY"
+    | "GIT_HUB_CONTAINER_REGISTRY"
+    | "OTHER";
   /**
    * The name of the Amazon region. Required for delivering the Dockerfile to the Amazon ECR. The full list of regions is available [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
    */
@@ -9326,7 +9651,14 @@ export interface PushDockerImage {
   /**
    * The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
    */
-  docker_registry?: string;
+  docker_registry?:
+    | "NONE"
+    | "DOCKER_HUB"
+    | "AMAZON_ECR"
+    | "GOOGLE_GCR"
+    | "GOOGLE_ARTIFACT_REGISTRY"
+    | "GIT_HUB_CONTAINER_REGISTRY"
+    | "OTHER";
 }
 export interface Pushover {
   /**
@@ -9355,8 +9687,10 @@ export interface Pushover {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9435,8 +9769,10 @@ export interface Rackspace {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9523,8 +9859,10 @@ export interface Raygun {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9599,8 +9937,10 @@ export interface Replace {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9663,8 +10003,10 @@ export interface Rollbar {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9747,8 +10089,10 @@ export interface Rsync {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9859,8 +10203,10 @@ export interface RunDockerContainer {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -9950,11 +10296,11 @@ export interface RunDockerContainer {
   /**
    * The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action.
    */
-  image_location?: string;
+  image_location?: "PUBLIC_REGISTRY" | "PRIVATE_REGISTRY" | "ACTION";
   /**
    * The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action.
    */
-  docker_registry?: string;
+  docker_registry?: "NONE" | "DOCKER_HUB" | "AMAZON_ECR" | "GOOGLE_GCR" | "GOOGLE_ARTIFACT_REGISTRY" | "OTHER";
 }
 export interface Sentry {
   /**
@@ -9983,8 +10329,10 @@ export interface Sentry {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10067,8 +10415,10 @@ export interface SetVariables {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10143,8 +10493,10 @@ export interface SFTP {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10239,8 +10591,10 @@ export interface Shopify {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10307,8 +10661,10 @@ export interface ShopifyCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10341,8 +10697,10 @@ export interface ShopifyCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -10375,8 +10733,10 @@ export interface ShopifyThemeKitCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10409,8 +10769,10 @@ export interface ShopifyThemeKitCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -10443,8 +10805,10 @@ export interface SignAndroidApp {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10527,8 +10891,10 @@ export interface SignBundle {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10607,8 +10973,10 @@ export interface SlackNotification {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10679,8 +11047,10 @@ export interface Sleep {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10735,8 +11105,10 @@ export interface SMSNotification {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10795,8 +11167,10 @@ export interface Snyk {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10829,8 +11203,10 @@ export interface Snyk {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -10867,8 +11243,10 @@ export interface SplitTests {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10931,8 +11309,10 @@ export interface SSHCommand {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -10985,8 +11365,10 @@ export interface SSHCommand {
   run_as_script?: boolean;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The absolute or relative path on the remote server.
    */
@@ -11023,8 +11405,10 @@ export interface SSHToSandbox {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11061,12 +11445,14 @@ export interface SSHToSandbox {
   commands: string[];
   /**
    * The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`.
+   *
+   * @default "BASH"
    */
-  shell?: string;
+  shell?: "BASH" | "SH";
   /**
    * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
    */
-  sandbox_references: string;
+  sandbox_references: "BY_TAGS" | "BY_NAME" | "BY_PROJECT" | "BY_DAYS" | "BY_ID" | "BY_ACTION";
   /**
    * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
    */
@@ -11123,8 +11509,10 @@ export interface SSLVerify {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11187,8 +11575,10 @@ export interface StackHawkCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11221,8 +11611,10 @@ export interface StackHawkCLI {
   integration: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -11255,8 +11647,10 @@ export interface TCPMonitoring {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11323,8 +11717,10 @@ export interface TelegramNotification {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11387,8 +11783,10 @@ export interface TerraformCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11459,8 +11857,10 @@ export interface TransferToSandbox {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11518,7 +11918,7 @@ export interface TransferToSandbox {
   /**
    * Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`.
    */
-  sandbox_references: string;
+  sandbox_references: "BY_TAGS" | "BY_NAME" | "BY_PROJECT" | "BY_DAYS" | "BY_ID" | "BY_ACTION";
   /**
    * ID of the sandbox to which the files are uploaded. Required when `sandbox_references` is set to `BY_ID`.
    */
@@ -11571,8 +11971,10 @@ export interface TriggerPipeline {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11613,6 +12015,8 @@ export interface TriggerPipeline {
   comment?: string;
   /**
    * Can be one of `HEAD`, `INHERIT`or `SPECIFIC`. Default is `HEAD`.
+   *
+   * @default "HEAD"
    */
   revision?: "HEAD" | "INHERIT" | "SPECIFIC";
   /**
@@ -11630,7 +12034,7 @@ export interface TriggerPipeline {
   /**
    * Set if you want the execution to run with priority other than set in the next pipeline. Can be one of `LOW`, `NORMAL` or `HIGH`.
    */
-  priority?: "LOW" | "NORMAL" | "HIGH";
+  priority?: ExecutionPriority;
   wait?: boolean;
 }
 export interface UpCloud {
@@ -11660,8 +12064,10 @@ export interface UpCloud {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11760,8 +12166,10 @@ export interface VisualTests {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11856,8 +12264,10 @@ export interface Vultr {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -11952,8 +12362,10 @@ export interface WaitForApproval {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -12012,8 +12424,10 @@ export interface WebDAV {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -12096,8 +12510,10 @@ export interface WebMonitoring {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -12180,8 +12596,10 @@ export interface Windows {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -12264,8 +12682,10 @@ export interface WPCLI {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -12302,8 +12722,10 @@ export interface WPCLI {
   version: string;
   /**
    * The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.
+   *
+   * @default "SH"
    */
-  shell?: string;
+  shell?: "SH" | "BASH";
   /**
    * The command that will be executed only on the first run.
    */
@@ -12344,8 +12766,10 @@ export interface Xcode {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */
@@ -12420,8 +12844,10 @@ export interface ZIP {
   disabled?: boolean;
   /**
    * Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`
+   *
+   * @default "ON_EVERY_EXECUTION"
    */
-  run_next?: string;
+  run_next?: "WAIT_ON_SUCCESS" | "IN_SOFT_PARALLEL" | "IN_HARD_PARALLEL";
   /**
    * Defines whether the action should be executed on each failure. Restricted to and required if the 'trigger_time' is `ON_FAILURE`.
    */

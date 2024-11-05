@@ -479,7 +479,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -579,7 +585,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -796,7 +808,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -886,7 +904,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -930,7 +954,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "string",
@@ -984,7 +1013,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1031,7 +1066,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -1088,7 +1128,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1135,7 +1181,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -1192,7 +1243,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1326,7 +1383,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1420,7 +1483,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1537,7 +1606,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1640,7 +1715,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1754,7 +1835,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1855,7 +1942,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -1902,7 +1995,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -1959,7 +2057,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -2090,7 +2194,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -2219,7 +2329,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -2266,6 +2382,10 @@ const Schema = {
         },
         "shell": {
           "type": "string",
+          "enum": [
+            "SH",
+            "BASH"
+          ],
           "description": "The name of the shell that will be used to execute commands. Can be one of `SH`(default) or `BASH`."
         },
         "setup_commands": {
@@ -2323,7 +2443,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -2425,7 +2551,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -2549,7 +2681,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -2673,7 +2811,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -2738,7 +2882,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "services": {
           "type": "array",
@@ -2765,6 +2914,15 @@ const Schema = {
         },
         "integration": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "GIT_HUB_CONTAINER_REGISTRY",
+            "OTHER"
+          ],
           "description": "The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`."
         },
         "region": {
@@ -2801,10 +2959,24 @@ const Schema = {
         },
         "image_location": {
           "type": "string",
+          "enum": [
+            "PUBLIC_REGISTRY",
+            "PRIVATE_REGISTRY",
+            "ACTION"
+          ],
           "description": "The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action."
         },
         "docker_registry": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "GIT_HUB_CONTAINER_REGISTRY",
+            "OTHER"
+          ],
           "description": "The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with `image_location`. If not specified, the system will automatically set it based on other data from the action."
         }
       },
@@ -2855,7 +3027,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -2979,7 +3157,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -3031,6 +3215,15 @@ const Schema = {
         },
         "integration": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "GIT_HUB_CONTAINER_REGISTRY",
+            "OTHER"
+          ],
           "description": "The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`."
         },
         "region": {
@@ -3073,7 +3266,13 @@ const Schema = {
         },
         "provenance": {
           "type": "string",
-          "description": "Refers to the `--provenance` switch of the Docker build. Available values: `NONE`, `MIN`, `MAX`. The default value is `NONE`."
+          "enum": [
+            "NONE",
+            "MIN",
+            "MAX"
+          ],
+          "default": "NONE",
+          "description": "Refers to the `--provenance` switch of the Docker build. Available values: `NONE`, `MIN`, `MAX`. The default value is `NONE`.\n\n@default \"NONE\""
         },
         "cache_mode": {
           "type": "string",
@@ -3081,6 +3280,15 @@ const Schema = {
         },
         "docker_registry": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "GIT_HUB_CONTAINER_REGISTRY",
+            "OTHER"
+          ],
           "description": "The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action."
         }
       },
@@ -3129,7 +3337,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -3253,7 +3467,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -3313,7 +3533,13 @@ const Schema = {
         "target_platform": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "linux/amd64",
+              "linux/arm64",
+              "linux/arm/v7",
+              "linux/arm/v6"
+            ]
           },
           "description": "Specifies the target platform for the build output. You can set multiple target platforms. Default value: `linux/amd64`. Available values: `linux/amd64`, `linux/arm64`, `linux/arm/v7`, `linux/arm/v6`."
         },
@@ -3331,6 +3557,15 @@ const Schema = {
         },
         "integration": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "GIT_HUB_CONTAINER_REGISTRY",
+            "OTHER"
+          ],
           "description": "The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`."
         },
         "region": {
@@ -3351,6 +3586,15 @@ const Schema = {
         },
         "docker_registry": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "GIT_HUB_CONTAINER_REGISTRY",
+            "OTHER"
+          ],
           "description": "The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action."
         }
       },
@@ -3399,7 +3643,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -3432,7 +3682,11 @@ const Schema = {
         "cache_types": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "DOCKER",
+              "FILE_SYSTEM"
+            ]
           },
           "description": "Defines the cache layer cleared by the action. Available values: `DOCKER`, `FILE_SYSTEM`,  `SERVICES`, `ADDITIONAL`."
         }
@@ -3482,7 +3736,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -3606,7 +3866,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -3725,7 +3991,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -3765,6 +4037,11 @@ const Schema = {
         },
         "property_list_source": {
           "type": "string",
+          "enum": [
+            "ACTION",
+            "GENERATED",
+            "PIPELINE_VOLUME"
+          ],
           "description": "Defines the source of the `property_list` used by the action. Available options: `ACTION`, `GENERATED`,`PIPELINE_VOLUME`."
         },
         "property_list": {
@@ -3773,6 +4050,12 @@ const Schema = {
         },
         "distribution_method": {
           "type": "string",
+          "enum": [
+            "APP_STORE",
+            "ENTERPRISE",
+            "AD_HOC",
+            "DEVELOPMENT"
+          ],
           "description": "Defines the distribution method from one of the available: `APP_STORE`, `ENTERPRISE`, `AD_HOC`, `DEVELOPMENT`."
         },
         "certificates": {
@@ -3835,7 +4118,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -3879,6 +4168,12 @@ const Schema = {
         },
         "types": {
           "type": "string",
+          "enum": [
+            "jpg",
+            "png",
+            "gif",
+            "svg"
+          ],
           "description": "Supported image formats. Available types: `jpg`, `png`, `gif`, `svg`."
         }
       },
@@ -3946,7 +4241,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -4067,7 +4368,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -4213,7 +4520,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -4289,7 +4602,8 @@ const Schema = {
             "AP1",
             "US1_FED"
           ],
-          "description": "The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`."
+          "default": "US1",
+          "description": "The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.\n\n@default \"US1\""
         }
       },
       "required": [
@@ -4338,7 +4652,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -4398,7 +4718,8 @@ const Schema = {
             "AP1",
             "US1_FED"
           ],
-          "description": "The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`."
+          "default": "US1",
+          "description": "The Datadog region.  Can be one of `US1`, `US3`, `US5`, `EU1`, `AP1`, `US1_FED`. If not set, the default is `US1`.\n\n@default \"US1\""
         }
       },
       "required": [
@@ -4446,7 +4767,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -4546,7 +4873,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -4682,7 +5015,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -4806,7 +5145,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -4849,7 +5194,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -4905,7 +5255,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -5037,7 +5393,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -5132,7 +5494,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -5198,7 +5566,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "execute_every_command": {
           "type": "boolean",
@@ -5268,7 +5641,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -5399,7 +5778,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -5435,6 +5820,12 @@ const Schema = {
         },
         "shell_type": {
           "type": "string",
+          "enum": [
+            "sh",
+            "bash",
+            "dash",
+            "ksh"
+          ],
           "description": "Type of shell in which the errors will be detected. Available values: `sh`, `bash`, `dash`, `ksh`"
         },
         "ignore_codes": {
@@ -5490,7 +5881,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -5612,7 +6009,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -5666,6 +6069,14 @@ const Schema = {
         },
         "sandbox_references": {
           "type": "string",
+          "enum": [
+            "BY_TAGS",
+            "BY_NAME",
+            "BY_PROJECT",
+            "BY_DAYS",
+            "BY_ID",
+            "BY_ACTION"
+          ],
           "description": "Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`."
         },
         "sandbox_id": {
@@ -5749,7 +6160,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -5876,7 +6293,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6003,7 +6426,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6124,7 +6553,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6241,7 +6676,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6376,7 +6817,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6483,7 +6930,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6567,6 +7020,11 @@ const Schema = {
       "properties": {
         "type": {
           "type": "string",
+          "enum": [
+            "PUSH",
+            "CREATE_REF",
+            "DELETE_REF"
+          ],
           "description": "The type of the event. Available values: 'PUSH', 'CREATE_REF', 'DELETE_REF'."
         },
         "refs": {
@@ -6586,6 +7044,15 @@ const Schema = {
         "refs"
       ],
       "additionalProperties": false
+    },
+    "ExecutionPriority": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "NORMAL",
+        "HIGH"
+      ],
+      "default": "NORMAL"
     },
     "Firebase": {
       "type": "object",
@@ -6625,7 +7092,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6683,7 +7156,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -6740,7 +7218,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6873,7 +7357,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -6998,7 +7488,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7078,7 +7574,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7130,11 +7632,30 @@ const Schema = {
         },
         "region": {
           "type": "string",
+          "enum": [
+            "us-east-1",
+            "us-west-1",
+            "ca-central-1",
+            "eu-central-1",
+            "eu-west-1",
+            "eu-west-2",
+            "eu-west-3",
+            "eu-n",
+            "th-1",
+            "ap-n",
+            "theast-1",
+            "theast-2",
+            "ap-southeast-1",
+            "ap-southeast-2",
+            "ap-south-1",
+            "sa-east-1"
+          ],
           "description": "Geo-location for test execution. The following options are available: `us-east-1`, `us-west-1`, `ca-central-1`, `eu-central-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `eu-north-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-southeast-1`, `ap-southeast-2`, `ap-south-1`, `sa-east-1`."
         },
         "browser": {
           "type": "string",
-          "description": "Alternate browser to use for this execution. The following options are available: `firefox` (default), `firefox-<version>` specific version of Firefox, for example `firefox-57`, `chrome` (paid plans only), `phantomjs`."
+          "default": "firefox",
+          "description": "Alternate browser to use for this execution. The following options are available: `firefox` (default), `firefox-<version>` specific version of Firefox, for example `firefox-57`, `chrome` (paid plans only), `phantomjs`.\n\n@default \"firefox\""
         },
         "suite_id": {
           "type": "string",
@@ -7210,7 +7731,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7250,7 +7777,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "string",
@@ -7303,7 +7835,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7387,7 +7925,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7467,7 +8011,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7499,7 +8049,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`."
+          "enum": [
+            "BASH",
+            "SH"
+          ],
+          "default": "BASH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`.\n\n@default \"BASH\""
         },
         "setup_commands": {
           "type": "array",
@@ -7566,7 +8121,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7689,7 +8250,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7721,7 +8288,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`."
+          "enum": [
+            "BASH",
+            "SH"
+          ],
+          "default": "BASH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `BASH` (default) or `SH`.\n\n@default \"BASH\""
         },
         "setup_commands": {
           "type": "string",
@@ -7782,7 +8354,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -7917,7 +8495,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8067,7 +8651,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8153,7 +8743,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         }
       },
       "required": [
@@ -8207,7 +8802,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8336,7 +8937,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8465,7 +9072,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8608,7 +9221,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8742,7 +9361,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8865,7 +9490,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8955,7 +9586,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -8998,7 +9635,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "application_name": {
           "type": "string",
@@ -9058,7 +9700,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -9182,7 +9830,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -9309,7 +9963,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -9441,7 +10101,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -9539,7 +10205,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -9661,7 +10333,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -9765,7 +10443,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -9812,7 +10496,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -9869,7 +10558,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -9959,7 +10654,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -10067,7 +10768,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -10106,7 +10813,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -10161,7 +10873,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -10322,7 +11040,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -10402,7 +11126,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         }
       },
       "required": [
@@ -10452,7 +11181,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -10551,7 +11286,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         }
       },
       "required": [
@@ -10602,7 +11342,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -10749,7 +11495,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -10896,7 +11648,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11009,7 +11767,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11118,7 +11882,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11287,7 +12057,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11407,7 +12183,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11499,7 +12281,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11641,7 +12429,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11757,7 +12551,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11858,7 +12658,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -11905,7 +12711,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -11961,7 +12772,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -12004,7 +12821,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -12060,7 +12882,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -12092,6 +12920,14 @@ const Schema = {
         },
         "sandbox_references": {
           "type": "string",
+          "enum": [
+            "BY_TAGS",
+            "BY_NAME",
+            "BY_PROJECT",
+            "BY_DAYS",
+            "BY_ID",
+            "BY_ACTION"
+          ],
           "description": "Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`."
         },
         "sandbox_id": {
@@ -12167,7 +13003,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -12304,7 +13146,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -12461,10 +13309,20 @@ const Schema = {
         },
         "git_changeset_base": {
           "type": "string",
+          "enum": [
+            "LATEST_RUN",
+            "LATEST_RUN_MATCHING_REF",
+            "PULL_REQUEST"
+          ],
           "description": "Defines the way the changeset for deployments and trigger conditions between subsequent executions in the pipeline will be calculated. Available values: `LATEST_RUN`, `LATEST_RUN_MATCHING_REF`, `PULL_REQUEST`. By default, it is set to `LATEST_RUN`."
         },
         "cache_scope": {
           "type": "string",
+          "enum": [
+            "WORKSPACE",
+            "PROJECT",
+            "PIPELINE"
+          ],
           "description": "Docker cache scope. Available values: `WORKSPACE`, `PROJECT`, `PIPELINE`. By default, it is set to `PIPELINE`."
         },
         "description_required": {
@@ -12477,7 +13335,22 @@ const Schema = {
         },
         "filesystem_changeset_base": {
           "type": "string",
+          "enum": [
+            "DATE_MODIFIED",
+            "CONTENTS"
+          ],
           "description": "Defines changeset calculation method whenever deployment action has `input_type` set to `BUILD_ARTIFACTS`. Default set to `DATE_MODIFIED`. Possible values: `DATE_MODIFIED`, `CONTENTS`"
+        },
+        "folder": {
+          "type": "string"
+        },
+        "priority": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExecutionPriority"
+            }
+          ],
+          "description": "@default \"NORMAL\""
         }
       },
       "required": [
@@ -12552,7 +13425,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -12678,7 +13557,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -12800,7 +13685,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -12896,7 +13787,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -12940,6 +13837,15 @@ const Schema = {
         },
         "integration": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "GIT_HUB_CONTAINER_REGISTRY",
+            "OTHER"
+          ],
           "description": "The ID of the integration. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`."
         },
         "region": {
@@ -12964,6 +13870,15 @@ const Schema = {
         },
         "docker_registry": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "GIT_HUB_CONTAINER_REGISTRY",
+            "OTHER"
+          ],
           "description": "The type of registry you authorize to. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `GIT_HUB_CONTAINER_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action."
         }
       },
@@ -13011,7 +13926,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -13121,7 +14042,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -13245,7 +14172,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -13346,7 +14279,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -13449,7 +14388,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -13561,7 +14506,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -13713,7 +14664,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -13812,10 +14769,23 @@ const Schema = {
         },
         "image_location": {
           "type": "string",
+          "enum": [
+            "PUBLIC_REGISTRY",
+            "PRIVATE_REGISTRY",
+            "ACTION"
+          ],
           "description": "The location of the image used by the action. Available values: `PUBLIC_REGISTRY`, `PRIVATE_REGISTRY`, `ACTION`. If the value is other than `ACTION`, it must be provided together with the docker_registry field. If not provided, the system will automatically set it based on other data from the action."
         },
         "docker_registry": {
           "type": "string",
+          "enum": [
+            "NONE",
+            "DOCKER_HUB",
+            "AMAZON_ECR",
+            "GOOGLE_GCR",
+            "GOOGLE_ARTIFACT_REGISTRY",
+            "OTHER"
+          ],
           "description": "The type of registry from which the image used by the action is retrieved. Available values: `NONE`, `DOCKER_HUB`, `AMAZON_ECR`, `GOOGLE_GCR`, `GOOGLE_ARTIFACT_REGISTRY`, `OTHER`. It must be provided together with image_location. If not specified, the system will automatically set it based on other data from the action."
         }
       },
@@ -13933,7 +14903,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14073,7 +15049,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14178,7 +15160,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14314,7 +15302,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14411,7 +15405,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14454,7 +15454,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -14510,7 +15515,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14553,7 +15564,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -14609,7 +15625,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14721,7 +15743,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14828,7 +15856,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -14932,7 +15966,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15012,7 +16052,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15097,7 +16143,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15140,7 +16192,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -15200,7 +16257,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15293,7 +16356,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15359,7 +16428,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "working_directory": {
           "type": "string",
@@ -15420,7 +16494,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15467,10 +16547,23 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`."
+          "enum": [
+            "BASH",
+            "SH"
+          ],
+          "default": "BASH",
+          "description": "The name of the shell used to execute commands. Can be one of `BASH` (default) or `SH`.\n\n@default \"BASH\""
         },
         "sandbox_references": {
           "type": "string",
+          "enum": [
+            "BY_TAGS",
+            "BY_NAME",
+            "BY_PROJECT",
+            "BY_DAYS",
+            "BY_ID",
+            "BY_ACTION"
+          ],
           "description": "Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`."
         },
         "sandbox_id": {
@@ -15551,7 +16644,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15640,7 +16739,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15683,7 +16788,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -15783,7 +16893,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15876,7 +16992,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -15968,7 +17090,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -16065,7 +17193,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -16139,6 +17273,14 @@ const Schema = {
         },
         "sandbox_references": {
           "type": "string",
+          "enum": [
+            "BY_TAGS",
+            "BY_NAME",
+            "BY_PROJECT",
+            "BY_DAYS",
+            "BY_ID",
+            "BY_ACTION"
+          ],
           "description": "Defines the sandbox selection method. Available values: `BY_TAGS`, `BY_NAME`, `BY_PROJECT`, `BY_DAYS`, `BY_ID`, `BY_ACTION`."
         },
         "sandbox_id": {
@@ -16307,7 +17449,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -16360,7 +17508,8 @@ const Schema = {
             "INHERIT",
             "SPECIFIC"
           ],
-          "description": "Can be one of `HEAD`, `INHERIT`or `SPECIFIC`. Default is `HEAD`."
+          "default": "HEAD",
+          "description": "Can be one of `HEAD`, `INHERIT`or `SPECIFIC`. Default is `HEAD`.\n\n@default \"HEAD\""
         },
         "specific_revision": {
           "type": "string",
@@ -16375,11 +17524,10 @@ const Schema = {
           "description": "Set to `true` if you want the execution to run from scratch. Default is `false`."
         },
         "priority": {
-          "type": "string",
-          "enum": [
-            "LOW",
-            "NORMAL",
-            "HIGH"
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ExecutionPriority"
+            }
           ],
           "description": "Set if you want the execution to run with priority other than set in the next pipeline. Can be one of `LOW`, `NORMAL` or `HIGH`."
         },
@@ -16431,7 +17579,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -16570,6 +17724,10 @@ const Schema = {
         },
         "file_place": {
           "type": "string",
+          "enum": [
+            "CONTAINER",
+            "NONE"
+          ],
           "description": "Available values: `CONTAINER`, `NONE`. Set if type is `SSH_KEY` or `FILE`. If it's `NONE`, the variable can be used as a parameter in an action. For `CONTAINER`, the given file/key is additionally copied to an action container on each run."
         },
         "file_path": {
@@ -16625,7 +17783,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -16752,7 +17916,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -16889,7 +18059,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -16976,7 +18152,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -17096,7 +18278,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -17207,7 +18395,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -17326,7 +18520,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -17373,7 +18573,12 @@ const Schema = {
         },
         "shell": {
           "type": "string",
-          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`."
+          "enum": [
+            "SH",
+            "BASH"
+          ],
+          "default": "SH",
+          "description": "The name of the shell that will be used to execute commands. Can be one of `SH` (default) or `BASH`.\n\n@default \"SH\""
         },
         "setup_commands": {
           "type": "array",
@@ -17438,7 +18643,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
@@ -17549,7 +18760,13 @@ const Schema = {
         },
         "run_next": {
           "type": "string",
-          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`"
+          "enum": [
+            "WAIT_ON_SUCCESS",
+            "IN_SOFT_PARALLEL",
+            "IN_HARD_PARALLEL"
+          ],
+          "default": "ON_EVERY_EXECUTION",
+          "description": "Defines whether the action should run in parallel with the next one.  Possible values: `WAIT_ON_SUCCESS`(no parallel), `IN_SOFT_PARALLEL`(run as soon as a runner is available), `IN_HARD_PARALLEL`(run only with enough runners). The default value is `ON_EVERY_EXECUTION`\n\n@default \"ON_EVERY_EXECUTION\""
         },
         "run_only_on_first_failure": {
           "type": "boolean",
