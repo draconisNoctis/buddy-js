@@ -24,7 +24,7 @@ describe('generate', () => {
             const file = path.resolve(import.meta.dirname, `__fixtures__/${type}/.buddy/Pipeline.fixed.yml`);
             expect(fs.existsSync(file), `File ${file} should exists`).to.be.true;
 
-            expect(stdout).to.include('created 1 pipelines');
+            expect(stdout).to.include('Created 1 Pipeline(s)');
         });
     }
 });

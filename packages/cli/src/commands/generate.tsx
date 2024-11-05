@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getRegisteredPipelines, isFixed } from '@buddy-js/core';
 import Schema from '@buddy-js/types';
+import { Spinner, StatusMessage } from '@inkjs/ui';
 import { Args, Flags } from '@oclif/core';
 import Ajv from 'ajv-draft-04';
 import addFormats from 'ajv-formats';
@@ -11,10 +12,22 @@ import sanitizeFilename from 'sanitize-filename';
 import YAML from 'yaml';
 import { getLoader } from '../utils/loader.js';
 
-import { Text } from 'ink';
+import { Box, Text } from 'ink';
+import type React from 'react';
 import { BaseCommand, type View } from '../utils/base-command.js';
 
-export default class Generate extends BaseCommand<typeof Generate, { step: string }> {
+type State = Partial<Record<'load' | 'validate' | 'clear' | 'emit', 'skipped' | 'running' | 'done'>> & { result?: string };
+
+function Switch<T extends string | undefined>(
+    props: { value: T; _: (val: T) => React.ReactNode } & { [K in NonNullable<T>]?: () => React.ReactNode }
+) {
+    if (props.value != null && props.value in props && props[props.value]) {
+        return props[props.value]!();
+    }
+    return props._(props.value);
+}
+
+export default class Generate extends BaseCommand<typeof Generate, State> {
     static override enableJsonFlag = true;
 
     static override aliases = ['gen', 'g'];
@@ -39,37 +52,85 @@ export default class Generate extends BaseCommand<typeof Generate, { step: strin
         lineWidth: Flags.integer({ description: 'Max line width for generated YAML files', default: 80, helpGroup: 'YAML format' })
     };
 
-    protected view: View<{ step: string }> = ({ step }) => <Text>{step}</Text>;
-    protected override initialState = { step: 'init' };
+    protected view: View<State> = ({ load, validate, clear, emit, result }) => (
+        <Box flexDirection="column">
+            <Text>{JSON.stringify({ load, validate, clear, emit }, null, 2)}</Text>
+            <Switch
+                value={load}
+                running={() => <Spinner label="Loading..." />}
+                done={() => <StatusMessage variant="success">Loaded</StatusMessage>}
+                _={() => <Text color="gray">Load</Text>}
+            />
+            <Switch
+                value={validate}
+                running={() => <Spinner label="Validating..." />}
+                done={() => <StatusMessage variant="success">Validated</StatusMessage>}
+                _={() => <Text color="gray">Validate</Text>}
+            />
+            <Switch
+                value={clear}
+                running={() => <Spinner label="Clearing..." />}
+                done={() => <StatusMessage variant="success">Cleared</StatusMessage>}
+                skipped={() => (
+                    <Text color="gray" strikethrough={true}>
+                        Clear (Skipped)
+                    </Text>
+                )}
+                _={() => <Text color="gray">Clear</Text>}
+            />
+            <Switch
+                value={emit}
+                running={() => <Spinner label="Emitting..." />}
+                done={() => <StatusMessage variant="success">Emitted</StatusMessage>}
+                _={() => <Text color="gray">Emit</Text>}
+            />
+            {result && (
+                <Box marginTop={1}>
+                    <StatusMessage variant="success">{result}</StatusMessage>
+                </Box>
+            )}
+        </Box>
+    );
+    protected override initialState = {};
 
-    public async *handle() {
+    public async *handle(): AsyncGenerator<State> {
+        if (!this.flags.clear) {
+            yield { clear: 'skipped' };
+        }
         const inputFile = await this.findInputFile();
 
         const extension = path.extname(inputFile);
         const loader = getLoader(extension);
 
-        yield { step: 'load' };
+        yield { load: 'running' };
 
         await loader.load(path.resolve(this.flags.cwd, inputFile));
+        yield { load: 'done' };
 
-        const ajv = new Ajv();
+        const ajv = new Ajv({
+            loadSchema: async () => ({})
+        });
         addFormats(ajv);
 
         const pipelines = [...getRegisteredPipelines()];
 
-        yield { step: 'validate' };
-        if (!ajv.validate(Schema, pipelines)) {
-            throw new Error(ajv.errors!.map(error => error.message).join('\n'));
+        yield { validate: 'running' };
+        await sleep(16);
+        const fn = await ajv.compileAsync(Schema);
+        if (!fn(pipelines)) {
+            throw new Error(fn.errors!.map(error => error.message).join('\n'));
         }
+        yield { validate: 'done' };
 
         if (this.flags.clear) {
-            yield { step: 'clear' };
+            yield { clear: 'running' };
             const cwd = path.resolve(this.flags.cwd, this.flags.output);
             const files = await glob('*.yml', { cwd, absolute: true });
             await Promise.all(files.map(file => fs.unlink(file)));
+            yield { clear: 'done' };
         }
 
-        yield { step: 'emit' };
+        yield { emit: 'running' };
 
         const schemaFile = fileURLToPath(import.meta.resolve('@buddy-js/types/schema.json'));
         for (const pipeline of pipelines) {
@@ -88,10 +149,13 @@ export default class Generate extends BaseCommand<typeof Generate, { step: strin
             await fs.appendFile(file, yaml);
         }
 
-        yield { step: 'done' };
+        yield { emit: 'done' };
 
+        const result = `Created ${pipelines.length} Pipeline(s)`;
+
+        yield { result };
         return {
-            result: `created ${pipelines.length} pipelines`
+            result
         };
     }
 
@@ -104,4 +168,8 @@ export default class Generate extends BaseCommand<typeof Generate, { step: strin
 
         return files[0]!;
     }
+}
+
+function sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
