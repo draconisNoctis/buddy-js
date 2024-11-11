@@ -100,8 +100,8 @@ importers:
         specifier: 5.1.2
         version: 5.1.2
       oclif:
-        specifier: 4.15.23
-        version: 4.15.23(@types/node@22.9.0)
+        specifier: 4.15.24
+        version: 4.15.24(@types/node@22.9.0)
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@swc/core@1.7.36)(@types/node@22.9.0)(typescript@5.6.3)
@@ -647,10 +647,6 @@ packages:
     resolution: {integrity: sha512-DujtuDA7BGEKExJ05W5OdxCoyekcKT3Rhg1ZGeiUWaz2BJIWXjZmsG/DIP4W48GHno7AQwRsaCb8NcBgH3QZpg==}
     engines: {node: '>=16.0.0'}
 
-  '@smithy/credential-provider-imds@3.2.4':
-    resolution: {integrity: sha512-S9bb0EIokfYEuar4kEbLta+ivlKCWOCFsLZuilkNy9i0uEUEHSi47IFLPaxqqCl+0ftKmcOTHayY5nQhAuq7+w==}
-    engines: {node: '>=16.0.0'}
-
   '@smithy/credential-provider-imds@3.2.5':
     resolution: {integrity: sha512-4FTQGAsuwqTzVMmiRVTn0RR9GrbRfkP0wfu/tXWVHd2LgNpTY0uglQpIScXK4NaEyXbB3JmZt8gfVqO50lP8wg==}
     engines: {node: '>=16.0.0'}
@@ -730,10 +726,6 @@ packages:
     resolution: {integrity: sha512-PkOwPNeKdvX/jCpn0A8n9/TyoxjGZB8WVoJmm9YzsnAgggTj4CrjpRHlTQw7dlLZ320n1mY1y+nTRUDViKi/3w==}
     engines: {node: '>=16.0.0'}
 
-  '@smithy/property-provider@3.1.7':
-    resolution: {integrity: sha512-QfzLi1GPMisY7bAM5hOUqBdGYnY5S2JAlr201pghksrQv139f8iiiMalXtjczIP5f6owxFn3MINLNUNvUkgtPw==}
-    engines: {node: '>=16.0.0'}
-
   '@smithy/property-provider@3.1.8':
     resolution: {integrity: sha512-ukNUyo6rHmusG64lmkjFeXemwYuKge1BJ8CtpVKmrxQxc6rhUX0vebcptFA9MmrGsnLhwnnqeH83VTU9hwOpjA==}
     engines: {node: '>=16.0.0'}
@@ -752,10 +744,6 @@ packages:
 
   '@smithy/service-error-classification@3.0.8':
     resolution: {integrity: sha512-uEC/kCCFto83bz5ZzapcrgGqHOh/0r69sZ2ZuHlgoD5kYgXJEThCoTuw/y1Ub3cE7aaKdznb+jD9xRPIfIwD7g==}
-    engines: {node: '>=16.0.0'}
-
-  '@smithy/shared-ini-file-loader@3.1.8':
-    resolution: {integrity: sha512-0NHdQiSkeGl0ICQKcJQ2lCOKH23Nb0EaAa7RDRId6ZqwXkw4LJyIyZ0t3iusD4bnKYDPLGy2/5e2rfUhrt0Acw==}
     engines: {node: '>=16.0.0'}
 
   '@smithy/shared-ini-file-loader@3.1.9':
@@ -1779,8 +1767,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  oclif@4.15.23:
-    resolution: {integrity: sha512-nrQ5B53v/yk5R7Q2SGUxsX8237kl2ezd+rSISsN7s5Vfcrs55/fgBj46wrBxSGBgiQMWy3QZmOOAoW026EdYTw==}
+  oclif@4.15.24:
+    resolution: {integrity: sha512-wjDhmwYUhK+OamLJGEHY3x2hf0/d6XAntfIfWFr1zTe9w+iw7R//2uzNrYTChZV+BQSlBP4bBkVKOCc3XG3Oww==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -2666,7 +2654,7 @@ snapshots:
       '@aws-sdk/types': 3.686.0
       '@smithy/core': 2.5.1
       '@smithy/node-config-provider': 3.1.9
-      '@smithy/property-provider': 3.1.7
+      '@smithy/property-provider': 3.1.8
       '@smithy/protocol-http': 4.1.5
       '@smithy/signature-v4': 4.2.0
       '@smithy/smithy-client': 3.4.2
@@ -2679,7 +2667,7 @@ snapshots:
     dependencies:
       '@aws-sdk/core': 3.686.0
       '@aws-sdk/types': 3.686.0
-      '@smithy/property-provider': 3.1.7
+      '@smithy/property-provider': 3.1.8
       '@smithy/types': 3.6.0
       tslib: 2.7.0
 
@@ -2689,7 +2677,7 @@ snapshots:
       '@aws-sdk/types': 3.686.0
       '@smithy/fetch-http-handler': 4.0.0
       '@smithy/node-http-handler': 3.2.5
-      '@smithy/property-provider': 3.1.7
+      '@smithy/property-provider': 3.1.8
       '@smithy/protocol-http': 4.1.5
       '@smithy/smithy-client': 3.4.2
       '@smithy/types': 3.6.0
@@ -2706,9 +2694,9 @@ snapshots:
       '@aws-sdk/credential-provider-sso': 3.687.0(@aws-sdk/client-sso-oidc@3.687.0(@aws-sdk/client-sts@3.687.0))
       '@aws-sdk/credential-provider-web-identity': 3.686.0(@aws-sdk/client-sts@3.687.0)
       '@aws-sdk/types': 3.686.0
-      '@smithy/credential-provider-imds': 3.2.4
-      '@smithy/property-provider': 3.1.7
-      '@smithy/shared-ini-file-loader': 3.1.8
+      '@smithy/credential-provider-imds': 3.2.5
+      '@smithy/property-provider': 3.1.8
+      '@smithy/shared-ini-file-loader': 3.1.9
       '@smithy/types': 3.6.0
       tslib: 2.7.0
     transitivePeerDependencies:
@@ -2724,9 +2712,9 @@ snapshots:
       '@aws-sdk/credential-provider-sso': 3.687.0(@aws-sdk/client-sso-oidc@3.687.0(@aws-sdk/client-sts@3.687.0))
       '@aws-sdk/credential-provider-web-identity': 3.686.0(@aws-sdk/client-sts@3.687.0)
       '@aws-sdk/types': 3.686.0
-      '@smithy/credential-provider-imds': 3.2.4
-      '@smithy/property-provider': 3.1.7
-      '@smithy/shared-ini-file-loader': 3.1.8
+      '@smithy/credential-provider-imds': 3.2.5
+      '@smithy/property-provider': 3.1.8
+      '@smithy/shared-ini-file-loader': 3.1.9
       '@smithy/types': 3.6.0
       tslib: 2.7.0
     transitivePeerDependencies:
@@ -2738,8 +2726,8 @@ snapshots:
     dependencies:
       '@aws-sdk/core': 3.686.0
       '@aws-sdk/types': 3.686.0
-      '@smithy/property-provider': 3.1.7
-      '@smithy/shared-ini-file-loader': 3.1.8
+      '@smithy/property-provider': 3.1.8
+      '@smithy/shared-ini-file-loader': 3.1.9
       '@smithy/types': 3.6.0
       tslib: 2.7.0
 
@@ -2749,8 +2737,8 @@ snapshots:
       '@aws-sdk/core': 3.686.0
       '@aws-sdk/token-providers': 3.686.0(@aws-sdk/client-sso-oidc@3.687.0(@aws-sdk/client-sts@3.687.0))
       '@aws-sdk/types': 3.686.0
-      '@smithy/property-provider': 3.1.7
-      '@smithy/shared-ini-file-loader': 3.1.8
+      '@smithy/property-provider': 3.1.8
+      '@smithy/shared-ini-file-loader': 3.1.9
       '@smithy/types': 3.6.0
       tslib: 2.7.0
     transitivePeerDependencies:
@@ -2762,7 +2750,7 @@ snapshots:
       '@aws-sdk/client-sts': 3.687.0
       '@aws-sdk/core': 3.686.0
       '@aws-sdk/types': 3.686.0
-      '@smithy/property-provider': 3.1.7
+      '@smithy/property-provider': 3.1.8
       '@smithy/types': 3.6.0
       tslib: 2.7.0
 
@@ -2880,8 +2868,8 @@ snapshots:
     dependencies:
       '@aws-sdk/client-sso-oidc': 3.687.0(@aws-sdk/client-sts@3.687.0)
       '@aws-sdk/types': 3.686.0
-      '@smithy/property-provider': 3.1.7
-      '@smithy/shared-ini-file-loader': 3.1.8
+      '@smithy/property-provider': 3.1.8
+      '@smithy/shared-ini-file-loader': 3.1.9
       '@smithy/types': 3.6.0
       tslib: 2.7.0
 
@@ -3417,14 +3405,6 @@ snapshots:
       '@smithy/util-utf8': 3.0.0
       tslib: 2.7.0
 
-  '@smithy/credential-provider-imds@3.2.4':
-    dependencies:
-      '@smithy/node-config-provider': 3.1.9
-      '@smithy/property-provider': 3.1.7
-      '@smithy/types': 3.6.0
-      '@smithy/url-parser': 3.0.8
-      tslib: 2.7.0
-
   '@smithy/credential-provider-imds@3.2.5':
     dependencies:
       '@smithy/node-config-provider': 3.1.9
@@ -3564,11 +3544,6 @@ snapshots:
       '@smithy/types': 3.6.0
       tslib: 2.7.0
 
-  '@smithy/property-provider@3.1.7':
-    dependencies:
-      '@smithy/types': 3.6.0
-      tslib: 2.7.0
-
   '@smithy/property-provider@3.1.8':
     dependencies:
       '@smithy/types': 3.6.0
@@ -3593,11 +3568,6 @@ snapshots:
   '@smithy/service-error-classification@3.0.8':
     dependencies:
       '@smithy/types': 3.6.0
-
-  '@smithy/shared-ini-file-loader@3.1.8':
-    dependencies:
-      '@smithy/types': 3.6.0
-      tslib: 2.7.0
 
   '@smithy/shared-ini-file-loader@3.1.9':
     dependencies:
@@ -4638,7 +4608,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  oclif@4.15.23(@types/node@22.9.0):
+  oclif@4.15.24(@types/node@22.9.0):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.687.0
       '@aws-sdk/client-s3': 3.688.0
