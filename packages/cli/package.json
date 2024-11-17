@@ -60,7 +60,7 @@
         "@types/node": "22.9.0",
         "@types/react": "18.3.12",
         "chai": "5.1.2",
-        "oclif": "4.15.24",
+        "oclif": "4.15.26",
         "ts-node": "10.9.2",
         "typescript": "5.6.3"
     },
