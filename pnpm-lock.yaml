@@ -85,8 +85,8 @@ importers:
         specifier: 0.2.1
         version: 0.2.1
       '@oclif/test':
-        specifier: 4.1.0
-        version: 4.1.0(@oclif/core@4.0.32)
+        specifier: 4.1.1
+        version: 4.1.1(@oclif/core@4.0.32)
       '@types/chai':
         specifier: 5.0.1
         version: 5.0.1
@@ -603,8 +603,8 @@ packages:
   '@oclif/prettier-config@0.2.1':
     resolution: {integrity: sha512-XB8kwQj8zynXjIIWRm+6gO/r8Qft2xKtwBMSmq1JRqtA6TpwpqECqiu8LosBCyg2JBXuUy2lU23/L98KIR7FrQ==}
 
-  '@oclif/test@4.1.0':
-    resolution: {integrity: sha512-2ugir6NhRsWJqHM9d2lMEWNiOTD678Jlx5chF/fg6TCAlc7E6E/6+zt+polrCTnTIpih5P/HxOtDekgtjgARwQ==}
+  '@oclif/test@4.1.1':
+    resolution: {integrity: sha512-eltLnzdRKXaCQbwl7fSWHUHaHGvYNld0gpKjav6QHvM03w7NV7k4jYMEwQXwf+qmh9LuaFyADDi/tpZfrWNQVQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@oclif/core': '>= 3.0.0'
@@ -3348,7 +3348,7 @@ snapshots:
 
   '@oclif/prettier-config@0.2.1': {}
 
-  '@oclif/test@4.1.0(@oclif/core@4.0.32)':
+  '@oclif/test@4.1.1(@oclif/core@4.0.32)':
     dependencies:
       '@oclif/core': 4.0.32
       ansis: 3.3.2
