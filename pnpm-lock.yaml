@@ -100,8 +100,8 @@ importers:
         specifier: 5.1.2
         version: 5.1.2
       oclif:
-        specifier: 4.17.0
-        version: 4.17.0(@types/node@22.10.2)
+        specifier: 4.17.2
+        version: 4.17.2(@types/node@22.10.2)
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@swc/core@1.7.36)(@types/node@22.10.2)(typescript@5.7.2)
@@ -696,8 +696,8 @@ packages:
     resolution: {integrity: sha512-EF3GmrenxqPLVCU75xLWbwohH1ot/yg+31vyPa4qJAkFspnmQ/Jv28afyk6q4ePcTA5lRC9PYqla5QsALngt3A==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-warn-if-update-available@3.1.21':
-    resolution: {integrity: sha512-yG03rR6Z795lSlkuS+6A9JBSq/VQZ40XspTsKdXa/PUJl52RTeZeOHlaecuv4TddAE6T8VsPdWvry68q5TPE4w==}
+  '@oclif/plugin-warn-if-update-available@3.1.28':
+    resolution: {integrity: sha512-15UI0yrzsodQLltntbUOmR7Nyd1tmUWzbcnR7QJvWMgEMuImNjqNdSaeXUFc3UBtaK266YatJYJWL5SCb/MTWw==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/prettier-config@0.2.1':
@@ -1864,8 +1864,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  oclif@4.17.0:
-    resolution: {integrity: sha512-fRj4J4uIzvRmqSTKGYmYuioG6im29niMBL499wcAIOyRM2UHJslrKi8MCxpzNgqUr6ekkdvyQ13HyzgdPlhytQ==}
+  oclif@4.17.2:
+    resolution: {integrity: sha512-CEg56Z2o2k+PZqMIbo0qUYrXsBl18Fj7eWCPCU6Kn1dxrkMh7/8H0Ch1GSXAOGGshf7iT4FOtzLe/3iSEr2JSw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -2038,8 +2038,8 @@ packages:
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
-  registry-auth-token@5.0.2:
-    resolution: {integrity: sha512-o/3ikDxtXaA59BmZuZrJZDJv8NMDGSj+6j6XaeBmHw8eY1i1qd9+6H+LjVvQXx3HN6aRCGa1cUdJ9RaJZUugnQ==}
+  registry-auth-token@5.0.3:
+    resolution: {integrity: sha512-1bpc9IyC+e+CNFRaWyn77tk4xGG4PPUyfakSmA6F6cvUDjrm58dfyJ3II+9yb10EDkHoy1LaPSmHaWLOH3m6HA==}
     engines: {node: '>=14'}
 
   require-from-string@2.0.2:
@@ -3728,14 +3728,14 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@oclif/plugin-warn-if-update-available@3.1.21':
+  '@oclif/plugin-warn-if-update-available@3.1.28':
     dependencies:
       '@oclif/core': 4.2.0
       ansis: 3.4.0
       debug: 4.4.0(supports-color@8.1.1)
       http-call: 5.3.0
       lodash: 4.17.21
-      registry-auth-token: 5.0.2
+      registry-auth-token: 5.0.3
     transitivePeerDependencies:
       - supports-color
 
@@ -4990,7 +4990,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  oclif@4.17.0(@types/node@22.10.2):
+  oclif@4.17.2(@types/node@22.10.2):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.699.0
       '@aws-sdk/client-s3': 3.712.0
@@ -5000,7 +5000,7 @@ snapshots:
       '@oclif/core': 4.2.0
       '@oclif/plugin-help': 6.2.20
       '@oclif/plugin-not-found': 3.2.31(@types/node@22.10.2)
-      '@oclif/plugin-warn-if-update-available': 3.1.21
+      '@oclif/plugin-warn-if-update-available': 3.1.28
       async-retry: 1.3.3
       chalk: 4.1.2
       change-case: 4.1.2
@@ -5157,7 +5157,7 @@ snapshots:
 
   regenerator-runtime@0.14.1: {}
 
-  registry-auth-token@5.0.2:
+  registry-auth-token@5.0.3:
     dependencies:
       '@pnpm/npm-conf': 2.3.1
 
