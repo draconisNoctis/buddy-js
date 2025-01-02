@@ -57,7 +57,7 @@
         "@oclif/prettier-config": "0.2.1",
         "@oclif/test": "4.1.5",
         "@types/chai": "5.0.1",
-        "@types/node": "22.10.3",
+        "@types/node": "22.10.4",
         "@types/react": "18.3.18",
         "chai": "5.1.2",
         "oclif": "4.17.7",
