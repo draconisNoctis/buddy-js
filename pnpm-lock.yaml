@@ -85,8 +85,8 @@ importers:
         specifier: 0.2.1
         version: 0.2.1
       '@oclif/test':
-        specifier: 4.1.5
-        version: 4.1.5(@oclif/core@4.2.0)
+        specifier: 4.1.6
+        version: 4.1.6(@oclif/core@4.2.0)
       '@types/chai':
         specifier: 5.0.1
         version: 5.0.1
@@ -603,8 +603,8 @@ packages:
   '@oclif/prettier-config@0.2.1':
     resolution: {integrity: sha512-XB8kwQj8zynXjIIWRm+6gO/r8Qft2xKtwBMSmq1JRqtA6TpwpqECqiu8LosBCyg2JBXuUy2lU23/L98KIR7FrQ==}
 
-  '@oclif/test@4.1.5':
-    resolution: {integrity: sha512-w4hVfP+Lsz7toaSnj/E3cFH4Y/nHt1k14cCREQXe/nIqnZW7J6xGnjYEmqU9BPk7m0Lsl52AqJ2hGvLarGhfLw==}
+  '@oclif/test@4.1.6':
+    resolution: {integrity: sha512-1UcMu+5XXGsMgsIZmEbvGKjS6/Z8meu2VNh22Oop9s5dQAHX72Ds70dxwncVbRepFGhIIJ3xzyZbtBIy/sgt3Q==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@oclif/core': '>= 3.0.0'
@@ -1018,6 +1018,10 @@ packages:
 
   ansis@3.5.2:
     resolution: {integrity: sha512-5uGcUZRbORJeEppVdWfZOSybTMz+Ou+84HepgK081Yk5+pPMMzWf/XGxiAT6bfBqCghRB4MwBtYn0CHqINRVag==}
+    engines: {node: '>=16'}
+
+  ansis@3.6.0:
+    resolution: {integrity: sha512-8KluYVZM+vx19f5rInhdEBdIAjvBp7ASzyF/DoStcDpMJ3JOM55ybvUcs9nMRVP8XN2K3ABBdO7zCXezvrT0pg==}
     engines: {node: '>=16'}
 
   arg@4.1.3:
@@ -3336,10 +3340,10 @@ snapshots:
 
   '@oclif/prettier-config@0.2.1': {}
 
-  '@oclif/test@4.1.5(@oclif/core@4.2.0)':
+  '@oclif/test@4.1.6(@oclif/core@4.2.0)':
     dependencies:
       '@oclif/core': 4.2.0
-      ansis: 3.5.2
+      ansis: 3.6.0
       debug: 4.4.0(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
@@ -3833,6 +3837,8 @@ snapshots:
   ansis@3.4.0: {}
 
   ansis@3.5.2: {}
+
+  ansis@3.6.0: {}
 
   arg@4.1.3: {}
 
