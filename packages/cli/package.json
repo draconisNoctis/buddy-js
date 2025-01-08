@@ -51,7 +51,7 @@
         "react": "18.3.1",
         "sanitize-filename": "1.6.3",
         "yaml": "2.7.0",
-        "zustand": "5.0.2"
+        "zustand": "5.0.3"
     },
     "devDependencies": {
         "@oclif/prettier-config": "0.2.1",
