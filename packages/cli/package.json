@@ -41,7 +41,7 @@
         "@buddy-js/types": "workspace:0.0.5",
         "@inkjs/ui": "2.0.0",
         "@oclif/core": "4.2.6",
-        "@oclif/plugin-help": "6.2.23",
+        "@oclif/plugin-help": "6.2.24",
         "ajv": "8.17.1",
         "ajv-draft-04": "1.0.0",
         "ajv-formats": "3.0.1",
