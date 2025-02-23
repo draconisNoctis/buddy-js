@@ -85,8 +85,8 @@ importers:
         specifier: 0.2.1
         version: 0.2.1
       '@oclif/test':
-        specifier: 4.1.10
-        version: 4.1.10(@oclif/core@4.2.8)
+        specifier: 4.1.11
+        version: 4.1.11(@oclif/core@4.2.8)
       '@types/chai':
         specifier: 5.0.1
         version: 5.0.1
@@ -591,8 +591,8 @@ packages:
   '@oclif/prettier-config@0.2.1':
     resolution: {integrity: sha512-XB8kwQj8zynXjIIWRm+6gO/r8Qft2xKtwBMSmq1JRqtA6TpwpqECqiu8LosBCyg2JBXuUy2lU23/L98KIR7FrQ==}
 
-  '@oclif/test@4.1.10':
-    resolution: {integrity: sha512-46Uu4hXOa2JKrivE9b14R+QzV15z/d8ig4ZGyjhzf2oOV2b11HV6H7ZEXsupVLPS6Dp5TmIlVXo7/kdrlXmAHQ==}
+  '@oclif/test@4.1.11':
+    resolution: {integrity: sha512-j689R13E2so1Rj6jJUfQ67yJ4N7u6L5KFzv87cvUfD9AZ79xAtCxGrd34/iOLUDJmv1huFt/0QumBcjKoWUSYw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@oclif/core': '>= 3.0.0'
@@ -1008,10 +1008,6 @@ packages:
   ansi-styles@6.2.1:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
-
-  ansis@3.15.0:
-    resolution: {integrity: sha512-zIcWDJ+Kwqxfdnogx66Gxzr0kVmCcRAdat9nlY2IHsshqTN4fBH6tMeRMPA/2w0rpBayIJvjQAaa2/4RDrNqwg==}
-    engines: {node: '>=14'}
 
   ansis@3.16.0:
     resolution: {integrity: sha512-sU7d/tfZiYrsIAXbdL/CNZld5bCkruzwT5KmqmadCJYxuLxHAOBjidxD5+iLmN/6xEfjcQq1l7OpsiCBlc4LzA==}
@@ -3256,7 +3252,7 @@ snapshots:
     dependencies:
       '@inquirer/prompts': 7.2.1(@types/node@22.13.5)
       '@oclif/core': 4.2.8
-      ansis: 3.15.0
+      ansis: 3.16.0
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
       - '@types/node'
@@ -3264,7 +3260,7 @@ snapshots:
   '@oclif/plugin-warn-if-update-available@3.1.31':
     dependencies:
       '@oclif/core': 4.2.8
-      ansis: 3.15.0
+      ansis: 3.16.0
       debug: 4.4.0(supports-color@8.1.1)
       http-call: 5.3.0
       lodash: 4.17.21
@@ -3274,10 +3270,10 @@ snapshots:
 
   '@oclif/prettier-config@0.2.1': {}
 
-  '@oclif/test@4.1.10(@oclif/core@4.2.8)':
+  '@oclif/test@4.1.11(@oclif/core@4.2.8)':
     dependencies:
       '@oclif/core': 4.2.8
-      ansis: 3.15.0
+      ansis: 3.16.0
       debug: 4.4.0(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
@@ -3767,8 +3763,6 @@ snapshots:
       color-convert: 2.0.1
 
   ansi-styles@6.2.1: {}
-
-  ansis@3.15.0: {}
 
   ansis@3.16.0: {}
 
