@@ -1,7 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": ["config:best-practices"],
-    "baseBranches": ["main"],
+    "baseBranchPatterns": ["main"],
     "prConcurrentLimit": 10,
     "prHourlyLimit": 2,
     "automerge": false,
@@ -11,8 +11,13 @@
             "matchPackageNames": ["chalk"],
             "enabled": false
         },
-        { "matchManagers": ["github-actions"], "automerge": true },
-        { "matchUpdateTypes": ["major"] },
+        {
+            "matchManagers": ["github-actions"],
+            "automerge": true
+        },
+        {
+            "matchUpdateTypes": ["major"]
+        },
         {
             "matchUpdateTypes": ["minor", "patch"],
             "matchCurrentVersion": "!/^0/",
