@@ -16,7 +16,7 @@ jobs:
                   node-version-file: '.nvmrc'
 
             - name: Install pnpm
-              uses: pnpm/action-setup@v2
+              uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4
 
             - name: Install
               run: |
@@ -42,7 +42,7 @@ jobs:
                   node-version-file: '.nvmrc'
 
             - name: Install pnpm
-              uses: pnpm/action-setup@v2
+              uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4
 
             - name: Install
               run: |
@@ -64,7 +64,7 @@ jobs:
                   node-version-file: '.nvmrc'
 
             - name: Install pnpm
-              uses: pnpm/action-setup@v2
+              uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4
 
             - name: Install
               run: |
