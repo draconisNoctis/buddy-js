@@ -59,7 +59,7 @@
         "@types/chai": "5.2.2",
         "@types/node": "22.17.2",
         "@types/react": "18.3.23",
-        "chai": "5.2.1",
+        "chai": "5.3.1",
         "oclif": "4.22.12",
         "ts-node": "10.9.2",
         "typescript": "5.9.2"
