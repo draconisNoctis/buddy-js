@@ -97,8 +97,8 @@ importers:
         specifier: 18.3.24
         version: 18.3.24
       chai:
-        specifier: 5.3.1
-        version: 5.3.1
+        specifier: 5.3.3
+        version: 5.3.3
       oclif:
         specifier: 4.22.12
         version: 4.22.12(@types/node@22.17.2)
@@ -1135,8 +1135,8 @@ packages:
   capital-case@1.0.4:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
 
-  chai@5.3.1:
-    resolution: {integrity: sha512-48af6xm9gQK8rhIcOxWwdGzIervm8BVTin+yRp9HEvU20BtVZ2lBywlIJBzwaDtvo0FvjeL7QdCADoUoqIbV3A==}
+  chai@5.3.3:
+    resolution: {integrity: sha512-4zNhdJD/iOjSH0A05ea+Ke6MU5mmpQcbQsSOkgdaUMJ9zTlDTD/GYlwohmIE2u0gaxHYiVHEn1Fw9mZ/ktJWgw==}
     engines: {node: '>=18'}
 
   chalk@4.1.2:
@@ -3937,7 +3937,7 @@ snapshots:
       tslib: 2.7.0
       upper-case-first: 2.0.2
 
-  chai@5.3.1:
+  chai@5.3.3:
     dependencies:
       assertion-error: 2.0.1
       check-error: 2.1.1
