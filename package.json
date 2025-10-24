@@ -16,7 +16,7 @@
         "version": "changeset version && pnpm run -r version"
     },
     "devDependencies": {
-        "@biomejs/biome": "1.9.4",
+        "@biomejs/biome": "2.3.0",
         "@changesets/cli": "2.29.7",
         "@types/node": "22.18.12",
         "husky": "9.1.7",
