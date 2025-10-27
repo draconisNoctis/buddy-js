@@ -100,8 +100,8 @@ importers:
         specifier: 5.3.3
         version: 5.3.3
       oclif:
-        specifier: 4.22.37
-        version: 4.22.37(@types/node@22.18.12)
+        specifier: 4.22.38
+        version: 4.22.38(@types/node@22.18.12)
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@swc/core@1.7.36)(@types/node@22.18.12)(typescript@5.9.3)
@@ -511,10 +511,6 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
-
-  '@inquirer/figures@1.0.13':
-    resolution: {integrity: sha512-lGPVU3yO9ZNqA7vTYz26jny41lE7yoQansmqdMLBEfqaGsmdg7V3W9mK9Pvb5IL4EVZ9GnSDGMO/cJXud5dMaw==}
-    engines: {node: '>=18'}
 
   '@inquirer/figures@1.0.14':
     resolution: {integrity: sha512-DbFgdt+9/OZYFM+19dbpXOSeAstPy884FPy1KjDu4anWwymZeOYhMY1mdFri172htv6mvc/uvIAAi7b7tvjJBQ==}
@@ -1865,8 +1861,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  oclif@4.22.37:
-    resolution: {integrity: sha512-hi2zjgOUsevIW3xJFLcSW3M6dX1i9V1jeI1Z+xN3B9f63YKtSa9bvucBy42G2cHhqq05p++DRotcWKXEU5xQ+w==}
+  oclif@4.22.38:
+    resolution: {integrity: sha512-h9DiPdiu61/NjBqBQroSZ+cRhcaQZuXUmUejmbYoNZ+yASthZ88fAY2GkR4vfEDUt7pLVXpJYmoLulM2Nl3TWA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -3182,7 +3178,7 @@ snapshots:
 
   '@inquirer/core@9.2.1':
     dependencies:
-      '@inquirer/figures': 1.0.13
+      '@inquirer/figures': 1.0.14
       '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
       '@types/node': 22.18.12
@@ -3224,8 +3220,6 @@ snapshots:
       iconv-lite: 0.7.0
     optionalDependencies:
       '@types/node': 22.18.12
-
-  '@inquirer/figures@1.0.13': {}
 
   '@inquirer/figures@1.0.14': {}
 
@@ -3291,7 +3285,7 @@ snapshots:
   '@inquirer/select@2.5.0':
     dependencies:
       '@inquirer/core': 9.2.1
-      '@inquirer/figures': 1.0.13
+      '@inquirer/figures': 1.0.14
       '@inquirer/type': 1.5.5
       ansi-escapes: 4.3.2
       yoctocolors-cjs: 2.1.2
@@ -4678,7 +4672,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  oclif@4.22.37(@types/node@22.18.12):
+  oclif@4.22.38(@types/node@22.18.12):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.917.0
       '@aws-sdk/client-s3': 3.917.0
