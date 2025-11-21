@@ -58,7 +58,7 @@
         "@oclif/test": "4.1.15",
         "@types/chai": "5.2.3",
         "@types/node": "22.19.1",
-        "@types/react": "18.3.26",
+        "@types/react": "18.3.27",
         "chai": "5.3.3",
         "oclif": "4.22.47",
         "ts-node": "10.9.2",
