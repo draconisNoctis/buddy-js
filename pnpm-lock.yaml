@@ -24,11 +24,11 @@ importers:
         specifier: 15.5.2
         version: 15.5.2
       prettier:
-        specifier: 3.7.2
-        version: 3.7.2
+        specifier: 3.7.3
+        version: 3.7.3
       prettier-plugin-packagejson:
         specifier: 2.5.20
-        version: 2.5.20(prettier@3.7.2)
+        version: 2.5.20(prettier@3.7.3)
       turbo:
         specifier: 2.6.1
         version: 2.6.1
@@ -1997,8 +1997,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.7.2:
-    resolution: {integrity: sha512-n3HV2J6QhItCXndGa3oMWvWFAgN1ibnS7R9mt6iokScBOC0Ul9/iZORmU2IWUMcyAQaMPjTlY3uT34TqocUxMA==}
+  prettier@3.7.3:
+    resolution: {integrity: sha512-QgODejq9K3OzoBbuyobZlUhznP5SKwPqp+6Q6xw6o8gnhr4O85L2U915iM2IDcfF2NPXVaM9zlo9tdwipnYwzg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4547,7 +4547,7 @@ snapshots:
       js-yaml: 4.1.0
       lodash: 4.17.21
       minimist: 1.2.8
-      prettier: 3.7.2
+      prettier: 3.7.3
       tinyglobby: 0.2.10
 
   json-schema-traverse@1.0.0: {}
@@ -4815,16 +4815,16 @@ snapshots:
 
   pify@4.0.1: {}
 
-  prettier-plugin-packagejson@2.5.20(prettier@3.7.2):
+  prettier-plugin-packagejson@2.5.20(prettier@3.7.3):
     dependencies:
       sort-package-json: 3.5.0
       synckit: 0.11.11
     optionalDependencies:
-      prettier: 3.7.2
+      prettier: 3.7.3
 
   prettier@2.8.8: {}
 
-  prettier@3.7.2: {}
+  prettier@3.7.3: {}
 
   proto-list@1.2.4: {}
 
