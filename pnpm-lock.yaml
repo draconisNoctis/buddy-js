@@ -100,8 +100,8 @@ importers:
         specifier: 5.3.3
         version: 5.3.3
       oclif:
-        specifier: 4.22.59
-        version: 4.22.59(@types/node@22.19.3)
+        specifier: 4.22.61
+        version: 4.22.61(@types/node@22.19.3)
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@swc/core@1.7.36)(@types/node@22.19.3)(typescript@5.9.3)
@@ -1864,8 +1864,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  oclif@4.22.59:
-    resolution: {integrity: sha512-Yq9R5mSSdDJAcCewEi+gipPNEvx0+0CyVmPAmamYRydc87I40o5YezVMWTjJ/0VzkdZZdmXl+EBlsXuNDqyhxg==}
+  oclif@4.22.61:
+    resolution: {integrity: sha512-fxjZTwg+4NLk6rshf7aI2J8W8Vl/MUePxzOHv3GEhmHlZgXfDD7dswWJ/Dqm/dRk+9oNu7PWH/h48r//RzALuQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -2331,6 +2331,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -4688,7 +4689,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  oclif@4.22.59(@types/node@22.19.3):
+  oclif@4.22.61(@types/node@22.19.3):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.958.0
       '@aws-sdk/client-s3': 3.958.0
